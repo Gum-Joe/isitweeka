@@ -61,9 +61,10 @@ jobs:
         git config user.name "Kishan Build Agent"
         git add .
         git commit -m "Build push for commit $GITHUB_SHA run ID $GITHUB_RUN_ID"
+      continue-on-error: true
     - name: GitHub Push
       uses: ad-m/github-push-action@v0.5.0
-      if: ${{ contains(github.ref, 'main') }} # Only run if this repo is main and the development branch
+      if: ${{ contains(github.ref, 'main') && success() }} # Only run if this repo is main and the development branch
       with:
         # Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}
         github_token: ${{ secrets.GITHUB_TOKEN }}

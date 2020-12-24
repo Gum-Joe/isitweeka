@@ -64,3 +64,11 @@ body {
 .isitweeka h3 {
   font-size: 3.5em;
 }
+
+.isitweeka h4 {
+  font-size: 2.5em;
+}
+
+.isitweeka a {
+  color: #00B0FF;
+}
