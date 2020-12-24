@@ -113,6 +113,8 @@ class App extends Component<{}, TheState> {
    */
   async getCalendar() {
 
+    const a = "QA";
+    console.log(a);
     const inputDate = new Date();
     // Used for fiddling:
     // inputDate.setDate(2);
