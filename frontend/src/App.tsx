@@ -202,7 +202,7 @@ class App extends Component<{}, TheState> {
         <>
           <h2>It is neither Week A or B.</h2>
           <h3>This means it's probably a holiday.</h3>
-          <h4>If you believe this is in error, please email <a href="mailto:contact@isitweeka.com">contact@isitweeka.com</a></h4>
+          <h4>If you believe this is in error, please email <a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h4>
         </>
       )
     } else {
