@@ -48,8 +48,7 @@ jobs:
         # Artifact name
         name: Website Build
         # A file, directory or wildcard pattern that describes what to upload
-        path: build/
-      working-directory: ./frontend
+        path: frontend/build/
     - name: Copy build files
       run: cp -va ./build/. ../repo/
       working-directory: ./frontend
