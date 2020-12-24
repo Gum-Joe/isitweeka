@@ -25,6 +25,22 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Is it Week A?</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X4VMSWGN74"></script>
+    <script>
+      var GA_PROPERTY = 'G-X4VMSWGN74';
+
+      // Disable tracking if the opt-out cookie exists.
+      var GA_DISABLE_COOKIE_STR = 'ga-disable-' + GA_PROPERTY;
+      if (document.cookie.indexOf(`${GA_DISABLE_COOKIE_STR}=false`) > -1) {
+        console.log("Set GA");
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', GA_PROPERTY);
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

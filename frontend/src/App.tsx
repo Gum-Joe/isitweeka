@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import gaSetState, { GA_DISABLE_COOKIE_STR, GA_PROPERTY } from "./gAnalytics";
 import './App.css';
+import CookieConsent from 'react-cookie-consent';
+import { Navbar } from "react-bootstrap";
 
 /*function App() {
   return (
@@ -22,8 +25,13 @@ import './App.css';
   );
 }*/
 
+/**
+ * YES I KNOW THIS IS A BAD IDEA!!!!!!
+ * But it's more convient 
+ * And i've limited it's use
+ * And it's only for access to a public read-only
+ */
 const API_KEY = 'AIzaSyBJtspfBiYYXzpF3Nc32owjtjnJbRToxK4';
-const CLIENT_ID = "315952430187-dnr3c50ojube21n64i1a85jr8l8787pq.apps.googleusercontent.com"  
 
 interface TheState {
   /** Used to see whether the API has been loaded */
@@ -144,7 +152,6 @@ class App extends Component<{}, TheState> {
     // Initializes the client with the API key and the Translate API.
     await window.gapi.client.init({
       'apiKey': API_KEY,
-      clientId: CLIENT_ID,
       // Discovery docs docs: https://developers.google.com/api-client-library/javascript/features/discovery
       'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
     })
@@ -230,6 +237,23 @@ class App extends Component<{}, TheState> {
           <h1>IT BEGINS.</h1>
           <h3>More coming soon</h3>*/}
         </div>
+
+        {/* Cookie consent */}
+        <Navbar fixed="bottom">
+          <CookieConsent
+            enableDeclineButton
+            declineButtonText="No thanks"
+            onAccept={
+              () => { gaSetState(false); window.location.reload(); }
+            }
+            onDecline={
+              () => { gaSetState(true); window.location.reload(); }
+            }
+          >
+            This website uses cookies (via Google Analytics) for analytics.
+            <a href={process.env.PUBLIC_URL + "/privacy.html"}>View Privacy Policy</a>
+          </CookieConsent>
+        </Navbar>
       </div>
     )
   }
