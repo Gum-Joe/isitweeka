@@ -49,8 +49,14 @@ body {
   color: #fff;
 }
 
+
+
+/* VERTICALLYTG CENTRE */
 .isitweeka {
-  padding-top: 15em;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
 }
 
 .isitweeka h1 {
