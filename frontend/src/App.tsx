@@ -115,9 +115,9 @@ class App extends Component<{}, TheState> {
 
     const inputDate = new Date();
     // Used for fiddling:
-    // inputDate.setDate(2);
-    // inputDate.setMonth(0);
-    // inputDate.setFullYear(2021);
+    inputDate.setDate(2);
+    inputDate.setMonth(0);
+    inputDate.setFullYear(2021);
     const weekStart = this.getMonday(inputDate);
     weekStart.setUTCHours(0, 0, 0, 0); // Set to start of day
     const weekEnd = new Date(weekStart);
