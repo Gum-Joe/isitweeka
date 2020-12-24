@@ -228,7 +228,7 @@ class App extends Component<{}, TheState> {
       <div className="App">
         <div className="isitweeka">
           {
-            this.state.apiHasRan ? this.getStatus() : ( <h1>Loading...</h1> )
+            this.state.apiHasRan ? this.getStatus() : ( <h2>Loading...</h2> )
           }
           {/*<h2>It is</h2>
           <h1>Week A/B</h1>
