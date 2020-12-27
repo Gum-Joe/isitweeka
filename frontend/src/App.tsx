@@ -25,9 +25,13 @@ import { Navbar } from "react-bootstrap";
   );
 }*/
 
+const baseEventImageStyle = {
+  backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center", display: "flex", flex: 1, margin: "auto", width: "90%", maxHeight: "80%"
+};
+
 /**
  * YES I KNOW THIS IS A BAD IDEA!!!!!!
- * But it's more convient 
+ * But it's more convient
  * And i've limited it's use
  * And it's only for access to a public read-only
  */
@@ -132,12 +136,12 @@ class App extends Component<{}, TheState> {
       this.setState({
         isWeekend: true,
       })
-    } 
+    }
 
 
     const startTime = weekStart.toISOString()
     const endTime = weekEnd.toISOString();
-    
+
     // The "Calendar ID" from your calendar settings page, "Calendar Integration" secion:
     const calendarId = 'calendar@camphillboys.bham.sch.uk';
 
@@ -147,7 +151,7 @@ class App extends Component<{}, TheState> {
     //    b) Create Credentials / API key
     //    c) Since your key will be called from any of your users' browsers, set "Application restrictions" to "None",
     //       leave "Website restrictions" blank; you may optionally set "API restrictions" to "Google Calendar API"
-    
+
     // You can get a list of time zones from here: http://www.timezoneconverter.com/cgi-bin/zonehelp
     const userTimeZone = "Europe/London";
 
@@ -211,7 +215,8 @@ class App extends Component<{}, TheState> {
         <>
           <h2>It is neither Week A or B.</h2>
           <h3>This means it's probably a holiday.</h3>
-          <h4>If you believe this is in error, please email <a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h4>
+          <button className="forward" onClick={this.scrollDown}><div>events</div></button>
+          <h5>If you believe this is in error, please email <a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
         </>
       )
     } else {
@@ -220,9 +225,24 @@ class App extends Component<{}, TheState> {
           <h2>{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
           <h1>Week {this.state.week}</h1>
           <h4>More coming soon...</h4>
+          <button className="forward" onClick={this.scrollDown}><div>events</div></button>
         </>
       )
     }
+  }
+
+  scrollDown() {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth",
+    });
+  }
+
+  scrollUp() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }
 
   render() {
@@ -238,6 +258,32 @@ class App extends Component<{}, TheState> {
           <h2>isitweeka.com</h2>
           <h1>IT BEGINS.</h1>
           <h3>More coming soon</h3>*/}
+        </div>
+        <div className="isitweeka events">
+          <h2><button onClick={this.scrollUp} className="back" /> Upcoming Events</h2>
+          <div className="events-list">
+            <div className="events-row" style={{ backgroundColor: "#2C1F39" }}>
+              <div>
+				<div style={{ backgroundImage: `url("/Logo_Export_Trans_but_not_on_HRT.png")`, ...baseEventImageStyle }}>
+				  {/*<h4>[IMAGE SET AS BACKGROUND OF THIS DIV]</h4>*/}
+				</div>
+              </div>
+              <div>
+                <h3>Would I Lie To You?</h3>
+                <button className="forward">Buy Tickets</button>
+                <h4>On sale now!</h4>
+              </div>
+            </div>
+            <div className="events-row">
+				<div style={{ ...baseEventImageStyle }}>
+				  <h4>[IMAGE SET AS BACKGROUND OF THIS DIV]</h4>
+				</div>
+				<div>
+				  <h3>Event Number Two?</h3>
+				  <h4>Tickets on sale 03/02/21</h4>
+				</div>
+            </div>
+          </div>
         </div>
 
         {/* Cookie consent */}
