@@ -3,6 +3,8 @@ import gaSetState, { GA_DISABLE_COOKIE_STR, GA_PROPERTY } from "./gAnalytics";
 import './App.css';
 import CookieConsent from 'react-cookie-consent';
 import { Navbar } from "react-bootstrap";
+import EventRow from "./components/EventRow";
+import { dummyResponse, EventData } from "./components/EventsList";
 
 /*function App() {
   return (
@@ -46,6 +48,7 @@ interface TheState {
   /** Tells page when API has ran  (i.e. page loaded) */
   apiHasRan: boolean;
   isWeekend: boolean;
+  eventData: EventData;
 }
 
 class App extends Component<{}, TheState> {
@@ -58,12 +61,23 @@ class App extends Component<{}, TheState> {
       week: "unknown",
       apiHasRan : false,
       isWeekend: false,
+      eventData: {
+        events: [],
+        generatedAt: 0,
+      }
     }
   }
 
   componentDidMount() {
     this.loadGoogleAPI();
+    this.fetchEvents();
   }
+
+  async fetchEvents() {
+    this.setState({
+      eventData: dummyResponse,
+    });
+  };
 
   /**
    * Loads the Google API, then runs {@link getCalendar}
@@ -213,9 +227,9 @@ class App extends Component<{}, TheState> {
     if (this.state.isNotWeekAB || this.state.week === "unknown") {
       return (
         <>
-          <h2>It is neither Week A or B.</h2>
+          <h2>It is neither Week A nor B.</h2>
           <h3>This means it's probably a holiday.</h3>
-          <button className="forward" onClick={this.scrollDown}><div>events</div></button>
+          <button style={{ marginRight: "auto", marginLeft: -8 }} className="forward" onClick={this.scrollDown}><div>events</div></button>
           <h5>If you believe this is in error, please email <a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
         </>
       )
@@ -225,7 +239,7 @@ class App extends Component<{}, TheState> {
           <h2>{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
           <h1>Week {this.state.week}</h1>
           <h4>More coming soon...</h4>
-          <button className="forward" onClick={this.scrollDown}><div>events</div></button>
+          <button style={{ marginRight: "auto", marginLeft: -8 }} className="forward" onClick={this.scrollDown}><div>events</div></button>
         </>
       )
     }
@@ -262,27 +276,18 @@ class App extends Component<{}, TheState> {
         <div className="isitweeka events">
           <h2><button onClick={this.scrollUp} className="back" /> Upcoming Events</h2>
           <div className="events-list">
-            <div className="events-row" style={{ backgroundColor: "#2C1F39" }}>
-              <div>
-				<div style={{ backgroundImage: `url("/Logo_Export_Trans_but_not_on_HRT.png")`, ...baseEventImageStyle }}>
-				  {/*<h4>[IMAGE SET AS BACKGROUND OF THIS DIV]</h4>*/}
-				</div>
-              </div>
-              <div>
-                <h3>Would I Lie To You?</h3>
-                <button className="forward">Buy Tickets</button>
-                <h4>On sale now!</h4>
-              </div>
-            </div>
-            <div className="events-row">
-				<div style={{ ...baseEventImageStyle }}>
-				  <h4>[IMAGE SET AS BACKGROUND OF THIS DIV]</h4>
-				</div>
-				<div>
-				  <h3>Event Number Two?</h3>
-				  <h4>Tickets on sale 03/02/21</h4>
-				</div>
-            </div>
+            {this.state.eventData.events.map(({ title, headerURL, backgroundColor }) => (
+                <EventRow ticketsOnSale imageURL={headerURL} title={title} saleDate={"01/01/2021"} background={backgroundColor} />
+            ))}
+            {/*<div className="events-row">*/}
+			{/*	<div style={{ ...baseEventImageStyle }}>*/}
+			{/*	  <h4>[IMAGE SET AS BACKGROUND OF THIS DIV]</h4>*/}
+			{/*	</div>*/}
+			{/*	<div>*/}
+			{/*	  <h3>Event Number Two?</h3>*/}
+			{/*	  <h4>Tickets on sale 03/02/21</h4>*/}
+			{/*	</div>*/}
+            {/*</div>*/}
           </div>
         </div>
 

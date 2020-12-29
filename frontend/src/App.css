@@ -86,8 +86,14 @@ body {
   display: inline-flex;
 }
 
+.isitweeka h5 {
+  font-size: 1em;
+  display: inline-flex;
+}
+
 .isitweeka a {
   color: #00B0FF;
+  display: inline-flex;
 }
 
 .events * {
@@ -120,7 +126,8 @@ button {
 }
 
 button.forward {
-  margin: 0 auto;
+  /*margin-right: auto;*/
+  /*margin-left: -8px;*/
   width: auto;
 }
 
@@ -213,6 +220,12 @@ button.back::after {
   border-bottom-color: var(--link-active);
   margin: 0 -5vw;
   padding: 0 5vw;
+}
+
+.events-row:first-child {
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: var(--link-active);
 }
 
 
