@@ -193,6 +193,10 @@ button.forward:hover::before {
   transform: scaleY(1);
 }
 
+button.forward.b:hover::before {
+  filter: saturate(75%);
+}
+
 button.back::after {
   content: "";
   /* background-image: linear-gradient(to right, var(--rykan-accent-primary), var(--rykan-accent-secondary)); */
