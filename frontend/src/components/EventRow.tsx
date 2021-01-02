@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./Button.Forward";
 
 const baseEventImageStyle = {
 	backgroundSize: "contain",
@@ -30,7 +31,7 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
               </div>
 				<div>
 				  <h3>{this.props.title}</h3>
-					{this.props.ticketsOnSale ? <button className="forward">Buy Tickets</button> : null}
+					{new Date(this.props.saleDate).valueOf() < Date.now() ? <Button>Buy Tickets</Button> : null}
 					<h4>Tickets on sale {this.props.saleDate}</h4>
 				</div>
             </div>
