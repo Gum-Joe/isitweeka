@@ -5,6 +5,7 @@ import CookieConsent from 'react-cookie-consent';
 import { Navbar } from "react-bootstrap";
 import EventRow from "./components/EventRow";
 import { dummyResponse, EventData } from "./components/EventsList";
+import Button from "./components/Button.Forward";
 
 /*function App() {
   return (
@@ -63,7 +64,7 @@ class App extends Component<{}, TheState> {
       isWeekend: false,
       eventData: {
         events: [],
-        generatedAt: 0,
+        generatedAt: "",
       }
     }
   }
@@ -74,6 +75,7 @@ class App extends Component<{}, TheState> {
   }
 
   async fetchEvents() {
+    // TODO: Add real fetch logic
     this.setState({
       eventData: dummyResponse,
     });
@@ -229,7 +231,7 @@ class App extends Component<{}, TheState> {
         <>
           <h2>It is neither Week A nor B.</h2>
           <h3>This means it's probably a holiday.</h3>
-          <button style={{ marginRight: "auto", marginLeft: -8 }} className="forward" onClick={this.scrollDown}><div>events</div></button>
+          <Button style={{ marginRight: "auto" }} className="forward" onClick={this.scrollDown}><div>events</div></Button>
           <h5>If you believe this is in error, please email <a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
         </>
       )
@@ -239,7 +241,7 @@ class App extends Component<{}, TheState> {
           <h2>{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
           <h1>Week {this.state.week}</h1>
           <h4>More coming soon...</h4>
-          <button style={{ marginRight: "auto", marginLeft: -8 }} className="forward" onClick={this.scrollDown}><div>events</div></button>
+          <Button style={{ marginRight: "auto" }} className="forward" onClick={this.scrollDown}>events</Button>
         </>
       )
     }
@@ -276,8 +278,8 @@ class App extends Component<{}, TheState> {
         <div className="isitweeka events">
           <h2><button onClick={this.scrollUp} className="back" /> Upcoming Events</h2>
           <div className="events-list">
-            {this.state.eventData.events.map(({ title, headerURL, backgroundColor }) => (
-                <EventRow ticketsOnSale imageURL={headerURL} title={title} saleDate={"01/01/2021"} background={backgroundColor} />
+            {this.state.eventData.events.map(({ title, headerURL, backgroundColor, ticketsSale }) => (
+                <EventRow imageURL={headerURL} title={title} saleDate={ticketsSale.start} background={backgroundColor} />
             ))}
             {/*<div className="events-row">*/}
 			{/*	<div style={{ ...baseEventImageStyle }}>*/}
