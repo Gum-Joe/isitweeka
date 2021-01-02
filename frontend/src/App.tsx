@@ -279,8 +279,8 @@ class App extends Component<{}, TheState> {
         <div className="isitweeka events">
           <h2><button onClick={this.scrollUp} className="back" /> Upcoming Events</h2>
           <div className="events-list">
-            {this.state.eventData.events.map(({ title, headerURL, backgroundColor, ticketsSale }) => (
-                <EventRow imageURL={headerURL} title={title} saleDate={ticketsSale.start} background={backgroundColor} />
+            {this.state.eventData.events.map(({ title, headerURL, backgroundColor, ticketsSale, ticketsURL }) => (
+                <EventRow imageURL={headerURL} title={title} saleDate={ticketsSale.start} ticketsURL={ticketsURL} background={backgroundColor} />
             ))}
             {/*<div className="events-row">*/}
 			{/*	<div style={{ ...baseEventImageStyle }}>*/}

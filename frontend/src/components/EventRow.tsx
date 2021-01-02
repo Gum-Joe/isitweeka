@@ -18,6 +18,7 @@ interface RowProps {
 	saleDate: string;
 	background: string;
 	ticketsOnSale?: boolean;
+	ticketsURL: string;
 }
 
 export default class EventRow extends React.PureComponent<RowProps, never> {
@@ -31,7 +32,7 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
               </div>
 				<div>
 				  <h3>{this.props.title}</h3>
-					{new Date(this.props.saleDate).valueOf() < Date.now() ? <Button>Buy Tickets</Button> : null}
+					{new Date(this.props.saleDate).valueOf() < Date.now() ? <a href={this.props.ticketsURL}><Button>Buy Tickets</Button></a> : null}
 					<h4>Tickets on sale {this.props.saleDate}</h4>
 				</div>
             </div>

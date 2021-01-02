@@ -43,6 +43,7 @@
 
 body {
   font-family: "Metropolis", 'Open Sans', sans-serif;
+  color: #fff;
 }
 
 .App {
@@ -92,7 +93,7 @@ body {
 }
 
 .isitweeka a {
-  color: #00B0FF;
+  /*color: #00B0FF;*/
   display: inline-flex;
 }
 
@@ -242,4 +243,11 @@ button.back::after {
   color: white;
   --icon-fill: white;
   --link-active: rgba(255, 255, 255, 0.6);
+}
+
+
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
