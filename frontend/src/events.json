@@ -1,0 +1,15 @@
+{
+	"events": [
+		{
+			"title": "Would I Lie To You?",
+			"ticketsURL": "TODO: Kishan add URL Here",
+			"ticketsSale": {
+				"start": "01/01/2020"
+			},
+			"headerURL": "/Logo_Export_Trans_but_not_on_HRT.png",
+			"backgroundColor": "#2C1F39",
+			"isHouseEvent": false
+		}
+	],
+	"generatedAt": "0"
+}

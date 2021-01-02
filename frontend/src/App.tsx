@@ -4,8 +4,9 @@ import './App.css';
 import CookieConsent from 'react-cookie-consent';
 import { Navbar } from "react-bootstrap";
 import EventRow from "./components/EventRow";
-import { dummyResponse, EventData } from "./components/EventsList";
+import { EventData } from "./components/EventsList";
 import Button from "./components/Button.Forward";
+import dummyResponse from "./events.json";
 
 /*function App() {
   return (
