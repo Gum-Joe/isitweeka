@@ -105,7 +105,7 @@ body {
 button {
   color: inherit;
   font-size: 1.5em;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 26px;
   text-transform: lowercase;
   text-decoration: none;
@@ -123,6 +123,10 @@ button {
   -webkit-appearance: none;
   background: transparent;
   border: none;
+}
+
+button > span {
+  z-index: 2;
 }
 
 button.forward {
@@ -165,18 +169,19 @@ button.forward::before {
   /* background-image: linear-gradient(to right, var(--rykan-accent-primary), var(--rykan-accent-secondary)); */
   background-color: var(--rykan-accent-primary);
   position: absolute;
-  height: 3px;
-  width: 100%;
-  left: 0;
+  height: calc(100% + 8px);
+  width: calc(100% + 8px);
+  left: -4px;
   bottom: -4px;
   transition-duration: 100ms;
   pointer-events: none;
-  transform: scaleX(0);
-  transform-origin: 0 0;
+  transform: scaleY(0.1);
+  transform-origin: 0 100%;
+  z-index: 0;
 }
 
 button.forward:hover::before {
-  transform: scaleX(1);
+  transform: scaleY(1);
 }
 
 button.back::after {
