@@ -124,6 +124,7 @@ button {
   -webkit-appearance: none;
   background: transparent;
   border: none;
+  padding-top: 0.19em;
 }
 
 button > span {
