@@ -181,6 +181,14 @@ button.forward::before {
   z-index: 0;
 }
 
+button.forward.a::before {
+  transform: scaleY(0.1);
+}
+
+button.forward.b::before {
+  transform: scaleY(1);
+}
+
 button.forward:hover::before {
   transform: scaleY(1);
 }
