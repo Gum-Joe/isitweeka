@@ -10,6 +10,7 @@ import Button from "./components/Button.Forward";
 import dummyResponse from "./events.json";
 import { API_KEY } from "./utils/constants";
 import SiteContainer from "./components/SiteContainer";
+import { TabContainer } from "./components/Tabs";
 
 
 
@@ -66,33 +67,26 @@ class App extends Component<Record<string, never>, TheState> {
 		return (
 			<div className="App">
 
-				{/* Controls which varient we see */}
-				{/* <Tab.Container defaultActiveKey="kechb">
-					<Nav variant="pills">
-						<Nav.Item>
-							<Nav.Link eventKey="kechb">KECHB</Nav.Link>
-						</Nav.Item>
-						<Nav.Item>
-							<Nav.Link eventKey="second">KECHG</Nav.Link>
-						</Nav.Item>
-					</Nav>
-					<Tab.Content>
-						<Tab.Pane eventKey="kechb">
+				<TabContainer tabs={[
+					{
+						tab: "KECHB",
+						component: (
+							<SiteContainer
+								calendarURL="calendar@camphillboys.bham.sch.uk"
+								weekMarkerDate={1}
+							/>	
+						),
+					},
+					{
+						tab: "KECHG",
+						component: (
 							<SiteContainer
 								calendarURL="calendar@camphillboys.bham.sch.uk"
 								weekMarkerDate={1}
 							/>
-						</Tab.Pane>
-						<Tab.Pane eventKey="second">
-							<h1>404</h1>
-						</Tab.Pane>
-					</Tab.Content>
-				</Tab.Container> */}
-
-				<SiteContainer
-					calendarURL="calendar@camphillboys.bham.sch.uk"
-					weekMarkerDate={1}
-				/>			
+						),
+					},
+				]} />		
 
 				{/* Cookie consent */}
 				<Navbar fixed="bottom">

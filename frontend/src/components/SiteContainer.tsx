@@ -1,15 +1,9 @@
 import React, { Component } from "react";
-import gaSetState, { GA_DISABLE_COOKIE_STR, GA_PROPERTY } from "../utils/gAnalytics";
-import CookieConsent from "react-cookie-consent";
-import { Navbar } from "react-bootstrap";
-import EventRow from "./EventRow";
 import EventsList, { EventData } from "./EventsList";
 import Button from "./Button.Forward";
 import dummyResponse from "../events.json";
 import { API_KEY, GregorianDay } from "../utils/constants";
 import { scrollUp, scrollDown } from "../utils/scroll";
-import { TabContainer } from "./Tabs";
-import { tabs } from "../utils/tabs";
 
 /**
  * Props to provide to the site
@@ -281,37 +275,15 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 
 	render() {
 		return (
-			<TabContainer tabs={[
-				{
-					tab: "KECHB",
-					component: (
-						<>
-							<div className="isitweeka isitweeka-jumbotron">
-								{
-									this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
-								}
-							</div>
+			<>
+				<div className="isitweeka isitweeka-jumbotron">
+					{
+						this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
+					}
+				</div>
 
-							<EventsList eventData={this.state.eventData} />
-						</>
-					),
-				},
-				{
-					tab: "KECHG",
-					component: (
-						<>
-							<div className="isitweeka isitweeka-jumbotron">
-								{
-									// this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
-									<h1>nothing here yet....</h1>
-								}
-							</div>
-
-							<EventsList eventData={this.state.eventData} />
-						</>
-					),
-				},
-			]} />
+				<EventsList eventData={this.state.eventData} />
+			</>
 		);
 	}
 }
