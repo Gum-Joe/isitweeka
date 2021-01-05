@@ -37,7 +37,7 @@
             "double"
         ],
         "semi": [
-            "error",
+            "warn",
             "always"
         ],
         "react/no-unescaped-entities": [ "warn" ],
