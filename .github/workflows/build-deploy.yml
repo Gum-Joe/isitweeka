@@ -28,6 +28,7 @@ jobs:
       id: yarn-cache-dir-path
       run: echo "::set-output name=dir::$(yarn cache dir)"
     - uses: actions/cache@v2
+      name: actions/cache@v2 - yarn cache
       id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
       with:
         path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -43,6 +44,7 @@ jobs:
       working-directory: ./frontend
     # Upload node_modules to download for other steps
     - uses: actions/cache@v2
+      name: actions/cache@v2 - upload node_modules for other jobs
       id: module-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
       with:
         path: ./frontend/node_modules
@@ -65,12 +67,18 @@ jobs:
     
     # Get CACHE!
     - uses: actions/cache@v2
+      name: actions/cache@v2 - download node_modules
       id: module-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
       with:
         path: ./frontend/node_modules
         key: ${{ runner.os }}-node-modules-${{ github.sha }}-${{ hashFiles('**/yarn.lock') }}
     # Restore yarn cache if above fails
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+      if: steps.module-cache.outputs.cache-hit != 'true'
     - uses: actions/cache@v2
+      name: actions/cache@v2 - download yarn cache
       id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
       if: steps.module-cache.outputs.cache-hit != 'true'
       with:
