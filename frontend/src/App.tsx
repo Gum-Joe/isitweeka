@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import gaSetState, { GA_DISABLE_COOKIE_STR, GA_PROPERTY } from "./gAnalytics";
-import './App.css';
-import CookieConsent from 'react-cookie-consent';
+import "./App.css";
+import CookieConsent from "react-cookie-consent";
 import { Navbar } from "react-bootstrap";
 import EventRow from "./components/EventRow";
 import { EventData } from "./components/EventsList";
@@ -39,7 +39,7 @@ const baseEventImageStyle = {
  * And i've limited it's use
  * And it's only for access to a public read-only
  */
-const API_KEY = 'AIzaSyBJtspfBiYYXzpF3Nc32owjtjnJbRToxK4';
+const API_KEY = "AIzaSyBJtspfBiYYXzpF3Nc32owjtjnJbRToxK4";
 
 interface TheState {
   /** Used to see whether the API has been loaded */
@@ -53,7 +53,7 @@ interface TheState {
   eventData: EventData;
 }
 
-class App extends Component<{}, TheState> {
+class App extends Component<Record<string, never>, TheState> {
 
   constructor(props: {}) {
     super(props);
@@ -85,67 +85,67 @@ class App extends Component<{}, TheState> {
   /**
    * Loads the Google API, then runs {@link getCalendar}
    */
-  loadGoogleAPI() {
-    const script = document.createElement("script");
-    script.src = "https://apis.google.com/js/client.js";
-    script.async = true;
-    script.defer = true;
+	loadGoogleAPI() {
+		const script = document.createElement("script");
+		script.src = "https://apis.google.com/js/client.js";
+		script.async = true;
+		script.defer = true;
 
-    script.onload = () => {
-      window.gapi.load("client", () => {
-        window.gapi.client.setApiKey(API_KEY);
-        window.gapi.client.load("calendar", "v3", () => {
-          this.setState({ gapiReady: true });
-          try {
-            this.getCalendar();
-          } catch (err) {
-            console.error("Error: " + err?.message)
-          }
-        });
-      });
-    };
+		script.onload = () => {
+			window.gapi.load("client", () => {
+				window.gapi.client.setApiKey(API_KEY);
+				window.gapi.client.load("calendar", "v3", () => {
+					this.setState({ gapiReady: true });
+					try {
+						this.getCalendar();
+					} catch (err) {
+						console.error("Error: " + err?.message);
+					}
+				});
+			});
+		};
 
-    document.body.appendChild(script);
-  }
+		document.body.appendChild(script);
+	}
 
-  /**
+	/**
    * Gets the monday from a week
    * From https://stackoverflow.com/questions/4156434/javascript-get-the-first-day-of-the-week-from-current-date
    */
-  getMonday(d: Date) {
-    const dhere = new Date(d);
-    const day = dhere.getDay();
-    // Sunday is day 0
-    // Sat is Day 6
-    // If Sun or Sat go to next week
-    /**
+	getMonday(d: Date) {
+		const dhere = new Date(d);
+		const day = dhere.getDay();
+		// Sunday is day 0
+		// Sat is Day 6
+		// If Sun or Sat go to next week
+		/**
      * What this does is:
      * - Take the current date
      * - Subtract the day of the week, taking us to the previous Sunday
      * - Go forward one to monday
      * - BUT if the current date is a Saturday, add 8 instead as we want 2 days after that Saturday (the next week), not the previous Monday
      */
-    const diff = dhere.getDate() - day + (day === 6 ? 8 : 1); // adjust when day is saturday -> add 6 to bring us back to Saturday, then add 2 to go to Monday
-    return new Date(dhere.setDate(diff));
-  }
+		const diff = dhere.getDate() - day + (day === 6 ? 8 : 1); // adjust when day is saturday -> add 6 to bring us back to Saturday, then add 2 to go to Monday
+		return new Date(dhere.setDate(diff));
+	}
 
-  /**
+	/**
    * Loads the KECHB calendar, finds the current week, then goes to the Monday of that week and checks for a Week A or Week B event.
    */
-  async getCalendar() {
+	async getCalendar() {
 
-    const a = "QA";
-    console.log(a);
-    const inputDate = new Date();
-    // Used for fiddling:
-    // inputDate.setDate(2);
-    // inputDate.setMonth(0);
-    // inputDate.setFullYear(2021);
-    const weekStart = this.getMonday(inputDate);
-    weekStart.setUTCHours(0, 0, 0, 0); // Set to start of day
-    const weekEnd = new Date(weekStart);
-    weekEnd.setDate(weekEnd.getDate() + 1)
-    weekEnd.setUTCHours(0, 0, 0, 0); // Set to start of day
+		const a = "QA";
+		console.log(a);
+		const inputDate = new Date();
+		// Used for fiddling:
+		// inputDate.setDate(2);
+		// inputDate.setMonth(0);
+		// inputDate.setFullYear(2021);
+		const weekStart = this.getMonday(inputDate);
+		weekStart.setUTCHours(0, 0, 0, 0); // Set to start of day
+		const weekEnd = new Date(weekStart);
+		weekEnd.setDate(weekEnd.getDate() + 1);
+		weekEnd.setUTCHours(0, 0, 0, 0); // Set to start of day
 
     // Tell us if weekend!
     const dayNow = inputDate.getDay();
@@ -172,59 +172,59 @@ class App extends Component<{}, TheState> {
     // You can get a list of time zones from here: http://www.timezoneconverter.com/cgi-bin/zonehelp
     const userTimeZone = "Europe/London";
 
-    // Initializes the client with the API key and the Translate API.
-    await window.gapi.client.init({
-      'apiKey': API_KEY,
-      // Discovery docs docs: https://developers.google.com/api-client-library/javascript/features/discovery
-      'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
-    })
-    const response = await gapi.client.calendar.events.list({
-      'calendarId': calendarId,
-      'timeZone': userTimeZone,
-      'singleEvents': true,
-      'timeMin': (new Date(startTime)).toISOString(),
-      timeMax: (new Date(endTime)).toISOString(),
-      'maxResults': 20,
-      'orderBy': 'startTime'
-    });
-    if (response.result.items) {
-      const calendarRows = ['<table class="wellness-calendar"><tbody>'];
-      // Filter events to those that are "Week A" or "Week B"
-      const eventsToday = response.result.items.filter(entry => entry.summary === "Week A" || entry.summary === "Week B");
-      if (eventsToday.length === 0) {
-        // Neithe detected.  Probably Hols.
-        this.setState({
-          isNotWeekAB: true,
-          week: "unknown",
-          apiHasRan: true,
-        })
-      } else {
-        const theEvent = eventsToday[0];
-        switch (theEvent.summary) {
-          case "Week A":
-            this.setState({
-              week: "A",
-              apiHasRan: true,
-            });
-            break;
-          case "Week B":
-            this.setState({
-              week: "B",
-              apiHasRan: true,
-            });
-            break;
-          default:
-            // NEITHER!
-            // Something went wrong
-            this.setState({
-              isNotWeekAB: true,
-              apiHasRan: true,
-            })
-            break;
-        }
-      }
-    }
-  }
+		// Initializes the client with the API key and the Translate API.
+		await window.gapi.client.init({
+			"apiKey": API_KEY,
+			// Discovery docs docs: https://developers.google.com/api-client-library/javascript/features/discovery
+			"discoveryDocs": ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"],
+		});
+		const response = await gapi.client.calendar.events.list({
+			"calendarId": calendarId,
+			"timeZone": userTimeZone,
+			"singleEvents": true,
+			"timeMin": (new Date(startTime)).toISOString(),
+			timeMax: (new Date(endTime)).toISOString(),
+			"maxResults": 20,
+			"orderBy": "startTime"
+		});
+		if (response.result.items) {
+			const calendarRows = ["<table class=\"wellness-calendar\"><tbody>"];
+			// Filter events to those that are "Week A" or "Week B"
+			const eventsToday = response.result.items.filter(entry => entry.summary === "Week A" || entry.summary === "Week B");
+			if (eventsToday.length === 0) {
+				// Neithe detected.  Probably Hols.
+				this.setState({
+					isNotWeekAB: true,
+					week: "unknown",
+					apiHasRan: true,
+				});
+			} else {
+				const theEvent = eventsToday[0];
+				switch (theEvent.summary) {
+				case "Week A":
+					this.setState({
+						week: "A",
+						apiHasRan: true,
+					});
+					break;
+				case "Week B":
+					this.setState({
+						week: "B",
+						apiHasRan: true,
+					});
+					break;
+				default:
+					// NEITHER!
+					// Something went wrong
+					this.setState({
+						isNotWeekAB: true,
+						apiHasRan: true,
+					});
+					break;
+				}
+			}
+		}
+	}
 
   getStatus() {
     if (this.state.isNotWeekAB || this.state.week === "unknown") {
@@ -294,25 +294,25 @@ class App extends Component<{}, TheState> {
           </div>
         </div>
 
-        {/* Cookie consent */}
-        <Navbar fixed="bottom">
-          <CookieConsent
-            enableDeclineButton
-            declineButtonText="No thanks"
-            onAccept={
-              () => { gaSetState(false); window.location.reload(); }
-            }
-            onDecline={
-              () => { gaSetState(true); window.location.reload(); }
-            }
-          >
+				{/* Cookie consent */}
+				<Navbar fixed="bottom">
+					<CookieConsent
+						enableDeclineButton
+						declineButtonText="No thanks"
+						onAccept={
+							() => { gaSetState(false); window.location.reload(); }
+						}
+						onDecline={
+							() => { gaSetState(true); window.location.reload(); }
+						}
+					>
             This website uses cookies (via Google Analytics) for analytics.
-            <a href={process.env.PUBLIC_URL + "/privacy.html"}>View Privacy Policy</a>
-          </CookieConsent>
-        </Navbar>
-      </div>
-    )
-  }
+						<a href={process.env.PUBLIC_URL + "/privacy.html"}>View Privacy Policy</a>
+					</CookieConsent>
+				</Navbar>
+			</div>
+		);
+	}
 }
 
 export default App;
