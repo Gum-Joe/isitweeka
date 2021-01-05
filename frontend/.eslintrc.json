@@ -36,6 +36,7 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "react/no-unescaped-entities": [ "warn" ]
     }
 }
