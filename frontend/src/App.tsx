@@ -30,7 +30,7 @@ import dummyResponse from "./events.json";
 }*/
 
 const baseEventImageStyle = {
-  backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center", display: "flex", flex: 1, margin: "auto", width: "90%", maxHeight: "80%"
+	backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center", display: "flex", flex: 1, margin: "auto", width: "90%", maxHeight: "80%"
 };
 
 /**
@@ -55,34 +55,34 @@ interface TheState {
 
 class App extends Component<Record<string, never>, TheState> {
 
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      gapiReady: false,
-      isNotWeekAB: false,
-      week: "unknown",
-      apiHasRan : false,
-      isWeekend: false,
-      eventData: {
-        events: [],
-        generatedAt: "",
-      }
-    }
-  }
+	constructor(props: Record<string, never>) {
+		super(props);
+		this.state = {
+			gapiReady: false,
+			isNotWeekAB: false,
+			week: "unknown",
+			apiHasRan : false,
+			isWeekend: false,
+			eventData: {
+				events: [],
+				generatedAt: "",
+			}
+		};
+	}
 
-  componentDidMount() {
-    this.loadGoogleAPI();
-    this.fetchEvents();
-  }
+	componentDidMount() {
+		this.loadGoogleAPI();
+		this.fetchEvents();
+	}
 
-  async fetchEvents() {
-    // TODO: Add real fetch logic
-    this.setState({
-      eventData: dummyResponse,
-    });
-  };
+	async fetchEvents() {
+		// TODO: Add real fetch logic
+		this.setState({
+			eventData: dummyResponse,
+		});
+	}
 
-  /**
+	/**
    * Loads the Google API, then runs {@link getCalendar}
    */
 	loadGoogleAPI() {
@@ -147,30 +147,30 @@ class App extends Component<Record<string, never>, TheState> {
 		weekEnd.setDate(weekEnd.getDate() + 1);
 		weekEnd.setUTCHours(0, 0, 0, 0); // Set to start of day
 
-    // Tell us if weekend!
-    const dayNow = inputDate.getDay();
-    if (dayNow === 6 || dayNow === 0) { // 0 is Sunday, 6 is Saturday
-      this.setState({
-        isWeekend: true,
-      })
-    }
+		// Tell us if weekend!
+		const dayNow = inputDate.getDay();
+		if (dayNow === 6 || dayNow === 0) { // 0 is Sunday, 6 is Saturday
+			this.setState({
+				isWeekend: true,
+			});
+		}
 
 
-    const startTime = weekStart.toISOString()
-    const endTime = weekEnd.toISOString();
+		const startTime = weekStart.toISOString();
+		const endTime = weekEnd.toISOString();
 
-    // The "Calendar ID" from your calendar settings page, "Calendar Integration" secion:
-    const calendarId = 'calendar@camphillboys.bham.sch.uk';
+		// The "Calendar ID" from your calendar settings page, "Calendar Integration" secion:
+		const calendarId = "calendar@camphillboys.bham.sch.uk";
 
-    // 1. Create a project using google's wizzard: https://console.developers.google.com/start/api?id=calendar
-    // 2. Create credentials:
-    //    a) Go to https://console.cloud.google.com/apis/credentials
-    //    b) Create Credentials / API key
-    //    c) Since your key will be called from any of your users' browsers, set "Application restrictions" to "None",
-    //       leave "Website restrictions" blank; you may optionally set "API restrictions" to "Google Calendar API"
+		// 1. Create a project using google's wizzard: https://console.developers.google.com/start/api?id=calendar
+		// 2. Create credentials:
+		//    a) Go to https://console.cloud.google.com/apis/credentials
+		//    b) Create Credentials / API key
+		//    c) Since your key will be called from any of your users' browsers, set "Application restrictions" to "None",
+		//       leave "Website restrictions" blank; you may optionally set "API restrictions" to "Google Calendar API"
 
-    // You can get a list of time zones from here: http://www.timezoneconverter.com/cgi-bin/zonehelp
-    const userTimeZone = "Europe/London";
+		// You can get a list of time zones from here: http://www.timezoneconverter.com/cgi-bin/zonehelp
+		const userTimeZone = "Europe/London";
 
 		// Initializes the client with the API key and the Translate API.
 		await window.gapi.client.init({
@@ -226,73 +226,73 @@ class App extends Component<Record<string, never>, TheState> {
 		}
 	}
 
-  getStatus() {
-    if (this.state.isNotWeekAB || this.state.week === "unknown") {
-      return (
-        <>
-          <h2>It is neither Week A nor B.</h2>
-          <h3>This means it's probably a holiday.</h3>
-          <Button style={{ marginRight: "auto" }} className="forward" onClick={this.scrollDown}><div>events</div></Button>
-          <h5>If you believe this is in error, please email <a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
-        </>
-      )
-    } else {
-      return (
-        <>
-          <h2>{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
-          <h1>Week {this.state.week}</h1>
-          <h4>More coming soon...</h4>
-          <Button style={{ marginRight: "auto" }} className="forward" onClick={this.scrollDown}>events</Button>
-        </>
-      )
-    }
-  }
+	getStatus() {
+		if (this.state.isNotWeekAB || this.state.week === "unknown") {
+			return (
+				<>
+					<h2>It is neither Week A nor B.</h2>
+					<h3>This means it's probably a holiday.</h3>
+					<Button style={{ marginRight: "auto" }} className="forward" onClick={this.scrollDown}><div>events</div></Button>
+					<h5>If you believe this is in error, please email <a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
+				</>
+			);
+		} else {
+			return (
+				<>
+					<h2>{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
+					<h1>Week {this.state.week}</h1>
+					<h4>More coming soon...</h4>
+					<Button style={{ marginRight: "auto" }} className="forward" onClick={this.scrollDown}>events</Button>
+				</>
+			);
+		}
+	}
 
-  scrollDown() {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: "smooth",
-    });
-  }
+	scrollDown() {
+		window.scrollTo({
+			top: window.innerHeight,
+			behavior: "smooth",
+		});
+	}
 
-  scrollUp() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
+	scrollUp() {
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		});
+	}
 
-  render() {
-    return (
-      <div className="App">
-        <div className="isitweeka">
-          {
-            this.state.apiHasRan ? this.getStatus() : ( <h2>Loading...</h2> )
-          }
-          {/*<h2>It is</h2>
+	render() {
+		return (
+			<div className="App">
+				<div className="isitweeka">
+					{
+						this.state.apiHasRan ? this.getStatus() : ( <h2>Loading...</h2> )
+					}
+					{/*<h2>It is</h2>
           <h1>Week A/B</h1>
           <h3>More coming soon</h3>
           <h2>isitweeka.com</h2>
           <h1>IT BEGINS.</h1>
           <h3>More coming soon</h3>*/}
-        </div>
-        <div className="isitweeka events">
-          <h2><button onClick={this.scrollUp} className="back" /> Upcoming Events</h2>
-          <div className="events-list">
-            {this.state.eventData.events.map(({ title, headerURL, backgroundColor, ticketsSale, ticketsURL }) => (
-                <EventRow imageURL={headerURL} title={title} saleDate={ticketsSale.start} ticketsURL={ticketsURL} background={backgroundColor} />
-            ))}
-            {/*<div className="events-row">*/}
-			{/*	<div style={{ ...baseEventImageStyle }}>*/}
-			{/*	  <h4>[IMAGE SET AS BACKGROUND OF THIS DIV]</h4>*/}
-			{/*	</div>*/}
-			{/*	<div>*/}
-			{/*	  <h3>Event Number Two?</h3>*/}
-			{/*	  <h4>Tickets on sale 03/02/21</h4>*/}
-			{/*	</div>*/}
-            {/*</div>*/}
-          </div>
-        </div>
+				</div>
+				<div className="isitweeka events">
+					<h2><button onClick={this.scrollUp} className="back" /> Upcoming Events</h2>
+					<div className="events-list">
+						{this.state.eventData.events.map(({ title, headerURL, backgroundColor, ticketsSale, ticketsURL }, index) => (
+							<EventRow imageURL={headerURL} title={title} saleDate={ticketsSale.start} ticketsURL={ticketsURL} background={backgroundColor} key={index}/>
+						))}
+						{/*<div className="events-row">*/}
+						{/*	<div style={{ ...baseEventImageStyle }}>*/}
+						{/*	  <h4>[IMAGE SET AS BACKGROUND OF THIS DIV]</h4>*/}
+						{/*	</div>*/}
+						{/*	<div>*/}
+						{/*	  <h3>Event Number Two?</h3>*/}
+						{/*	  <h4>Tickets on sale 03/02/21</h4>*/}
+						{/*	</div>*/}
+						{/*</div>*/}
+					</div>
+				</div>
 
 				{/* Cookie consent */}
 				<Navbar fixed="bottom">

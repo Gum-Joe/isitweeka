@@ -1,7 +1,13 @@
 import React from "react";
 
-export default (props: React.ButtonHTMLAttributes<any>) => {
+const Button = (props: React.ButtonHTMLAttributes<any>) => {
 	return (
-		<button {...props} className="forward" children={<span>{props.children}</span>} />
+		<button {...props} className="forward">
+			<span>{props.children}</span>
+		</button>
 	);
 };
+
+Button.displayName = "Button.Forward";
+
+export default Button;

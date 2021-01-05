@@ -39,4 +39,4 @@ export const dummyResponse: EventData = {
 		}
 	],
 	generatedAt: new Date().toISOString(),
-}
+};
