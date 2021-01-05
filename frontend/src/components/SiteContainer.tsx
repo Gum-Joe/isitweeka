@@ -1,61 +1,59 @@
 import React, { Component } from "react";
-import gaSetState, { GA_DISABLE_COOKIE_STR, GA_PROPERTY } from "./utils/gAnalytics";
-import "./App.css";
+import gaSetState, { GA_DISABLE_COOKIE_STR, GA_PROPERTY } from "../utils/gAnalytics";
 import CookieConsent from "react-cookie-consent";
 import { Navbar } from "react-bootstrap";
-import EventRow from "./components/EventRow";
-import { EventData } from "./components/EventsList";
-import Button from "./components/Button.Forward";
-import dummyResponse from "./events.json";
-import { API_KEY } from "./utils/constants";
-import SiteContainer from "./components/SiteContainer";
+import EventRow from "./EventRow";
+import { EventData } from "./EventsList";
+import Button from "./Button.Forward";
+import dummyResponse from "../events.json";
+import { API_KEY, GregorianDay } from "../utils/constants";
 
-/*function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}*/
+/**
+ * Props to provide to the site
+ */
+export interface SiteProps {
+	/** Calendar to fetch events from, e.g. `calendar@camphillboys.bham.sch.uk` */
+	calendarURL: string;
+	/** Day of the Week A/B event that marks a week as being A/B, 0-6, where 0 is Sunday */
+	weekMarkerDate: GregorianDay;
+}
 
 const baseEventImageStyle = {
-	backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center", display: "flex", flex: 1, margin: "auto", width: "90%", maxHeight: "80%"
+	backgroundSize: "contain",
+	backgroundRepeat: "no-repeat",
+	backgroundPosition: "center",
+	display: "flex",
+	flex: 1,
+	margin: "auto",
+	width: "90%",
+	maxHeight: "80%"
 };
 
 interface TheState {
-  /** Used to see whether the API has been loaded */
-  gapiReady: boolean;
-  /** Set to true if neither Week A or B is detected */
-  isNotWeekAB: boolean;
-  week: "A" | "B" | "unknown";
-  /** Tells page when API has ran  (i.e. page loaded) */
-  apiHasRan: boolean;
-  isWeekend: boolean;
-  eventData: EventData;
+	/** Used to see whether the API has been loaded */
+	gapiReady: boolean;
+	/** Set to true if neither Week A or B is detected */
+	isNotWeekAB: boolean;
+	week: "A" | "B" | "unknown";
+	/** Tells page when API has ran  (i.e. page loaded) */
+	apiHasRan: boolean;
+	isWeekend: boolean;
+	eventData: EventData;
 }
 
-class App extends Component<Record<string, never>, TheState> {
+/**
+ * Contains the site of isitweeka.com itself.
+ * They way, we can easily create variations of it for e.g. different school
+ */
+export default class SiteContainer extends Component<SiteProps, TheState> {
 
-	constructor(props: Record<string, never>) {
+	constructor(props: SiteProps) {
 		super(props);
 		this.state = {
 			gapiReady: false,
 			isNotWeekAB: false,
 			week: "unknown",
-			apiHasRan : false,
+			apiHasRan: false,
 			isWeekend: false,
 			eventData: {
 				events: [],
@@ -77,8 +75,8 @@ class App extends Component<Record<string, never>, TheState> {
 	}
 
 	/**
-   * Loads the Google API, then runs {@link getCalendar}
-   */
+	 * Loads the Google API, then runs {@link getCalendar}
+	 */
 	loadGoogleAPI() {
 		const script = document.createElement("script");
 		script.src = "https://apis.google.com/js/client.js";
@@ -103,9 +101,10 @@ class App extends Component<Record<string, never>, TheState> {
 	}
 
 	/**
-   * Gets the monday from a week
-   * From https://stackoverflow.com/questions/4156434/javascript-get-the-first-day-of-the-week-from-current-date
-   */
+	 * Gets the monday from a week
+	 * From https://stackoverflow.com/questions/4156434/javascript-get-the-first-day-of-the-week-from-current-date
+	 * @deprecated Use {@link forwardOrRewindToDay} instead
+	 */
 	getMonday(d: Date) {
 		const dhere = new Date(d);
 		const day = dhere.getDay();
@@ -113,29 +112,50 @@ class App extends Component<Record<string, never>, TheState> {
 		// Sat is Day 6
 		// If Sun or Sat go to next week
 		/**
-     * What this does is:
-     * - Take the current date
-     * - Subtract the day of the week, taking us to the previous Sunday
-     * - Go forward one to monday
-     * - BUT if the current date is a Saturday, add 8 instead as we want 2 days after that Saturday (the next week), not the previous Monday
-     */
+		 * What this does is:
+		 * - Take the current date
+		 * - Subtract the day of the week, taking us to the previous Sunday
+		 * - Go forward one to monday
+		 * - BUT if the current date is a Saturday, add 8 instead as we want 2 days after that Saturday (the next week), not the previous Monday
+		 */
 		const diff = dhere.getDate() - day + (day === 6 ? 8 : 1); // adjust when day is saturday -> add 6 to bring us back to Saturday, then add 2 to go to Monday
 		return new Date(dhere.setDate(diff));
 	}
 
 	/**
-   * Loads the KECHB calendar, finds the current week, then goes to the Monday of that week and checks for a Week A or Week B event.
-   */
-	async getCalendar() {
+	 * Go back to the first of a given day during a week, or to the next of the day for forwardList
+	 * Based on https://stackoverflow.com/questions/4156434/javascript-get-the-first-day-of-the-week-from-current-date
+	 * @param d Date object representing the day to 'rewind'
+	 * @param goTo Day number (0-6, 0 = Sunday) to go to
+	 * @param forwardList List of day numbers to forward to `goTo` (instead of backwards).
+	 */
+	forwardOrRewindToDay(d: Date, goTo: GregorianDay, forwardList: number[]) {
+		const dhere = new Date(d);
+		const day = dhere.getDay();
+		// Sunday is day 0
+		// Sat is Day 6
+		// If Sun or Sat go to next week
+		/**
+		 * What this does is:
+		 * - Take the current date
+		 * - Subtract the day of the week, taking us to the previous Sunday
+		 * - Go forward by goTo days to the day we want (works as goTo is effectivly a "Sunday offset") 
+		 * - BUT if the current date is in the forward list, add 7 as well to go forward 1 week
+		 */
+		const diff = dhere.getDate() - day + goTo + (forwardList.includes(day) ? 7 : 0); // adjust when day is saturday -> add 6 to bring us back to Saturday, then add 2 to go to Monday
+		return new Date(dhere.setDate(diff));
+	}
 
-		const a = "QA";
-		console.log(a);
+	/**
+	 * Loads the KECHB calendar, finds the current week, then goes to the Monday of that week and checks for a Week A or Week B event.
+	 */
+	async getCalendar() {
 		const inputDate = new Date();
 		// Used for fiddling:
-		// inputDate.setDate(2);
+		// inputDate.setDate(1);
 		// inputDate.setMonth(0);
 		// inputDate.setFullYear(2021);
-		const weekStart = this.getMonday(inputDate);
+		const weekStart = this.forwardOrRewindToDay(inputDate, this.props.weekMarkerDate, [0, 6]);
 		weekStart.setUTCHours(0, 0, 0, 0); // Set to start of day
 		const weekEnd = new Date(weekStart);
 		weekEnd.setDate(weekEnd.getDate() + 1);
@@ -154,7 +174,8 @@ class App extends Component<Record<string, never>, TheState> {
 		const endTime = weekEnd.toISOString();
 
 		// The "Calendar ID" from your calendar settings page, "Calendar Integration" secion:
-		const calendarId = "calendar@camphillboys.bham.sch.uk";
+		// const calendarId = "calendar@camphillboys.bham.sch.uk";
+		const calendarId = this.props.calendarURL;
 
 		// 1. Create a project using google's wizzard: https://console.developers.google.com/start/api?id=calendar
 		// 2. Create credentials:
@@ -182,7 +203,6 @@ class App extends Component<Record<string, never>, TheState> {
 			"orderBy": "startTime"
 		});
 		if (response.result.items) {
-			const calendarRows = ["<table class=\"wellness-calendar\"><tbody>"];
 			// Filter events to those that are "Week A" or "Week B"
 			const eventsToday = response.result.items.filter(entry => entry.summary === "Week A" || entry.summary === "Week B");
 			if (eventsToday.length === 0) {
@@ -220,6 +240,9 @@ class App extends Component<Record<string, never>, TheState> {
 		}
 	}
 
+	/**
+	 * Used to get what to display as the jumbotron, i.e. is it Week A, B or neither?
+	 */
 	getStatus() {
 		if (this.state.isNotWeekAB || this.state.week === "unknown") {
 			return (
@@ -227,7 +250,7 @@ class App extends Component<Record<string, never>, TheState> {
 					<h2>It is neither Week A nor B.</h2>
 					<h3>This means it's probably a holiday.</h3>
 					<Button style={{ marginRight: "auto" }} className="forward" onClick={this.scrollDown}><div>events</div></Button>
-					<h5>If you believe this is in error, please email <a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
+					<h5>If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
 				</>
 			);
 		} else {
@@ -258,32 +281,31 @@ class App extends Component<Record<string, never>, TheState> {
 
 	render() {
 		return (
-			<div className="App">
+			<>
+				<div className="isitweeka isitweeka-jumbotron">
+					{
+						this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
+					}
+				</div>
 
-				<SiteContainer
-					calendarURL="calendar@camphillboys.bham.sch.uk"
-					weekMarkerDate={1}
-				/>
-
-				{/* Cookie consent */}
-				<Navbar fixed="bottom">
-					<CookieConsent
-						enableDeclineButton
-						declineButtonText="No thanks"
-						onAccept={
-							() => { gaSetState(false); window.location.reload(); }
-						}
-						onDecline={
-							() => { gaSetState(true); window.location.reload(); }
-						}
-					>
-            This website uses cookies (via Google Analytics) for analytics.
-						<a href={process.env.PUBLIC_URL + "/privacy.html"}>View Privacy Policy</a>
-					</CookieConsent>
-				</Navbar>
-			</div>
+				<div className="isitweeka events">
+					<h2><button onClick={this.scrollUp} className="back" /> Upcoming Events</h2>
+					<div className="events-list">
+						{this.state.eventData.events.map(({ title, headerURL, backgroundColor, ticketsSale, ticketsURL }, index) => (
+							<EventRow imageURL={headerURL} title={title} saleDate={ticketsSale.start} ticketsURL={ticketsURL} background={backgroundColor} key={index} />
+						))}
+						{/*<div className="events-row">*/}
+						{/*	<div style={{ ...baseEventImageStyle }}>*/}
+						{/*	  <h4>[IMAGE SET AS BACKGROUND OF THIS DIV]</h4>*/}
+						{/*	</div>*/}
+						{/*	<div>*/}
+						{/*	  <h3>Event Number Two?</h3>*/}
+						{/*	  <h4>Tickets on sale 03/02/21</h4>*/}
+						{/*	</div>*/}
+						{/*</div>*/}
+					</div>
+				</div>
+			</>
 		);
 	}
 }
-
-export default App;
