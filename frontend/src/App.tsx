@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import gaSetState, { GA_DISABLE_COOKIE_STR, GA_PROPERTY } from "./utils/gAnalytics";
 import "./App.css";
-//import "bootstrap/dist/css/bootstrap.min.css";
 import CookieConsent from "react-cookie-consent";
-import { Col, Nav, Navbar, Row, Tab } from "react-bootstrap";
-import EventRow from "./components/EventRow";
 import { EventData } from "./components/EventsList";
-import Button from "./components/Button.Forward";
 import dummyResponse from "./events.json";
-import { API_KEY } from "./utils/constants";
 import SiteContainer from "./components/SiteContainer";
 import { TabContainer } from "./components/Tabs";
 
@@ -81,8 +76,8 @@ class App extends Component<Record<string, never>, TheState> {
 						tab: "KECHG",
 						component: (
 							<SiteContainer
-								calendarURL="calendar@camphillboys.bham.sch.uk"
-								weekMarkerDate={1}
+								calendarURL="calendar@kechg.org.uk"
+								weekMarkerDate={0}
 							/>
 						),
 					},
