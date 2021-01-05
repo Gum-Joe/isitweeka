@@ -70,22 +70,22 @@ jobs:
     # Get CACHE!
     - uses: actions/cache@v2
       name: actions/cache@v2 - download node_modules
-      id: module-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      id: moduleCache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
       with:
         path: ./frontend/node_modules
         key: ${{ runner.os }}-node-modules-${{ github.sha }}-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-node-modules-${{ github.sha }}-
     # Restore yarn cache if above fails
-    - run: echo ${{ steps.module-cache.outputs.cache-hit }}
+    - run: echo ${{ steps.moduleCache.outputs.cache-hit }}
     - name: Get yarn cache directory path
       id: yarn-cache-dir-path
       run: echo "::set-output name=dir::$(yarn cache dir)"
-      if: steps.module-cache.outputs.cache-hit != 'true'
+      if: steps.moduleCache.outputs.cache-hit != 'true'
     - uses: actions/cache@v2
       name: actions/cache@v2 - download yarn cache
       id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-      if: steps.module-cache.outputs.cache-hit != 'true'
+      if: steps.moduleCache.outputs.cache-hit != 'true'
       with:
         path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -93,11 +93,11 @@ jobs:
           ${{ runner.os }}-yarn-
     # Install from cache if node.js not found
     - run: yarn install --frozen-lockfile # Install deps - no cache so just install fresh
-      if: steps.module-cache.outputs.cache-hit != 'true' && steps.yarn-cache.outputs.cache-hit != 'true'
+      if: steps.moduleCache.outputs.cache-hit != 'true' && steps.yarn-cache.outputs.cache-hit != 'true'
       working-directory: ./frontend
     - name: Install project dependencies from cache
       run: yarn --prefer-offline --frozen-lockfile
-      if: steps.module-cache.outputs.cache-hit != 'true' && steps.yarn-cache.outputs.cache-hit == 'true'
+      if: steps.moduleCache.outputs.cache-hit != 'true' && steps.yarn-cache.outputs.cache-hit == 'true'
       working-directory: ./frontend
     
     # Lint
