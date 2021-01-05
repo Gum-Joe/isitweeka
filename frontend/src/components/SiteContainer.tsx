@@ -8,6 +8,8 @@ import Button from "./Button.Forward";
 import dummyResponse from "../events.json";
 import { API_KEY, GregorianDay } from "../utils/constants";
 import { scrollUp, scrollDown } from "../utils/scroll";
+import { TabContainer } from "./Tabs";
+import { tabs } from "../utils/tabs";
 
 /**
  * Props to provide to the site
@@ -27,7 +29,7 @@ const baseEventImageStyle = {
 	flex: 1,
 	margin: "auto",
 	width: "90%",
-	maxHeight: "80%"
+	maxHeight: "80%",
 };
 
 interface TheState {
@@ -59,7 +61,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			eventData: {
 				events: [],
 				generatedAt: "",
-			}
+			},
 		};
 	}
 
@@ -140,7 +142,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		 * What this does is:
 		 * - Take the current date
 		 * - Subtract the day of the week, taking us to the previous Sunday
-		 * - Go forward by goTo days to the day we want (works as goTo is effectivly a "Sunday offset") 
+		 * - Go forward by goTo days to the day we want (works as goTo is effectivly a "Sunday offset")
 		 * - BUT if the current date is in the forward list, add 7 as well to go forward 1 week
 		 */
 		const diff = dhere.getDate() - day + goTo + (forwardList.includes(day) ? 7 : 0); // adjust when day is saturday -> add 6 to bring us back to Saturday, then add 2 to go to Monday
@@ -169,7 +171,6 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				isWeekend: true,
 			});
 		}
-
 
 		const startTime = weekStart.toISOString();
 		const endTime = weekEnd.toISOString();
@@ -201,7 +202,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			"timeMin": (new Date(startTime)).toISOString(),
 			timeMax: (new Date(endTime)).toISOString(),
 			"maxResults": 20,
-			"orderBy": "startTime"
+			"orderBy": "startTime",
 		});
 		if (response.result.items) {
 			// Filter events to those that are "Week A" or "Week B"
@@ -266,17 +267,51 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		}
 	}
 
+	main = () => (
+		<>
+			<div className="isitweeka isitweeka-jumbotron">
+				{
+					this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
+				}
+			</div>
+
+			<EventsList eventData={this.state.eventData} />
+		</>
+	);
+
 	render() {
 		return (
-			<>
-				<div className="isitweeka isitweeka-jumbotron">
-					{
-						this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
-					}
-				</div>
+			<TabContainer tabs={[
+				{
+					tab: "KECHB",
+					component: (
+						<>
+							<div className="isitweeka isitweeka-jumbotron">
+								{
+									this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
+								}
+							</div>
 
-				<EventsList eventData={this.state.eventData} />
-			</>
+							<EventsList eventData={this.state.eventData} />
+						</>
+					),
+				},
+				{
+					tab: "KECHG",
+					component: (
+						<>
+							<div className="isitweeka isitweeka-jumbotron">
+								{
+									// this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
+									<h1>nothing here yet....</h1>
+								}
+							</div>
+
+							<EventsList eventData={this.state.eventData} />
+						</>
+					),
+				},
+			]} />
 		);
 	}
 }

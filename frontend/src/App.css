@@ -126,7 +126,7 @@ button {
   -webkit-appearance: none;
   background: transparent;
   border: none;
-  padding-top: 0.19em;
+  padding-top: 3px;
 }
 
 button > span {
@@ -265,4 +265,31 @@ button.back::after {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+
+
+.r-tab-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.r-tab-row {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  height: 40px;
+  padding: 8px 24px 0;
+  box-sizing: border-box;
+}
+
+.r-tab.active::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--rykan-accent-primary);
 }
