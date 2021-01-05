@@ -22,7 +22,7 @@
     ],
     "rules": {
         "indent": [
-            "error",
+            "warn",
             "tab",
             {
                 "SwitchCase": 1
@@ -33,14 +33,15 @@
             "windows"
         ],
         "quotes": [
-            "error",
+            "warn",
             "double"
         ],
         "semi": [
-            "error",
+            "warn",
             "always"
         ],
         "react/no-unescaped-entities": [ "warn" ],
+        "react/prop-types": ["off"],
         "@typescript-eslint/explicit-module-boundary-types": ["off"]
     }
 }
