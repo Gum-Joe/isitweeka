@@ -3,10 +3,11 @@ import gaSetState, { GA_DISABLE_COOKIE_STR, GA_PROPERTY } from "../utils/gAnalyt
 import CookieConsent from "react-cookie-consent";
 import { Navbar } from "react-bootstrap";
 import EventRow from "./EventRow";
-import { EventData } from "./EventsList";
+import EventsList, { EventData } from "./EventsList";
 import Button from "./Button.Forward";
 import dummyResponse from "../events.json";
 import { API_KEY, GregorianDay } from "../utils/constants";
+import { scrollUp, scrollDown } from "../utils/scroll";
 
 /**
  * Props to provide to the site
@@ -68,7 +69,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	}
 
 	async fetchEvents() {
-		// TODO: Add real fetch logic
+		// TODO: Add real fetch logic, likely based on an inputted URL
 		this.setState({
 			eventData: dummyResponse,
 		});
@@ -249,7 +250,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				<>
 					<h2>It is neither Week A nor B.</h2>
 					<h3>This means it's probably a holiday.</h3>
-					<Button style={{ marginRight: "auto" }} className="forward" onClick={this.scrollDown}><div>events</div></Button>
+					<Button style={{ marginRight: "auto" }} className="forward" onClick={scrollDown}><div>events</div></Button>
 					<h5>If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
 				</>
 			);
@@ -259,24 +260,10 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h2>{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1>Week {this.state.week}</h1>
 					<h4>More coming soon...</h4>
-					<Button style={{ marginRight: "auto" }} className="forward" onClick={this.scrollDown}>events</Button>
+					<Button style={{ marginRight: "auto" }} className="forward" onClick={scrollDown}>events</Button>
 				</>
 			);
 		}
-	}
-
-	scrollDown() {
-		window.scrollTo({
-			top: window.innerHeight,
-			behavior: "smooth",
-		});
-	}
-
-	scrollUp() {
-		window.scrollTo({
-			top: 0,
-			behavior: "smooth",
-		});
 	}
 
 	render() {
@@ -288,23 +275,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					}
 				</div>
 
-				<div className="isitweeka events">
-					<h2><button onClick={this.scrollUp} className="back" /> Upcoming Events</h2>
-					<div className="events-list">
-						{this.state.eventData.events.map(({ title, headerURL, backgroundColor, ticketsSale, ticketsURL }, index) => (
-							<EventRow imageURL={headerURL} title={title} saleDate={ticketsSale.start} ticketsURL={ticketsURL} background={backgroundColor} key={index} />
-						))}
-						{/*<div className="events-row">*/}
-						{/*	<div style={{ ...baseEventImageStyle }}>*/}
-						{/*	  <h4>[IMAGE SET AS BACKGROUND OF THIS DIV]</h4>*/}
-						{/*	</div>*/}
-						{/*	<div>*/}
-						{/*	  <h3>Event Number Two?</h3>*/}
-						{/*	  <h4>Tickets on sale 03/02/21</h4>*/}
-						{/*	</div>*/}
-						{/*</div>*/}
-					</div>
-				</div>
+				<EventsList eventData={this.state.eventData} />
 			</>
 		);
 	}

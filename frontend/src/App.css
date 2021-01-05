@@ -41,9 +41,11 @@
 }
 /* END CRA STUFF */
 
+/* Bootstrap OVERRRIDE */
 body {
-  font-family: "Metropolis", 'Open Sans', sans-serif;
+  font-family: "Metropolis", 'Open Sans', sans-serif !important;
   color: #fff;
+  font-weight: 400 !important;
 }
 
 .App {
@@ -60,11 +62,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.isitweeka {
-  margin-left: 5vw;
-  margin-right: 5vw;
 }
 
 .isitweeka h1 {
@@ -95,6 +92,11 @@ body {
 .isitweeka-jumbotron a {
   color: #00B0FF;
   display: inline-flex;
+}
+
+.isitweeka {
+  margin-left: 5vw;
+  margin-right: 5vw;
 }
 
 .events * {
