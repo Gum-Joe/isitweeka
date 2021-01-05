@@ -39,7 +39,7 @@ jobs:
       if: steps.yarn-cache.outputs.cache-hit != 'true'
       working-directory: ./frontend
     - name: Install project dependencies from cache
-      run: yarn --prefer-offline
+      run: yarn --prefer-offline --frozen-lockfile
       if: steps.yarn-cache.outputs.cache-hit == 'true'
       working-directory: ./frontend
     # Upload node_modules to download for other steps
@@ -49,6 +49,8 @@ jobs:
       with:
         path: ./frontend/node_modules
         key: ${{ runner.os }}-node-modules-${{ github.sha }}-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-node-modules-${{ github.sha }}-
 
   lint: # Lint!
     runs-on: ubuntu-latest
@@ -72,6 +74,8 @@ jobs:
       with:
         path: ./frontend/node_modules
         key: ${{ runner.os }}-node-modules-${{ github.sha }}-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-node-modules-${{ github.sha }}-
     # Restore yarn cache if above fails
     - name: Get yarn cache directory path
       id: yarn-cache-dir-path
