@@ -78,6 +78,7 @@ jobs:
           ${{ runner.os }}-node-modules-${{ github.sha }}-
     # Restore yarn cache if above fails
     - run: echo ${{ steps.moduleCache.outputs.cache-hit }}
+    - run: echo ${{ hashFiles('**/yarn.lock') }}
     - name: Get yarn cache directory path
       id: yarn-cache-dir-path
       run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -138,7 +139,7 @@ jobs:
       if: steps.yarn-cache.outputs.cache-hit != 'true'
       working-directory: ./frontend
     - name: Install project dependencies from cache
-      run: yarn --prefer-offline
+      run: yarn --prefer-offline --frozen-lockfile
       if: steps.yarn-cache.outputs.cache-hit == 'true'
       working-directory: ./frontend
     
