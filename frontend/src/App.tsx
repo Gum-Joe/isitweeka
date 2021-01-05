@@ -6,6 +6,7 @@ import { EventData } from "./components/EventsList";
 import dummyResponse from "./events.json";
 import SiteContainer from "./components/SiteContainer";
 import { TabContainer } from "./components/Tabs";
+import { Navbar } from "react-bootstrap";
 
 
 
