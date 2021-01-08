@@ -62,6 +62,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: var(--horizontal-indent);
+  margin-right: var(--horizontal-indent);
 }
 
 .isitweeka h1 {
@@ -92,11 +94,6 @@ body {
 .isitweeka-jumbotron a {
   color: #00B0FF;
   display: inline-flex;
-}
-
-.isitweeka {
-  margin-left: 5vw;
-  margin-right: 5vw;
 }
 
 .events * {
@@ -239,8 +236,8 @@ button.back::after {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: var(--link-active);
-  margin: 0 -5vw;
-  padding: 0 5vw;
+  margin: 0 -10vw;
+  padding: 0 var(--horizontal-indent);
 }
 
 .events-row:first-child {
@@ -258,6 +255,7 @@ button.back::after {
   color: white;
   --icon-fill: white;
   --link-active: rgba(255, 255, 255, 0.6);
+  --horizontal-indent: 10vw;
 }
 
 
@@ -273,15 +271,18 @@ a {
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100vh;
 }
 
 .r-tab-row {
   display: flex;
   width: 100%;
-  justify-content: flex-start;
-  height: 40px;
-  padding: 8px 24px 0;
+  justify-content: center;
+  /*height: 40px;*/
+  padding: 68px 24px 0;
   box-sizing: border-box;
+  position: absolute;
+  gap: 12px;
 }
 
 .r-tab.active::after {
@@ -290,6 +291,13 @@ a {
   top: 100%;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 4px;
   background-color: var(--rykan-accent-primary);
+}
+
+.r-tab {
+  font-size: 2em;
+  padding-bottom: 8px;
+  padding-top: 3px;
+  height: 40px;
 }
