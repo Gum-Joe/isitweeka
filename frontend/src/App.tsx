@@ -1,15 +1,12 @@
 import React, { Component } from "react";
 import gaSetState, { GA_DISABLE_COOKIE_STR, GA_PROPERTY } from "./utils/gAnalytics";
 import "./App.css";
-//import "bootstrap/dist/css/bootstrap.min.css";
 import CookieConsent from "react-cookie-consent";
-import { Col, Nav, Navbar, Row, Tab } from "react-bootstrap";
-import EventRow from "./components/EventRow";
 import { EventData } from "./components/EventsList";
-import Button from "./components/Button.Forward";
 import dummyResponse from "./events.json";
-import { API_KEY } from "./utils/constants";
 import SiteContainer from "./components/SiteContainer";
+import { TabContainer } from "./components/Tabs";
+import { Navbar } from "react-bootstrap";
 
 
 
@@ -66,33 +63,26 @@ class App extends Component<Record<string, never>, TheState> {
 		return (
 			<div className="App">
 
-				{/* Controls which varient we see */}
-				{/* <Tab.Container defaultActiveKey="kechb">
-					<Nav variant="pills">
-						<Nav.Item>
-							<Nav.Link eventKey="kechb">KECHB</Nav.Link>
-						</Nav.Item>
-						<Nav.Item>
-							<Nav.Link eventKey="second">KECHG</Nav.Link>
-						</Nav.Item>
-					</Nav>
-					<Tab.Content>
-						<Tab.Pane eventKey="kechb">
+				<TabContainer tabs={[
+					{
+						tab: "KECHB",
+						component: (
 							<SiteContainer
 								calendarURL="calendar@camphillboys.bham.sch.uk"
 								weekMarkerDate={1}
+							/>	
+						),
+					},
+					{
+						tab: "KECHG",
+						component: (
+							<SiteContainer
+								calendarURL="calendar@kechg.org.uk"
+								weekMarkerDate={0}
 							/>
-						</Tab.Pane>
-						<Tab.Pane eventKey="second">
-							<h1>404</h1>
-						</Tab.Pane>
-					</Tab.Content>
-				</Tab.Container> */}
-
-				<SiteContainer
-					calendarURL="calendar@camphillboys.bham.sch.uk"
-					weekMarkerDate={1}
-				/>			
+						),
+					},
+				]} />		
 
 				{/* Cookie consent */}
 				<Navbar fixed="bottom">
