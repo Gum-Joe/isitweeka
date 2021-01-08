@@ -261,18 +261,6 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		}
 	}
 
-	main = () => (
-		<>
-			<div className="isitweeka isitweeka-jumbotron">
-				{
-					this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
-				}
-			</div>
-
-			<EventsList eventData={this.state.eventData} />
-		</>
-	);
-
 	render() {
 		return (
 			<>
