@@ -17,12 +17,14 @@ interface Props {
 export const TabContainer: React.FunctionComponent<Props> = (props) => {
 	const [activeTab, setTab] = React.useState(props.initialTab || 0);
 
+	/**
+	 * Used to execute `props.onTabChange` on the click of a tab
+	 */
 	function afterTabChange(tab: string, index: number) {
 		if (typeof props.onTabChange !== "undefined") {
 			props.onTabChange(tab, index);
 		}
 	}
-
 
 	return (
 		<div className="r-tab-container">

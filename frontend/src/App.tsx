@@ -8,6 +8,7 @@ import SiteContainer from "./components/SiteContainer";
 import { TabContainer } from "./components/Tabs";
 import { Navbar } from "react-bootstrap";
 import Cookies from "js-cookie";
+import { COOKIE_SCHOOL_PREFERENCE } from "./utils/constants";
 
 /*function App() {
   return (
@@ -63,7 +64,7 @@ class App extends Component<Record<string, never>, TheState> {
 	 * @param index Tab index
 	 */
 	updateCookie(tab: string, index: number) {
-		Cookies.set("school", {
+		Cookies.set(COOKIE_SCHOOL_PREFERENCE, {
 			school: tab,
 			tabIndex: index,
 		}, {
@@ -95,7 +96,7 @@ class App extends Component<Record<string, never>, TheState> {
 							/>
 						),
 					},
-				]} onTabChange={this.updateCookie}/>		
+				]} onTabChange={this.updateCookie} initialTab={(() => Cookies.getJSON(COOKIE_SCHOOL_PREFERENCE)?.tabIndex || 0)()}/>		
 
 				{/* Cookie consent */}
 				<Navbar fixed="bottom">
