@@ -1,7 +1,10 @@
 // Set to the same value as the web property used on the site
 export const GA_PROPERTY = "G-X4VMSWGN74";
 
-// Disable tracking if the opt-out cookie exists.
+/** 
+ * Disable tracking if the opt-out cookie exists.
+ * Also opts out of preferences
+ */
 export const GA_DISABLE_COOKIE_STR = "ga-disable-" + GA_PROPERTY;
 /*if (document.cookie.indexOf(disableStr + '=true') > -1) {
 	// @ts-ignore

@@ -301,3 +301,20 @@ a {
   padding-top: 3px;
   height: 40px;
 }
+
+/** Cookie Consent **/
+
+.CookieConsent, .CookieConsent button {
+  font-size: 1em !important;
+  font-weight: 500;
+  text-transform: none;
+  font-family: "Metropolis", 'Open Sans', sans-serif !important;
+}
+.CookieConsent a {
+  color: #8adbff;
+}
+
+.CookieConsent #rcc-confirm-button {
+  background-color: #388E3C !important;
+  color: #fff !important;
+}

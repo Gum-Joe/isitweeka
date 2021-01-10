@@ -64,13 +64,16 @@ class App extends Component<Record<string, never>, TheState> {
 	 * @param index Tab index
 	 */
 	updateCookie(tab: string, index: number) {
-		Cookies.set(COOKIE_SCHOOL_PREFERENCE, {
-			school: tab,
-			tabIndex: index,
-		}, {
-			secure: true,
-			sameSite: "strict",
-		});
+		// ONLY set cookie if opt in set.
+		if (Cookies.get("CookieConsent") === "true") {
+			Cookies.set(COOKIE_SCHOOL_PREFERENCE, {
+				school: tab,
+				tabIndex: index,
+			}, {
+				secure: true,
+				sameSite: "strict",
+			});
+		}
 	}
 
 	render() {
@@ -100,19 +103,21 @@ class App extends Component<Record<string, never>, TheState> {
 
 				{/* Cookie consent */}
 				<Navbar fixed="bottom">
-					<CookieConsent
-						enableDeclineButton
-						declineButtonText="No thanks"
-						onAccept={
-							() => { gaSetState(false); window.location.reload(); }
-						}
-						onDecline={
-							() => { gaSetState(true); window.location.reload(); }
-						}
-					>
-            This website uses cookies (via Google Analytics) for analytics.
-						<a href={process.env.PUBLIC_URL + "/privacy.html"}>View Privacy Policy</a>
-					</CookieConsent>
+				<CookieConsent
+					enableDeclineButton
+						flipButtons
+					buttonText="I understand"
+					declineButtonText="No thanks"
+					onAccept={
+						() => { gaSetState(false); window.location.reload(); }
+					}
+					onDecline={
+						() => { gaSetState(true); window.location.reload(); }
+					}
+				>
+					This website uses cookies for preferences and analytics (via Google Analytics).
+						<a href={process.env.PUBLIC_URL + "/privacy.html"}> View Privacy Policy</a>
+				</CookieConsent>
 				</Navbar>
 			</div>
 		);
