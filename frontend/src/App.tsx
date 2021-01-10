@@ -73,6 +73,16 @@ class App extends Component<Record<string, never>, TheState> {
 				secure: true,
 				sameSite: "strict",
 			});
+
+			// Log this
+			if (typeof gtag !== "undefined") {
+				console.log("Setting to " + tab);
+				gtag("set", "user_properties", {
+					school: tab
+				});
+			}
+			
+
 		}
 	}
 

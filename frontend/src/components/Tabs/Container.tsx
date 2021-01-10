@@ -26,6 +26,9 @@ export const TabContainer: React.FunctionComponent<Props> = (props) => {
 		}
 	}
 
+	// Inital exection of it
+	React.useEffect(() => afterTabChange(props.tabs[activeTab].tab, activeTab));
+
 	return (
 		<div className="r-tab-container">
 			<TabRow>
