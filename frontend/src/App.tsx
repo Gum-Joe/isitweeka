@@ -7,9 +7,7 @@ import dummyResponse from "./events.json";
 import SiteContainer from "./components/SiteContainer";
 import { TabContainer } from "./components/Tabs";
 import { Navbar } from "react-bootstrap";
-
-
-
+import Cookies from "js-cookie";
 
 /*function App() {
   return (
@@ -59,6 +57,21 @@ class App extends Component<Record<string, never>, TheState> {
 		});
 	}
 
+	/**
+	 * Provided to TabContainer to update the cookie with whichever school the user has clicked
+	 * @param tab Tab name (so school name) from tabs list
+	 * @param index Tab index
+	 */
+	updateCookie(tab: string, index: number) {
+		Cookies.set("school", {
+			school: tab,
+			tabIndex: index,
+		}, {
+			secure: true,
+			sameSite: "strict",
+		});
+	}
+
 	render() {
 		return (
 			<div className="App">
@@ -82,7 +95,7 @@ class App extends Component<Record<string, never>, TheState> {
 							/>
 						),
 					},
-				]} />		
+				]} onTabChange={this.updateCookie}/>		
 
 				{/* Cookie consent */}
 				<Navbar fixed="bottom">
