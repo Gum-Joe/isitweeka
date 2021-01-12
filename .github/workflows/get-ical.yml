@@ -5,10 +5,8 @@
 name: Weekly iCal Fetch Script
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main, PR-Add-Events-Section ]
+  schedule:
+    - cron: '0 0 * * 5'
 
 jobs:
   uploadIcal: # Upload
@@ -29,7 +27,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: ${{ github.event.pull_request.head.ref }}
+        ref: "main"
     - name: Run download script
       env:
         SCHOOL: ${{matrix.school}}
@@ -47,7 +45,7 @@ jobs:
         git config user.name "Kishan Build Agent"
         git config pull.rebase true
         git add .
-        git commit -m "iCal CI Fetch push for commit $GITHUB_SHA run ID $GITHUB_RUN_ID"
+        git commit -m "iCal CI Fetch push for ${{matrix.school}}, commit $GITHUB_SHA run ID $GITHUB_RUN_ID"
         git pull
     - name: GitHub Push
       uses: ad-m/github-push-action@v0.5.0
@@ -57,6 +55,6 @@ jobs:
         # Repository name to push. Default or empty value represents current github repository (${GITHUB_REPOSITORY})
         # repository: # optional, default is 
         # Destination branch to push changes
-        branch: Google_Calendar_iCal_File
+        branch: main
         # Determines if force push is used
         force: false
