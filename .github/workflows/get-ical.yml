@@ -33,6 +33,7 @@ jobs:
       run: |
         echo $SCHOOL
         echo $CALENDAR_URL
+        chmod +x ./scripts/fetch-ical.sh
         ./scripts/fetch-ical.sh
         git add .
         git status
