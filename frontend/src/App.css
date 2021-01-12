@@ -252,11 +252,13 @@ button.back::after {
   .isitweeka > h1.mobile {
     justify-content: center;
     font-size: 7em;
+    display: flex !important;
   }
 
   .isitweeka > h2.mobile {
     justify-content: center;
     font-size: 3em;
+    display: flex !important;
   }
 
   .isitweeka > h4 {
@@ -268,20 +270,16 @@ button.back::after {
   }
 
   .desktop {
-    display: flex;
+    display: none !important;
   }
+}
 
-  .mobile {
+.isitweeka > h1.mobile {
     display: none;
-  }
 }
 
-.desktop {
-  display: none!important;
-}
-
-.mobile {
-  display: flex!important;
+.isitweeka > h2.mobile {
+  display: none;
 }
 
 :root {
