@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
 @import url("./fonts/Metropolis/stylesheet.css");
 
+/* Bootstrap OVERRRIDE */
+
 body {
-  font-family: "Metropolis", 'Open Sans', sans-serif;
+  font-family: "Metropolis", 'Open Sans', sans-serif !important;
   color: #fff;
+  font-weight: 400 !important;
 }
 
 .App {
@@ -20,11 +23,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.isitweeka {
-  margin-left: 5vw;
-  margin-right: 5vw;
+  margin-left: var(--horizontal-indent);
+  margin-right: var(--horizontal-indent);
 }
 
 .isitweeka h1 {
@@ -52,8 +52,8 @@ body {
   display: inline-flex;
 }
 
-.isitweeka a {
-  /*color: #00B0FF;*/
+.isitweeka-jumbotron a {
+  color: #00B0FF;
   display: inline-flex;
 }
 
@@ -88,7 +88,7 @@ button {
   -webkit-appearance: none;
   background: transparent;
   border: none;
-  padding-top: 0.19em;
+  padding-top: 3px;
 }
 
 button > span {
@@ -201,8 +201,8 @@ button.back::after {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: var(--link-active);
-  margin: 0 -5vw;
-  padding: 0 5vw;
+  margin: 0 -10vw;
+  padding: 0 var(--horizontal-indent);
 }
 
 .events-row:first-child {
@@ -243,6 +243,7 @@ button.back::after {
   color: white;
   --icon-fill: white;
   --link-active: rgba(255, 255, 255, 0.6);
+  --horizontal-indent: 10vw;
 }
 
 
@@ -250,4 +251,58 @@ button.back::after {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+
+
+.r-tab-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+.r-tab-row {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  /*height: 40px;*/
+  padding: 68px 24px 0;
+  box-sizing: border-box;
+  position: absolute;
+  gap: 12px;
+}
+
+.r-tab.active::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: var(--rykan-accent-primary);
+}
+
+.r-tab {
+  font-size: 2em;
+  padding-bottom: 8px;
+  padding-top: 3px;
+  height: 40px;
+}
+
+/** Cookie Consent **/
+
+.CookieConsent, .CookieConsent button {
+  font-size: 1em !important;
+  font-weight: 500;
+  text-transform: none;
+  font-family: "Metropolis", 'Open Sans', sans-serif !important;
+}
+.CookieConsent a {
+  color: #8adbff;
+}
+
+.CookieConsent #rcc-confirm-button {
+  background-color: #388E3C !important;
+  color: #fff !important;
 }
