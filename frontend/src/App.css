@@ -78,6 +78,14 @@ body {
     font-size: 2em;
     display: inline-flex;
   }
+
+  .r-tab-row {
+    padding-top: 40px !important;
+  }
+
+  .r-tab {
+    font-size: 1.75em !important;
+  }
 }
 
 /* Button */
