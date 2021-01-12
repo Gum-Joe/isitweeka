@@ -36,11 +36,12 @@ jobs:
         chmod +x ./scripts/fetch-ical.sh
         ./scripts/fetch-ical.sh
     - name: Stage and commit changes
-      run:
+      run: |
         git config user.email "kishansambhi@hotmail.co.uk"
         git config user.name "Kishan Build Agent"
         git add .
         git commit -m "iCal CI Fetch push for commit $GITHUB_SHA run ID $GITHUB_RUN_ID"
+        git pull
     - name: GitHub Push
       uses: ad-m/github-push-action@v0.5.0
       if: ${{ contains(github.ref, 'main') && success() }} # Only run if this repo is main and the development branch
