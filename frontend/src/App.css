@@ -210,7 +210,7 @@ button.back::after {
 @media screen and (max-width: 800px) {
   .events-row {
     flex-direction: column;
-    min-height: 480px;
+    min-height: 600px;
   }
 
   .events-list {
