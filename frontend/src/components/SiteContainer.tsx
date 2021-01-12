@@ -192,15 +192,15 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 
 		const ics = await baseResponse.text();
 
-		console.log(ics);
+		// console.log(ics);
 
 		const data = ical.parseICS(ics);
 
-		console.log(data);
+		// console.log(data);
 
 		const map = new Map(Object.entries(data));
 
-		console.log(map.size);
+		// console.log(map.size);
 		map.forEach((v, key) => {
 			if (v.start?.toISOString() !== startTime) {
 				map.delete(key);
