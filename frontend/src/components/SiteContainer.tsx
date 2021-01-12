@@ -4,6 +4,7 @@ import Button from "./Button.Forward";
 import dummyResponse from "../events.json";
 import { API_KEY, GregorianDay } from "../utils/constants";
 import { scrollUp, scrollDown } from "../utils/scroll";
+import * as ical from "ical";
 
 /**
  * Props to provide to the site
@@ -183,55 +184,70 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		// You can get a list of time zones from here: http://www.timezoneconverter.com/cgi-bin/zonehelp
 		const userTimeZone = "Europe/London";
 
-		// Initializes the client with the API key and the Translate API.
-		await window.gapi.client.init({
-			"apiKey": API_KEY,
-			// Discovery docs docs: https://developers.google.com/api-client-library/javascript/features/discovery
-			"discoveryDocs": ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"],
+		const baseResponse = await fetch("/cal/kechb/basic.ics", {
+			method: "GET",
+			mode: "no-cors",
+			credentials: "same-origin",
 		});
-		const response = await gapi.client.calendar.events.list({
-			"calendarId": calendarId,
-			"timeZone": userTimeZone,
-			"singleEvents": true,
-			"timeMin": (new Date(startTime)).toISOString(),
-			timeMax: (new Date(endTime)).toISOString(),
-			"maxResults": 20,
-			"orderBy": "startTime",
+
+		const ics = await baseResponse.text();
+
+		// console.log(ics);
+
+		const data = ical.parseICS(ics);
+
+		// console.log(data);
+
+		const map = new Map(Object.entries(data));
+
+		// console.log(map.size);
+		map.forEach((v, key) => {
+			if (v.start?.toISOString() !== startTime) {
+				map.delete(key);
+			}
 		});
-		if (response.result.items) {
-			// Filter events to those that are "Week A" or "Week B"
-			const eventsToday = response.result.items.filter(entry => entry.summary === "Week A" || entry.summary === "Week B");
-			if (eventsToday.length === 0) {
-				// Neithe detected.  Probably Hols.
-				this.setState({
-					isNotWeekAB: true,
-					week: "unknown",
-					apiHasRan: true,
-				});
+		// console.log(map.size);
+		// console.log(map);
+
+		// Filter events to those that are "Week A" or "Week B"
+		let theEvent: ical.CalendarComponent | undefined;
+		map.forEach((entry, key) => {
+			if (entry.summary === "Week A" || entry.summary === "Week B") {
+				theEvent = entry;
 			} else {
-				const theEvent = eventsToday[0];
-				switch (theEvent.summary) {
-					case "Week A":
-						this.setState({
-							week: "A",
-							apiHasRan: true,
-						});
-						break;
-					case "Week B":
-						this.setState({
-							week: "B",
-							apiHasRan: true,
-						});
-						break;
-					default:
-						// NEITHER!
-						// Something went wrong
-						this.setState({
-							isNotWeekAB: true,
-							apiHasRan: true,
-						});
-						break;
-				}
+				map.delete(key);
+			}
+		});
+		if (map.size === 0 || !theEvent) {
+			// Neither detected.  Probably Hols.
+			this.setState({
+				isNotWeekAB: true,
+				week: "unknown",
+				apiHasRan: true,
+			});
+		} else {
+			// const theEvent = eventsToday[0];
+			switch (theEvent.summary) {
+				case "Week A":
+					this.setState({
+						week: "A",
+						apiHasRan: true,
+					});
+					break;
+				case "Week B":
+					this.setState({
+						week: "B",
+						apiHasRan: true,
+					});
+					break;
+				default:
+					// NEITHER!
+					// Something went wrong
+					this.setState({
+						isNotWeekAB: true,
+						apiHasRan: true,
+					});
+					break;
 			}
 		}
 	}
