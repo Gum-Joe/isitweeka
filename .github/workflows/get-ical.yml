@@ -21,8 +21,10 @@ jobs:
         include:
           - school: KECHB
             calendarURL: https://calendar.google.com/calendar/ical/calendar%40camphillboys.bham.sch.uk/public/basic.ics
+            waitTime: 0s
           - school: KECHG
             calendarURL: https://calendar.google.com/calendar/ical/calendar%40kechg.org.uk/public/basic.ics
+            waitTime: 30s
 
     steps:
     - uses: actions/checkout@v2
@@ -37,6 +39,8 @@ jobs:
         echo $CALENDAR_URL
         chmod +x ./scripts/fetch-ical.sh
         ./scripts/fetch-ical.sh
+    - name: Wait if needed
+      run: sleep ${{matrix.waitTime}}
     - name: Stage and commit changes
       run: |
         git config user.email "kishansambhi@hotmail.co.uk"
