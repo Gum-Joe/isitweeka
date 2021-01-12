@@ -18,6 +18,16 @@ object-assign
  * Released under the MIT license
  */
 
+/*!
+* rrule.js - Library for working with recurrence rules for calendar dates.
+* https://github.com/jakubroztocil/rrule
+*
+* Copyright 2010, Jakub Roztocil and Lars Schoning
+* Licenced under the BSD licence.
+* https://github.com/jakubroztocil/rrule/blob/master/LICENCE
+*
+*/
+
 /*! For license information please see index.js.LICENSE.txt */
 
 /** @license React v0.20.1
