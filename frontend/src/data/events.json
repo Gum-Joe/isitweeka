@@ -1,0 +1,23 @@
+{
+	"events": [
+		{
+			"title": "Would I Lie To You?",
+			"url": "https://www.eventbrite.co.uk/e/would-i-lie-to-you-students-vs-teachers-tickets-133890123965?aff=isitweeka",
+			"ticketsSale": {
+				"start": "01/01/2020"
+			},
+			"headerURL": "/Logo_Export_Trans_but_not_on_HRT.png",
+			"backgroundColor": "#2C1F39",
+			"eventType": "charity"
+		},
+		{
+			"title": "LockdownRuns4Charity",
+			"url": "https://www.gofundme.com/f/khsjye-lockdownruns4charity",
+			"headerURL": "/Logo_Export_Trans_but_not_on_HRT.png",
+			"backgroundColor": "#2C1F39",
+			"eventType": "fundraiser",
+			"target": "£1500"
+		}
+	],
+	"generatedAt": "0"
+}
