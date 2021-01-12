@@ -226,6 +226,14 @@ button.back::after {
   border-top-color: var(--link-active);
 }
 
+.hide-desktop {
+  display: none;
+}
+
+.hide-mobile {
+  display: flex;
+}
+
 @media screen and (max-width: 800px) {
   .events-row {
     flex-direction: column;
@@ -240,6 +248,14 @@ button.back::after {
 
   .events-list > * > div {
     min-height: 40%;
+  }
+
+  .hide-desktop {
+    display: flex;
+  }
+
+  .hide-mobile {
+    display: none;
   }
 }
 
