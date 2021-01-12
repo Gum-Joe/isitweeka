@@ -5,9 +5,23 @@
 
 export function scrollDown(): void {
 	window.scrollTo({
-		top: window.innerHeight + 150,
+		top: window.innerHeight,
 		behavior: "smooth",
 	});
+}
+
+/**
+ * Get a scroll downer with some additional scorlling down
+ * @param add number of extra pixels to scroll
+ */
+export function getScrollDownWithAdditional(add: number) {
+	return (): void => {
+		window.scrollTo({
+			top: window.innerHeight + add,
+			behavior: "smooth",
+		});
+	}
+	
 }
 
 export function scrollUp(): void {
