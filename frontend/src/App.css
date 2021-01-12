@@ -61,6 +61,25 @@ body {
   text-align: center;
 }
 
+
+@media screen and (max-width: 400px) {
+  .isitweeka h1 {
+    font-size: 5em;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: inline-flex;
+  }
+
+  .isitweeka h2 {
+    font-size: 2.5em;
+    display: inline-flex;
+  }
+  .isitweeka h3 {
+    font-size: 2em;
+    display: inline-flex;
+  }
+}
+
 /* Button */
 
 button {
