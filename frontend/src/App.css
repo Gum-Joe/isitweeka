@@ -262,10 +262,17 @@ button.back::after {
   }
 }
 
+@media screen and (max-width: 500px) {
+  .events-row {
+      flex-direction: column;
+      min-height: 600px !important;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .events-row {
     flex-direction: column;
-    min-height: 600px;
+    min-height: 480px;
   }
 
   .events-list {
@@ -276,6 +283,7 @@ button.back::after {
 
   .events-list > * > div {
     min-height: 40%;
+    max-height: 40%;
   }
 
   .isitweeka > h1.mobile {

@@ -20,7 +20,7 @@ const events: EventData = {
 			hidden: true,
 		},
 		{
-			title: "LockdownRuns4Charity",
+			title: "LockdownRuns­4Charity",
 			description: "A group of students aiming to run 1000km.",
 			url: "https://www.gofundme.com/f/khsjye-lockdownruns4charity",
 			headerURL: "https://youngminds.org.uk/assets/logos/youngminds-logo.svg",
