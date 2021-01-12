@@ -27,6 +27,13 @@ export interface BaseEventItem {
 	eventType: EventTypes | string;
 	hidden?: boolean;
 	textColour?: string;
+	/** BG Colour of call to action button */
+	cta?: {
+		color?: string;
+		backgroundColor?: string;
+		/** underline: button has an underline. fill: button has a fill instead */
+		type: "underline" | "fill";
+	}
 }
 
 export interface EventItemFundraiser extends BaseEventItem {

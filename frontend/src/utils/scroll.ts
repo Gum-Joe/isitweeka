@@ -5,7 +5,7 @@
 
 export function scrollDown(): void {
 	window.scrollTo({
-		top: window.innerHeight,
+		top: window.innerHeight + 150,
 		behavior: "smooth",
 	});
 }

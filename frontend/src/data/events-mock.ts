@@ -21,13 +21,18 @@ const events: EventData = {
 		},
 		{
 			title: "LockdownRuns4Charity",
-			description: "LockdownRuns4Charity",
+			description: "A group of students aiming to run 1000km.",
 			url: "https://www.gofundme.com/f/khsjye-lockdownruns4charity",
 			headerURL: "https://youngminds.org.uk/assets/logos/youngminds-logo.svg",
 			backgroundColor: "#ffffff",
 			eventType: EventTypes.FUNDRIASER,
 			target: "£1500",
-			textColour: "#000000"
+			textColour: "#000000",
+			cta: {
+				color: "#fff",
+				type: "fill",
+				//backgroundColor: "#0091EA", // Possible A/B Test
+			}
 		},
 		{
 			eventType: EventTypes.HOUSE,
