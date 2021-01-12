@@ -3,7 +3,7 @@ import EventsList, { EventData } from "./EventsList";
 import Button from "./Button.Forward";
 import dummyResponse from "../data/events-mock";
 import { API_KEY, GregorianDay } from "../utils/constants";
-import { scrollUp, scrollDown } from "../utils/scroll";
+import { scrollUp, scrollDown, getScrollDownWithAdditional } from "../utils/scroll";
 
 /**
  * Props to provide to the site
@@ -245,7 +245,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				<>
 					<h2>It is neither Week A nor B.</h2>
 					<h3>This means it's probably a holiday.</h3>
-					<Button style={{ marginRight: "auto" }} className="forward" onClick={scrollDown}><div>events</div></Button>
+					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(150)}><div>events</div></Button>
 					<h5>If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
 				</>
 			);
@@ -255,7 +255,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h2>{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1>Week {this.state.week}</h1>
 					<h4>More coming soon...</h4>
-					<Button style={{ marginRight: "auto" }} className="forward" onClick={scrollDown}>events</Button>
+					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(150)}>events</Button>
 				</>
 			);
 		}
