@@ -28,8 +28,6 @@ const baseEventImageStyle = {
 };
 
 interface TheState {
-	/** Used to see whether the API has been loaded */
-	gapiReady: boolean;
 	/** Set to true if neither Week A or B is detected */
 	isNotWeekAB: boolean;
 	week: "A" | "B" | "unknown";
@@ -48,7 +46,6 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	constructor(props: SiteProps) {
 		super(props);
 		this.state = {
-			gapiReady: false,
 			isNotWeekAB: false,
 			week: "unknown",
 			apiHasRan: false,
@@ -61,8 +58,12 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	}
 
 	componentDidMount() {
-		this.loadGoogleAPI();
-		this.fetchEvents();
+		try {
+			this.getCalendar();
+			this.fetchEvents();
+		} catch (err) {
+			console.error("Error: " + err?.message);
+		}
 	}
 
 	async fetchEvents() {
@@ -70,32 +71,6 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		this.setState({
 			eventData: dummyResponse,
 		});
-	}
-
-	/**
-	 * Loads the Google API, then runs {@link getCalendar}
-	 */
-	loadGoogleAPI() {
-		const script = document.createElement("script");
-		script.src = "https://apis.google.com/js/client.js";
-		script.async = true;
-		script.defer = true;
-
-		script.onload = () => {
-			window.gapi.load("client", () => {
-				window.gapi.client.setApiKey(API_KEY);
-				window.gapi.client.load("calendar", "v3", () => {
-					this.setState({ gapiReady: true });
-					try {
-						this.getCalendar();
-					} catch (err) {
-						console.error("Error: " + err?.message);
-					}
-				});
-			});
-		};
-
-		document.body.appendChild(script);
 	}
 
 	/**
@@ -170,20 +145,6 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		const startTime = weekStart.toISOString();
 		const endTime = weekEnd.toISOString();
 
-		// The "Calendar ID" from your calendar settings page, "Calendar Integration" secion:
-		// const calendarId = "calendar@camphillboys.bham.sch.uk";
-		const calendarId = this.props.calendarURL;
-
-		// 1. Create a project using google's wizzard: https://console.developers.google.com/start/api?id=calendar
-		// 2. Create credentials:
-		//    a) Go to https://console.cloud.google.com/apis/credentials
-		//    b) Create Credentials / API key
-		//    c) Since your key will be called from any of your users' browsers, set "Application restrictions" to "None",
-		//       leave "Website restrictions" blank; you may optionally set "API restrictions" to "Google Calendar API"
-
-		// You can get a list of time zones from here: http://www.timezoneconverter.com/cgi-bin/zonehelp
-		const userTimeZone = "Europe/London";
-
 		const baseResponse = await fetch(this.props.calendarURL, {
 			method: "GET",
 			mode: "no-cors",
@@ -200,14 +161,11 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 
 		const map = new Map(Object.entries(data));
 
-		// console.log(map.size);
 		map.forEach((v, key) => {
 			if (v.start?.toISOString() !== startTime) {
 				map.delete(key);
 			}
 		});
-		// console.log(map.size);
-		// console.log(map);
 
 		// Filter events to those that are "Week A" or "Week B"
 		let theEvent: ical.CalendarComponent | undefined;
