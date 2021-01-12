@@ -140,7 +140,8 @@ button.forward {
   text-align: center;
 }
 
-.events-row .no-margin {
+/* Use this to remove margins from header */
+.no-margin {
   margin-top: 0;
 }
 
