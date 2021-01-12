@@ -20,7 +20,7 @@ export enum KECHBHouses {
 
 export interface BaseEventItem {
 	title: string;
-	description: string;
+	description?: string;
 	headerURL?: string;
 	backgroundColor: string;
 	// HACK: So that it won't complain about the JSON. Please remove eventually

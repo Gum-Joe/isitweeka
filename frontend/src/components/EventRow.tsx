@@ -30,9 +30,16 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
 						</div>
 						<div>
 							<h3>{this.props.event.title}</h3>
-							<h4 className="no-margin">{this.props.event.description}</h4>
-							{new Date(this.props.event.ticketsSale.start).valueOf() < Date.now() ? <a href={this.props.event.url}><Button style={{ ...this.props.event.cta }}>Buy Tickets</Button></a> : null}
-							<h4>Tickets on sale {this.props.event.ticketsSale.start}</h4>
+							{typeof this.props.event.description !== "undefined" ? <h4 className="no-margin">{this.props.event.description}</h4> : null}
+							{new Date(this.props.event.ticketsSale.start).valueOf() < Date.now() ?
+								<a href={this.props.event.url}>
+									<Button style={{ ...this.props.event.cta }}>Buy Tickets</Button>
+								</a> : null
+							}
+							{new Date(this.props.event.ticketsSale.start).valueOf() > Date.now() ?
+								<h4>Tickets on sale {this.props.event.ticketsSale.start}</h4> : null
+							}
+							
 						</div>
 					</div>
 				);
@@ -47,7 +54,7 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
 						</div>
 						<div>
 							<h3>{this.props.event.title}</h3>
-							<h4 className="no-margin">{this.props.event.description}</h4>
+							{typeof this.props.event.description !== "undefined" ? <h4 className="no-margin">{this.props.event.description}</h4> : null}
 							<h4 className="no-margin">Target: {this.props.event.target}</h4>
 							<a href={this.props.event.url}>
 								<Button buttonType={this.props.event.cta?.type || "underline"} style={{ ...this.props.event.cta }}>Donate Now</Button>
@@ -66,8 +73,14 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
 						</div>
 						<div>
 							<h3>{this.props.event.title}</h3>
-							<h4 className="no-margin">{this.props.event.description}</h4>
-							<h4 className="no-margin">Current Victor: {this.props.event.currentVictor}</h4>
+							{typeof this.props.event.description !== "undefined" ? <h4 className="no-margin">{this.props.event.description}</h4> : null}
+							<h4 className="no-margin">Date: {this.props.event.dateTime}</h4>
+							{
+								// Only show current victor if event is ongoing or done
+								this.props.event.state !== "todo" ?
+									<h4 className="no-margin">{this.props.event.state !== "done" ? "Current " : ""}Victor: {this.props.event.currentVictor}</h4>
+									: null
+							}
 						</div>
 					</div>
 				);

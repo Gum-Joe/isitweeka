@@ -9,7 +9,7 @@ const events: EventData = {
 	events: [
 		{
 			title: "Would I Lie To You?",
-			description: "Come here teachers tell their embarrsing stories!",
+			description: "Come here teachers tell their embarrassing stories!",
 			url: "https://www.eventbrite.co.uk/e/would-i-lie-to-you-students-vs-teachers-tickets-133890123965?aff=isitweeka",
 			ticketsSale: {
 				start: "01/01/2020"
@@ -41,8 +41,9 @@ const events: EventData = {
 			dateTime: "Autumn 2020",
 			state: "done",
 			currentVictor: "Beaufort",
-			description: "House Touch Rugby",
-			backgroundColor: "#752023"
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default
+			backgroundColor: "#CC4545",
 		}
 	],
 	generatedAt: "0"
