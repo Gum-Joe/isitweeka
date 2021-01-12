@@ -17,20 +17,19 @@ jobs:
 
     strategy:
       matrix:
-        schools: [{
-          SCHOOL: KECHB,
-          CALENDAR_URL: https://calendar.google.com/calendar/ical/calendar%40camphillboys.bham.sch.uk/public/basic.ics
-        }, {
-          SCHOOL: KECHG,
-          CALENDAR_URL: https://calendar.google.com/calendar/ical/calendar%40kechg.org.uk/public/basic.ics
-        }]
+        school: [KECHB, KECHG]
+        include:
+          - school: KECHB
+            calendarURL: https://calendar.google.com/calendar/ical/calendar%40camphillboys.bham.sch.uk/public/basic.ics
+          - school: KECHG
+            calendarURL: https://calendar.google.com/calendar/ical/calendar%40kechg.org.uk/public/basic.ics
 
     steps:
     - uses: actions/checkout@v2
     - name: Run download script
       env:
-        SCHOOL: ${{matrix.schools.SCHOOL}}
-        CALENDAR_URL: ${{matrix.schools.CALENDAR_URL}}
+        SCHOOL: ${{matrix.school}}
+        CALENDAR_URL: ${{matrix.calendarURL}}
       run: |
         echo $SCHOOL
         echo $CALENDAR_URL
