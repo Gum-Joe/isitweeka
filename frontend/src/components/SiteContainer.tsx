@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import EventsList, { EventData } from "./EventsList";
 import Button from "./Button.Forward";
 import dummyResponse from "../events.json";
-import { API_KEY, GregorianDay } from "../utils/constants";
+import { GregorianDay } from "../utils/constants";
 import { scrollUp, scrollDown } from "../utils/scroll";
 import * as ical from "ical";
 
