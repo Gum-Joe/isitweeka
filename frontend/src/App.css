@@ -61,8 +61,23 @@ body {
   text-align: center;
 }
 
-.events > h2 {
-  text-align: left;
+
+@media screen and (max-width: 400px) {
+  .isitweeka h1 {
+    font-size: 5em;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: inline-flex;
+  }
+
+  .isitweeka h2 {
+    font-size: 2.5em;
+    display: inline-flex;
+  }
+  .isitweeka h3 {
+    font-size: 2em;
+    display: inline-flex;
+  }
 }
 
 /* Button */
@@ -214,7 +229,7 @@ button.back::after {
 @media screen and (max-width: 800px) {
   .events-row {
     flex-direction: column;
-    /*min-height: 480px;*/
+    min-height: 600px;
   }
 
   .events-list {
@@ -224,15 +239,7 @@ button.back::after {
   }
 
   .events-list > * > div {
-    /*min-height: 40%;*/
-  }
-
-  .events-list > * > div:first-child {
-    /*display: none;*/
-  }
-
-  .isitweeka > h1, .isitweeka > h2, .isitweeka > h4 {
-    justify-content: center;
+    min-height: 40%;
   }
 }
 
