@@ -30,7 +30,8 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
 						</div>
 						<div>
 							<h3>{this.props.event.title}</h3>
-							{new Date(this.props.event.ticketsSale.start).valueOf() < Date.now() ? <a href={this.props.event.url}><Button>Buy Tickets</Button></a> : null}
+							<h4 className="no-margin">{this.props.event.description}</h4>
+							{new Date(this.props.event.ticketsSale.start).valueOf() < Date.now() ? <a href={this.props.event.url}><Button style={{ ...this.props.event.cta }}>Buy Tickets</Button></a> : null}
 							<h4>Tickets on sale {this.props.event.ticketsSale.start}</h4>
 						</div>
 					</div>
@@ -46,8 +47,11 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
 						</div>
 						<div>
 							<h3>{this.props.event.title}</h3>
-							<a href={this.props.event.url}><Button>Donate Now</Button></a>
-							<h4>Help raise {this.props.event.target}</h4>
+							<h4 className="no-margin">{this.props.event.description}</h4>
+							<h4 className="no-margin">Target: {this.props.event.target}</h4>
+							<a href={this.props.event.url}>
+								<Button buttonType={this.props.event.cta?.type || "underline"} style={{ ...this.props.event.cta }}>Donate Now</Button>
+							</a>
 						</div>
 					</div>
 				);
@@ -62,7 +66,8 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
 						</div>
 						<div>
 							<h3>{this.props.event.title}</h3>
-							<h4>Current Victor: {this.props.event.currentVictor}</h4>
+							<h4 className="no-margin">{this.props.event.description}</h4>
+							<h4 className="no-margin">Current Victor: {this.props.event.currentVictor}</h4>
 						</div>
 					</div>
 				);

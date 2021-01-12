@@ -136,6 +136,34 @@ button.forward {
   width: auto;
 }
 
+.events-row * {
+  text-align: center;
+}
+
+.events-row .no-margin {
+  margin-top: 0;
+}
+
+button.events-button-2 {
+  width: auto;
+  height: 2em;
+  text-align: center;
+  padding-top: 0px;
+  padding-right: 1em;
+  padding-left: 1em;
+  background-color: var(--rykan-accent-primary)
+}
+
+button.events-button-2:hover {
+  filter: saturate(60%);
+}
+
+
+button.events-button-2 span {
+  margin: auto;
+  text-align: center;
+}
+
 button.back {
   height: 100%;
   justify-content: center;
