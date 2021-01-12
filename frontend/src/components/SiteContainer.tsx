@@ -252,8 +252,10 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		} else {
 			return (
 				<>
-					<h2>{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
-					<h1>Week {this.state.week}</h1>
+					<h2 className="desktop">{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
+					<h1 className="desktop">Week {this.state.week}</h1>
+					<h2 className="mobile">{this.state.isWeekend ? "Next week will be" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
+					<h1 className="mobile">{this.state.week}</h1>
 					<h4>More coming soon...</h4>
 					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(150)}>events</Button>
 				</>
