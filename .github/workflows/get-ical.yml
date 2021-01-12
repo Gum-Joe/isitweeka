@@ -1,0 +1,76 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+# Fetches iCal 
+name: Weekly iCal Fetch Script
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main, PR-Add-Events-Section ]
+
+jobs:
+  uploadIcal: # Upload
+    runs-on: ubuntu-latest
+    name: Upload iCal
+
+    strategy:
+      matrix:
+        schools: [{
+          SCHOOL: KECHB,
+          CALENDAR_URL: https://calendar.google.com/calendar/ical/calendar%40camphillboys.bham.sch.uk/public/basic.ics
+        }, {
+          SCHOOL: KECHG,
+          CALENDAR_URL: https://calendar.google.com/calendar/ical/calendar%40kechg.org.uk/public/basic.ics
+        }]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run download script
+      env:
+        SCHOOL: ${{matrix.schools.SCHOOL}}
+        CALENDAR_URL: ${{matrix.schools.CALENDAR_URL}}
+      run: |
+        echo $SCHOOL
+        echo $CALENDAR_URL
+        ./scripts/fetch-ical.sh
+        git add .
+        git status
+    # - name: Prepare repo/ as a git repo
+    #   run: |
+    #     mkdir repo
+    #     cd repo
+    #     echo Cloning repo...
+    #     git clone https://github.com/$GITHUB_REPOSITORY --branch gh-pages ./
+    #     echo Deleteing dirs...
+    #     find . ! -wholename './.git/*' ! -wholename './.git' ! -wholename '.' -type d -exec rm -rfv {} +
+    #     echo Deleteing files...
+    #     find . ! -wholename './.git/*' -type f -exec echo {} +
+    #     echo Staging...
+    #     git add .
+    
+    # - name: Commit changes
+    #   if: ${{ contains(github.ref, 'main') }} # Only run if this repo is main and the development branch
+    #   run: |
+    #     cd repo
+    #     echo Setting git settings
+    #     git config user.email "kishansambhi@hotmail.co.uk"
+    #     git config user.name "Kishan Build Agent"
+    #     git add .
+    #     git commit -m "Build push for commit $GITHUB_SHA run ID $GITHUB_RUN_ID"
+    #   continue-on-error: true # Errors if no code changes applied, hence why skipped
+    # - name: GitHub Push
+    #   uses: ad-m/github-push-action@v0.5.0
+    #   if: ${{ contains(github.ref, 'main') && success() }} # Only run if this repo is main and the development branch
+    #   with:
+    #     # Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     # Repository name to push. Default or empty value represents current github repository (${GITHUB_REPOSITORY})
+    #     # repository: # optional, default is 
+    #     # Destination branch to push changes
+    #     branch: gh-pages
+    #     # Determines if force push is used
+    #     force: true
+    #     # Directory to change to before pushing.
+    #     directory: repo
