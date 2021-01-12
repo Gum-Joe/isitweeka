@@ -20,7 +20,7 @@ export function getScrollDownWithAdditional(add: number) {
 			top: window.innerHeight + add,
 			behavior: "smooth",
 		});
-	}
+	};
 	
 }
 
