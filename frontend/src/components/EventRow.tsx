@@ -38,7 +38,7 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
 			
 			case EventTypes.FUNDRIASER:
 				return (
-					<div className="events-row" style={{ backgroundColor: this.props.event.backgroundColor }}>
+					<div className="events-row" style={{ backgroundColor: this.props.event.backgroundColor, color: this.props.event.textColour || "#fff" }}>
 						<div>
 							<div style={{ backgroundImage: `url(${this.props.event.headerURL})`, ...baseEventImageStyle }}>
 								{/*<h4>[IMAGE SET AS BACKGROUND OF THIS DIV]</h4>*/}

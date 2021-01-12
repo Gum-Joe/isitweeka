@@ -23,10 +23,11 @@ const events: EventData = {
 			title: "LockdownRuns4Charity",
 			description: "LockdownRuns4Charity",
 			url: "https://www.gofundme.com/f/khsjye-lockdownruns4charity",
-			headerURL: "/events/WILTY_Logo.png",
-			backgroundColor: "#2C1F39",
+			headerURL: "https://youngminds.org.uk/assets/logos/youngminds-logo.svg",
+			backgroundColor: "#ffffff",
 			eventType: EventTypes.FUNDRIASER,
-			target: "£1500"
+			target: "£1500",
+			textColour: "#000000"
 		},
 		{
 			eventType: EventTypes.HOUSE,

@@ -26,6 +26,7 @@ export interface BaseEventItem {
 	// HACK: So that it won't complain about the JSON. Please remove eventually
 	eventType: EventTypes | string;
 	hidden?: boolean;
+	textColour?: string;
 }
 
 export interface EventItemFundraiser extends BaseEventItem {
