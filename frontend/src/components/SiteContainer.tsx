@@ -184,7 +184,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		// You can get a list of time zones from here: http://www.timezoneconverter.com/cgi-bin/zonehelp
 		const userTimeZone = "Europe/London";
 
-		const baseResponse = await fetch("/cal/kechb/basic.ics", {
+		const baseResponse = await fetch(this.props.calendarURL, {
 			method: "GET",
 			mode: "no-cors",
 			credentials: "same-origin",
@@ -192,15 +192,15 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 
 		const ics = await baseResponse.text();
 
-		// console.log(ics);
+		console.log(ics);
 
 		const data = ical.parseICS(ics);
 
-		// console.log(data);
+		console.log(data);
 
 		const map = new Map(Object.entries(data));
 
-		// console.log(map.size);
+		console.log(map.size);
 		map.forEach((v, key) => {
 			if (v.start?.toISOString() !== startTime) {
 				map.delete(key);
