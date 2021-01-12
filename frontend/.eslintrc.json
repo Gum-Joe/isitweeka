@@ -22,21 +22,26 @@
     ],
     "rules": {
         "indent": [
-            "error",
-            "tab"
+            "warn",
+            "tab",
+            {
+                "SwitchCase": 1
+            }
         ],
         "linebreak-style": [
             "off",
             "windows"
         ],
         "quotes": [
-            "error",
+            "warn",
             "double"
         ],
         "semi": [
-            "error",
+            "warn",
             "always"
         ],
-        "react/no-unescaped-entities": [ "warn" ]
+        "react/no-unescaped-entities": [ "warn" ],
+        "react/prop-types": ["off"],
+        "@typescript-eslint/explicit-module-boundary-types": ["off"]
     }
 }
