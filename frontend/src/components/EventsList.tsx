@@ -5,23 +5,66 @@ import EventRow from "./EventRow";
 /**
  * Used to distinguish between the different type of event we can display.
  */
-export enum EventTypes{
+export enum EventTypes {
 	HOUSE = "house", // house event
 	CHARITY = "charity", // charity event
+	FUNDRIASER = "fundraiser" // cahrity fundraiser
 } 
 
-export interface EventItem {
+export enum KECHBHouses {
+	Beaufort = "beaufort",
+	Howard = "Howard",
+	Seymour = "Seymour",
+	Tudor = "Tudor"
+}
+
+export interface BaseEventItem {
+	title: string;
+	description: string;
+	headerURL?: string;
+	backgroundColor: string;
+	// HACK: So that it won't complain about the JSON. Please remove eventually
+	eventType: EventTypes | string;
+	hidden?: boolean;
+}
+
+export interface EventItemFundraiser extends BaseEventItem {
+	eventType: EventTypes.FUNDRIASER | "fundraiser";
+	url: string;
+	target: string;
+}
+
+export interface EventItemCharity extends BaseEventItem {
+	eventType: EventTypes.CHARITY | "charity";
+	url: string;
+	ticketsSale: {
+		start: string;
+		end?: string;
+	};
+}
+
+export interface EventItemHouse extends BaseEventItem {
+	eventType: EventTypes.HOUSE | "house";
+	/** String time of event. Either a term (e.g. "Autumn"), date */
+	dateTime: string;
+	state: "todo" | "ongoing" | "done";
+	currentVictor: string;
+}
+
+/*export interface EventItem {
 	title: string;
 	// HACK: So that it won't complain about the JSON. Please remove eventually
 	eventType: EventTypes | string;
-	ticketsURL: string;
-	ticketsSale: {
+	url: string;
+	ticketsSale?: {
 		start: string;
 		end?: string;
 	};
 	headerURL: string;
 	backgroundColor: string;
-}
+}*/
+
+export type EventItem = EventItemFundraiser | EventItemCharity | EventItemHouse;
 
 export interface EventData {
 	events: Array<EventItem>;
@@ -29,13 +72,14 @@ export interface EventData {
 }
 
 /**
- * @deprecated Use the JSON file in `src` insted.
+ * @deprecated Use the JSON file in `data` insted.
  */
 export const dummyResponse: EventData = {
 	events: [
 		{
 			title: "Would I Lie To You?",
-			ticketsURL: "https://www.eventbrite.co.uk/e/would-i-lie-to-you-students-vs-teachers-tickets-133890123965?aff=isitweeka",
+			description: "Would I Lie To You?",
+			url: "https://www.eventbrite.co.uk/e/would-i-lie-to-you-students-vs-teachers-tickets-133890123965?aff=isitweeka",
 			headerURL: "/Logo_Export_Trans_but_not_on_HRT.png",
 			backgroundColor: "#2C1F39",
 			ticketsSale: {
@@ -66,15 +110,8 @@ export default class EventsList extends Component<EventsListProps> {
 			<div className="isitweeka events">
 				<h2><button onClick={scrollUp} className="back" /> Upcoming Events</h2>
 				<div className="events-list">
-					{this.props.eventData.events.map(({ title, headerURL, backgroundColor, ticketsSale, ticketsURL }, index) => (
-						<EventRow
-							imageURL={headerURL}
-							title={title}
-							saleDate={ticketsSale.start}
-							ticketsURL={ticketsURL}
-							background={backgroundColor}
-							key={index}
-						/>
+					{this.props.eventData.events.map((theEvent, index) => (
+						<EventRow key={index} event={theEvent} />
 					))}
 					{/*<div className="events-row">*/}
 					{/*	<div style={{ ...baseEventImageStyle }}>*/}

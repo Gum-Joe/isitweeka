@@ -3,7 +3,7 @@ import gaSetState, { GA_DISABLE_COOKIE_STR, GA_PROPERTY } from "./utils/gAnalyti
 import "./App.css";
 import CookieConsent from "react-cookie-consent";
 import { EventData } from "./components/EventsList";
-import dummyResponse from "./events.json";
+import dummyResponse from "./data/events-mock";
 import SiteContainer from "./components/SiteContainer";
 import { TabContainer } from "./components/Tabs";
 import { Navbar } from "react-bootstrap";
