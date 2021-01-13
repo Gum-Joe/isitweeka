@@ -19,7 +19,7 @@ body {
 
 /* VERTICALLYTG CENTRE */
 .isitweeka {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -206,7 +206,6 @@ button.back::after {
 
 .events-list {
   display: flex;
-  height: 50%;
   flex-direction: column;
 }
 
