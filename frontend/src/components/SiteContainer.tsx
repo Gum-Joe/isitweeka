@@ -241,15 +241,17 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	 */
 	getStatus() {
 		if (this.state.isNotWeekAB || this.state.week === "unknown") {
+			// NOTE: getScrollDownWithAdditional was originally fed 150 instead of 0
 			return (
 				<>
 					<h2>It is neither Week A nor B.</h2>
 					<h3>This means it&#39;s probably a holiday.</h3>
-					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(150)}><div>events</div></Button>
+					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>events</div></Button>
 					<h5>If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
 				</>
 			);
 		} else {
+			// NOTE: getScrollDownWithAdditional was originally fed 150 instead of 0
 			return (
 				<>
 					<h2 className="desktop">{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
@@ -257,7 +259,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="mobile">{this.state.week}</h1>
 					<h4>More coming soon...</h4>
-					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(150)}>events</Button>
+					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}>events</Button>
 				</>
 			);
 		}
