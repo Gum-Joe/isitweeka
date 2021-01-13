@@ -81,7 +81,7 @@ class App extends Component<Record<string, never>, TheState> {
 					school: tab
 				});
 			}
-			
+
 
 		}
 	}
@@ -95,21 +95,21 @@ class App extends Component<Record<string, never>, TheState> {
 						tab: "KECHB",
 						component: (
 							<SiteContainer
-								calendarURL="calendar@camphillboys.bham.sch.uk"
+								calendarURL="/cal/KECHB/basic.ics"
 								weekMarkerDate={1}
-							/>	
+							/>
 						),
 					},
 					{
 						tab: "KECHG",
 						component: (
 							<SiteContainer
-								calendarURL="calendar@kechg.org.uk"
+								calendarURL="/cal/KECHG/basic.ics"
 								weekMarkerDate={0}
 							/>
 						),
 					},
-				]} onTabChange={this.updateCookie} initialTab={(() => Cookies.getJSON(COOKIE_SCHOOL_PREFERENCE)?.tabIndex || 0)()}/>		
+				]} onTabChange={this.updateCookie} initialTab={(() => Cookies.getJSON(COOKIE_SCHOOL_PREFERENCE)?.tabIndex || 0)()}/>
 
 				{/* Cookie consent */}
 				<Navbar fixed="bottom">
