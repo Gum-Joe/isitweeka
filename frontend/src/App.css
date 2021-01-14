@@ -326,6 +326,12 @@ button.back::after {
   --icon-fill: white;
   --link-active: rgba(255, 255, 255, 0.6);
   --horizontal-indent: 10vw;
+
+  --midland-red: #DC143C;
+  --south-eastern-yellow: #FECB09;
+  --great-western-green: #013602;
+  --great-northern-green: #00A550;
+  --north-western-blue: #080028;
 }
 
 
