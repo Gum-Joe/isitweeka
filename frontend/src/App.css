@@ -3,12 +3,12 @@
 
 @keyframes slide-in-top {
 	from {
-		transform: translateY(-10vh) scale(0.9375);
+		transform: translateY(-10vh);
 		opacity: 0;
 	}
 
 	to {
-		transform: translateY(0) scale(1);
+		transform: translateY(0);
 		opacity: 1;
 	}
 }
