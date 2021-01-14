@@ -273,7 +273,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				<>
 					{this.state.showAlert ? <div className="r-banner" style={{
 						position: "absolute",
-						top: 168,
+						// top: 168,
 						left: 0,
 						width: "100%",
 						minHeight: 68,
@@ -303,7 +303,6 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 							}}>{this.state.alertMessage}</h3>
 						</div>
 					</div> : null}
-					{this.state.showAlert ? <div className="mobile" style={{ height: 40 }} /> : null}
 					<h2 className="desktop">{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="desktop">Week {this.state.week}</h1>
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
