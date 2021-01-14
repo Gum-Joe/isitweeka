@@ -272,7 +272,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			return (
 				<>
 					{this.state.showAlert ? <div className="r-banner" style={{
-						position: "absolute",
+						// position: "absolute",
 						// top: 168,
 						left: 0,
 						width: "100%",
