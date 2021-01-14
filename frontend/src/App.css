@@ -42,12 +42,13 @@ body {
 
 /* VERTICALLYTG CENTRE */
 .isitweeka {
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	margin-left: var(--horizontal-indent);
-	margin-right: var(--horizontal-indent);
+  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: var(--horizontal-indent);
+  margin-right: var(--horizontal-indent);
 }
 
 .isitweeka h1 {
