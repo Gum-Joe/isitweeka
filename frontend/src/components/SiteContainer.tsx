@@ -271,30 +271,39 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			// NOTE: getScrollDownWithAdditional was originally fed 150 instead of 0
 			return (
 				<>
-					{this.state.showAlert ? <div style={{
+					{this.state.showAlert ? <div className="r-banner" style={{
 						position: "absolute",
 						top: 168,
 						left: 0,
 						width: "100%",
-						height: 68,
+						minHeight: 68,
 						display: "flex",
+						padding: "0 var(--horizontal-indent)",
+						boxSizing: "border-box",
 					}}>
 						<div style={{
 							margin: "0 auto",
-							padding: "0 20px",
+							padding: 20,
 							display: "flex",
 							boxSizing: "border-box",
-							borderRadius: 8,
+							borderRadius: 12,
 							backgroundColor: this.getBackgroundColorForAlertLevel(),
 						}}>
-							<h3 style={{
+							<h3 className="desktop" style={{
 								margin: "auto 0",
 								fontSize: "1.75em",
 								lineHeight: 1,
 								textTransform: "uppercase"
 							}}>{this.state.alertMessage}</h3>
+							<h3 className="mobile" style={{
+								margin: "auto 0",
+								fontSize: "1em",
+								lineHeight: 1,
+								textTransform: "uppercase"
+							}}>{this.state.alertMessage}</h3>
 						</div>
 					</div> : null}
+					{this.state.showAlert ? <div className="mobile" style={{ height: 40 }} /> : null}
 					<h2 className="desktop">{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="desktop">Week {this.state.week}</h1>
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
