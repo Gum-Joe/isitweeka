@@ -278,7 +278,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						width: "100%",
 						minHeight: 68,
 						display: "flex",
-						padding: "0 var(--horizontal-indent)",
+						padding: "0 20px",
 						boxSizing: "border-box",
 					}}>
 						<div style={{
