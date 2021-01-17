@@ -322,7 +322,7 @@ button.back::after {
 	font-size: 1.6em;
 }
 .r-banner .mobile {
-	font-size: 1em;
+	font-size: 1.15em;
 }
 
 /** Alert levels */
@@ -372,6 +372,7 @@ button.back::after {
 		position: initial;
 		animation: slide-in-bottom 300ms both;
 		animation-delay: 100ms;
+		padding: 0 10px;
 	}
 }
 
