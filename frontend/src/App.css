@@ -316,6 +316,7 @@ button.back::after {
 	margin: auto 0;
 	line-height: 1;
 	text-transform: uppercase;
+	font-weight: 750;
 }
 .r-banner .desktop {
 	font-size: 1.6em;
@@ -327,10 +328,15 @@ button.back::after {
 /** Alert levels */
 .r-banner-alert-LOW {
 	background-color: var(--great-northern-green);
+	text-transform: none;
+}
+.r-banner-alert-LOW h3 {
+	text-transform: none;
 }
 .r-banner-alert-MODERATE {
 	background-color: var(--south-eastern-yellow);
-	color: #000000;
+	color: var(--north-western-blue);
+	font-weight: 720;
 }
 .r-banner-alert-MEDIUM {
 	background-color: var(--south-eastern-yellow);
