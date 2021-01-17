@@ -333,6 +333,12 @@ button.back::after {
 .r-banner-alert-LOW h3 {
 	text-transform: none;
 }
+.r-banner-alert-INFO {
+	background-color: var(--great-northern-blue);
+}
+.r-banner-alert-INFO h3 {
+	text-transform: none;
+}
 .r-banner-alert-MODERATE {
 	background-color: var(--south-eastern-yellow);
 	color: var(--north-western-blue);
@@ -347,10 +353,10 @@ button.back::after {
 	color: #000000;
 }
 .r-banner-alert-SEVERE {
-	background-color: var(--midland-red);
+	background-color: var(--an-orange);
 }
 .r-banner-alert-CRITICAL {
-	background-color: var(--north-western-blue);
+	background-color: var(--midland-red);
 }
 
 
@@ -453,6 +459,9 @@ button.back::after {
 	--great-western-green: #013602;
 	--great-northern-green: #00A550;
 	--north-western-blue: #080028;
+	--great-northern-blue: #0099FF;
+
+	--an-orange: #F4511E
 }
 
 

@@ -2,6 +2,7 @@
 // export type ThreatLevels = "CRITICAL" | "SEVERE" | "SUBSTANTIAL" | "MODERATE" | "LOW";
 export enum ThreatLevels {
 	LOW = "LOW",
+	INFO = "INFO",
 	MODERATE = "MODERATE",
 	SUBSTANTIAL = "SUBSTANTIAL",
 	SEVERE = "SEVERE",

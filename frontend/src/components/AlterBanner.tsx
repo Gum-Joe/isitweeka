@@ -12,6 +12,8 @@ function getClassNameFromAlertLevel(level: ThreatLevels): `r-banner-alert-${Thre
 	switch (level) {
 		case ThreatLevels.LOW:
 			return "r-banner-alert-LOW";
+		case ThreatLevels.INFO:
+			return "r-banner-alert-INFO";
 		case ThreatLevels.MODERATE:
 			return "r-banner-alert-MODERATE";
 		case ThreatLevels.SUBSTANTIAL:
