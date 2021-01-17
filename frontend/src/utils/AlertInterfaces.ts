@@ -13,4 +13,6 @@ export interface AlertResponce {
 	showAlert: boolean;
 	message: string | "";
 	alertLevel: ThreatLevels;
+	/** Provides a website to link to when clicked */
+	linkTo?: string;
 }

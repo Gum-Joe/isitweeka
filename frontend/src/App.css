@@ -310,13 +310,22 @@ button.back::after {
 	display: flex;
 	box-sizing: border-box;
 	border-radius: 12px;
+	color: #ffffff !important;
 }
+
+/** Only show as clickable if a link */
+.r-banner-linked-alert:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 /* Text styling */
 .r-banner h3 {
 	margin: auto 0;
-	line-height: 1;
+	line-height: 1.2;
 	text-transform: uppercase;
 	font-weight: 750;
+	padding-top: 3px;
 }
 .r-banner .desktop {
 	font-size: 1.6em;
