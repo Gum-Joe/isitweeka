@@ -15,4 +15,6 @@ export interface AlertResponce {
 	alertLevel: ThreatLevels;
 	/** Provides a website to link to when clicked */
 	linkTo?: string;
+	/** Text for the call to action for click */
+	linkText?: string;
 }

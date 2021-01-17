@@ -310,12 +310,16 @@ button.back::after {
 	display: flex;
 	box-sizing: border-box;
 	border-radius: 12px;
-	color: #ffffff !important;
 }
 
 /** Only show as clickable if a link */
-.r-banner-linked-alert:hover {
-	text-decoration: underline;
+.r-banner-link {
+	border-bottom: solid 4px;
+	text-transform: lowercase;
+	color: #ffffff !important;
+	height: 1em;
+}
+.r-banner-link:hover {
 	cursor: pointer;
 }
 
@@ -366,6 +370,7 @@ button.back::after {
 }
 .r-banner-alert-CRITICAL {
 	background-color: var(--midland-red);
+	/* background-color: #B80000 */
 }
 
 

@@ -5,4 +5,5 @@ export const dummyAlert: AlertResponce = {
 	message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	alertLevel: ThreatLevels.CRITICAL,
 	linkTo: "#",
+	linkText: "More Info"
 }

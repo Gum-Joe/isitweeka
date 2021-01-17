@@ -36,11 +36,11 @@ const AlertBanner: React.FC<AlertBannerProps> = (props) => {
 
 	return (
 		<div className="r-banner-container">
-			<a target="__blank" href={props.alert.linkTo || undefined}
-				className={`${getClassNameFromAlertLevel(props.alert.alertLevel)} r-banner ${typeof props.alert.linkTo !== "undefined" ? "r-banner-linked-alert" : ""}` }>
-				<h3 className="desktop">{props.alert.message}</h3>
-				<h3 className="mobile">{props.alert.message}</h3>
-			</a>
+			<div 
+				className={`${getClassNameFromAlertLevel(props.alert.alertLevel)} r-banner`}>
+				<h3 className="desktop">{props.alert.message}&nbsp;<a className="r-banner-link">{props.alert.linkText || "View More"}</a></h3>
+				<h3 className="mobile">{props.alert.message}&nbsp;<a className="r-banner-link">{props.alert.linkText || "View More"}</a></h3>
+			</div>
 		</div>
 	);
 };
