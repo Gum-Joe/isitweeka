@@ -287,13 +287,66 @@ button.back::after {
 	}
 }
 
-.r-banner {
+/** Banner stuff */
+
+.r-banner-container {
 	top: 168px;
+	left: 0;
 	animation: slide-in-top 300ms both;
 	animation-delay: 100ms;
 	transform-origin: bottom center;
 	position: absolute;
+	width: 100%;
+	min-height: 68px;
+	display: flex;
+	padding: 0 20px;
+	box-sizing: border-box;
 }
+
+/** This is the actual banner itself and is modifed depending on alerts */
+.r-banner {
+	margin: 0 auto;
+	padding: 20px;
+	display: flex;
+	box-sizing: border-box;
+	border-radius: 12px;
+}
+/* Text styling */
+.r-banner h3 {
+	margin: auto 0;
+	line-height: 1;
+	text-transform: uppercase;
+}
+.r-banner .desktop {
+	font-size: 1.6em;
+}
+.r-banner .mobile {
+	font-size: 1em;
+}
+
+/** Alert levels */
+.r-banner-alert-LOW {
+	background-color: var(--great-northern-green);
+}
+.r-banner-alert-MODERATE {
+	background-color: var(--south-eastern-yellow);
+	color: #000000;
+}
+.r-banner-alert-MEDIUM {
+	background-color: var(--south-eastern-yellow);
+	color: #000000;
+}
+.r-banner-alert-SUBSTANTIAL {
+	background-color: var(--south-eastern-yellow);
+	color: #000000;
+}
+.r-banner-alert-SEVERE {
+	background-color: var(--midland-red);
+}
+.r-banner-alert-CRITICAL {
+	background-color: var(--north-western-blue);
+}
+
 
 @media screen and (max-width: 500px) {
 	.events-row {
@@ -301,7 +354,7 @@ button.back::after {
 		min-height: 600px !important;
 	}
 
-	.r-banner {
+	.r-banner-container {
 		/*top: unset;*/
 		/*bottom: 28px;*/
 		position: initial;

@@ -1,5 +1,5 @@
 {
 	"showAlert": true,
 	"message": "!!! ATTENTION: ONLINE LESSONS THIS WEEK !!!",
-	"threatLevel": "SEVERE"
+	"alertLevel": "SEVERE"
 }

@@ -7,6 +7,7 @@ import { getScrollDownWithAdditional } from "../utils/scroll";
 import * as ical from "ical";
 import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 import { dummyAlert } from "../data/alerts";
+import AlertBanner from "./AlterBanner";
 
 /**
  * Props to provide to the site
@@ -37,9 +38,7 @@ interface TheState {
 	apiHasRan: boolean;
 	isWeekend: boolean;
 	eventData: EventData;
-	alertMessage: string;
-	showAlert: boolean;
-	alertLevel: ThreatLevels;
+	alert: AlertResponce;
 }
 
 /**
@@ -59,9 +58,13 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				events: [],
 				generatedAt: "",
 			},
-			alertMessage: "ATTENTION: ALL EXAMS ARE CANCELLED - Albus Dumbledore",
-			showAlert: false,
-			alertLevel: ThreatLevels.LOW,
+			// Default alert
+			alert: {
+				message: "ATTENTION: ALL EXAMS ARE CANCELLED - Albus Dumbledore",
+				showAlert: false,
+				alertLevel: ThreatLevels.LOW,
+			}
+			,
 		};
 	}
 
@@ -75,6 +78,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		}
 	}
 
+	/** Fetches any alerts that need to be diplayed */
 	fetchNotifications = async () => {
 		// TODO: GET request for whether there is an alert
 		// TODO: set state to response
@@ -88,9 +92,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		const response = dummyAlert;
 
 		this.setState({
-			showAlert: response.showAlert,
-			alertMessage: response.message,
-			alertLevel: response.threatLevel,
+			alert: response,
 		});
 	}
 
@@ -238,21 +240,6 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		}
 	}
 
-	getBackgroundColorForAlertLevel = () => {
-		switch (this.state.alertLevel) {
-			case ThreatLevels.LOW:
-				return "var(--great-northern-green)";
-			case ThreatLevels.MODERATE:
-				return "var(--south-eastern-yellow)";
-			case ThreatLevels.SUBSTANTIAL:
-				return "var(--south-eastern-yellow)";
-			case ThreatLevels.SEVERE:
-				return "var(--midland-red)";
-			case ThreatLevels.CRITICAL:
-				return "var(--north-western-blue)";
-		}
-	}
-
 	/**
 	 * Used to get what to display as the jumbotron, i.e. is it Week A, B or neither?
 	 */
@@ -271,38 +258,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			// NOTE: getScrollDownWithAdditional was originally fed 150 instead of 0
 			return (
 				<>
-					{this.state.showAlert ? <div className="r-banner" style={{
-						// position: "absolute",
-						// top: 168,
-						left: 0,
-						width: "100%",
-						minHeight: 68,
-						display: "flex",
-						padding: "0 20px",
-						boxSizing: "border-box",
-					}}>
-						<div style={{
-							margin: "0 auto",
-							padding: 20,
-							display: "flex",
-							boxSizing: "border-box",
-							borderRadius: 12,
-							backgroundColor: this.getBackgroundColorForAlertLevel(),
-						}}>
-							<h3 className="desktop" style={{
-								margin: "auto 0",
-								fontSize: "1.75em",
-								lineHeight: 1,
-								textTransform: "uppercase"
-							}}>{this.state.alertMessage}</h3>
-							<h3 className="mobile" style={{
-								margin: "auto 0",
-								fontSize: "1em",
-								lineHeight: 1,
-								textTransform: "uppercase"
-							}}>{this.state.alertMessage}</h3>
-						</div>
-					</div> : null}
+					{this.state.alert.showAlert ? <AlertBanner alertLevel={this.state.alert.alertLevel} alertMessage={this.state.alert.message}/> : null}
 					<h2 className="desktop">{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="desktop">Week {this.state.week}</h1>
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
