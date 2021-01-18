@@ -17,6 +17,18 @@ interface RowProps {
 	event: EventItem;
 }
 
+/**
+ * Reports to Google analytics when the "Donate Now" or "Buy Tickets" link was clicked so we can track conversions
+ */
+function reportOutboundButtonClick() {
+	console.log("Reporting button click...");
+	gtag("event", "outbound_events_button_click", {
+		"event_category": "ecommerce",
+		"value": "true",
+		"label": "outbound_events_button_click",
+	});
+}
+
 export default class EventRow extends React.PureComponent<RowProps, never> {
 	render() {
 		switch (this.props.event.eventType) {
@@ -33,7 +45,7 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
 							{typeof this.props.event.description !== "undefined" ? <h4 className="no-margin">{this.props.event.description}</h4> : null}
 							{new Date(this.props.event.ticketsSale.start).valueOf() < Date.now() ?
 								<a href={this.props.event.url}>
-									<Button style={{ ...this.props.event.cta }}>Buy Tickets</Button>
+									<Button onClick={reportOutboundButtonClick} style={{ ...this.props.event.cta }}>Buy Tickets</Button>
 								</a> : null
 							}
 							{new Date(this.props.event.ticketsSale.start).valueOf() > Date.now() ?
@@ -57,7 +69,7 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
 							{typeof this.props.event.description !== "undefined" ? <h4 className="no-margin">{this.props.event.description}</h4> : null}
 							<h4 className="no-margin">Target: {this.props.event.target}</h4>
 							<a href={this.props.event.url}>
-								<Button buttonType={this.props.event.cta?.type || "underline"} style={{ ...this.props.event.cta }}>Donate Now</Button>
+								<Button onClick={reportOutboundButtonClick} buttonType={this.props.event.cta?.type || "underline"} style={{ ...this.props.event.cta }}>Donate Now</Button>
 							</a>
 						</div>
 					</div>
