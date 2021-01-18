@@ -25,6 +25,17 @@ function getClassNameFromAlertLevel(level: ThreatLevels): `r-banner-alert-${Thre
 	}
 }
 
+/**
+ * Reports to Google analytics when the "View More" link was clicked so we can track conversions
+ */
+function reportAlertButtonClick() {
+	gtag("event", "alert_link_clicked", {
+		"event_category": "engagement",
+		"value": "true",
+		"label": "alert_link_clicked",
+	});
+}
+
 export interface AlertBannerProps {
 	alert: AlertResponce
 }
