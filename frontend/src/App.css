@@ -287,7 +287,7 @@ button.back::after {
 	}
 
 	.isitweeka-jumbotron {
-		padding-top: 80px;
+		/*padding-top: 80px;*/
 		box-sizing: border-box;
 	}
 
@@ -327,17 +327,41 @@ button.back::after {
 
 /** Only show as clickable if a link */
 .r-banner-link {
-	border-bottom: solid 4px;
+	display: inline-flex!important;
+	border-bottom: solid 3px;
 	text-transform: lowercase;
 	color: #ffffff !important;
 	height: 1em;
+	line-height: 1;
+	white-space: nowrap;
+	margin: auto 0;
 }
+
 .r-banner-link:hover {
 	cursor: pointer;
 }
 
+.r-banner-link::after {
+	content: url("./appbar.arrow.right.svg");
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	/*margin: -8px;*/
+	transform: scale(2);
+	padding-left: 4px;
+	fill: var(--icon-fill);
+	filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(130deg) brightness(119%) contrast(116%);
+}
+
+.r-banner-link span {
+	font-size: 1em;
+	height: 1em;
+	line-height: 1;
+}
+
 /* Text styling */
 .r-banner h3 {
+	display: flex;
 	margin: auto 0;
 	line-height: 1.2;
 	text-transform: uppercase;
@@ -469,7 +493,7 @@ button.back::after {
 	}
 
 	.mobile {
-		display: flex !important;
+		display: inline-block !important;
 	}
 }
 
