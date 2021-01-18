@@ -39,7 +39,7 @@ const AlertBanner: React.FC<AlertBannerProps> = (props) => {
 			<div 
 				className={`${getClassNameFromAlertLevel(props.alert.alertLevel)} r-banner`}>
 				<h3 className="desktop">{props.alert.message}&nbsp;<a className="r-banner-link">{props.alert.linkText || "View More"}</a></h3>
-				<h3 className="mobile">{props.alert.message}&nbsp;<a className="r-banner-link">{props.alert.linkText || "View More"}</a></h3>
+				<h3 className="mobile"><span>New Alerts.</span>&nbsp;<a className="r-banner-link"><span>{"View"}</span></a></h3>
 			</div>
 		</div>
 	);
