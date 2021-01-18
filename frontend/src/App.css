@@ -324,12 +324,25 @@ button.back::after {
 	box-sizing: border-box;
 	border-radius: 12px;
 }
+
+/** Only show as clickable if a link */
+.r-banner-link {
+	border-bottom: solid 4px;
+	text-transform: lowercase;
+	color: #ffffff !important;
+	height: 1em;
+}
+.r-banner-link:hover {
+	cursor: pointer;
+}
+
 /* Text styling */
 .r-banner h3 {
 	margin: auto 0;
-	line-height: 1;
+	line-height: 1.2;
 	text-transform: uppercase;
 	font-weight: 750;
+	padding-top: 3px;
 }
 .r-banner .desktop {
 	font-size: 1.6em;
@@ -370,6 +383,7 @@ button.back::after {
 }
 .r-banner-alert-CRITICAL {
 	background-color: var(--midland-red);
+	/* background-color: #B80000 */
 }
 
 

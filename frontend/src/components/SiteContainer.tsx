@@ -258,7 +258,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			// NOTE: getScrollDownWithAdditional was originally fed 150 instead of 0
 			return (
 				<>
-					{this.state.alert.showAlert ? <AlertBanner alertLevel={this.state.alert.alertLevel} alertMessage={this.state.alert.message}/> : null}
+					{this.state.alert.showAlert ? <AlertBanner alert={this.state.alert} /> : null}
 					<h2 className="desktop">{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="desktop">Week {this.state.week}</h1>
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}

@@ -1,5 +1,5 @@
 import React from "react";
-import { ThreatLevels } from "../utils/AlertInterfaces";
+import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 
 /**
  * Gets the className to use for a given alert level.
@@ -26,8 +26,7 @@ function getClassNameFromAlertLevel(level: ThreatLevels): `r-banner-alert-${Thre
 }
 
 export interface AlertBannerProps {
-	alertLevel: ThreatLevels;
-	alertMessage: string;
+	alert: AlertResponce
 }
 
 /**
@@ -37,12 +36,13 @@ const AlertBanner: React.FC<AlertBannerProps> = (props) => {
 
 	return (
 		<div className="r-banner-container">
-			<div className={ `${getClassNameFromAlertLevel(props.alertLevel)} r-banner` }>
-				<h3 className="desktop">{props.alertMessage}</h3>
-				<h3 className="mobile">{props.alertMessage}</h3>
+			<div 
+				className={`${getClassNameFromAlertLevel(props.alert.alertLevel)} r-banner`}>
+				<h3 className="desktop">{props.alert.message}&nbsp;<a className="r-banner-link">{props.alert.linkText || "View More"}</a></h3>
+				<h3 className="mobile">{props.alert.message}&nbsp;<a className="r-banner-link">{props.alert.linkText || "View More"}</a></h3>
 			</div>
 		</div>
 	);
-}
+};
 
 export default AlertBanner;
