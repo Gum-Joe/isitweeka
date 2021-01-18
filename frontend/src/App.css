@@ -271,11 +271,24 @@ button.back::after {
 	.isitweeka h2 {
 		font-size: 2.5em;
 		display: inline-flex;
+		margin-bottom: 0.5em;
+		margin-top: 0.5em;
 	}
 
 	.isitweeka h3 {
 		font-size: 2em;
 		display: inline-flex;
+	}
+
+	.isitweeka h4 {
+		display: inline-flex;
+		margin-bottom: 0.5em;
+		margin-top: 0.5em;
+	}
+
+	.isitweeka-jumbotron {
+		padding-top: 80px;
+		box-sizing: border-box;
 	}
 
 	.r-tab-row {
