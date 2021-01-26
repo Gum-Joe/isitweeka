@@ -565,6 +565,61 @@ a {
 
 /* Mailing list */
 
+.sosumi {
+	display: flex;
+	position: sticky;
+	width: 100vw;
+	height: 90px;
+	padding: 0 5vw;
+	margin: 0;
+	top: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+	gap: 16px;
+	box-sizing: border-box;
+	color: #000;
+	background: #FFF
+}
+
+.sosumi h3 {
+	margin: auto 0;
+	font-size: 2em;
+}
+
+.sosumi form {
+	display: flex;
+	flex-direction: row;
+	gap: 16;
+	margin: auto 0;
+	font-weight: 500;
+	font-size: 1em;
+}
+
+/* Text input wrapper */
+.sosumi .input-container {
+	display: "flex";
+	flex-direction: "row";
+	gap: 16px;
+}
+.sosumi .input-container input {
+	margin: 0
+}
+
+/* checkbox wrapper */
+.sosumi .input-checkbox-container {
+	display: "flex";
+	flex-direction: "row";
+	gap: 4px;
+}
+.sosumi .input-checkbox-container input {
+	margin: auto 0;
+}
+
+.sosumi label {
+	margin: auto 0;
+}
+
 .sosumi input {
 	border: none;
 	/*border-bottom-color: var(--rykan-accent-primary);*/
