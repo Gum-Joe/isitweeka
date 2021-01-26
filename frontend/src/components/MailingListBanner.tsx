@@ -17,7 +17,7 @@ export default class Banner extends React.Component {
 	render() {
 		return (
 			<div className={"sosumi"}>
-				<h3>We have a mailing list!</h3>
+				<h3>Want updates on the exciting things we have in store?</h3>
 				<form action="https://isitweeka.us7.list-manage.com/subscribe/post" method="POST">
 					{/* NOTE: DO NOT DELETE THESE HIDDEN VALUES OR CHANGE THE SUBMIT LINK OR THINGS WILL BREAK */}
 					<input type="hidden" name="u" value="1a205026e7a571c5b62dd369d" />
