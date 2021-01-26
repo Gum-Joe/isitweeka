@@ -42,6 +42,11 @@
         gtag('js', new Date());
 
         gtag('config', GA_PROPERTY);
+      } else {
+        // Ensure GTAG isn't undefined
+        window.gtag = () => {
+          return;
+        }
       }
     </script>
   </head>
