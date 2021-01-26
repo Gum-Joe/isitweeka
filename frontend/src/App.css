@@ -316,6 +316,10 @@ button.back::after {
 	box-sizing: border-box;
 }
 
+.r-banner-container-animate-out {
+	animation-direction: reverse;
+}
+
 /** This is the actual banner itself and is modifed depending on alerts */
 .r-banner {
 	margin: 0 auto;
@@ -323,6 +327,16 @@ button.back::after {
 	display: flex;
 	box-sizing: border-box;
 	border-radius: 12px;
+}
+
+.r-banner-dismiss {
+	margin: auto auto auto 20px;
+	color:rgba(255, 255, 255, 0.65);
+}
+
+.r-banner-dismiss:hover {
+	cursor: pointer;
+	color:rgba(255, 255, 255, 0.85);
 }
 
 /** Only show as clickable if a link */
@@ -334,7 +348,7 @@ button.back::after {
 	height: 1em;
 	line-height: 1;
 	white-space: nowrap;
-	margin: auto 0;
+	margin: auto auto auto 20px;
 }
 
 .r-banner-link:hover {

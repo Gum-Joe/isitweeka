@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 /**
  * Gets the className to use for a given alert level.
@@ -25,16 +27,8 @@ function getClassNameFromAlertLevel(level: ThreatLevels): `r-banner-alert-${Thre
 	}
 }
 
-/**
- * Reports to Google analytics when the "View More" link was clicked so we can track conversions
- */
-function reportAlertButtonClick() {
-	gtag("event", "alert_link_clicked", {
-		"event_category": "engagement",
-		"value": "true",
-		"label": "alert_link_clicked",
-	});
-}
+
+
 
 export interface AlertBannerProps {
 	alert: AlertResponce
@@ -45,12 +39,46 @@ export interface AlertBannerProps {
  */
 const AlertBanner: React.FC<AlertBannerProps> = (props) => {
 
+	const [dismissed, setDismissState] = useState(false);
+
+	function handleDismiss() {
+		console.log("Banner dismissed");
+		setDismissState(true);
+		gtag("event", "alert_dimissed", {
+			"value": "true",
+			"label": "alert_dimissed",
+		});
+	}
+
+	/**
+ * Reports to Google analytics when the "View More" link was clicked so we can track conversions
+ */
+	function reportAlertButtonClick() {
+		console.log("Alert button clicked");
+		gtag("event", "alert_link_clicked", {
+			"event_category": "engagement",
+			"value": "true",
+			"label": "alert_link_clicked",
+		});
+	}
+
+
 	return (
-		<div className="r-banner-container">
+		<div className="r-banner-container" style={{
+			...(
+				dismissed === true ? { display: "none" } : {} // Handle hiding it
+			)
+		}}>
 			<div 
 				className={`${getClassNameFromAlertLevel(props.alert.alertLevel)} r-banner`}>
-				<h3 className="desktop">{props.alert.message}&nbsp;<a className="r-banner-link">{props.alert.linkText || "View More"}</a></h3>
-				<h3 className="mobile"><span>New Alerts.</span>&nbsp;<a className="r-banner-link"><span>{"View"}</span></a></h3>
+				<h3 className="desktop">
+					{props.alert.message}{/*&nbsp;*/}
+					<a className="r-banner-link" onClick={reportAlertButtonClick}>{props.alert.linkText || "View More"}</a>
+				</h3>
+				
+				<h3 className="mobile"><span>{props.alert.message}</span>&nbsp;<a className="r-banner-link" onClick={reportAlertButtonClick}><span>{"View"}</span></a></h3>
+				<h3 className="desktop"><FontAwesomeIcon onClick={handleDismiss} className="r-banner-dismiss" icon={faTimes} /></h3>
+				<h3 className="mobile"><FontAwesomeIcon onClick={handleDismiss} className="r-banner-dismiss" icon={faTimes} /></h3>
 			</div>
 		</div>
 	);
