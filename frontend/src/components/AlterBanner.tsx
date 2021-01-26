@@ -51,8 +51,8 @@ const AlertBanner: React.FC<AlertBannerProps> = (props) => {
 	}
 
 	/**
- * Reports to Google analytics when the "View More" link was clicked so we can track conversions
- */
+	 * Reports to Google analytics when the "View More" link was clicked so we can track conversions
+	 */
 	function reportAlertButtonClick() {
 		console.log("Alert button clicked");
 		gtag("event", "alert_link_clicked", {
