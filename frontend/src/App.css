@@ -569,7 +569,6 @@ a {
 .sosumi {
 	display: flex;
 	position: sticky;
-	width: 100vw;
 	height: 90px;
 	padding: 0 5vw;
 	margin: 0;
@@ -612,7 +611,7 @@ a {
 .sosumi .input-checkbox-container {
 	display: flex;
 	flex-direction: row;
-	gap: 4px;
+	gap: 10px;
 }
 .sosumi .input-checkbox-container input {
 	margin: auto 0;
