@@ -73,10 +73,20 @@ const AlertBanner: React.FC<AlertBannerProps> = (props) => {
 				className={`${getClassNameFromAlertLevel(props.alert.alertLevel)} r-banner`}>
 				<h3 className="desktop">
 					{props.alert.message}{/*&nbsp;*/}
-					<a className="r-banner-link" onClick={reportAlertButtonClick}>{props.alert.linkText || "View More"}</a>
+					{ typeof props.alert.linkTo !== "undefined" ? 
+						<a className="r-banner-link" onClick={reportAlertButtonClick}>{props.alert.linkText || "View More"}</a>
+						: null
+					}
 				</h3>
 				
-				<h3 className="mobile"><span>{props.alert.message}</span>&nbsp;<a className="r-banner-link" onClick={reportAlertButtonClick}><span>{"View"}</span></a></h3>
+				<h3 className="mobile">
+					<span>{props.alert.message}</span>&nbsp;
+					<br />
+					{ typeof props.alert.linkTo !== "undefined" ? 
+						<a className="r-banner-link" onClick={reportAlertButtonClick}>
+							<span>{"View"}</span>
+						</a> : null }
+				</h3>
 				<h3 className="desktop"><FontAwesomeIcon onClick={handleDismiss} className="r-banner-dismiss" icon={faTimes} /></h3>
 				<h3 className="mobile"><FontAwesomeIcon onClick={handleDismiss} className="r-banner-dismiss" icon={faTimes} /></h3>
 			</div>

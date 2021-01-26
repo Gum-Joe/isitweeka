@@ -350,6 +350,9 @@ button.back::after {
 	white-space: nowrap;
 	margin: auto auto auto 20px;
 }
+ .mobile .r-banner-link {
+	margin: 10px auto auto 0px;
+}
 
 .r-banner-link:hover {
 	cursor: pointer;
@@ -438,6 +441,7 @@ button.back::after {
 		animation: slide-in-bottom 300ms both;
 		animation-delay: 100ms;
 		padding: 0 10px;
+		margin-top: 10px;
 	}
 }
 
