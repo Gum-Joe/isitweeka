@@ -23,9 +23,9 @@ export default class Banner extends React.Component {
 						<label htmlFor="dob-input">I am in year 9 or above:</label>
 						<input id="dob-input" type="checkbox" />
 					</div>
-					<Button style={{ fontSize: "1em" }} type="submit" onClick={this.handleClick} light>Sign up</Button>
+					<Button buttonType="fill" style={{ fontSize: "1em" }} type="submit" onClick={this.handleClick} light>Sign up</Button>
 				</form>
 			</div>
-		)
+		);
 	}
 }

@@ -8,7 +8,7 @@ interface ButtonProps {
 const Button = (props: React.ButtonHTMLAttributes<any> & ButtonProps) => {
 	if (props?.buttonType === "fill") {
 		return (
-			<button {...props} className="events-button-2" data-light={props.light}>
+			<button {...props} className="filled-button" data-light={props.light}>
 				<span>{props.children}</span>
 			</button>
 		);
