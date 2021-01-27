@@ -3,8 +3,11 @@ import EventsList, { EventData } from "./EventsList";
 import Button from "./Button.Forward";
 import dummyResponse from "../data/events-mock";
 import { GregorianDay } from "../utils/constants";
-import { scrollUp, scrollDown, getScrollDownWithAdditional } from "../utils/scroll";
+import { getScrollDownWithAdditional } from "../utils/scroll";
 import * as ical from "ical";
+import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
+import { dummyAlert } from "../data/alerts";
+import AlertBanner from "./AlterBanner";
 
 /**
  * Props to provide to the site
@@ -35,6 +38,7 @@ interface TheState {
 	apiHasRan: boolean;
 	isWeekend: boolean;
 	eventData: EventData;
+	alert: AlertResponce;
 }
 
 /**
@@ -54,6 +58,13 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				events: [],
 				generatedAt: "",
 			},
+			// Default alert
+			alert: {
+				message: "ATTENTION: ALL EXAMS ARE CANCELLED - Albus Dumbledore",
+				showAlert: false,
+				alertLevel: ThreatLevels.LOW,
+			}
+			,
 		};
 	}
 
@@ -61,9 +72,28 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		try {
 			this.getCalendar();
 			this.fetchEvents();
+			this.fetchNotifications();
 		} catch (err) {
 			console.error("Error: " + err?.message);
 		}
+	}
+
+	/** Fetches any alerts that need to be diplayed */
+	fetchNotifications = async () => {
+		// TODO: GET request for whether there is an alert
+		// TODO: set state to response
+
+		// const baseResponse = await fetch("/alerts.json", {
+		// 	method: "GET",
+		// });
+
+		// const response: AlertResponce = await baseResponse.json();
+
+		const response = dummyAlert;
+
+		this.setState({
+			alert: response,
+		});
 	}
 
 	async fetchEvents() {
@@ -228,6 +258,8 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			// NOTE: getScrollDownWithAdditional was originally fed 150 instead of 0
 			return (
 				<>
+					{this.state.alert.showAlert ? <AlertBanner alert={this.state.alert} /> : null}
+					{/*{this.state.alert.showAlert ? <div className="mobile" style={{ height: 144 }} /> : null}*/}
 					<h2 className="desktop">{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="desktop">Week {this.state.week}</h1>
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
