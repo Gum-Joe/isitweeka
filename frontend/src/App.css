@@ -596,3 +596,9 @@ a {
 	background-color: #388E3C !important;
 	color: #FFF !important;
 }
+
+@media screen and (max-aspect-ratio: 2/1) {
+	.not-x {
+		display: none!important;
+	}
+}

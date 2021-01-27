@@ -93,7 +93,7 @@ const AlertBanner: React.FC<AlertBannerProps> = (props) => {
 					<h3 className="mobile"><FontAwesomeIcon onClick={handleDismiss} className="r-banner-dismiss" icon={faTimes} /></h3>
 				</div>
 			</div>
-			{dismissed ? null : <div className="mobile" style={{ height: 144 }} />}
+			{dismissed ? null : <div className="mobile not-x" style={{ height: 144 }} />}
 		</>
 	);
 };
