@@ -82,7 +82,7 @@ const AlertBanner: React.FC<AlertBannerProps> = (props) => {
 					</h3>
 
 					<h3 className="mobile">
-						<span>{props.alert.message.length > 30 && !expanded ? "NEW ALERTS" : props.alert.message}</span>&nbsp;
+						<span>{props.alert.message.length > 30 && !expanded ? "New Alert(s)" : props.alert.message}</span>&nbsp;
 						<br />
 						{typeof props.alert.linkTo !== "undefined" ?
 							<a className="r-banner-link" onClick={reportAlertButtonClick}>
