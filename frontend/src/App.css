@@ -435,7 +435,7 @@ button.back::after {
 	}
 
 	.r-banner-container {
-		top: 96px;
+		top: 20vh;
 		/*bottom: 28px;*/
 		/*position: initial;*/
 		animation: slide-in-bottom 300ms both;
