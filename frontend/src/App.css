@@ -597,7 +597,7 @@ a {
 	color: #FFF !important;
 }
 
-@media screen and (max-aspect-ratio: 2/1) {
+@media screen and (max-aspect-ratio: 1/2) {
 	.not-x {
 		display: none!important;
 	}
