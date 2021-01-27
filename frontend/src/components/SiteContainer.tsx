@@ -259,6 +259,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			return (
 				<>
 					{this.state.alert.showAlert ? <AlertBanner alert={this.state.alert} /> : null}
+					{/*{this.state.alert.showAlert ? <div className="mobile" style={{ height: 144 }} /> : null}*/}
 					<h2 className="desktop">{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="desktop">Week {this.state.week}</h1>
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
