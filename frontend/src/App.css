@@ -473,7 +473,7 @@ button.back::after {
 	display: inherit !important;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 700px) {
 	.events-row {
 		flex-direction: column;
 		min-height: 480px;
