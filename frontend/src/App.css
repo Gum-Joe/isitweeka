@@ -593,7 +593,8 @@ a {
 }
 
 .CookieConsent #rcc-confirm-button {
-	background-color: #388E3C !important;
+	/*background-color: #388E3C !important;*/
+	background-color: var(--great-northern-green) !important;
 	color: #FFF !important;
 }
 
