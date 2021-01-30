@@ -602,7 +602,7 @@ a {
 	display: flex;
 	position: sticky;
 	height: 90px;
-	/*padding: 0 5vw;*/
+	padding: 0 2.5vw;
 	margin: 0;
 	top: 0;
 	bottom: 0;
@@ -613,6 +613,7 @@ a {
 	color: #000;
 	background: #FFF;
 	z-index: 3;
+	text-align: center;
 }
 
 .sosumi h3 {
@@ -629,12 +630,19 @@ a {
 	font-size: 1em;
 }
 
+.sosumi button {
+	margin: auto;
+	min-width: 95px;
+}
+
 /* Text input wrapper */
 .sosumi .input-container {
 	display: flex;
 	flex-direction: row;
 	/*gap: 16px;*/
 	position: relative;
+	margin: auto;
+	max-height: 32px;
 }
 
 .sosumi .input-container input {
