@@ -43,7 +43,7 @@ body {
 /* VERTICALLYTG CENTRE */
 .isitweeka {
 	min-height: 100vh;
-	height: 100vh;
+	/*height: 100vh;*/
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -602,7 +602,7 @@ a {
 	display: flex;
 	position: sticky;
 	height: 90px;
-	padding: 0 5vw;
+	/*padding: 0 5vw;*/
 	margin: 0;
 	top: 0;
 	bottom: 0;
@@ -611,7 +611,8 @@ a {
 	gap: 16px;
 	box-sizing: border-box;
 	color: #000;
-	background: #FFF
+	background: #FFF;
+	z-index: 3;
 }
 
 .sosumi h3 {
