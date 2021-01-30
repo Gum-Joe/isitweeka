@@ -601,8 +601,8 @@ a {
 .sosumi {
 	display: flex;
 	position: sticky;
-	height: 90px;
-	padding: 0 2.5vw;
+	min-height: 90px;
+	padding: 10px 1vw;
 	margin: 0;
 	top: 0;
 	bottom: 0;
