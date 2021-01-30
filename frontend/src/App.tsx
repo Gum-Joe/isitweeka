@@ -113,21 +113,21 @@ class App extends Component<Record<string, never>, TheState> {
 
 				{/* Cookie consent */}
 				<Navbar fixed="bottom">
-				<CookieConsent
-					enableDeclineButton
+					<CookieConsent
+						enableDeclineButton
 						flipButtons
-					buttonText="I understand"
-					declineButtonText="No thanks"
-					onAccept={
-						() => { gaSetState(false); window.location.reload(); }
-					}
-					onDecline={
-						() => { gaSetState(true); window.location.reload(); }
-					}
-				>
+						buttonText="I understand"
+						declineButtonText="No thanks"
+						onAccept={
+							() => { gaSetState(false); window.location.reload(); }
+						}
+						onDecline={
+							() => { gaSetState(true); window.location.reload(); }
+						}
+					>
 					This website uses cookies for preferences and analytics (via Google Analytics).
 						<a href={process.env.PUBLIC_URL + "/privacy.html"}> View Privacy Policy</a>
-				</CookieConsent>
+					</CookieConsent>
 				</Navbar>
 			</div>
 		);

@@ -6,4 +6,4 @@ export const dummyAlert: AlertResponce = {
 	alertLevel: ThreatLevels.CRITICAL,
 	linkTo: "#",
 	linkText: "More Info"
-}
+};

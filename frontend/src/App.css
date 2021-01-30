@@ -267,46 +267,6 @@ button.back::after {
 	border-top-color: var(--link-active);
 }
 
-@media screen and (max-width: 400px) {
-	.isitweeka h1 {
-		/*font-size: 5em;*/
-		margin-top: 0;
-		margin-bottom: 0;
-		display: inline-flex;
-	}
-
-	.isitweeka h2 {
-		font-size: 2.5em;
-		display: inline-flex;
-		margin-bottom: 0.5em;
-		margin-top: 0.5em;
-	}
-
-	.isitweeka h3 {
-		font-size: 2em;
-		display: inline-flex;
-	}
-
-	.isitweeka h4 {
-		display: inline-flex;
-		margin-bottom: 0.5em;
-		margin-top: 0.5em;
-	}
-
-	.isitweeka-jumbotron {
-		/*padding-top: 80px;*/
-		box-sizing: border-box;
-	}
-
-	.r-tab-row {
-		padding-top: 40px !important;
-	}
-
-	.r-tab {
-		font-size: 1.75em !important;
-	}
-}
-
 /** Banner stuff */
 
 .r-banner-container {
@@ -323,6 +283,10 @@ button.back::after {
 	box-sizing: border-box;
 }
 
+.r-banner-container-animate-out {
+	animation-direction: reverse;
+}
+
 /** This is the actual banner itself and is modifed depending on alerts */
 .r-banner {
 	margin: 0 auto;
@@ -330,6 +294,16 @@ button.back::after {
 	display: flex;
 	box-sizing: border-box;
 	border-radius: 12px;
+}
+
+.r-banner-dismiss {
+	margin: auto auto auto 20px;
+	color:rgba(255, 255, 255, 0.65);
+}
+
+.r-banner-dismiss:hover {
+	cursor: pointer;
+	color:rgba(255, 255, 255, 0.85);
 }
 
 /** Only show as clickable if a link */
@@ -341,7 +315,10 @@ button.back::after {
 	height: 1em;
 	line-height: 1;
 	white-space: nowrap;
-	margin: auto 0;
+	margin: auto auto auto 20px;
+}
+ .mobile .r-banner-link {
+	margin: 10px auto auto 0px;
 }
 
 .r-banner-link:hover {
@@ -435,12 +412,57 @@ button.back::after {
 	}
 
 	.r-banner-container {
-		/*top: unset;*/
+		top: min(20vh, 144px);
 		/*bottom: 28px;*/
-		position: initial;
+		/*position: initial;*/
 		animation: slide-in-bottom 300ms both;
 		animation-delay: 100ms;
 		padding: 0 10px;
+		/*margin-top: 10px;*/
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.isitweeka h1 {
+		/*font-size: 5em;*/
+		margin-top: 0;
+		margin-bottom: 0;
+		display: inline-flex;
+	}
+
+	.isitweeka h2 {
+		font-size: 2.5em;
+		display: inline-flex;
+		margin-bottom: 0.5em;
+		margin-top: 0.5em;
+	}
+
+	.isitweeka h3 {
+		font-size: 2em;
+		display: inline-flex;
+	}
+
+	.isitweeka h4 {
+		display: inline-flex;
+		margin-bottom: 0.5em;
+		margin-top: 0.5em;
+	}
+
+	.isitweeka-jumbotron {
+		/*padding-top: 80px;*/
+		box-sizing: border-box;
+	}
+
+	.r-tab-row {
+		padding-top: 40px !important;
+	}
+
+	.r-tab {
+		font-size: 1.75em !important;
+	}
+
+	.r-banner-container {
+		top: min(20vh, 112px);
 	}
 }
 
@@ -468,7 +490,7 @@ button.back::after {
 	display: inherit !important;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 700px) {
 	.events-row {
 		flex-direction: column;
 		min-height: 480px;
@@ -695,6 +717,13 @@ a {
 }
 
 .CookieConsent #rcc-confirm-button {
-	background-color: #388E3C !important;
+	/*background-color: #388E3C !important;*/
+	background-color: var(--great-northern-green) !important;
 	color: #FFF !important;
+}
+
+@media screen and (max-aspect-ratio: 1/2) {
+	.not-x {
+		display: none!important;
+	}
 }
