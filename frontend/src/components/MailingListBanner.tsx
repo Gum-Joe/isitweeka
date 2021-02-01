@@ -52,7 +52,7 @@ export default class Banner extends React.Component {
 							<input type="hidden" name="id" value="249833b0f4" />
 							<div className="input-container">
 								<label htmlFor="name-input">Name:</label>
-								<input id="name-input MERGE6" type="text" name="MERGE6" />
+								<input placeholder="" id="name-input MERGE6" type="text" name="MERGE6" />
 							</div>
 							<div className="input-container">
 								<label htmlFor="email-input">Email:</label>

@@ -749,13 +749,18 @@ a {
 .sosumi-mobile form {
 	display: flex;
 	flex-direction: column;
-	gap: 16px;
+	gap: 25px;
 	font-weight: 500;
 	font-size: 1.2em;
+	width: 100%;
+	padding: 0 4vw;
+	box-sizing: border-box;
 }
 
 .sosumi-mobile h3 {
 	font-size: 1.7em;
+	box-sizing: border-box;
+	padding: 0 5vw;
 }
 
 .sosumi-mobile input {
@@ -767,7 +772,7 @@ a {
 	/*box-shadow: none;*/
 	/*box-shadow: inset 0 -4px 0 0 var(--rykan-accent-primary);*/
 	/*filter: saturate(0);*/
-	padding: 8px;
+	padding: 8px 0;
 	/*padding-bottom: 4px;*/
 	transition-duration: 200ms;
 	font-family: "Metropolis", "Open Sans", sans-serif !important;
@@ -779,6 +784,7 @@ a {
 .sosumi-mobile label {
 	margin: auto 0;
 	font-weight: 600;
+	text-align: left;
 }
 
 .sosumi-mobile .input-container::after {
@@ -806,12 +812,11 @@ a {
 
 .sosumi-mobile .input-container {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	/*gap: 16px;*/
 	position: relative;
 	margin: auto;
-	max-height: 32px;
-	max-width: 80vw;
+	width: 100%;
 }
 
 
