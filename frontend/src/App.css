@@ -778,11 +778,13 @@ a {
 	text-align: center;
 }
 
+
+
 .sosumi-mobile form {
 	display: flex;
 	flex-direction: column;
 	/*gap: 1.75em;*/
-	gap: 5vh;
+	gap: 4vh;
 	font-weight: 500;
 	font-size: 1.2em;
 	width: 100%;
@@ -796,7 +798,12 @@ a {
 	box-sizing: border-box;
 	padding: 0 5vw;
 	margin-top: 1.5em;
+	margin-bottom: 0;
+}
+.sosumi-mobile #required-message {
+	margin: 0;
 	margin-bottom: 0.8em;
+	color: #272727;
 }
 
 .sosumi-mobile input {

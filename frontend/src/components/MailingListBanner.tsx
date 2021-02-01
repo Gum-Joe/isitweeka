@@ -37,6 +37,10 @@ const BaseMailingListForm: React.FC<MailListProps> = (props) => {
 				</h3>
 			}
 			<h3>Want updates on the exciting things we have in store?</h3>
+			{
+				props.isListForMobile &&
+				<h4 id="required-message">(All fields are required)</h4>
+			}
 			<form action="https://isitweeka.us7.list-manage.com/subscribe/post" method="POST">
 				{/* NOTE: DO NOT DELETE THESE HIDDEN VALUES OR CHANGE THE SUBMIT LINK OR THINGS WILL BREAK */}
 				<input type="hidden" name="u" value="1a205026e7a571c5b62dd369d" />
