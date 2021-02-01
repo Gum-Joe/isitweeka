@@ -1,6 +1,7 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import FocusTrap from "focus-trap-react";
+import React, { useEffect, useState } from "react";
 import FontAwesome from "react-fontawesome";
 import { Portal } from "react-portal";
 import Button from "./Button.Forward";
@@ -25,7 +26,6 @@ const BaseMailingListForm: React.FC<MailListProps> = (props) => {
 		});
 	};
 
-	const [popupIsOpen, setOpenState] = useState(true);
 	return (
 		<div className={!props.isListForMobile ? "sosumi sosumi-desktop" : "sosumi-mobile"}>
 			{
@@ -40,11 +40,11 @@ const BaseMailingListForm: React.FC<MailListProps> = (props) => {
 				<input type="hidden" name="id" value="249833b0f4" />
 				<div className="input-container">
 					<label htmlFor="name-input">Name:</label>
-					<input id="name-input MERGE6" type="text" name="MERGE6" />
+					<input placeholder={"A Name"} id="name-input MERGE6" type="text" name="MERGE6" />
 				</div>
 				<div className="input-container">
 					<label htmlFor="email-input">Email:</label>
-					<input id="email-input MERGE0" type="email" name="MERGE0" />
+					<input placeholder={"example@example.com"} id="email-input MERGE0" type="email" name="MERGE0" />
 				</div>
 				<div className="input-checkbox-container">
 					<label htmlFor="dob-input">I am in year 9 or above:</label>
@@ -58,18 +58,44 @@ const BaseMailingListForm: React.FC<MailListProps> = (props) => {
 
 const MailingListContainer: React.FC = (props) => {
 
-	const [mobileListIsOpen, setmobileListIsOpen] = useState(true);
+	const [mobileListIsOpen, setmobileListIsOpen] = useState(false);
 
 	function mailingListMobileDismisser() {
+		
+		// When the modal is hidden...
+		const scrollY = document.body.style.top;
+		document.body.style.position = "";
+		document.body.style.top = "";
+		window.scrollTo(0, parseInt(scrollY || "0") * -1);
 		setmobileListIsOpen(false);
 	}
+
+	useEffect(() => {
+
+		// Wait and set modal
+		setTimeout(() => {
+			// Inital body adjustments
+			// When the modal is shown, we want a fixed body#
+			if (window.innerWidth <= 1000) {
+				const scrolled = window.scrollY;
+				console.log(scrolled);
+				document.body.style.position = "fixed";
+				document.body.style.top = `-${scrolled}px`;
+				setmobileListIsOpen(true);
+			}
+			
+		}, 2500);
+	}, []);
 
 	return (
 		<>
 			<BaseMailingListForm isListForMobile={false} />
-			{ mobileListIsOpen && <Portal>
-				<BaseMailingListForm isListForMobile={true} dimisser={mailingListMobileDismisser} />
-			</Portal> }
+			{ mobileListIsOpen &&
+				<Portal>
+					<div className="mobile-bg-cover"></div>
+					<BaseMailingListForm isListForMobile={true} dimisser={mailingListMobileDismisser} />
+				</Portal>
+			}
 		</>
 	);
 };

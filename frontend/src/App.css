@@ -718,6 +718,13 @@ a {
 	.sosumi-desktop {
 		display: none;
 	}
+	.mobile-bg-cover {
+		position: fixed;
+		width: 100vw;
+		height: 1000%;
+		background-color: #000;
+		opacity: 0.8;
+	}
 	/** Fix the issue with the hright on .isitweeka */
 	.isitweeka {
 		height: 100vh;
@@ -728,6 +735,9 @@ a {
 		display: none !important;
 	}
 }
+
+
+
 .sosumi-mobile {
 	position: fixed;
 	z-index: 4;
