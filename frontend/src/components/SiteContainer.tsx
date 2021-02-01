@@ -6,7 +6,7 @@ import { GregorianDay } from "../utils/constants";
 import { getScrollDownWithAdditional } from "../utils/scroll";
 import * as ical from "ical";
 import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
-import { dummyAlert } from "../data/alerts";
+import { KECHBAlerts } from "../data/alerts";
 import AlertBanner from "./AlterBanner";
 import Banner from "./MailingListBanner";
 
@@ -90,7 +90,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 
 		// const response: AlertResponce = await baseResponse.json();
 
-		const response = dummyAlert;
+		const response = KECHBAlerts;
 
 		this.setState({
 			alert: response,
@@ -280,7 +280,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
 					}
 				</div>
-					<Banner />
+				<Banner />
 				<EventsList eventData={this.state.eventData} />
 			</>
 		);
