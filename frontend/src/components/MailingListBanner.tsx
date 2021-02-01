@@ -1,4 +1,5 @@
 import React from "react";
+import { Portal } from "react-portal";
 import Button from "./Button.Forward";
 
 export default class Banner extends React.Component {
@@ -16,7 +17,7 @@ export default class Banner extends React.Component {
 
 	render() {
 		return (
-			<div className={"sosumi"}>
+			<div className={"sosumi sosumi-desktop"}>
 				<h3>Want updates on the exciting things we have in store?</h3>
 				<form action="https://isitweeka.us7.list-manage.com/subscribe/post" method="POST">
 					{/* NOTE: DO NOT DELETE THESE HIDDEN VALUES OR CHANGE THE SUBMIT LINK OR THINGS WILL BREAK */}
@@ -36,6 +37,9 @@ export default class Banner extends React.Component {
 					</div>
 					<Button buttonType="fill" style={{ fontSize: "1em" }} type="submit" onClick={this.handleClick} light>Sign up</Button>
 				</form>
+				<Portal>
+					
+				</Portal>
 			</div>
 		);
 	}

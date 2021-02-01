@@ -712,6 +712,18 @@ a {
 	background-color: var(--great-northern-blue);
 }
 
+/** For mailing list, past 1000px it ceases to looking good */
+@media screen and (max-width: 1000px) {
+	.sosumi-desktop {
+		display: none;
+	}
+}
+@media screen and (min-width: 1000px) {
+	.sosumi-mobile {
+		display: none;
+	}
+}
+
 /** Cookie Consent **/
 
 .CookieConsent, .CookieConsent button {
