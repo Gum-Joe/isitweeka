@@ -781,7 +781,8 @@ a {
 .sosumi-mobile form {
 	display: flex;
 	flex-direction: column;
-	gap: 1.75em;
+	/*gap: 1.75em;*/
+	gap: 5vh;
 	font-weight: 500;
 	font-size: 1.2em;
 	width: 100%;
@@ -791,7 +792,7 @@ a {
 
 .sosumi-mobile h3 {
 	/* Ensure tnis looks nice on iPhone 5S -> iPhone X */ 
-	font-size: 8.5vw;
+	font-size: 4vh;
 	box-sizing: border-box;
 	padding: 0 5vw;
 	margin-top: 1.5em;
