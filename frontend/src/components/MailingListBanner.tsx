@@ -52,11 +52,11 @@ export default class Banner extends React.Component {
 							<input type="hidden" name="id" value="249833b0f4" />
 							<div className="input-container">
 								<label htmlFor="name-input">Name:</label>
-								<input placeholder="" id="name-input MERGE6" type="text" name="MERGE6" />
+								<input placeholder="A name" id="name-input MERGE6" type="text" name="MERGE6" />
 							</div>
 							<div className="input-container">
 								<label htmlFor="email-input">Email:</label>
-								<input id="email-input MERGE0" type="email" name="MERGE0" />
+								<input placeholder="someone@example.com" id="email-input MERGE0" type="email" name="MERGE0" />
 							</div>
 							<div className="input-checkbox-container">
 								<label htmlFor="dob-input">I am in year 9 or above:</label>
