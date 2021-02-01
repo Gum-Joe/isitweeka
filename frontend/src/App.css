@@ -751,11 +751,11 @@ a {
 	flex-direction: column;
 	gap: 16px;
 	font-weight: 500;
-	font-size: 1em;
+	font-size: 1.2em;
 }
 
 .sosumi-mobile h3 {
-	font-size: 2em;
+	font-size: 1.7em;
 }
 
 .sosumi-mobile input {
@@ -771,8 +771,9 @@ a {
 	/*padding-bottom: 4px;*/
 	transition-duration: 200ms;
 	font-family: "Metropolis", "Open Sans", sans-serif !important;
-	font-size: 0.85em;
+	font-size: 1em;
 	font-weight: 500;
+	box-sizing: border-box;
 }
 
 .sosumi-mobile label {
@@ -810,6 +811,7 @@ a {
 	position: relative;
 	margin: auto;
 	max-height: 32px;
+	max-width: 80vw;
 }
 
 
