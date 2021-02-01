@@ -13,6 +13,9 @@ type MailListProps =  {
 	isListForMobile: false;
 }
 
+
+const SHOW_MOBILE_AT_WIDTH = 1050;
+
 const BaseMailingListForm: React.FC<MailListProps> = (props) => {
 	const handleClick = () => {
 		// Here you are Kishan!
@@ -40,21 +43,23 @@ const BaseMailingListForm: React.FC<MailListProps> = (props) => {
 				<input type="hidden" name="id" value="249833b0f4" />
 				<div className="input-container">
 					<label htmlFor="name-input">Name:</label>
-					<input placeholder={"A Name"} id="name-input MERGE6" type="text" name="MERGE6" />
+					<input required={true} placeholder={"A Name"} id="name-input MERGE6" type="text" name="MERGE6" />
 				</div>
 				<div className="input-container">
 					<label htmlFor="email-input">Email:</label>
-					<input placeholder={"example@example.com"} id="email-input MERGE0" type="email" name="MERGE0" />
+					<input required={true} placeholder={"example@example.com"} id="email-input MERGE0" type="email" name="MERGE0" />
 				</div>
 				<div className="input-checkbox-container">
-					<label htmlFor="dob-input">I am in year 9 or above:</label>
-					<input id="dob-input" type="checkbox" />
+					<label htmlFor="dob-input">I am in year 9 or above & accept the privacy policy:</label>
+					<input required={true} id="dob-input" type="checkbox" />
 				</div>
 				<Button buttonType="fill" style={{ fontSize: "1em" }} type="submit" onClick={handleClick} light>Sign up</Button>
+				<a className="privacy-policy-link" href="/privacy.html">Privacy&nbsp;Policy</a>
 			</form>
 		</div>
 	);
 };
+
 
 const MailingListContainer: React.FC = (props) => {
 
@@ -76,15 +81,14 @@ const MailingListContainer: React.FC = (props) => {
 		setTimeout(() => {
 			// Inital body adjustments
 			// When the modal is shown, we want a fixed body#
-			if (window.innerWidth <= 1000) {
+			if (window.innerWidth <= SHOW_MOBILE_AT_WIDTH) {
 				const scrolled = window.scrollY;
 				console.log(scrolled);
 				document.body.style.position = "fixed";
 				document.body.style.top = `-${scrolled}px`;
 				setmobileListIsOpen(true);
 			}
-			
-		}, 2500);
+		}, 5000);
 	}, []);
 
 	return (

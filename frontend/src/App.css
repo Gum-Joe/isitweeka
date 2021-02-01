@@ -673,6 +673,13 @@ a {
 	font-weight: 600;
 }
 
+.privacy-policy-link {
+	color: #0284db;
+	text-decoration: underline;
+	margin: auto;
+	font-size: 0.87em;
+}
+
 .sosumi input {
 	position: relative;
 	border: none;
@@ -700,6 +707,16 @@ a {
 	transition-duration: 200ms;
 }
 
+.sosumi .input-container::after:required:invalid {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 4px;
+	bottom: 0;
+	background-color: var(--rykan-accent-secondary);
+	transition-duration: 200ms;
+}
+
 .sosumi input:focus {
 	/*box-shadow: inset 0 0 0 4px var(--rykan-accent-primary);*/
 	/*box-shadow: inset 0 -4px 0 0 var(--great-northern-blue);*/
@@ -714,7 +731,7 @@ a {
 }
 
 /** For mailing list, past 1000px it ceases to looking good */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1050px) {
 	.sosumi-desktop {
 		display: none;
 	}
@@ -730,7 +747,7 @@ a {
 		height: 100vh;
 	}
 }
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1050px) {
 	.sosumi-mobile {
 		display: none !important;
 	}
