@@ -50,8 +50,8 @@ const BaseMailingListForm: React.FC<MailListProps> = (props) => {
 					<input required={true} placeholder={"example@example.com"} id="email-input MERGE0" type="email" name="MERGE0" />
 				</div>
 				<div className="input-checkbox-container">
-					<label htmlFor="dob-input">I am in year 9 or above & accept the privacy policy:</label>
-					<input required={true} id="dob-input" type="checkbox" />
+					<label htmlFor="dob-input">I am age 13 or above & accept the privacy policy:</label>
+					<input required={true} id="dob-input gdpr[49308]" type="checkbox" name="gdpr[49308]"/>
 				</div>
 				<Button buttonType="fill" style={{ fontSize: "1em" }} type="submit" onClick={handleClick} light>Sign up</Button>
 				<a className="privacy-policy-link" href="/privacy.html">Privacy&nbsp;Policy</a>
@@ -88,7 +88,7 @@ const MailingListContainer: React.FC = (props) => {
 				document.body.style.top = `-${scrolled}px`;
 				setmobileListIsOpen(true);
 			}
-		}, 2250);
+		}, 5000);
 	}, []);
 
 	return (
