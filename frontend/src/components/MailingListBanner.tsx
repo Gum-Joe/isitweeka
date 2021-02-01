@@ -47,11 +47,11 @@ const BaseMailingListForm: React.FC<MailListProps> = (props) => {
 				<input type="hidden" name="id" value="249833b0f4" />
 				<div className="input-container">
 					<label htmlFor="name-input">Name:</label>
-					<input required={true} placeholder={"A Name"} id="name-input MERGE6" type="text" name="MERGE6" />
+					<input required={true} placeholder={"Anakin Skywalker"} id="name-input MERGE6" type="text" name="MERGE6" />
 				</div>
 				<div className="input-container">
 					<label htmlFor="email-input">Email:</label>
-					<input required={true} placeholder={"example@example.com"} id="email-input MERGE0" type="email" name="MERGE0" />
+					<input required={true} placeholder={"anakin@gmail.com"} id="email-input MERGE0" type="email" name="MERGE0" />
 				</div>
 				<div className="input-checkbox-container">
 					<label htmlFor="dob-input">I am age 13 or above & accept the privacy policy:</label>
