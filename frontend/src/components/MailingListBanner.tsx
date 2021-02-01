@@ -92,7 +92,7 @@ const MailingListContainer: React.FC = (props) => {
 				document.body.style.top = `-${scrolled}px`;
 				setmobileListIsOpen(true);
 			}
-		}, 5000);
+		}, 4500);
 	}, []);
 
 	return (
