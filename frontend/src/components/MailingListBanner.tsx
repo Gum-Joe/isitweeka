@@ -1,4 +1,7 @@
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import FontAwesome from "react-fontawesome";
 import { Portal } from "react-portal";
 import Button from "./Button.Forward";
 
@@ -39,6 +42,9 @@ export default class Banner extends React.Component {
 				</form>
 				<Portal>
 					<div className="sosumi-mobile">
+						<h3 className="sosumi-dismiss">
+							<FontAwesomeIcon className="r-banner-dismiss" icon={faTimes} />
+						</h3>
 						<h3>Want updates on the exciting things we have in store?</h3>
 						<form action="https://isitweeka.us7.list-manage.com/subscribe/post" method="POST">
 							{/* NOTE: DO NOT DELETE THESE HIDDEN VALUES OR CHANGE THE SUBMIT LINK OR THINGS WILL BREAK */}
