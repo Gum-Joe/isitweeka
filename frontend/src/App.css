@@ -43,6 +43,7 @@ body {
 /* VERTICALLYTG CENTRE */
 .isitweeka {
 	min-height: 100vh;
+	/* Prevent overlap with mail list. Readded on mobile to prevent thing looking weird */
 	/*height: 100vh;*/
 	display: flex;
 	flex-direction: column;
@@ -716,6 +717,10 @@ a {
 @media screen and (max-width: 1000px) {
 	.sosumi-desktop {
 		display: none;
+	}
+	/** Fix the issue with the hright on .isitweeka */
+	.isitweeka {
+		height: 100vh;
 	}
 }
 @media screen and (min-width: 1000px) {
