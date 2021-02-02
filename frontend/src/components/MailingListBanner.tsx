@@ -30,7 +30,7 @@ const BaseMailingListForm: React.FC<MailListProps> = (props) => {
 	};
 
 	return (
-		<div className={!props.isListForMobile ? "sosumi sosumi-desktop" : "sosumi-mobile"}>
+		<div className={!props.isListForMobile ? "sosumi sosumi-desktop" : "sosumi sosumi-mobile"}>
 			{
 				props.isListForMobile && <h3 className="sosumi-dismiss">
 					<FontAwesomeIcon className="r-banner-dismiss" icon={faTimes} onClick={props.dimisser} />

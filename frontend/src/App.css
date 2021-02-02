@@ -597,143 +597,17 @@ a {
 	height: 40px;
 }
 
+
+
+
 /* Mailing list */
 
-.sosumi {
-	display: flex;
-	position: sticky;
-	min-height: 90px;
-	padding: 10px 1vw;
-	margin: 0;
-	top: 0;
-	bottom: 0;
-	justify-content: center;
-	align-items: center;
-	gap: 16px;
-	box-sizing: border-box;
-	color: #000;
-	background: #FFF;
-	z-index: 3;
-	text-align: center;
-}
-
-.sosumi h3 {
-	margin: auto 0;
-	font-size: 2em;
-}
-
-.sosumi form {
-	display: flex;
-	flex-direction: row;
-	gap: 16px;
-	margin: auto 0;
-	font-weight: 500;
-	font-size: 1em;
-}
-
-.sosumi button {
-	margin: auto;
-	min-width: 95px;
-}
-
-/* Text input wrapper */
-.sosumi .input-container {
-	display: flex;
-	flex-direction: row;
-	/*gap: 16px;*/
-	position: relative;
-	margin: auto;
-	max-height: 32px;
-}
-
-.sosumi .input-container input {
-	margin: 0;
-	width: 16em;
-}
-
-/* checkbox wrapper */
-.sosumi .input-checkbox-container {
-	display: flex;
-	flex-direction: row;
-	gap: 10px;
-}
-
-.sosumi .input-checkbox-container input {
-	margin: auto 0;
-	box-shadow: none;
-}
-
-.sosumi .input-checkbox-container input:focus {
-	margin: auto 0;
-	box-shadow: none;
-}
-
-.sosumi label {
-	margin: auto 0;
-	font-weight: 600;
-}
-
-.privacy-policy-link {
-	color: #0284db;
-	text-decoration: underline;
-	margin: auto;
-	font-size: 0.87em;
-}
-
-.sosumi input {
-	position: relative;
-	border: none;
-	/*border-bottom-color: var(--rykan-accent-primary);*/
-	/*border-bottom-width: 4px;*/
-	/*border-bottom-style: solid;*/
-	/*box-shadow: none;*/
-	/*box-shadow: inset 0 -4px 0 0 var(--rykan-accent-primary);*/
-	/*filter: saturate(0);*/
-	padding: 8px;
-	/*padding-bottom: 4px;*/
-	transition-duration: 200ms;
-	font-family: "Metropolis", "Open Sans", sans-serif !important;
-	font-size: 0.85em;
-	font-weight: 500;
-}
-
-.sosumi .input-container::after {
-	content: "";
-	position: absolute;
-	width: 100%;
-	height: 4px;
-	bottom: 0;
-	background-color: var(--rykan-accent-primary);
-	transition-duration: 200ms;
-}
-
-.sosumi .input-container::after:required:invalid {
-	content: "";
-	position: absolute;
-	width: 100%;
-	height: 4px;
-	bottom: 0;
-	background-color: var(--rykan-accent-secondary);
-	transition-duration: 200ms;
-}
-
-.sosumi input:focus {
-	/*box-shadow: inset 0 0 0 4px var(--rykan-accent-primary);*/
-	/*box-shadow: inset 0 -4px 0 0 var(--great-northern-blue);*/
-	/*box-shadow: inset 0 -4px 0 0 var(--rykan-accent-secondary);*/
-	outline: none;
-	/*background-color: #D0EBFD;*/
-	/*filter: none;*/
-}
-
-.sosumi .input-container:focus-within::after {
-	background-color: var(--great-northern-blue);
-}
-
+/* Responsive design switches */
 /** For mailing list, past 1000px it ceases to looking good */
-@media screen and (max-width: 1050px) {
+/* Also shows the right one at certain screen sizes */
+@media screen and (max-width: 1050px) { /* NOTE: If 1050px is changes, make sure to change it in TSX! (const SHOW_MOBILE_AT_WIDTH in MailingListBanner.tsx */
 	.sosumi-desktop {
-		display: none;
+		display: none !important;
 	}
 	.mobile-bg-cover {
 		position: fixed;
@@ -753,43 +627,164 @@ a {
 	}
 }
 
-
-
-.sosumi-mobile {
-	position: fixed;
-	z-index: 4;
-	color: #000;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 90vw;
-	height: 90vh;
-	text-align: center;
-	margin: auto;
-	background-color: #fff;
+/**
+ * COMBINED, BASE STYLES
+ * Some classes are kept separate:
+ */
+.sosumi {
 	display: flex;
-	flex-direction: column;
-	padding: 10px 1vw;
 	justify-content: center;
 	align-items: center;
 	gap: 16px;
-	box-sizing: border-box;
-	z-index: 3;
+
 	text-align: center;
+	color: #000;
+	background: #FFF;
+
+	padding: 10px 1vw;
+	box-sizing: border-box;
+
+	z-index: 3;
 }
 
+.privacy-policy-link {
+	color: #0284db;
+	text-decoration: underline;
+	margin: auto;
+	font-size: 0.87em;
+}
 
-
-.sosumi-mobile form {
+.sosumi form {
 	display: flex;
-	flex-direction: column;
-	/*gap: 1.75em;*/
-	gap: 4vh;
 	font-weight: 500;
-	font-size: 1.2em;
+}
+
+.sosumi label {
+	margin: auto 0;
+	font-weight: 600;
+}
+
+.sosumi input {
+	position: relative;
+	border: none;
+	padding: 8px;
+	/*border-bottom-color: var(--rykan-accent-primary);*/
+	/*border-bottom-width: 4px;*/
+	/*border-bottom-style: solid;*/
+	/*box-shadow: none;*/
+	/*box-shadow: inset 0 -4px 0 0 var(--rykan-accent-primary);*/
+	/*filter: saturate(0);*/
+	/*padding-bottom: 4px;*/
+	transition-duration: 200ms;
+
+	font-family: "Metropolis", "Open Sans", sans-serif !important;
+	font-weight: 500;
+}
+
+.sosumi input:focus {
+	/*box-shadow: inset 0 0 0 4px var(--rykan-accent-primary);*/
+	/*box-shadow: inset 0 -4px 0 0 var(--great-northern-blue);*/
+	/*box-shadow: inset 0 -4px 0 0 var(--rykan-accent-secondary);*/
+	outline: none;
+	/*background-color: #D0EBFD;*/
+	/*filter: none;*/
+}
+
+.sosumi .input-container {
+	display: flex;
+	/*gap: 16px;*/
+	position: relative;
+	margin: auto;
+}
+
+.sosumi .input-container::after {
+	content: "";
+	position: absolute;
 	width: 100%;
-	padding: 0 4vw;
-	box-sizing: border-box;
+	height: 4px;
+	bottom: 0;
+	background-color: var(--rykan-accent-primary);
+	transition-duration: 200ms;
+}
+
+.sosumi .input-container:focus-within::after {
+	background-color: var(--great-northern-blue);
+}
+
+/* checkbox wrapper */
+.sosumi .input-checkbox-container {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+	justify-content: center;
+}
+
+.sosumi .input-checkbox-container input {
+	margin: auto 0;
+	box-shadow: none;
+	width: fit-content;
+}
+
+.sosumi .input-checkbox-container input:focus {
+	margin: auto 0;
+	box-shadow: none;
+}
+
+/* Custom desktop only style */
+.sosumi-desktop {
+	position: sticky;
+
+	min-height: 90px;
+	margin: 0;
+
+	top: 0;
+	bottom: 0;
+}
+
+.sosumi-desktop h3 {
+	margin: auto 0;
+	font-size: 2em;
+}
+
+.sosumi-desktop form {
+	flex-direction: row;
+	gap: 16px;
+	font-size: 1em;
+	margin: auto 0;
+}
+
+/* Custom button styles */
+.sosumi-desktop button {
+	margin: auto;
+	min-width: 95px;
+}
+
+.sosumi-desktop input {
+	padding: 8px;
+	/*padding-bottom: 4px;*/
+	font-size: 0.85em;
+	margin: 0;
+	width: 16em;
+}
+
+/* Text input wrapper */
+.sosumi-desktop .input-container {
+	flex-direction: row;
+	max-height: 32px;
+}
+
+/* Custom mobile only styles */
+.sosumi-mobile {
+	position: fixed;
+	flex-direction: column;
+
+	width: 90vw;
+	height: 90vh;
+	margin: auto;
+
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .sosumi-mobile h3 {
@@ -800,86 +795,42 @@ a {
 	margin-top: 1.5em;
 	margin-bottom: 0;
 }
+
+
+.sosumi-mobile form {
+	flex-direction: column;
+	/*gap: 1.75em;*/
+	gap: 4vh;
+	font-size: 1.2em;
+
+	width: 100%;
+	padding: 0 4vw;
+	box-sizing: border-box;
+}
+
+/* Message about required fields */
 .sosumi-mobile #required-message {
 	margin: 0;
 	margin-bottom: 0.8em;
 	color: #272727;
 }
 
-.sosumi-mobile input {
-	position: relative;
-	border: none;
-	/*border-bottom-color: var(--rykan-accent-primary);*/
-	/*border-bottom-width: 4px;*/
-	/*border-bottom-style: solid;*/
-	/*box-shadow: none;*/
-	/*box-shadow: inset 0 -4px 0 0 var(--rykan-accent-primary);*/
-	/*filter: saturate(0);*/
-	padding: 8px 0;
-	/*padding-bottom: 4px;*/
-	transition-duration: 200ms;
-	font-family: "Metropolis", "Open Sans", sans-serif !important;
-	font-size: 1em;
-	font-weight: 500;
-	box-sizing: border-box;
-}
-
 .sosumi-mobile label {
-	margin: auto 0;
-	font-weight: 600;
 	text-align: left;
 }
 
-.sosumi-mobile .input-container::after {
-	content: "";
-	position: absolute;
-	width: 100%;
-	height: 4px;
-	bottom: 0;
-	background-color: var(--rykan-accent-primary);
-	transition-duration: 200ms;
-}
-
-.sosumi-mobile input:focus {
-	/*box-shadow: inset 0 0 0 4px var(--rykan-accent-primary);*/
-	/*box-shadow: inset 0 -4px 0 0 var(--great-northern-blue);*/
-	/*box-shadow: inset 0 -4px 0 0 var(--rykan-accent-secondary);*/
-	outline: none;
-	/*background-color: #D0EBFD;*/
-	/*filter: none;*/
-}
-
-.sosumi-mobile .input-container:focus-within::after {
-	background-color: var(--great-northern-blue);
+.sosumi-mobile input {
+	padding: 8px 0;
+	font-size: 1em;
+	box-sizing: border-box;
 }
 
 .sosumi-mobile .input-container {
-	display: flex;
 	flex-direction: column;
-	/*gap: 16px;*/
-	position: relative;
-	margin: auto;
 	width: 100%;
 }
 
-
-.sosumi-mobile .input-checkbox-container {
-	display: flex;
-	flex-direction: row;
-	gap: 10px;
-	justify-content: center;
-}
-
-.sosumi-mobile .input-checkbox-container input {
-	margin: auto 0;
-	box-shadow: none;
-}
-
-.sosumi-mobile .input-checkbox-container input:focus {
-	margin: auto 0;
-	box-shadow: none;
-}
-
+/** Dismiss styles for modal */
 .sosumi-mobile .sosumi-dismiss {
 	position: absolute;	
 	right: 0.8em;
