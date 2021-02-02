@@ -7,7 +7,7 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, PR-Add-Events-Section ]
 
 jobs:
   install: # Install deps
