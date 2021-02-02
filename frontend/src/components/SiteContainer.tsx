@@ -6,8 +6,9 @@ import { GregorianDay } from "../utils/constants";
 import { getScrollDownWithAdditional } from "../utils/scroll";
 import * as ical from "ical";
 import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
-import { dummyAlert } from "../data/alerts";
+import { KECHBAlerts } from "../data/alerts";
 import AlertBanner from "./AlterBanner";
+import Banner from "./MailingListBanner";
 
 /**
  * Props to provide to the site
@@ -89,7 +90,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 
 		// const response: AlertResponce = await baseResponse.json();
 
-		const response = dummyAlert;
+		const response = KECHBAlerts;
 
 		this.setState({
 			alert: response,
@@ -250,7 +251,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				<>
 					<h2>It is neither Week A nor B.</h2>
 					<h3>This means it&#39;s probably a holiday.</h3>
-					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>events</div></Button>
+					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(80)}><div>events</div></Button>
 					<h5>If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
 				</>
 			);
@@ -262,10 +263,10 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					{/*{this.state.alert.showAlert ? <div className="mobile" style={{ height: 144 }} /> : null}*/}
 					<h2 className="desktop">{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="desktop">Week {this.state.week}</h1>
-					<h2 className="mobile">{this.state.isWeekend ? "Next week will be" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
+					<h2 className="mobile">{this.state.isWeekend ? "Next week will be week" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="mobile">{this.state.week}</h1>
 					<h4>More coming soon...</h4>
-					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}>events</Button>
+					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(80)}>events</Button>
 				</>
 			);
 		}
@@ -279,7 +280,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
 					}
 				</div>
-
+				<Banner />
 				<EventsList eventData={this.state.eventData} />
 			</>
 		);
