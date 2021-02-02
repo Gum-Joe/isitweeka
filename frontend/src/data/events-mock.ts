@@ -5,7 +5,7 @@
 
 import { EventData, EventTypes } from "../components/EventsList";
 
-const events: EventData = {
+export const KECHBEvents: EventData = {
 	events: [
 		{
 			title: "Would I Lie To You?",
@@ -36,6 +36,16 @@ const events: EventData = {
 		},
 		{
 			eventType: EventTypes.HOUSE,
+			title: "House Cross-Country",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Autumn 2020",
+			state: "ongoing",
+			currentVictor: "Ongoing",
+			//description: "House Touch Rugby",
+			backgroundColor: "#5E957C",
+		},
+		{
+			eventType: EventTypes.HOUSE,
 			title: "House Touch Rugby",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
 			dateTime: "Autumn 2020",
@@ -49,4 +59,7 @@ const events: EventData = {
 	generatedAt: "0"
 };
 
-export default events;
+export const KECHGEvents = {
+	events: [],
+	generatedAt: "0",
+};

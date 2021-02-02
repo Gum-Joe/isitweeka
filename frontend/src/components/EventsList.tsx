@@ -56,7 +56,7 @@ export interface EventItemHouse extends BaseEventItem {
 	/** String time of event. Either a term (e.g. "Autumn"), date */
 	dateTime: string;
 	state: "todo" | "ongoing" | "done";
-	currentVictor: string;
+	currentVictor?: string;
 }
 
 /*export interface EventItem {
@@ -119,9 +119,13 @@ export default class EventsList extends Component<EventsListProps> {
 				{/* TODO: Sort out back button for mobile */}
 				<h2 className="desktop"><button onClick={scrollUp} className="back" /> Upcoming Events</h2>
 				<div className="events-list">
-					{this.props.eventData.events.filter(theEvent => theEvent.hidden !== true).map((theEvent, index) => (
+					
+					{this.props.eventData.events.length > 0 ? this.props.eventData.events.filter(theEvent => theEvent.hidden !== true).map((theEvent, index) => (
 						<EventRow key={index} event={theEvent} />
-					))}
+					)) :
+						<h1>There are no events.</h1>
+					}
+
 					{/*<div className="events-row">*/}
 					{/*	<div style={{ ...baseEventImageStyle }}>*/}
 					{/*	  <h4>[IMAGE SET AS BACKGROUND OF THIS DIV]</h4>*/}

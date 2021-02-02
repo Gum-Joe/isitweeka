@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import EventsList, { EventData } from "./EventsList";
 import Button from "./Button.Forward";
-import dummyResponse from "../data/events-mock";
 import { GregorianDay } from "../utils/constants";
 import { getScrollDownWithAdditional } from "../utils/scroll";
 import * as ical from "ical";
@@ -18,6 +17,8 @@ export interface SiteProps {
 	calendarURL: string;
 	/** Day of the Week A/B event that marks a week as being A/B, 0-6, where 0 is Sunday */
 	weekMarkerDate: GregorianDay;
+	/** Events data - eventually replaced with state */
+	eventsFetcher: () => Promise<EventData>;
 }
 
 const baseEventImageStyle = {
@@ -100,7 +101,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	async fetchEvents() {
 		// TODO: Add real fetch logic, likely based on an inputted URL
 		this.setState({
-			eventData: dummyResponse,
+			eventData: await this.props.eventsFetcher(),
 		});
 	}
 
@@ -251,7 +252,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				<>
 					<h2>It is neither Week A nor B.</h2>
 					<h3>This means it&#39;s probably a holiday.</h3>
-					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(80)}><div>events</div></Button>
+					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>events</div></Button>
 					<h5>If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
 				</>
 			);
@@ -266,7 +267,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be week" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="mobile">{this.state.week}</h1>
 					<h4>More coming soon...</h4>
-					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(80)}>events</Button>
+					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}>events</Button>
 				</>
 			);
 		}

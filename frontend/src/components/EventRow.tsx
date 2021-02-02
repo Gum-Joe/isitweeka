@@ -89,7 +89,7 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
 							<h4 className="no-margin">Date: {this.props.event.dateTime}</h4>
 							{
 								// Only show current victor if event is ongoing or done
-								this.props.event.state !== "todo" ?
+								this.props.event.state !== "todo" && typeof this.props.event.currentVictor !== "undefined" ?
 									<h4 className="no-margin">{this.props.event.state !== "done" ? "Current " : ""}Victor: {this.props.event.currentVictor}</h4>
 									: null
 							}
