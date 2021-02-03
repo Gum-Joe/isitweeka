@@ -8,6 +8,7 @@ import { Navbar } from "react-bootstrap";
 import Cookies from "js-cookie";
 import { COOKIE_SCHOOL_PREFERENCE } from "./utils/constants";
 import { KECHBEvents, KECHGEvents } from "./data/events-mock";
+import Footer from "./components/Footer";
 
 /*function App() {
   return (
@@ -94,6 +95,8 @@ class App extends Component<Record<string, never>> {
 						),
 					},
 				]} onTabChange={this.updateCookie} initialTab={(() => Cookies.getJSON(COOKIE_SCHOOL_PREFERENCE)?.tabIndex || 0)()}/>
+
+				<Footer />
 
 				{/* Cookie consent */}
 				<Navbar fixed="bottom">

@@ -10,3 +10,5 @@ const Footer: React.FC = (props) => {
 		</div>
 	);
 };
+
+export default Footer;
