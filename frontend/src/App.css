@@ -624,9 +624,10 @@ a {
 	.mobile-bg-cover {
 		position: fixed;
 		width: 100vw;
-		height: 1000%;
+		height: 100vh;
 		background-color: #000;
 		opacity: 0.8;
+		top: 0;
 	}
 }
 @media screen and (min-width: 1050px) {
