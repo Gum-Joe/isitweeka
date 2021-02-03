@@ -885,7 +885,7 @@ a {
 	text-align: center;
 	display: flex;
 	flex-direction: column;
-	gap: 0.9em;
+	gap: 1em;
 	font-weight: 400;
 	padding-bottom: 30px;
 }
@@ -919,7 +919,7 @@ a {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
-	margin-top: 5px;
+	margin-top: 3px;
 }
 
 .footer .container-credits h4 {
