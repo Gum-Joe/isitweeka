@@ -94,7 +94,7 @@ button {
 	color: inherit;
 	font-size: 1.5em;
 	font-weight: 700;
-	line-height: 26px;
+	/*line-height: 26px;*/
 	text-transform: lowercase;
 	text-decoration: none;
 	transition-duration: 100ms;
@@ -552,6 +552,7 @@ button.back::after {
 	--great-northern-green: #00A550;
 	--north-western-blue: #080028;
 	--great-northern-blue: #0099FF;
+	--alt-blue: #0284db;
 
 	--an-orange: #F4511E;
 }
@@ -648,7 +649,7 @@ a {
 }
 
 .privacy-policy-link {
-	color: #0284db;
+	color: var(--alt-blue);
 	text-decoration: underline;
 	margin: auto;
 	font-size: 0.87em;
@@ -877,4 +878,36 @@ a {
 	.not-x {
 		display: none!important;
 	}
+}
+
+/** Footer */
+.footer {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 0.9em;
+	font-weight: 500;
+}
+
+.footer ul {
+	list-style: none;
+}
+
+.footer a:hover {
+	color: var(--great-northern-blue);
+}
+
+.footer #feedback-buttom {
+	margin-top: 25px;
+}
+
+.footer #feedback-buttom:hover {
+	color: #fff;
+}
+
+.footer .outbound-links {
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+	justify-content: center;
 }
