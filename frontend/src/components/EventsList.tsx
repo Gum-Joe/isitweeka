@@ -117,7 +117,7 @@ export default class EventsList extends Component<EventsListProps> {
 		return (
 			<div className="isitweeka events">
 				{/* TODO: Sort out back button for mobile */}
-				<h2 className="desktop"><button onClick={scrollUp} className="back" /> Upcoming Events</h2>
+				<h2 className=""><button onClick={scrollUp} className="back" /> Upcoming Events</h2>
 				<div className="events-list">
 					
 					{this.props.eventData.events.length > 0 ? this.props.eventData.events.filter(theEvent => theEvent.hidden !== true).map((theEvent, index) => (

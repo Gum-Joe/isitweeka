@@ -94,7 +94,7 @@ button {
 	color: inherit;
 	font-size: 1.5em;
 	font-weight: 700;
-	line-height: 26px;
+	/*line-height: 26px;*/
 	text-transform: lowercase;
 	text-decoration: none;
 	transition-duration: 100ms;
@@ -406,10 +406,10 @@ button.back::after {
 }
 
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
 	.events-row {
 		flex-direction: column;
-		min-height: 600px !important;
+		height: 85vh;
 	}
 
 	.r-banner-container {
@@ -420,6 +420,17 @@ button.back::after {
 		animation-delay: 100ms;
 		padding: 0 10px;
 		/*margin-top: 10px;*/
+	}
+
+	/* HACK */
+	#root {
+		overflow-x: hidden;
+	}
+}
+
+@media screen and (min-width: 500px) {
+	.events-row a {
+		margin-bottom: 25px;
 	}
 }
 
@@ -492,10 +503,10 @@ button.back::after {
 }
 
 @media screen and (max-width: 700px) {
-	.events-row {
+	/*.events-row {
 		flex-direction: column;
-		min-height: 480px;
-	}
+		height: 480px;
+	}*/
 
 	.events-list {
 		height: unset;
@@ -535,6 +546,12 @@ button.back::after {
 	.mobile {
 		display: inline-block !important;
 	}
+
+	/* Socials fixes */
+	.isitweeka-jumbotron .social-container {
+		justify-content: center !important;
+		transform: scale(0.8) translate(0, 60px) !important;
+	}
 }
 
 :root {
@@ -552,6 +569,7 @@ button.back::after {
 	--great-northern-green: #00A550;
 	--north-western-blue: #080028;
 	--great-northern-blue: #0099FF;
+	--alt-blue: #0284db;
 
 	--an-orange: #F4511E;
 }
@@ -566,7 +584,7 @@ a {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	height: 100vh;
+	min-height: 100vh;
 }
 
 .r-tab-row {
@@ -612,13 +630,10 @@ a {
 	.mobile-bg-cover {
 		position: fixed;
 		width: 100vw;
-		height: 1000%;
+		height: 100vh;
 		background-color: #000;
 		opacity: 0.8;
-	}
-	/** Fix the issue with the hright on .isitweeka */
-	.isitweeka {
-		height: 100vh;
+		top: 0;
 	}
 }
 @media screen and (min-width: 1050px) {
@@ -648,7 +663,7 @@ a {
 }
 
 .privacy-policy-link {
-	color: #0284db;
+	color: var(--alt-blue);
 	text-decoration: underline;
 	margin: auto;
 	font-size: 0.87em;
@@ -876,5 +891,116 @@ a {
 @media screen and (max-aspect-ratio: 1/2) {
 	.not-x {
 		display: none!important;
+	}
+}
+/* Socials */
+.social-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 1.8em;
+}
+
+.social-container .instagram {
+	background-color: #F00075;
+}
+
+.social-container .twitter {
+	background-color: #1C9AEF;
+}
+
+.social-container div {
+	border-radius: 100px;
+	width: max(3.5em, 32px);
+	height: max(3.5em, 32px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.social-container div svg {
+	margin: 0 auto;
+  display: block;
+}
+
+.isitweeka-jumbotron .social-container {
+	transform: translate(0, 60px);
+	justify-content: left;
+}
+
+/** Footer */
+.footer {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	font-weight: 400;
+	padding-bottom: 30px;
+}
+
+.footer ul {
+	list-style: none;
+	margin: 0;
+  padding: 0;
+}
+
+.footer a:hover {
+	color: var(--great-northern-blue);
+}
+
+.footer #feedback-buttom {
+	margin-top: 25px;
+}
+
+.footer #feedback-buttom:hover {
+	color: #fff;
+}
+
+.footer .outbound-links {
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 1em;
+}
+
+.footer .container-credits {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin-top: 3px;
+}
+
+.footer .container-credits h4 {
+	margin: 0.75em 0;
+}
+
+.footer .container-credits ul {
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+
+/* Responsive design */
+@media screen and (max-width: 600px) {
+	.footer {
+		padding-left: 5vw;
+		padding-right: 5vw;
+	}
+
+	.footer .container-credits {
+		flex-direction: column;
+		justify-content: center;
+		gap: 25px;
+		margin-top: 10px;
+	}
+
+	.footer .container-credits ul {
+		flex-direction: row;
+		gap: 1.2em;
+		justify-content: center;
 	}
 }

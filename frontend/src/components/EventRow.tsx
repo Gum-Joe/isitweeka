@@ -68,7 +68,7 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
 							<h3>{this.props.event.title}</h3>
 							{typeof this.props.event.description !== "undefined" ? <h4 className="no-margin">{this.props.event.description}</h4> : null}
 							<h4 className="no-margin">Target: {this.props.event.target}</h4>
-							<a href={this.props.event.url}>
+							<a target="__blanK" href={this.props.event.url}>
 								<Button onClick={reportOutboundButtonClick} buttonType={this.props.event.cta?.type || "underline"} style={{ ...this.props.event.cta }}>Donate Now</Button>
 							</a>
 						</div>
@@ -99,7 +99,7 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
 
 			default:
 				return (
-					<h1>MEAP.</h1>
+					<h1>There&amp;s been an error - an invalid event type was provided. Please file an issue on GitHub (see footer).</h1>
 				);
 				break;
 		}
