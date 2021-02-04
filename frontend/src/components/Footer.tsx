@@ -7,6 +7,7 @@ import Button from "./Button.Forward";
 import { faGithub, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Socials from "./Socials";
+import { version } from "../../package.json";
 
 const Footer: React.FC = () => {
 	return (
@@ -15,7 +16,8 @@ const Footer: React.FC = () => {
 
 			<p>
 				Created by Kishan Sambhi &amp; Madeline Hart.<br />
-				&#169; {(new Date()).getFullYear()}, source available on GitHub under the MIT license.
+				&#169; {(new Date()).getFullYear()}, source available on GitHub under the MIT license.<br /><br />
+				Version {version}
 			</p>
 
 			<Socials />
