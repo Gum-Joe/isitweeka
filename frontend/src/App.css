@@ -546,6 +546,12 @@ button.back::after {
 	.mobile {
 		display: inline-block !important;
 	}
+
+	/* Socials fixes */
+	.isitweeka-jumbotron .social-container {
+		justify-content: center !important;
+		transform: scale(0.8) translate(0, 60px) !important;
+	}
 }
 
 :root {
@@ -915,6 +921,11 @@ a {
 .social-container div svg {
 	margin: 0 auto;
   display: block;
+}
+
+.isitweeka-jumbotron .social-container {
+	transform: translate(0, 60px);
+	justify-content: left;
 }
 
 /** Footer */

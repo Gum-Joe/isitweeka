@@ -8,6 +8,7 @@ import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 import { KECHBAlerts } from "../data/alerts";
 import AlertBanner from "./AlterBanner";
 import Banner from "./MailingListBanner";
+import Socials from "./Socials";
 
 /**
  * Props to provide to the site
@@ -267,7 +268,8 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be week" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="mobile">{this.state.week}</h1>
 					<h4>More coming soon...</h4>
-					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}>events</Button>
+					<Button style={{ marginRight: "auto", marginTop: 25 }} className="forward" onClick={getScrollDownWithAdditional(0)}>events</Button>
+					<Socials />
 				</>
 			);
 		}
