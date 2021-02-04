@@ -406,7 +406,7 @@ button.back::after {
 }
 
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
 	.events-row {
 		flex-direction: column;
 		height: 85vh;
@@ -921,6 +921,7 @@ a {
 	flex-direction: row;
 	gap: 1em;
 	justify-content: center;
+	flex-wrap: wrap;
 }
 
 .footer .container-credits {
@@ -939,4 +940,26 @@ a {
 	flex-direction: row;
 	gap: 1em;
 	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+
+/* Responsive design */
+@media screen and (max-width: 600px) {
+	.footer {
+		padding-left: 5vw;
+		padding-right: 5vw;
+	}
+
+	.footer .container-credits {
+		flex-direction: column;
+		justify-content: center;
+		gap: 25px;
+		margin-top: 10px;
+	}
+
+	.footer .container-credits ul {
+		flex-direction: row;
+		gap: 1.2em;
+		justify-content: center;
+	}
 }
