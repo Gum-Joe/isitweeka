@@ -896,17 +896,17 @@ a {
 }
 
 .social-container .instagram {
-	background-color: #F10DA2;
+	background-color: #F00075;
 }
 
 .social-container .twitter {
-	background-color: #F10DA2;
+	background-color: #1C9AEF;
 }
 
 .social-container div {
 	border-radius: 100px;
-	width: 3.5em;
-	height: 3.5em;
+	width: max(3.5em, 32px);
+	height: max(3.5em, 32px);
 	display: flex;
 	align-items: center;
 	justify-content: center;
