@@ -26,7 +26,7 @@ export const KECHBEvents: EventData = {
 			headerURL: "https://youngminds.org.uk/assets/logos/youngminds-logo.svg",
 			backgroundColor: "#ffffff",
 			eventType: EventTypes.FUNDRIASER,
-			target: "£1500",
+			target: "£2000",
 			textColour: "#000000",
 			cta: {
 				color: "#fff",
