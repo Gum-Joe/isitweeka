@@ -8,8 +8,8 @@ import React from "react";
 const Socials: React.FC = (props) => {
 	return (
 		<div className="social-container">
-			<div className="instagram"><FontAwesomeIcon size={"2x"} icon={faInstagram} /></div>
-			<div className="twitter"><FontAwesomeIcon size={"2x"} icon={faTwitter} /></div>
+			<a href="https://instagram.com/isitweeka" target="__blank" className="instagram"><FontAwesomeIcon size={"2x"} icon={faInstagram} /></a>
+			<a href="https://twitter.com/IsItWeekA" target="__blank" className="twitter"><FontAwesomeIcon size={"2x"} icon={faTwitter} /></a>
 		</div>
 	);
 };

@@ -905,20 +905,32 @@ a {
 	background-color: #F00075;
 }
 
+.social-container .instagram:hover {
+	background-color: #b10759;
+	color: #fff;
+}
+
 .social-container .twitter {
 	background-color: #1C9AEF;
 }
 
-.social-container div {
+.social-container .twitter:hover {
+	background-color: #187abb;
+	color: #fff;
+}
+
+.social-container a {
 	border-radius: 100px;
 	width: max(3.5em, 32px);
 	height: max(3.5em, 32px);
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	color: #fff;
 }
 
-.social-container div svg {
+
+.social-container a svg {
 	margin: 0 auto;
   display: block;
 }
