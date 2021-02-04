@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "./Button.Forward";
 import { faGithub, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import Socials from "./Socials";
 
 const Footer: React.FC = () => {
 	return (
@@ -16,6 +17,8 @@ const Footer: React.FC = () => {
 				Created by Kishan Sambhi &amp; Madeline Hart.<br />
 				&#169; {(new Date()).getFullYear()}, source available on GitHub under the MIT license.
 			</p>
+
+			<Socials />
 
 			<div className="outbound-links">
 				<a target="__blank" href="https://github.com/Gum-Joe/isitweeka">

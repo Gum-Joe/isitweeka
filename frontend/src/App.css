@@ -887,6 +887,35 @@ a {
 		display: none!important;
 	}
 }
+/* Socials */
+.social-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 1.8em;
+}
+
+.social-container .instagram {
+	background-color: #F10DA2;
+}
+
+.social-container .twitter {
+	background-color: #F10DA2;
+}
+
+.social-container div {
+	border-radius: 100px;
+	width: 3.5em;
+	height: 3.5em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.social-container div svg {
+	margin: 0 auto;
+  display: block;
+}
 
 /** Footer */
 .footer {
@@ -922,6 +951,7 @@ a {
 	gap: 1em;
 	justify-content: center;
 	flex-wrap: wrap;
+	margin-top: 1em;
 }
 
 .footer .container-credits {
