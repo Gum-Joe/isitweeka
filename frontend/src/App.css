@@ -527,7 +527,7 @@ button.back::after {
 
 	#no-events-header {
 		justify-content: center;
-		font-size: 6em;
+		font-size: 4em;
 		display: flex !important;
 	}
 
