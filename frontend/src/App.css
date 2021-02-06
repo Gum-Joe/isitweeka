@@ -525,6 +525,12 @@ button.back::after {
 		display: flex !important;
 	}
 
+	#no-events-header {
+		justify-content: center;
+		font-size: 6em;
+		display: flex !important;
+	}
+
 	.isitweeka > h2.mobile {
 		justify-content: center;
 		font-size: 3em;

@@ -123,7 +123,7 @@ export default class EventsList extends Component<EventsListProps> {
 					{this.props.eventData.events.length > 0 ? this.props.eventData.events.filter(theEvent => theEvent.hidden !== true).map((theEvent, index) => (
 						<EventRow key={index} event={theEvent} />
 					)) :
-						<h1>There are no events.</h1>
+						<h1 id="no-events-header">There are no events.</h1>
 					}
 
 					{/*<div className="events-row">*/}
