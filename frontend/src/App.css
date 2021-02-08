@@ -809,7 +809,7 @@ a {
 }
 
 .sosumi-mobile h3 {
-	/* Ensure tnis looks nice on iPhone 5S -> iPhone X */ 
+	/* Ensure tnis looks nice on iPhone 5S -> iPhone X */
 	font-size: 4vh;
 	box-sizing: border-box;
 	padding: 0 5vw;
@@ -853,7 +853,7 @@ a {
 
 /** Dismiss styles for modal */
 .sosumi-mobile .sosumi-dismiss {
-	position: absolute;	
+	position: absolute;
 	right: 0.8em;
 	top: 0.8em;
 	margin: 0;
@@ -967,7 +967,7 @@ a {
 }
 
 .footer #feedback-buttom {
-	margin-top: 25px;
+	margin: 25px auto 0;
 }
 
 .footer #feedback-buttom:hover {
