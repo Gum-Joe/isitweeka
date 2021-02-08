@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import gaSetState, { GA_DISABLE_COOKIE_STR, GA_PROPERTY } from "./utils/gAnalytics";
+import gaSetState from "./utils/gAnalytics";
 import "./App.css";
 import CookieConsent from "react-cookie-consent";
-import { EventData } from "./components/EventsList";
-import dummyResponse from "./events.json";
 import SiteContainer from "./components/SiteContainer";
 import { TabContainer } from "./components/Tabs";
 import { Navbar } from "react-bootstrap";
 import Cookies from "js-cookie";
 import { COOKIE_SCHOOL_PREFERENCE } from "./utils/constants";
+import { KECHBEvents, KECHGEvents } from "./data/events-mock";
+import Footer from "./components/Footer";
 
 /*function App() {
   return (
@@ -31,31 +31,10 @@ import { COOKIE_SCHOOL_PREFERENCE } from "./utils/constants";
   );
 }*/
 
-interface TheState {
-  eventData: EventData;
-}
-
-class App extends Component<Record<string, never>, TheState> {
+class App extends Component<Record<string, never>> {
 
 	constructor(props: Record<string, never>) {
 		super(props);
-		this.state = {
-			eventData: {
-				events: [],
-				generatedAt: "",
-			}
-		};
-	}
-
-	componentDidMount() {
-		this.fetchEvents();
-	}
-
-	async fetchEvents() {
-		// TODO: Add real fetch logic
-		this.setState({
-			eventData: dummyResponse,
-		});
 	}
 
 	/**
@@ -97,6 +76,9 @@ class App extends Component<Record<string, never>, TheState> {
 							<SiteContainer
 								calendarURL="/cal/KECHB/basic.ics"
 								weekMarkerDate={1}
+								eventsFetcher={
+									async () => KECHBEvents
+								}
 							/>
 						),
 					},
@@ -106,28 +88,33 @@ class App extends Component<Record<string, never>, TheState> {
 							<SiteContainer
 								calendarURL="/cal/KECHG/basic.ics"
 								weekMarkerDate={0}
+								eventsFetcher={
+									async () => KECHGEvents
+								}
 							/>
 						),
 					},
 				]} onTabChange={this.updateCookie} initialTab={(() => Cookies.getJSON(COOKIE_SCHOOL_PREFERENCE)?.tabIndex || 0)()}/>
 
+				<Footer />
+
 				{/* Cookie consent */}
 				<Navbar fixed="bottom">
-				<CookieConsent
-					enableDeclineButton
+					<CookieConsent
+						enableDeclineButton
 						flipButtons
-					buttonText="I understand"
-					declineButtonText="No thanks"
-					onAccept={
-						() => { gaSetState(false); window.location.reload(); }
-					}
-					onDecline={
-						() => { gaSetState(true); window.location.reload(); }
-					}
-				>
+						buttonText="I understand"
+						declineButtonText="No thanks"
+						onAccept={
+							() => { gaSetState(false); window.location.reload(); }
+						}
+						onDecline={
+							() => { gaSetState(true); window.location.reload(); }
+						}
+					>
 					This website uses cookies for preferences and analytics (via Google Analytics).
 						<a href={process.env.PUBLIC_URL + "/privacy.html"}> View Privacy Policy</a>
-				</CookieConsent>
+					</CookieConsent>
 				</Navbar>
 			</div>
 		);
