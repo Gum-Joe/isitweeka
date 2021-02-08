@@ -53,11 +53,11 @@ const Footer: React.FC = () => {
 					<h4>Find Madeline here:</h4>
 					<ul>
 						<a target="__blank" href="https://github.com/ILikeTeaALot"><li><FontAwesomeIcon icon={faGithub} /> GitHub</li></a>
-						<a target="__blank" href="https://rykan.net"><li>rykan.net</li></a>
+						<a target="__blank" href="https://www.rykan.net"><li>rykan.net</li></a>
 					</ul>
-				</div>			
+				</div>
 			</div>
-		
+
 		</div>
 	);
 };
