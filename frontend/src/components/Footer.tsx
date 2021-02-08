@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
 					<u>Feature Tracker</u>
 				</a>
 				<a target="__blank" href="mailto:info@isitweeka.com">
-					<FontAwesomeIcon icon={faEnvelope} />&nbsp;
+					<FontAwesomeIcon icon={faAt} />&nbsp;
 					<u>Email us</u>
 				</a>
 				<a target="__blank" href="/privacy.html"><u>Privacy Policy</u></a>
@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
 						<a target="__blank" href="https://twitter.com/k_sam_mighty"><li><FontAwesomeIcon icon={faTwitter} /> Twitter</li></a>
 						<a target="__blank" href="https://instagram.com/k_sam_mighty"><li><FontAwesomeIcon icon={faInstagram} /> Instagram</li></a>
 						{/* NOTE: Change to a personal e-mail when leaving school */}
-						<a target="__blank" href="mailto:15Sambhi614@camphillboys.bham.sch.uk"><li><FontAwesomeIcon icon={faEnvelope} /> Email</li></a>
+						<a target="__blank" href="mailto:15Sambhi614@camphillboys.bham.sch.uk"><li><FontAwesomeIcon icon={faAt} /> Email</li></a>
 					</ul>
 				</div>
 
