@@ -137,7 +137,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	 */
 	forwardOrRewindToDay(d: Date, goTo: GregorianDay, forwardList: number[]) {
 		const dhere = new Date(d);
-		const day = dhere.getDay();
+		const day = dhere.getUTCDay();
 		// Sunday is day 0
 		// Sat is Day 6
 		// If Sun or Sat go to next week
@@ -148,8 +148,8 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		 * - Go forward by goTo days to the day we want (works as goTo is effectivly a "Sunday offset")
 		 * - BUT if the current date is in the forward list, add 7 as well to go forward 1 week
 		 */
-		const diff = dhere.getDate() - day + goTo + (forwardList.includes(day) ? 7 : 0); // adjust when day is saturday -> add 6 to bring us back to Saturday, then add 2 to go to Monday
-		return new Date(dhere.setDate(diff));
+		const diff = dhere.getUTCDate() - day + goTo + (forwardList.includes(day) ? 7 : 0); // adjust when day is saturday -> add 6 to bring us back to Saturday, then add 2 to go to Monday
+		return new Date(dhere.setUTCDate(diff));
 	}
 
 	/**
@@ -164,11 +164,11 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		const weekStart = this.forwardOrRewindToDay(inputDate, this.props.weekMarkerDate, [0, 6]);
 		weekStart.setUTCHours(0, 0, 0, 0); // Set to start of day
 		const weekEnd = new Date(weekStart);
-		weekEnd.setDate(weekEnd.getDate() + 1);
+		weekEnd.setUTCDate(weekEnd.getUTCDate() + 1);
 		weekEnd.setUTCHours(0, 0, 0, 0); // Set to start of day
 
 		// Tell us if weekend!
-		const dayNow = inputDate.getDay();
+		const dayNow = inputDate.getUTCDay();
 		if (dayNow === 6 || dayNow === 0) { // 0 is Sunday, 6 is Saturday
 			this.setState({
 				isWeekend: true,
