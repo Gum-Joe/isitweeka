@@ -5,7 +5,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "./Button.Forward";
 import { faGithub, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faAt, faLink } from "@fortawesome/free-solid-svg-icons";
 import Socials from "./Socials";
 import { version } from "../../package.json";
 
@@ -53,7 +53,8 @@ const Footer: React.FC = () => {
 					<h4>Find Madeline here:</h4>
 					<ul>
 						<a target="__blank" href="https://github.com/ILikeTeaALot"><li><FontAwesomeIcon icon={faGithub} /> GitHub</li></a>
-						<a target="__blank" href="https://www.rykan.net"><li>rykan.net</li></a>
+						<a target="__blank" href="https://www.rykan.net"><li><FontAwesomeIcon icon={faLink} /> rykan.net</li></a>
+						<a target="__blank" href="mailto:madeline@rykan.net"><li><FontAwesomeIcon icon={faAt} /> Email</li></a>
 					</ul>
 				</div>
 			</div>
