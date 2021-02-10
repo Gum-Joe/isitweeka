@@ -64,6 +64,8 @@ const AlertBanner: React.FC<AlertBannerProps> = (props) => {
 		});
 	}
 
+	const showExpandButtonMobile = props.alert.message.length > 30 && !expanded;
+
 	return (
 		<>
 			<div className="r-banner-container" style={{
@@ -75,16 +77,16 @@ const AlertBanner: React.FC<AlertBannerProps> = (props) => {
 					className={`${getClassNameFromAlertLevel(props.alert.alertLevel)} r-banner`}>
 					<h3 className="desktop">
 						{props.alert.message}{/*&nbsp;*/}
-						{typeof props.alert.linkTo !== "undefined" ?
+						{props.alert.linkTo ?
 							<a className="r-banner-link" onClick={reportAlertButtonClick}>{props.alert.linkText || "View More"}</a>
 							: null
 						}
 					</h3>
 
 					<h3 className="mobile">
-						<span>{props.alert.message.length > 30 && !expanded ? "New Alert(s)" : props.alert.message}</span>&nbsp;
+						<span>{showExpandButtonMobile ? "New Alert(s)" : props.alert.message}</span>&nbsp;
 						<br />
-						{typeof props.alert.linkTo !== "undefined" ?
+						{showExpandButtonMobile ?
 							<a className="r-banner-link" onClick={reportAlertButtonClick}>
 								<span>{expanded ? "View" : "Expand"}</span>
 							</a> : null}
