@@ -33,7 +33,9 @@ export interface BaseEventItem {
 		backgroundColor?: string;
 		/** underline: button has an underline. fill: button has a fill instead */
 		type: "underline" | "fill";
-	}
+	},
+	/* String representation of the date/time of event */
+	when?: string,
 }
 
 export interface EventItemFundraiser extends BaseEventItem {
@@ -45,7 +47,8 @@ export interface EventItemFundraiser extends BaseEventItem {
 export interface EventItemCharity extends BaseEventItem {
 	eventType: EventTypes.CHARITY | "charity";
 	url: string;
-	ticketsSale: {
+	// Can now also use for regular, non-ticket events
+	ticketsSale?: {
 		start: string;
 		end?: string;
 	};

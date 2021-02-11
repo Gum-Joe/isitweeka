@@ -42,15 +42,21 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
 						</div>
 						<div>
 							<h3>{this.props.event.title}</h3>
+							{typeof this.props.event.when !== "undefined" ? <h4 className="no-margin">When? {this.props.event.when}</h4> : null}
 							{typeof this.props.event.description !== "undefined" ? <h4 className="no-margin">{this.props.event.description}</h4> : null}
-							{new Date(this.props.event.ticketsSale.start).valueOf() < Date.now() ?
-								<a href={this.props.event.url}>
-									<Button onClick={reportOutboundButtonClick} style={{ ...this.props.event.cta }}>Buy Tickets</Button>
-								</a> : null
+							{
+								this.props.event.ticketsSale &&
+									new Date(this.props.event.ticketsSale.start).valueOf() < Date.now() ?
+									<a href={this.props.event.url}>
+										<Button onClick={reportOutboundButtonClick} style={{ ...this.props.event.cta }}>Buy Tickets</Button>
+									</a> : null
 							}
-							{new Date(this.props.event.ticketsSale.start).valueOf() > Date.now() ?
-								<h4>Tickets on sale {this.props.event.ticketsSale.start}</h4> : null
+							{
+								this.props.event.ticketsSale &&
+									new Date(this.props.event.ticketsSale.start).valueOf() > Date.now() ?
+									<h4>Tickets on sale {this.props.event.ticketsSale.start}</h4> : null
 							}
+							
 							
 						</div>
 					</div>
