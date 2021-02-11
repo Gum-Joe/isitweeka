@@ -78,7 +78,7 @@ const AlertBanner: React.FC<AlertBannerProps> = (props) => {
 					<h3 className="desktop">
 						{props.alert.message}{/*&nbsp;*/}
 						{props.alert.linkTo ?
-							<a className="r-banner-link" href={props.alert.linkTo} onClick={reportAlertButtonClick}>{props.alert.linkText || "View More"}</a>
+							<a className="r-banner-link" href={props.alert.linkTo} target="__blank" onClick={reportAlertButtonClick}>{props.alert.linkText || "View More"}</a>
 							: null
 						}
 					</h3>
@@ -87,7 +87,7 @@ const AlertBanner: React.FC<AlertBannerProps> = (props) => {
 						<span>{showExpandButtonMobile ? "New Alert(s)" : props.alert.message}</span>&nbsp;
 						<br />
 						{showExpandButtonMobile ?
-							<a className="r-banner-link" href={expanded ? props.alert.linkTo : undefined} onClick={reportAlertButtonClick}>
+							<a className="r-banner-link" href={expanded ? props.alert.linkTo : undefined} target="__blank" onClick={reportAlertButtonClick}>
 								<span>{expanded ? "View" : "Expand"}</span>
 							</a> : null}
 					</h3>
