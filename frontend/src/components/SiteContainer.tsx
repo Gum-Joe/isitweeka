@@ -255,6 +255,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h3>This means it&#39;s probably a holiday.</h3>
 					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>events</div></Button>
 					<h5>If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
+					<Socials />
 				</>
 			);
 		} else {
