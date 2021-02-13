@@ -907,7 +907,17 @@ a {
 	gap: 1.8em;
 }
 
-.social-container .instagram {
+.social-container a {
+	background: none;
+	color: #fff;
+	border: solid 2px #fff;
+}
+
+.social-container a:hover {
+	filter: brightness(60%);
+}
+
+/*.social-container .instagram {
 	background-color: #F00075;
 }
 
@@ -923,7 +933,7 @@ a {
 .social-container .twitter:hover {
 	background-color: #187abb;
 	color: #fff;
-}
+}*/
 
 .social-container a {
 	border-radius: 100px;
