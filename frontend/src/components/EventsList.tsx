@@ -3,12 +3,27 @@ import { scrollUp, scrollDown } from "../utils/scroll";
 import EventRow from "./EventRow";
 
 /**
+ * Here's how it works:
+ * - Current we just deploy a static JSON file with events and alerts in.
+ * - These (and by extension the API) are currently described in terms of TS interfaces below.
+ * 
+ * Essentially there's a base event type, which has an eventType field
+ * which TS then uses to infer the extra props for different event types (fundraiser, charity event and house event)
+ * that are shown as the interfaces below)
+ * 
+ * @packageDocumentation
+ */
+
+/**
  * Used to distinguish between the different type of event we can display.
  */
 export enum EventTypes {
-	HOUSE = "house", // house event
-	CHARITY = "charity", // charity event
-	FUNDRIASER = "fundraiser" // cahrity fundraiser
+	/** house event */
+	HOUSE = "house",
+	/** charity event */
+	CHARITY = "charity", 
+	/** charity fundraiser */
+	FUNDRIASER = "fundraiser"
 } 
 
 export enum KECHBHouses {
@@ -18,6 +33,7 @@ export enum KECHBHouses {
 	Tudor = "Tudor"
 }
 
+/** Base event intergace - all events need to have these properties */
 export interface BaseEventItem {
 	title: string;
 	description?: string;
@@ -38,12 +54,20 @@ export interface BaseEventItem {
 	when?: string,
 }
 
+/**
+ * Props specific to fundraisers.
+ * For {@link EventTypes.FUNDRIASER}
+*/
 export interface EventItemFundraiser extends BaseEventItem {
 	eventType: EventTypes.FUNDRIASER | "fundraiser";
 	url: string;
 	target: string;
 }
 
+/**
+ * Props specific to charity events.
+ * For {@link EventTypes.CHARITY}
+*/
 export interface EventItemCharity extends BaseEventItem {
 	eventType: EventTypes.CHARITY | "charity";
 	url: string;
@@ -54,6 +78,10 @@ export interface EventItemCharity extends BaseEventItem {
 	};
 }
 
+/**
+ * Props specific to house events.
+ * For {@link EventTypes.HOUSE}
+*/
 export interface EventItemHouse extends BaseEventItem {
 	eventType: EventTypes.HOUSE | "house";
 	/** String time of event. Either a term (e.g. "Autumn"), date */
@@ -75,8 +103,16 @@ export interface EventItemHouse extends BaseEventItem {
 	backgroundColor: string;
 }*/
 
+/**
+ * IMPORTANT: Merges the event types into one type.
+ * 
+ * TS type inference then auto-picks the right type based on `eventType` field.
+ */
 export type EventItem = EventItemFundraiser | EventItemCharity | EventItemHouse;
 
+/**
+ * Expected API response
+ */
 export interface EventData {
 	events: Array<EventItem>;
 	generatedAt: string; // Timestamp
