@@ -572,7 +572,8 @@ button.back::after {
 	--midland-red: #DC143C;
 	--south-eastern-yellow: #FECB09;
 	--great-western-green: #013602;
-	--great-northern-green: #00A550;
+	/* Slighty darkened, original was #00A550 */
+	--great-northern-green: rgb(0, 156, 76);
 	--north-western-blue: #080028;
 	--great-northern-blue: #0099FF;
 	--alt-blue: #0284db;
