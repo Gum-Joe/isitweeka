@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 import { COOKIE_SCHOOL_PREFERENCE } from "./utils/constants";
 import { KECHBEvents, KECHGEvents } from "./data/events-mock";
 import Footer from "./components/Footer";
+import { KECHBAlerts, KECHGAlerts } from "./data/alerts";
 
 /*function App() {
   return (
@@ -79,6 +80,9 @@ class App extends Component<Record<string, never>> {
 								eventsFetcher={
 									async () => KECHBEvents
 								}
+								alertsFetcher={
+									async () => KECHBAlerts
+								}
 							/>
 						),
 					},
@@ -90,6 +94,10 @@ class App extends Component<Record<string, never>> {
 								weekMarkerDate={0}
 								eventsFetcher={
 									async () => KECHGEvents
+								}
+
+								alertsFetcher={
+									async () => KECHGAlerts
 								}
 							/>
 						),
