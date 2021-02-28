@@ -373,7 +373,7 @@ button.back::after {
 }
 
 .r-banner-alert-INFO {
-	background-color: var(--great-northern-blue);
+	background-color: var(--french-blue-brighter);
 }
 
 .r-banner-alert-INFO h3 {
@@ -572,9 +572,10 @@ button.back::after {
 	--midland-red: #DC143C;
 	--south-eastern-yellow: #FECB09;
 	--great-western-green: #013602;
-	--great-northern-green: #00A550;
+	/* Slighty darkened, original was #00A550 */
+	--great-northern-green: rgb(0, 156, 76);
 	--north-western-blue: #080028;
-	--great-northern-blue: #0099FF;
+	--french-blue-brighter: #2B69D4;
 	--alt-blue: #0284db;
 
 	--an-orange: #F4511E;
@@ -729,7 +730,7 @@ a {
 }
 
 .sosumi .input-container:focus-within::after {
-	background-color: var(--great-northern-blue);
+	background-color: var(--french-blue-brighter);
 }
 
 /* checkbox wrapper */
@@ -907,7 +908,19 @@ a {
 	gap: 1.8em;
 }
 
-.social-container .instagram {
+.social-container a {
+	background: none;
+	color: #fff;
+	border: solid 2px #fff;
+}
+
+.social-container a:hover {
+	background-color: rgba(255, 255, 255, 0.12);
+	color: #fff !important;
+}
+
+/* Old, colours social icons */
+/*.social-container .instagram {
 	background-color: #F00075;
 }
 
@@ -923,7 +936,7 @@ a {
 .social-container .twitter:hover {
 	background-color: #187abb;
 	color: #fff;
-}
+}*/
 
 .social-container a {
 	border-radius: 100px;
@@ -963,7 +976,7 @@ a {
 }
 
 .footer a:hover {
-	color: var(--great-northern-blue);
+	color: var(--french-blue-brighter);
 }
 
 .footer #feedback-buttom {

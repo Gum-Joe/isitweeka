@@ -46,7 +46,15 @@ interface TheState {
 
 /**
  * Contains the site of isitweeka.com itself.
- * They way, we can easily create variations of it for e.g. different school
+ * They way, we can easily create variations of it for e.g. different school.
+ * 
+ * How calendar loading works:
+ * 1. We have a GitHub Action that every Friday fetches KECHB and KECHG school calendar and uploads it to the repo for deployment.
+ * 2. The site fetches this:
+ * 	1. goes back to the last `weekMarkerDate` (e.g. Monday - {@link SiteProps.weekMarkerDate}),
+ * 		based on the current UTC date.
+ * 		It goes forward to the next `weekMarkerDate` if it is a weekend.
+ * 	2. Sees if a Week A or Week B event is in the calendar on the day. If not, displays a messages saying it's likely a holiday.
  */
 export default class SiteContainer extends Component<SiteProps, TheState> {
 
@@ -154,6 +162,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 
 	/**
 	 * Loads the KECHB calendar, finds the current week, then goes to the Monday of that week and checks for a Week A or Week B event.
+	 * @see SiteContainer documentation for more information on the algoirthm
 	 */
 	async getCalendar() {
 		const inputDate = new Date();
@@ -161,6 +170,8 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		// inputDate.setDate(1);
 		// inputDate.setMonth(0);
 		// inputDate.setFullYear(2021);
+
+		// THis is where we get the date in the calendar to look for (i.e. go back to the last or next Monday)
 		const weekStart = this.forwardOrRewindToDay(inputDate, this.props.weekMarkerDate, [0, 6]);
 		weekStart.setUTCHours(0, 0, 0, 0); // Set to start of day
 		const weekEnd = new Date(weekStart);
@@ -178,6 +189,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		const startTime = weekStart.toISOString();
 		const endTime = weekEnd.toISOString();
 
+		// Fetch the iCal fikle
 		const baseResponse = await fetch(this.props.calendarURL, {
 			method: "GET",
 			mode: "no-cors",
