@@ -20,6 +20,8 @@ export interface SiteProps {
 	weekMarkerDate: GregorianDay;
 	/** Events data - eventually replaced with state */
 	eventsFetcher: () => Promise<EventData>;
+	/** Fetches site alert */
+	alertsFetcher: () => Promise<AlertResponce>;
 }
 
 const baseEventImageStyle = {
@@ -100,7 +102,8 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 
 		// const response: AlertResponce = await baseResponse.json();
 
-		const response = KECHBAlerts;
+		//const response = KECHBAlerts;
+		const response = await this.props.alertsFetcher();
 
 		this.setState({
 			alert: response,
@@ -146,6 +149,10 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	forwardOrRewindToDay(d: Date, goTo: GregorianDay, forwardList: number[]) {
 		const dhere = new Date(d);
 		const day = dhere.getUTCDay();
+		//console.log(day);
+		//console.log(dhere.getUTCDate());
+		//console.log(forwardList);
+		//console.log(goTo);
 		// Sunday is day 0
 		// Sat is Day 6
 		// If Sun or Sat go to next week
@@ -167,12 +174,10 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	async getCalendar() {
 		const inputDate = new Date();
 		// Used for fiddling:
-		// inputDate.setDate(1);
-		// inputDate.setMonth(0);
-		// inputDate.setFullYear(2021);
-
-		// THis is where we get the date in the calendar to look for (i.e. go back to the last or next Monday)
-		const weekStart = this.forwardOrRewindToDay(inputDate, this.props.weekMarkerDate, [0, 6]);
+		//inputDate.setDate(1);
+		//inputDate.setMonth(2);
+		//inputDate.setFullYear(2021);
+		const weekStart = this.forwardOrRewindToDay(inputDate, this.props.weekMarkerDate, [6]);
 		weekStart.setUTCHours(0, 0, 0, 0); // Set to start of day
 		const weekEnd = new Date(weekStart);
 		weekEnd.setUTCDate(weekEnd.getUTCDate() + 1);
@@ -263,6 +268,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			// NOTE: getScrollDownWithAdditional was originally fed 150 instead of 0
 			return (
 				<>
+					{this.state.alert.showAlert ? <AlertBanner alert={this.state.alert} /> : null}
 					<h2>It is neither Week A nor B.</h2>
 					<h3>This means it&#39;s probably a holiday.</h3>
 					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>events</div></Button>
