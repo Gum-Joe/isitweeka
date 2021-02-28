@@ -165,9 +165,9 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	async getCalendar() {
 		const inputDate = new Date();
 		// Used for fiddling:
-		inputDate.setDate(14);
-		inputDate.setMonth(1);
-		inputDate.setFullYear(2021);
+		//inputDate.setDate(1);
+		//inputDate.setMonth(2);
+		//inputDate.setFullYear(2021);
 		const weekStart = this.forwardOrRewindToDay(inputDate, this.props.weekMarkerDate, [6]);
 		weekStart.setUTCHours(0, 0, 0, 0); // Set to start of day
 		const weekEnd = new Date(weekStart);
