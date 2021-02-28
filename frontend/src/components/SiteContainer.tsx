@@ -20,6 +20,8 @@ export interface SiteProps {
 	weekMarkerDate: GregorianDay;
 	/** Events data - eventually replaced with state */
 	eventsFetcher: () => Promise<EventData>;
+	/** Fetches site alert */
+	alertsFetcher: () => Promise<AlertResponce>;
 }
 
 const baseEventImageStyle = {
@@ -92,7 +94,8 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 
 		// const response: AlertResponce = await baseResponse.json();
 
-		const response = KECHBAlerts;
+		//const response = KECHBAlerts;
+		const response = await this.props.alertsFetcher();
 
 		this.setState({
 			alert: response,
