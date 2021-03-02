@@ -178,6 +178,8 @@ jobs:
       - name: Build site
         run: yarn build
         working-directory: ./frontend
+        env:
+          CI: false # Otherwise warnings fail the build
 
       - name: Upload a compiled website
         uses: actions/upload-artifact@v2
