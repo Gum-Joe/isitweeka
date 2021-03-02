@@ -35,16 +35,6 @@ export const KECHBEvents: EventData = {
 			}
 		},
 		{
-			title: "Dr. Taylor's 6th Form Quiz Night",
-			description: "Get your teams together for Dr. Taylor's 6th Form Quiz Night!",
-			url: "#",
-			when: "26/02/2021 at 7pm",
-			headerURL: "/events/School-Logo.png",
-			backgroundColor: "#000000",
-			eventType: EventTypes.CHARITY,
-			hidden: false,
-		},
-		{
 			eventType: EventTypes.HOUSE,
 			title: "House Cross-Country",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
