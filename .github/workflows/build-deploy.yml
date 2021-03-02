@@ -1,59 +1,155 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+###
+# The MIT License
+
+# Copyright (c) 2021 David Wheatley
+# Copyright (c) 2021 Kishan Singh
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+###
+# Lints and checks the websites, and then deploys it if branch is main
+# From https://github.com/davwheat/world-cup-of-tocs/blob/master/.github/workflows/smoketest.yml
 
 name: Website Builder
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - "main"
+      - "MS1.5-ci-changes"
   pull_request:
-    branches: [ main, PR-Add-Events-Section ]
 
 jobs:
-  install: # Install deps
+  install:
     runs-on: ubuntu-latest
+    name: Prepare repo
 
     strategy:
       matrix:
         node-version: [14.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    # CACHE!
-    - name: Get yarn cache directory path
-      id: yarn-cache-dir-path
-      run: echo "::set-output name=dir::$(yarn cache dir)"
-    - uses: actions/cache@v2
-      name: actions/cache@v2 - yarn cache
-      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-      with:
-        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
-    - run: yarn install --frozen-lockfile # Install deps -no cache so just install fresh
-      if: steps.yarn-cache.outputs.cache-hit != 'true'
-      working-directory: ./frontend
-    - name: Install project dependencies from cache
-      run: yarn --prefer-offline --frozen-lockfile
-      if: steps.yarn-cache.outputs.cache-hit == 'true'
-      working-directory: ./frontend
-    # Upload node_modules to download for other steps
-    - uses: actions/cache@v2
-      name: actions/cache@v2 - upload node_modules for other jobs
-      id: module-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-      with:
-        path: ./frontend/node_modules
-        key: ${{ runner.os }}-node-modules-${{ github.sha }}-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-node-modules-${{ github.sha }}-
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-  lint: # Lint!
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Restore dependencies cache
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies on cache miss
+        run: yarn install --frozen-lockfile
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        working-directory: ./frontend
+
+      - name: Install project dependencies from cache
+        run: yarn --prefer-offline --frozen-lockfile
+        if: steps.yarn-cache.outputs.cache-hit == 'true'
+        working-directory: ./frontend
+
+      - name: Cache node_modules for other runs
+        uses: actions/cache@v2
+        id: module-cache
+        with:
+          path: ./frontend/node_modules
+          key: ${{ runner.os }}-node-modules-${{ github.sha }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-${{ github.sha }}-
+
+  lint:
     runs-on: ubuntu-latest
+    needs: [install]
+    name: Lint
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Restore dependencies cache
+        uses: actions/cache@v2
+        id: moduleCache
+        with:
+          path: ./frontend/node_modules
+          key: ${{ runner.os }}-node-modules-${{ github.sha }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-${{ github.sha }}-
+
+      - name: Lint using ESLint
+        run: yarn lint
+        working-directory: ./frontend
+
+  # TODO: Enable when needed
+  # formatting:
+  #   runs-on: ubuntu-latest
+  #   needs: [install]
+  #   name: Verify formatting
+
+  #   strategy:
+  #     matrix:
+  #       node-version: [14.x]
+
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+
+  #     - name: Restore dependencies cache
+  #       uses: actions/cache@v2
+  #       id: moduleCache
+  #       with:
+  #         path: ./frontend/node_modules
+  #         key: ${{ runner.os }}-node-modules-${{ github.sha }}-${{ hashFiles('**/yarn.lock') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-node-modules-${{ github.sha }}-
+
+  #     - name: Verify formatting
+  #       run: yarn format:check
+  #       working-directory: ./frontend/node_modules
+
+  build:
+    runs-on: ubuntu-latest
+    # needs: [lint, formatting]
     needs: [install]
 
     strategy:
@@ -61,149 +157,40 @@ jobs:
         node-version: [14.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    
-    # Get CACHE!
-    - uses: actions/cache@v2
-      name: actions/cache@v2 - download node_modules
-      id: moduleCache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-      with:
-        path: ./frontend/node_modules
-        key: ${{ runner.os }}-node-modules-${{ github.sha }}-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-node-modules-${{ github.sha }}-
-    
-    # Restore yarn cache if above fails
-    # - name: Get yarn cache directory path
-    #   id: yarn-cache-dir-path
-    #   if: steps.moduleCache.outputs.cache-hit != 'true'
-    #   run: echo "::set-output name=dir::$(yarn cache dir)"
-      
-    # - uses: actions/cache@v2
-    #   name: actions/cache@v2 - download yarn cache
-    #   id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-    #   if: steps.moduleCache.outputs.cache-hit != 'true'
-    #   with:
-    #     path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-    #     key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-    #     restore-keys: |
-    #       ${{ runner.os }}-yarn-
-    # # Install from cache if node.js not found
-    # - run: yarn install --frozen-lockfile # Install deps - no cache so just install fresh
-    #   if: steps.moduleCache.outputs.cache-hit != 'true' && steps.yarn-cache.outputs.cache-hit != 'true'
-    #   working-directory: ./frontend
-    # - name: Install project dependencies from cache
-    #   run: yarn --prefer-offline --frozen-lockfile
-    #   if: steps.moduleCache.outputs.cache-hit != 'true' && steps.yarn-cache.outputs.cache-hit == 'true'
-    #   working-directory: ./frontend
-      
-    
-    # Lint
-    - name: Lint using ESLint
-      run: yarn run lint
-      working-directory: ./frontend
-  
-  build-deploy: # Now build & deploy the repo
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
 
-    runs-on: ubuntu-latest
-    needs: [install]
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    strategy:
-      matrix:
-        node-version: [14.x]
+      - name: Restore dependencies cache
+        uses: actions/cache@v2
+        id: moduleCache
+        with:
+          path: ./frontend/node_modules
+          key: ${{ runner.os }}-node-modules-${{ github.sha }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-${{ github.sha }}-
 
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    # Get cache
-    # CACHE!
-    - uses: actions/cache@v2
-      name: actions/cache@v2 - download node_modules
-      id: moduleCache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-      with:
-        path: ./frontend/node_modules
-        key: ${{ runner.os }}-node-modules-${{ github.sha }}-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-node-modules-${{ github.sha }}-
-    
-    # Restore from yarn
-    # - name: Get yarn cache directory path
-    #   id: yarn-cache-dir-path
-    #   run: echo "::set-output name=dir::$(yarn cache dir)"
-    # - uses: actions/cache@v2
-    #   id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-    #   with:
-    #     path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-    #     key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-    #     restore-keys: |
-    #       ${{ runner.os }}-yarn-
-    # - run: yarn install --frozen-lockfile # Install deps -no cache so just install fresh
-    #   if: steps.yarn-cache.outputs.cache-hit != 'true'
-    #   working-directory: ./frontend
-    # - name: Install project dependencies from cache
-    #   run: yarn --prefer-offline --frozen-lockfile
-    #   if: steps.yarn-cache.outputs.cache-hit == 'true'
-    #   working-directory: ./frontend
-    
-    # Prepare dest
-    - name: Prepare repo/ as a git repo
-      run: |
-        mkdir repo
-        cd repo
-        echo Cloning repo...
-        git clone https://github.com/$GITHUB_REPOSITORY --branch gh-pages ./
-        echo Deleteing dirs...
-        find . ! -wholename './.git/*' ! -wholename './.git' ! -wholename '.' -type d -exec rm -rfv {} +
-        echo Deleteing files...
-        find . ! -wholename './.git/*' -type f -exec echo {} +
-        echo Staging...
-        git add .
-    
-    # BUILD
-    - run: yarn run build
-      env:
-        CI: "false"
-      working-directory: ./frontend
+      - name: Build site
+        run: yarn build
+        working-directory: ./frontend
 
-    # DEPLOY
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2
-      with:
-        # Artifact name
-        name: Website Build
-        # A file, directory or wildcard pattern that describes what to upload
-        path: frontend/build/
-    - name: Copy build files
-      run: cp -va ./build/. ../repo/
-      working-directory: ./frontend
-    - name: Commit changes
-      if: ${{ contains(github.ref, 'main') }} # Only run if this repo is main and the development branch
-      run: |
-        cd repo
-        echo Setting git settings
-        git config user.email "kishansambhi@hotmail.co.uk"
-        git config user.name "Kishan Build Agent"
-        git add .
-        git commit -m "Build push for commit $GITHUB_SHA run ID $GITHUB_RUN_ID"
-      continue-on-error: true # Errors if no code changes applied, hence why skipped
-    - name: GitHub Push
-      uses: ad-m/github-push-action@v0.5.0
-      if: ${{ contains(github.ref, 'main') && success() }} # Only run if this repo is main and the development branch
-      with:
-        # Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        # Repository name to push. Default or empty value represents current github repository (${GITHUB_REPOSITORY})
-        # repository: # optional, default is 
-        # Destination branch to push changes
-        branch: gh-pages
-        # Determines if force push is used
-        force: true
-        # Directory to change to before pushing.
-        directory: repo
+      - name: Upload a compiled website
+        uses: actions/upload-artifact@v2
+        with:
+          name: Compiled website
+          path: frontend/build/
+
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
+          CLEAN: true
