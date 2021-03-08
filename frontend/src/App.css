@@ -649,6 +649,15 @@ a {
 	}
 }
 
+/** Between 1700 and 1050, make centre align and lift header onto new line so stufdf isn't too compacted */
+@media screen and (max-width: 1700px) and (min-width: 1050px) {
+	.sosumi {
+		flex-direction: column;
+		gap: 10px !important;
+		padding: 20px !important;
+	}
+}
+
 /**
  * COMBINED, BASE STYLES
  * Some classes are kept separate:
