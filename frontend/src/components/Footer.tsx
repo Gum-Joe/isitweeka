@@ -17,6 +17,8 @@ const Footer: React.FC = () => {
 			<p>
 				Created by Kishan Sambhi &amp; Madeline Hart.<br />
 				&#169; {(new Date()).getFullYear()}, source available on GitHub under the MIT license.<br /><br />
+				Data controller information: data controlled by Kishan Sambhi, a KECH pupil, and will only ever be viewed by KECH pupils.<br />
+				All changes to this site are reviewed, approved, merged and deployed by a KECH pupil.<br /><br />
 				Version {version}
 			</p>
 
