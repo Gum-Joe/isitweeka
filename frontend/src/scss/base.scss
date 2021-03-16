@@ -1,0 +1,42 @@
+/**
+ * Contains the base styles of the site, mostly responsbile for setting up the body, app container, etc so they expand and fit the page.
+ * Also sets up main site theme of black BG and white text
+ */
+
+// Orgiinally from create-react-app, isn't really relevant here
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+// OUR STUFF:
+/**
+ * Setup:
+ * - fonts (default is Metropolis
+ * - site background colour (black)
+ * - site text colour default (white)
+ * - expand site to fite whole page
+ */
+html, body, #root, .App {
+  margin: 0;
+  min-height: 100%;
+  background-color: #000000;
+	color: #fff;
+	font-family: "Metropolis", "Open Sans", sans-serif !important;
+	font-weight: 400 !important;
+}
+
+/** Setup flex structure of application - .App is the react root of the site */
+.App {
+	justify-content: center;
+	flex-direction: column;
+}

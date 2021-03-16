@@ -1,0 +1,37 @@
+/** Animations we use. Each has a mixin */
+
+@keyframes slide-in-top {
+	from {
+		transform: translateY(-10vh);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+// @param animation-delay: wait this many miliseconds before starting the animation
+@mixin slide-in-top($animation-length: 300ms, $animation-delay: 100ms) {
+	animation: slide-in-top $animation-length both;
+	animation-delay: $animation-delay;
+}
+
+@keyframes slide-in-bottom {
+	from {
+		transform: translateY(10vh) scale(0.9375);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateY(0) scale(1);
+		opacity: 1;
+	}
+}
+
+// @param animation-delay: wait this many miliseconds before starting the animation
+@mixin slide-in-bottom($animation-length: 300ms, $animation-delay: 100ms) {
+	animation: slide-in-bottom $animation-length both;
+	animation-delay: $animation-delay;
+}
