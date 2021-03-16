@@ -5,13 +5,17 @@
 
 // Many of these were originally CSS vars, so have left these as is
 :root {
-	--site-primary: #F10DA2;
-	--site-secondary: #FE5000;
 	background: black;
 	color: white;
+
+	--site-primary: #F10DA2;
+	--site-secondary: #FE5000;
+	--background-default: #000000;
+
+	// Text
 	--icon-fill: white;
+	--text-default: #fff;
 	--link-active: rgba(255, 255, 255, 0.6);
-	--horizontal-indent: 10vw;
 
 	// We use this colours for a variety of purposes, namely the alert banners
 	--midland-red: #DC143C;
@@ -22,6 +26,15 @@
 	--north-western-blue: #080028;
 	--french-blue-brighter: #2B69D4;
 	--alt-blue: #0284db;
-
 	--an-orange: #F4511E;
+
+	--link-blue:  #00B0FF; // Or at least, is used in jumbotron!
+
+	// Margin and spacing vars
+	--horizontal-indent: 10vw;
 }
+
+// For autocomplete - ALWASY REFER TO ABOVE!
+$text-default: var(--text-default);
+$site-primary: var(--site-primary);
+$background-default: var(--background-default);

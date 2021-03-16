@@ -1,0 +1,7 @@
+// Useful mixins
+
+// No top or bottom margin on a component
+@mixin no-margin-top-bottom {
+	margin-top: 0;
+	margin-bottom: 0;
+}

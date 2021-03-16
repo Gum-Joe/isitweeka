@@ -1,0 +1,31 @@
+/** Contains default header styles */
+@import "mixins.scss";
+
+.isitweeka {
+	h1, h2, h3, h4, h5, h6 {
+		display: inline-flex;
+	}
+
+	h1 {
+		font-size: 7em;
+		margin-top: 0;
+		margin-bottom: 0;
+		@include no-margin-top-bottom;
+	}
+
+	h2 {
+		font-size: 3em;
+	}
+
+	h3 {
+		font-size: 2.5em;
+	}
+
+	h4 {
+		font-size: 1.5em;
+	}
+
+	h5 {
+		font-size: 1em;
+	}
+}

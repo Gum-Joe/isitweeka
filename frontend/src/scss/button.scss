@@ -1,0 +1,128 @@
+/** All styles related to buttons */
+
+button {
+	color: inherit;
+
+	display: inline-flex;
+	flex-direction: row;
+
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+
+	font-size: 1.5em;
+	font-weight: 700;
+	/*line-height: 26px;*/
+	text-transform: lowercase;
+	text-decoration: none;
+
+	transition-duration: 100ms;
+
+	position: relative;
+	cursor: pointer;
+	
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+
+	background: transparent;
+	border: none;
+
+	padding-top: 3px;
+
+	// Span I think is the button's actual contents
+	& > span { // = button > span
+		z-index: 2;
+	}
+}
+
+// Button forward icon
+button.forward {
+	/*margin-right: auto;*/
+	/*margin-left: -8px;*/
+	width: auto;
+
+	// Add icon
+	&::after {
+		content: url("../appbar.arrow.right.svg");
+		/*content: url(#icon);*/
+		width: 48px;
+		height: 48px;
+		margin: -8px;
+		padding-left: 8px;
+		fill: var(--icon-fill);
+		filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(130deg) brightness(119%) contrast(116%);
+	}
+	&[data-light=true]::after {
+		filter: none;
+		fill: #000 !important;
+		z-index: 10;
+	}
+
+	&:hover::before {
+		transform: scaleY(1);
+	}
+}
+
+// Add underline
+button.forward::before, button.back::after {
+	content: "";
+	background-color: var(--site-primary);
+	/* background-image: linear-gradient(to right, var(--rykan-accent-primary), var(--rykan-accent-secondary)); */
+	position: absolute;
+	bottom: -4px;
+	transition-duration: 100ms;
+	pointer-events: none;
+}
+button.forward::before {
+	height: calc(100% + 8px);
+	width: calc(100% + 8px);
+	left: -4px;
+	transform: scaleY(0.1);
+	transform-origin: 0 100%;
+	z-index: 0;
+}
+button.back::after {
+	height: 3px;
+	width: 100%;
+	left: 0;
+	transform: scaleX(0);
+	transform-origin: 0 0;
+}
+
+// A B tests for buttons
+button.forward.a::before {
+	transform: scaleY(0.1);
+}
+
+button.forward.b::before {
+	transform: scaleY(1);
+}
+
+button.forward.b:hover::before {
+	filter: saturate(75%);
+}
+
+
+// Custom button class. Instead of a transparent background the is filled on hover, this is filled by default
+button.filled-button {
+	width: auto;
+	height: 2em;
+	text-align: center;
+	padding-top: 0px;
+	padding-right: 1em;
+	padding-left: 1em;
+	background-color: $site-primary;
+	color: $text-default;
+
+	span {
+		margin: auto;
+		text-align: center;
+	}
+
+	// Darken a filled button on hover
+	&:hover {
+		filter: saturate(60%);
+	}
+}
