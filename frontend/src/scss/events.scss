@@ -1,6 +1,45 @@
 /** Controls styling of events section of the site */
+@import "variables.scss";
+
 
 // CENTRE IT ALL!!!!
 .events * {
 	text-align: center;
 }
+
+// Base events list styling
+.events-list {
+	display: flex;
+	flex-direction: column;
+
+  // Style each row
+  .events-row {
+    display: flex;
+    width: 100%;
+    min-height: 320px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--link-active);
+    margin: 0 -10vw;
+    padding: 0 var(--horizontal-indent);
+
+    // Add a border at the top (i think)
+    &:first-child {
+      border-top-style: solid;
+      border-top-width: 1px;
+      border-top-color: var(--link-active);
+    }
+
+     align-content: center;
+  }
+
+  // Style the containers
+  > * > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
