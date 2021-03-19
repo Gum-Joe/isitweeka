@@ -1,5 +1,5 @@
 /** Contains default header styles */
-@import "mixins.scss";
+@use "mixins";
 
 .isitweeka {
 	h1, h2, h3, h4, h5, h6 {

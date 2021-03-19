@@ -2,7 +2,7 @@
  * Contains the base styles of the site, mostly responsbile for setting up the body, app container, etc so they expand and fit the page.
  * Also sets up main site theme of black BG and white text
  */
-@import "./variables.scss";
+@use "variables";
 
 // Orgiinally from create-react-app, isn't really relevant here
 body {
