@@ -1,5 +1,5 @@
 /** Styles for the jumbotron (the part that, currently, shows what week it is */
-@use "variables";
+@import "variables";
 
 .isitweeka-jumbotron a {
 	color: var(--link-blue);

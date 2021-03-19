@@ -1,7 +1,7 @@
 /**
  * Icons
  */
-@use "variables";
+@import "variables";
 
 @mixin arrow-right($width-and-height, $left-padding) {
   &::after {
