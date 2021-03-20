@@ -405,13 +405,20 @@ button.back::after {
 	/* background-color: #B80000 */
 }
 
+/** Ensure spacing above phablet */
+@media screen and (min-width: 500px) {
+	/** Ensure nice bottom spacing */
+	.events-row a {
+		margin-bottom: 25px;
+	}
+}
+/** Phablet */
+@media screen and (max-width: 700px) {
 
-@media screen and (max-width: 600px) {
 	.events-row {
 		flex-direction: column;
 		height: 85vh;
 	}
-
 	.r-banner-container {
 		top: min(20vh, 144px);
 		/*bottom: 28px;*/
@@ -428,13 +435,15 @@ button.back::after {
 	}
 }
 
-@media screen and (min-width: 500px) {
-	.events-row a {
-		margin-bottom: 25px;
+/** At phablet sizes, use justify content to vertically centre events rows.  Below this, it no longer looks right (too much spacing!) */
+@media screen and (max-width: 700px) and (min-width: 500px) {
+	.events-row {
+		justify-content: center;
 	}
 }
 
-@media screen and (max-width: 400px) {
+/* Mobile */
+@media screen and (max-width: 500px) {
 	.isitweeka h1 {
 		/*font-size: 5em;*/
 		margin-top: 0;
@@ -1025,7 +1034,7 @@ a {
 }
 
 /* Responsive design */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
 	.footer {
 		padding-left: 5vw;
 		padding-right: 5vw;
