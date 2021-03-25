@@ -12,10 +12,10 @@ export const KECHBAlerts: AlertResponce = {
 	showAlert: true,
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
-	message: "Welcome back to school everyone! We hope you've managed to make the most of lockdown.",
-	alertLevel: ThreatLevels.LOW,
-	//linkText: "more info",
-	//linkTo: "https://twitter.com/KEVICHB/status/1359153991104557064?s=20"
+	message: "Congrats to the Year 13s who reached their 1000km lockdown running target and for raising £1682.00 for Young Minds UK!",
+	alertLevel: ThreatLevels.MEDIUM,
+	linkText: "more info",
+	linkTo: "https://twitter.com/KEVICHB/status/1375072426804056064?s=19"
 };
 
 export const KECHGAlerts: AlertResponce = {
