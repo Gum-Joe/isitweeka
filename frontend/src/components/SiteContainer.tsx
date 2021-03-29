@@ -5,7 +5,6 @@ import { GregorianDay } from "../utils/constants";
 import { getScrollDownWithAdditional } from "../utils/scroll";
 import * as ical from "ical";
 import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
-import { KECHBAlerts } from "../data/alerts";
 import AlertBanner from "./AlterBanner";
 import Banner from "./MailingListBanner";
 import Socials from "./Socials";
