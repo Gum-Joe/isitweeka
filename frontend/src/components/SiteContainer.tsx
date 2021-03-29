@@ -168,7 +168,8 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	}
 
 	/**
-	 * Loads the KECHB calendar, finds the current week, then goes to the Monday of that week and checks for a Week A or Week B event.
+	 * Loads the KECHB/G calendar (depending on the props provided), finds the current week, then goes to the Monday/Sunday (whichever given by `props.weekMarkerDate`) of that week
+	 * and checks for an event with the title (`event.summary`) of "Week A" or "Week B".
 	 * @see SiteContainer documentation for more information on the algoirthm
 	 */
 	async getCalendar() {
@@ -177,6 +178,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		//inputDate.setDate(1);
 		//inputDate.setMonth(2);
 		//inputDate.setFullYear(2021);
+		// Get to the start of the week
 		const weekStart = this.forwardOrRewindToDay(inputDate, this.props.weekMarkerDate, [6]);
 		weekStart.setUTCHours(0, 0, 0, 0); // Set to start of day
 		const weekEnd = new Date(weekStart);
@@ -191,10 +193,15 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			});
 		}
 
+		// Representations of the values we are looking for
 		const startTime = weekStart.toISOString();
 		const endTime = weekEnd.toISOString();
 
-		// Fetch the iCal fikle
+		// DEBUG
+		// console.log(weekStart.toISOString());
+		// console.log(weekEnd.toISOString());
+
+		// Fetch the iCal file
 		const baseResponse = await fetch(this.props.calendarURL, {
 			method: "GET",
 			mode: "no-cors",
@@ -209,10 +216,32 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 
 		// console.log(data);
 
+		// Convert to map for easy parsing
 		const map = new Map(Object.entries(data));
 
+		// Narrow down to only events that are around the date we are looking for
 		map.forEach((v, key) => {
-			if (v.start?.toISOString() !== startTime) {
+			// Flag that is set to false if the event matches our conditions to then be checked if "Week A" or "Week B" marker event
+			let shouldDelete = true;
+
+			/** Intial check: do the ISO strings match? */
+			if (v.start?.toISOString() === startTime) {
+				shouldDelete = false;
+			}
+			/**
+			 * Sometimes, e.g. daylight savings, the start time of the "Week A" event in the calendar is NOT at midnight
+			 * (by this I mean normally the start time is, for a all-day Week A/B event on a Monday, normally Monday at 00:00)
+			 * E.g. for a Monday Week A event, the start time may be Sunday 23:00 due to daylight saving (see issue #57)
+			 * 
+			 * Here, we check if the event is the day before or day after `weekStart`, and also the day itself for extra measure, to catch the error described above.
+			 * THis is done by checking if the UNIX time value of the event is within 24hrs of the target time
+			 */
+			if (v.start && Math.abs(weekStart.valueOf() - v.start?.valueOf()) <= 24 * 60 * 60 * 1000) {
+				shouldDelete = false;
+			}
+
+			// Delete this key if none of our conditions met
+			if (shouldDelete) {
 				map.delete(key);
 			}
 		});
@@ -226,6 +255,10 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				map.delete(key);
 			}
 		});
+		// Print warning to console if > 1 event found (shouldn't happen!)
+		if (map.size > 1) {
+			console.warn(`More than one Week A/B marker event found! Got ${map.size} events`);
+		}
 		if (map.size === 0 || !theEvent) {
 			// Neither detected.  Probably Hols.
 			this.setState({
@@ -235,6 +268,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			});
 		} else {
 			// const theEvent = eventsToday[0];
+			
 			switch (theEvent.summary) {
 				case "Week A":
 					this.setState({
