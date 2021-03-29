@@ -8,6 +8,7 @@ import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 import AlertBanner from "./AlterBanner";
 import Banner from "./MailingListBanner";
 import Socials from "./Socials";
+import IsItWeekA from "../utils/IsItWeekA";
 
 /**
  * Props to provide to the site
@@ -35,8 +36,7 @@ const baseEventImageStyle = {
 };
 
 interface TheState {
-	/** Set to true if neither Week A or B is detected */
-	isNotWeekAB: boolean;
+	/** Set to unknown if neither Week A or B is detected */
 	week: "A" | "B" | "unknown";
 	/** Tells page when API has ran  (i.e. page loaded) */
 	apiHasRan: boolean;
@@ -62,7 +62,6 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	constructor(props: SiteProps) {
 		super(props);
 		this.state = {
-			isNotWeekAB: false,
 			week: "unknown",
 			apiHasRan: false,
 			isWeekend: false,
@@ -174,130 +173,24 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	async getCalendar() {
 		const inputDate = new Date();
 		// Used for fiddling:
-		//inputDate.setDate(1);
+		//inputDate.setDate(26);
 		//inputDate.setMonth(2);
 		//inputDate.setFullYear(2021);
-		// Get to the start of the week
-		const weekStart = this.forwardOrRewindToDay(inputDate, this.props.weekMarkerDate, [6]);
-		weekStart.setUTCHours(0, 0, 0, 0); // Set to start of day
-		const weekEnd = new Date(weekStart);
-		weekEnd.setUTCDate(weekEnd.getUTCDate() + 1);
-		weekEnd.setUTCHours(0, 0, 0, 0); // Set to start of day
-
-		// Tell us if weekend!
-		const dayNow = inputDate.getUTCDay();
-		if (dayNow === 6 || dayNow === 0) { // 0 is Sunday, 6 is Saturday
-			this.setState({
-				isWeekend: true,
-			});
-		}
-
-		// Representations of the values we are looking for
-		const startTime = weekStart.toISOString();
-		const endTime = weekEnd.toISOString();
-
-		// DEBUG
-		// console.log(weekStart.toISOString());
-		// console.log(weekEnd.toISOString());
-
-		// Fetch the iCal file
-		const baseResponse = await fetch(this.props.calendarURL, {
-			method: "GET",
-			mode: "no-cors",
-			credentials: "same-origin",
+		// Get which week it is 
+		const weekChecker = new IsItWeekA(this.props.weekMarkerDate, this.props.calendarURL, inputDate);
+		const theWeek = await weekChecker.isItWeekAorB();
+		this.setState({
+			apiHasRan: true,
+			week: theWeek.week,
+			isWeekend: theWeek.isWeekend,
 		});
-
-		const ics = await baseResponse.text();
-
-		// console.log(ics);
-
-		const data = ical.parseICS(ics);
-
-		// console.log(data);
-
-		// Convert to map for easy parsing
-		const map = new Map(Object.entries(data));
-
-		// Narrow down to only events that are around the date we are looking for
-		map.forEach((v, key) => {
-			// Flag that is set to false if the event matches our conditions to then be checked if "Week A" or "Week B" marker event
-			let shouldDelete = true;
-
-			/** Intial check: do the ISO strings match? */
-			if (v.start?.toISOString() === startTime) {
-				shouldDelete = false;
-			}
-			/**
-			 * Sometimes, e.g. daylight savings, the start time of the "Week A" event in the calendar is NOT at midnight
-			 * (by this I mean normally the start time is, for a all-day Week A/B event on a Monday, normally Monday at 00:00)
-			 * E.g. for a Monday Week A event, the start time may be Sunday 23:00 due to daylight saving (see issue #57)
-			 * 
-			 * Here, we check if the event is the day before or day after `weekStart`, and also the day itself for extra measure, to catch the error described above.
-			 * THis is done by checking if the UNIX time value of the event is within 24hrs of the target time
-			 */
-			if (v.start && Math.abs(weekStart.valueOf() - v.start?.valueOf()) <= 24 * 60 * 60 * 1000) {
-				shouldDelete = false;
-			}
-
-			// Delete this key if none of our conditions met
-			if (shouldDelete) {
-				map.delete(key);
-			}
-		});
-
-		// Filter events to those that are "Week A" or "Week B"
-		let theEvent: ical.CalendarComponent | undefined;
-		map.forEach((entry, key) => {
-			if (entry.summary === "Week A" || entry.summary === "Week B") {
-				theEvent = entry;
-			} else {
-				map.delete(key);
-			}
-		});
-		// Print warning to console if > 1 event found (shouldn't happen!)
-		if (map.size > 1) {
-			console.warn(`More than one Week A/B marker event found! Got ${map.size} events`);
-		}
-		if (map.size === 0 || !theEvent) {
-			// Neither detected.  Probably Hols.
-			this.setState({
-				isNotWeekAB: true,
-				week: "unknown",
-				apiHasRan: true,
-			});
-		} else {
-			// const theEvent = eventsToday[0];
-			
-			switch (theEvent.summary) {
-				case "Week A":
-					this.setState({
-						week: "A",
-						apiHasRan: true,
-					});
-					break;
-				case "Week B":
-					this.setState({
-						week: "B",
-						apiHasRan: true,
-					});
-					break;
-				default:
-					// NEITHER!
-					// Something went wrong
-					this.setState({
-						isNotWeekAB: true,
-						apiHasRan: true,
-					});
-					break;
-			}
-		}
 	}
 
 	/**
 	 * Used to get what to display as the jumbotron, i.e. is it Week A, B or neither?
 	 */
 	getStatus() {
-		if (this.state.isNotWeekAB || this.state.week === "unknown") {
+		if (this.state.week === "unknown") {
 			// NOTE: getScrollDownWithAdditional was originally fed 150 instead of 0
 			return (
 				<>

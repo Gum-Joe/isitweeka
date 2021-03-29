@@ -21,12 +21,18 @@ type IsItWeekAReturn = {
  * 		It goes forward to the next `weekMarkerDate` if it is a weekend.
  * 	NB: It also checks the area within 24hrs of the targetted date to cope with daylight savings etc
  * 	2. Sees if a Week A or Week B event is in the calendar on the day. If not, return that it's likely a holiday.
+ * 
+ * @example ```typescript
+ * // 1 used as it represented Monday (as the weekmarker)
+ * const weekChecker = new IsItWeekA(1, "/cal/KECHB/basic.ics", new Date());
+ * const isWeekAOrB = await weekChecker.isItWeekAorB(); // then looks at output object
+ * ```
  */
 export default class IsItWeekA {
 
 	/** Calendar to fetch events from, e.g. `calendar@camphillboys.bham.sch.uk` */
 	public readonly calendarURL: string;
-	/** Day of the Week A/B event that marks a week as being A/B, 0-6, where 0 is Sunday */
+	/** Day of the event with summary (title) "Week A" or "Week B" that marks a week as being A/B, 0-6, where 0 is Sunday */
 	public readonly weekMarkerDate: GregorianDay;
 	/** Day we're looking for which week it is from (normally today) NOTE: may not be the same as what is inputted due to internal transformations */
 	public inputDate: Date;
@@ -95,15 +101,12 @@ export default class IsItWeekA {
 	}
 
 	/**
-	 * Loads the KECHB/G calendar (depending on the props provided), finds the current week, then goes to the Monday/Sunday (whichever given by `props.weekMarkerDate`) of that week
+	 * Loads the KECHB/G calendar (depending on the props provided - see {@link calendarURL}), finds the current week, then goes to the Monday/Sunday (whichever given by `props.weekMarkerDate`) of that week
 	 * and checks for an event with the title (`event.summary`) of "Week A" or "Week B".
 	 * @see SiteContainer documentation for more information on the algoirthm
 	 */
-	public async getCalendar(): Promise<IsItWeekAReturn> {
-		// Used for fiddling:
-		//this.inputDate.setDate(1);
-		//this.inputDate.setMonth(2);
-		//this.inputDate.setFullYear(2021);
+	public async isItWeekAorB(): Promise<IsItWeekAReturn> {
+		
 		// Get to the start of the week
 		const weekStart = this.forwardOrRewindToDay(this.inputDate, this.weekMarkerDate, [6]);
 		weekStart.setUTCHours(0, 0, 0, 0); // Set to start of day
@@ -114,7 +117,8 @@ export default class IsItWeekA {
 		// Tell us if weekend!
 		const dayNow = this.inputDate.getUTCDay();
 		if (dayNow === 6 || dayNow === 0) { // 0 is Sunday, 6 is Saturday
-			this.isWeekend;
+			console.debug("Is Weekend");
+			this.isWeekend = true;
 		}
 
 		// Representations of the values we are looking for
