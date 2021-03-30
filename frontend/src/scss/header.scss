@@ -29,33 +29,57 @@
 	h5 {
 		font-size: 1em;
 	}
-}
 
-/** Header adjustments on mobile */
-@include mobile {
-	.isitweeka h1 {
-		/*font-size: 5em;*/
-		margin-top: 0;
-		margin-bottom: 0;
-		display: inline-flex;
+	// Hide headers on mobile
+	h1, h2, h3, h4 {
+		&.mobile {
+			display: none;
+		}
 	}
 
-	.isitweeka h2 {
-		font-size: 2.5em;
-		display: inline-flex;
-		margin-bottom: 0.5em;
-		margin-top: 0.5em;
+	/** Header adjustments on mobile */
+	@include mobile {
+		h1, h2, h3 {
+			display: inline-flex;
+		}
+
+		h1 {
+			/*font-size: 5em;*/
+			@include no-margin-top-bottom;
+		}
+
+		h2 {
+			font-size: 2.5em;
+			margin-bottom: 0.5em;
+			margin-top: 0.5em;
+		}
+
+		h3 {
+			font-size: 2em;
+		}
+
+		h4 {
+			margin-bottom: 0.5em;
+			margin-top: 0.5em;
+		}
 	}
 
-	.isitweeka h3 {
-		font-size: 2em;
-		display: inline-flex;
-	}
+	@include phablet {
+		> h2.mobile {
+			justify-content: center;
+			font-size: 3em;
+			display: flex !important;
+		}
 
-	.isitweeka h4 {
-		display: inline-flex;
-		margin-bottom: 0.5em;
-		margin-top: 0.5em;
+		> h1.mobile {
+			justify-content: center;
+			font-size: 7em;
+			display: flex !important;
+		}
+
+		> h4 {
+			justify-content: center;
+		}
 	}
 }
 

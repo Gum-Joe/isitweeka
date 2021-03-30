@@ -2,7 +2,7 @@
 
 /** Styles for top tabs (the KECHB and KECHG labelled switch buttons) */
 
-@include mobile {
+@include phablet {
 	.r-tab-row {
 		padding-top: 40px !important;
 	}

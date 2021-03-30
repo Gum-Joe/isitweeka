@@ -99,6 +99,13 @@ button.forward.b:hover::before {
 	filter: saturate(75%);
 }
 
+/** Mobile margin reduction */
+@include mobile {
+	.forward {
+		margin: 0 auto;
+	}
+}
+
 
 // Custom button class. Instead of a transparent background the is filled on hover, this is filled by default
 button.filled-button {

@@ -65,3 +65,12 @@ html, body, #root, .App {
 		overflow-x: hidden;
 	}
 }
+
+// Default showings of mobile and desktop only classes
+.mobile {
+	display: none !important;
+}
+
+.desktop {
+	display: inherit !important;
+}
