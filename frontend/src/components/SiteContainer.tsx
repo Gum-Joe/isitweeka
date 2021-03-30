@@ -5,10 +5,10 @@ import { GregorianDay } from "../utils/constants";
 import { getScrollDownWithAdditional } from "../utils/scroll";
 import * as ical from "ical";
 import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
-import { KECHBAlerts } from "../data/alerts";
 import AlertBanner from "./AlterBanner";
 import Banner from "./MailingListBanner";
 import Socials from "./Socials";
+import IsItWeekA from "../utils/IsItWeekA";
 
 /**
  * Props to provide to the site
@@ -36,8 +36,7 @@ const baseEventImageStyle = {
 };
 
 interface TheState {
-	/** Set to true if neither Week A or B is detected */
-	isNotWeekAB: boolean;
+	/** Set to unknown if neither Week A or B is detected */
 	week: "A" | "B" | "unknown";
 	/** Tells page when API has ran  (i.e. page loaded) */
 	apiHasRan: boolean;
@@ -63,7 +62,6 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	constructor(props: SiteProps) {
 		super(props);
 		this.state = {
-			isNotWeekAB: false,
 			week: "unknown",
 			apiHasRan: false,
 			isWeekend: false,
@@ -168,103 +166,31 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	}
 
 	/**
-	 * Loads the KECHB calendar, finds the current week, then goes to the Monday of that week and checks for a Week A or Week B event.
+	 * Loads the KECHB/G calendar (depending on the props provided), finds the current week, then goes to the Monday/Sunday (whichever given by `props.weekMarkerDate`) of that week
+	 * and checks for an event with the title (`event.summary`) of "Week A" or "Week B".
 	 * @see SiteContainer documentation for more information on the algoirthm
 	 */
 	async getCalendar() {
 		const inputDate = new Date();
 		// Used for fiddling:
-		//inputDate.setDate(1);
+		//inputDate.setDate(26);
 		//inputDate.setMonth(2);
 		//inputDate.setFullYear(2021);
-		const weekStart = this.forwardOrRewindToDay(inputDate, this.props.weekMarkerDate, [6]);
-		weekStart.setUTCHours(0, 0, 0, 0); // Set to start of day
-		const weekEnd = new Date(weekStart);
-		weekEnd.setUTCDate(weekEnd.getUTCDate() + 1);
-		weekEnd.setUTCHours(0, 0, 0, 0); // Set to start of day
-
-		// Tell us if weekend!
-		const dayNow = inputDate.getUTCDay();
-		if (dayNow === 6 || dayNow === 0) { // 0 is Sunday, 6 is Saturday
-			this.setState({
-				isWeekend: true,
-			});
-		}
-
-		const startTime = weekStart.toISOString();
-		const endTime = weekEnd.toISOString();
-
-		// Fetch the iCal fikle
-		const baseResponse = await fetch(this.props.calendarURL, {
-			method: "GET",
-			mode: "no-cors",
-			credentials: "same-origin",
+		// Get which week it is 
+		const weekChecker = new IsItWeekA(this.props.weekMarkerDate, this.props.calendarURL, inputDate);
+		const theWeek = await weekChecker.isItWeekAorB();
+		this.setState({
+			apiHasRan: true,
+			week: theWeek.week,
+			isWeekend: theWeek.isWeekend,
 		});
-
-		const ics = await baseResponse.text();
-
-		// console.log(ics);
-
-		const data = ical.parseICS(ics);
-
-		// console.log(data);
-
-		const map = new Map(Object.entries(data));
-
-		map.forEach((v, key) => {
-			if (v.start?.toISOString() !== startTime) {
-				map.delete(key);
-			}
-		});
-
-		// Filter events to those that are "Week A" or "Week B"
-		let theEvent: ical.CalendarComponent | undefined;
-		map.forEach((entry, key) => {
-			if (entry.summary === "Week A" || entry.summary === "Week B") {
-				theEvent = entry;
-			} else {
-				map.delete(key);
-			}
-		});
-		if (map.size === 0 || !theEvent) {
-			// Neither detected.  Probably Hols.
-			this.setState({
-				isNotWeekAB: true,
-				week: "unknown",
-				apiHasRan: true,
-			});
-		} else {
-			// const theEvent = eventsToday[0];
-			switch (theEvent.summary) {
-				case "Week A":
-					this.setState({
-						week: "A",
-						apiHasRan: true,
-					});
-					break;
-				case "Week B":
-					this.setState({
-						week: "B",
-						apiHasRan: true,
-					});
-					break;
-				default:
-					// NEITHER!
-					// Something went wrong
-					this.setState({
-						isNotWeekAB: true,
-						apiHasRan: true,
-					});
-					break;
-			}
-		}
 	}
 
 	/**
 	 * Used to get what to display as the jumbotron, i.e. is it Week A, B or neither?
 	 */
 	getStatus() {
-		if (this.state.isNotWeekAB || this.state.week === "unknown") {
+		if (this.state.week === "unknown") {
 			// NOTE: getScrollDownWithAdditional was originally fed 150 instead of 0
 			return (
 				<>
