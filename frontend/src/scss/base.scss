@@ -58,3 +58,10 @@ html, body, #root, .App {
 	margin-left: var(--horizontal-indent);
 	margin-right: var(--horizontal-indent);
 }
+
+/* HACK */
+@include phablet {
+	#root {
+		overflow-x: hidden;
+	}
+}

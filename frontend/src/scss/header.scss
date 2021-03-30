@@ -1,5 +1,6 @@
 /** Contains default header styles */
 @import "mixins";
+@import "breakpoints";
 
 .isitweeka {
 	h1, h2, h3, h4, h5, h6 {
@@ -27,6 +28,34 @@
 
 	h5 {
 		font-size: 1em;
+	}
+}
+
+/** Header adjustments on mobile */
+@include mobile {
+	.isitweeka h1 {
+		/*font-size: 5em;*/
+		margin-top: 0;
+		margin-bottom: 0;
+		display: inline-flex;
+	}
+
+	.isitweeka h2 {
+		font-size: 2.5em;
+		display: inline-flex;
+		margin-bottom: 0.5em;
+		margin-top: 0.5em;
+	}
+
+	.isitweeka h3 {
+		font-size: 2em;
+		display: inline-flex;
+	}
+
+	.isitweeka h4 {
+		display: inline-flex;
+		margin-bottom: 0.5em;
+		margin-top: 0.5em;
 	}
 }
 

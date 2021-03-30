@@ -1,0 +1,13 @@
+@import "breakpoints";
+
+/** Styles for top tabs (the KECHB and KECHG labelled switch buttons) */
+
+@include mobile {
+	.r-tab-row {
+		padding-top: 40px !important;
+	}
+
+	.r-tab {
+		font-size: 1.75em !important;
+	}
+}

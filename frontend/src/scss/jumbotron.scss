@@ -1,7 +1,15 @@
 /** Styles for the jumbotron (the part that, currently, shows what week it is */
 @import "variables";
+@import "breakpoints";
 
 .isitweeka-jumbotron a {
 	color: var(--link-blue);
 	display: inline-flex;
+}
+
+@include mobile {
+	.isitweeka-jumbotron {
+		/*padding-top: 80px;*/
+		box-sizing: border-box;
+	}
 }

@@ -1,5 +1,6 @@
 /** Controls styling of events section of the site */
 @import "variables";
+@import "breakpoints";
 
 
 // CENTRE IT ALL!!!!
@@ -31,6 +32,29 @@
     }
 
      align-content: center;
+
+     /** Ensure spacing above phablet */
+    @include breakpoint-at($mobile, "min") {
+      /** Ensure nice bottom spacing */
+      a {
+        margin-bottom: 25px;
+      }
+    }
+
+    /** Phablet - below phablet size make events row vertical */
+    @include phablet {
+      & {
+        flex-direction: column;
+        height: 85vh;
+      }
+    }
+
+    /** At phablet sizes, use justify content to vertically centre events rows.  Below this, it no longer looks right (too much spacing!) */
+    @include between($mobile, $phablet) {
+      & {
+        justify-content: center;
+      }
+    }
   }
 
   // Style the containers

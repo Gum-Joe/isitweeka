@@ -3,6 +3,7 @@
  */
 /** Banner stuff */
 @import "icons.scss";
+@import "breakpoints";
 
 // Rootof the banner
 .r-banner-container {
@@ -23,6 +24,26 @@
   .r-banner-container-animate-out {
     animation-direction: reverse;
   }
+
+  /** The way we do the banner onn phabelt and below is different */
+  @include phablet {
+    & {
+      top: min(20vh, 144px);
+      /*bottom: 28px;*/
+      /*position: initial;*/
+      animation: slide-in-bottom 300ms both;
+      animation-delay: 100ms;
+      padding: 0 10px;
+      /*margin-top: 10px;*/
+    }
+  }
+
+  @include mobile {
+    .r-banner-container {
+      top: min(20vh, 112px);
+    }
+  }
+  
 }
 
 /** This is the actual banner itself and is modifed depending on alerts */

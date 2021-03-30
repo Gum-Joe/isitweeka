@@ -64,7 +64,7 @@ $mobile: 500px;
 
 /// Mixin for arbitary breakpoints
 /// @param {String} $type "min" or "max" (min-width or max-width) 
-@mixin breakpoint-at($min-max-width, $breakpoint-type) {
+@mixin breakpoint-at($min-max-width: string, $breakpoint-type: "min" or "max") {
 	@if $breakpoint-type != "min" and $breakpoint-type != "max" {
 		@error "Invalid type provided!";
 	}
