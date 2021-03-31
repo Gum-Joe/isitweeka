@@ -9,6 +9,7 @@ import AlertBanner from "./AlterBanner";
 import Banner from "./MailingListBanner";
 import Socials from "./Socials";
 import IsItWeekA from "../utils/IsItWeekA";
+import YoutubeContainer from "./YoutubeContainer";
 
 /**
  * Props to provide to the site
@@ -194,7 +195,6 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			// NOTE: getScrollDownWithAdditional was originally fed 150 instead of 0
 			return (
 				<>
-					{this.state.alert.showAlert ? <AlertBanner alert={this.state.alert} /> : null}
 					<h2>It is neither Week A nor B.</h2>
 					<h3>This means it&#39;s probably a holiday.</h3>
 					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>events</div></Button>
@@ -206,7 +206,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			// NOTE: getScrollDownWithAdditional was originally fed 150 instead of 0
 			return (
 				<>
-					{this.state.alert.showAlert ? <AlertBanner alert={this.state.alert} /> : null}
+					
 					{/*{this.state.alert.showAlert ? <div className="mobile" style={{ height: 144 }} /> : null}*/}
 					<h2 className="desktop">{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="desktop">Week {this.state.week}</h1>
@@ -224,6 +224,8 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		return (
 			<>
 				<div className="isitweeka isitweeka-jumbotron">
+					{this.state.alert.showAlert ? <AlertBanner alert={this.state.alert} /> : null}
+					<YoutubeContainer />
 					{
 						this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
 					}
