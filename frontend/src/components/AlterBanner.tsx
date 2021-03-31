@@ -51,9 +51,8 @@ const AlertBanner: React.FC<AlertBannerProps> = (props) => {
 	/**
 	 * Reports to Google analytics when the "View More" link was clicked so we can track conversions
 	 */
-	function reportAlertButtonClick(event: any) {
+	function reportAlertButtonClick() {
 		if (!expanded) {
-			event.preventDefault();
 			setExpandState(true);
 			return;
 		}
@@ -87,7 +86,7 @@ const AlertBanner: React.FC<AlertBannerProps> = (props) => {
 					<h3 className="mobile">
 						<span>{showExpandButtonMobile ? "New Alert(s)" : props.alert.message}</span>&nbsp;
 						<br />
-						<a className="r-banner-link" href={expanded ? props.alert.linkTo : undefined} target="__blank" onClick={reportAlertButtonClick}>
+						<a className="r-banner-link" href={expanded ? props.alert.linkTo : undefined} target="__blank" onClick={(event) => { !expanded && event.preventDefault(); reportAlertButtonClick(); }}>
 							<span>{expanded ? props.alert.linkText || "View" : "Expand"}</span>
 						</a>
 					</h3>

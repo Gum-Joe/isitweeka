@@ -15,7 +15,7 @@ export const KECHBAlerts: AlertResponce = {
 	message: "BREAKING NEWS: Camp Hill to be reorganised into the first Edwardian Empire!",
 	alertLevel: ThreatLevels.CRITICAL,
 	linkText: "view the major announcement",
-	linkTo: "https://www.youtube.com/channel/UCQs3hnZwqJ9JwdiEahMUIMg"
+	linkTo: "https://youtu.be/2qbcHv7wXck"
 };
 
 export const KECHGAlerts: AlertResponce = {
