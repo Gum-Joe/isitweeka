@@ -225,7 +225,6 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			<>
 				<div className="isitweeka isitweeka-jumbotron">
 					{this.state.alert.showAlert ? <AlertBanner alert={this.state.alert} /> : null}
-					<YoutubeContainer />
 					{
 						this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
 					}

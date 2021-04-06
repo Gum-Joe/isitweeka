@@ -1,5 +1,9 @@
 import React from "react";
 
+/**
+ * Video container - used to render YT embeds at the top of the page.
+ * We used this for april fools 2021 - hence the hard coded URL.
+ */
 const YouTubeContainer = () => {
 	return (
 		<div className="yt-container">

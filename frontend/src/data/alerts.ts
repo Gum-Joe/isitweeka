@@ -12,10 +12,10 @@ export const KECHBAlerts: AlertResponce = {
 	showAlert: true,
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
-	message: "BREAKING NEWS: Camp Hill to be reorganised into the first Edwardian Empire!",
-	alertLevel: ThreatLevels.CRITICAL,
-	linkText: "view the major announcement",
-	linkTo: "https://youtu.be/2qbcHv7wXck"
+	message: "Have a happy holiday everyone!",
+	alertLevel: ThreatLevels.LOW,
+	//linkText: "view the major announcement",
+	//linkTo: "https://youtu.be/2qbcHv7wXck"
 };
 
 export const KECHGAlerts: AlertResponce = {
