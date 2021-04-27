@@ -13,3 +13,12 @@
 		box-sizing: border-box;
 	}
 }
+
+@include phablet {
+	// Jumbotron socials fixes
+	/* Socials fixes */
+	.isitweeka-jumbotron .social-container {
+		justify-content: center !important;
+		transform: scale(0.8) translate(0, 60px) !important;
+	}
+}
