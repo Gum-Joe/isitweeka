@@ -12,14 +12,14 @@ export const KECHBAlerts: AlertResponce = {
 	showAlert: true,
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
-	message: "Have a happy holiday everyone!",
+	message: "Good luck to all those taking exams! And wishing our Year 13s all the best as they leave the school - good luck & have fun!",
 	alertLevel: ThreatLevels.LOW,
-	//linkText: "view the major announcement",
-	//linkTo: "https://youtu.be/2qbcHv7wXck"
+	linkText: "view more",
+	linkTo: "https://twitter.com/IsItWeekA/status/1393264907043450883?s=20"
 };
 
 export const KECHGAlerts: AlertResponce = {
-	showAlert: false,
+	showAlert: true,
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
 	message: "Welcome to IsItWeekA!  We'll use these banner for important alerts in the future.",
