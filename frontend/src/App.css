@@ -1058,3 +1058,9 @@ a {
 .fc .fc-list-sticky .fc-list-day > * {
 	background: none !important;
 }
+
+.fc-button-primary {
+	background: black !important;
+	border-color: var(--rykan-accent-secondary) !important;
+	border-width: 2px !important;
+}
