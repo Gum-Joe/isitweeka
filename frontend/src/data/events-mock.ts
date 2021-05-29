@@ -32,17 +32,30 @@ export const KECHBEvents: EventData = {
 				color: "#fff",
 				type: "fill",
 				//backgroundColor: "#0091EA", // Possible A/B Test
-			}
+			},
+			hidden: true,
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "CHAOS",
+			headerURL: "/events/School-Logo.png",
+			ticketsSale: {
+				start: "01/01/2020"
+			},
+			description: "Countdown to CHAOS: the Camp Hill Amateur Operatic Society.  Little else is known at the moment.",
+			when: "Thursday 1st & Friday 2nd July",
+			backgroundColor: "#752023",
+			hidden: false,
 		},
 		{
 			eventType: EventTypes.HOUSE,
 			title: "House Cross-Country",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
 			dateTime: "Autumn 2020",
-			state: "ongoing",
-			currentVictor: "Ongoing",
+			state: "done",
+			currentVictor: "Seymour",
 			//description: "House Touch Rugby",
-			backgroundColor: "#5E957C",
+			backgroundColor: "#FFBE5A",
 		},
 		{
 			eventType: EventTypes.HOUSE,
@@ -52,7 +65,7 @@ export const KECHBEvents: EventData = {
 			state: "done",
 			currentVictor: "Beaufort",
 			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default
+			//backgroundColor: "#752023", // House default, or #5E957C
 			backgroundColor: "#CC4545",
 		}
 	],

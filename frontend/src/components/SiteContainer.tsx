@@ -10,6 +10,7 @@ import Banner from "./MailingListBanner";
 import Socials from "./Socials";
 import IsItWeekA from "../utils/IsItWeekA";
 import YoutubeContainer from "./YoutubeContainer";
+import YearGroupCalendar from "./YearGroupCalendar";
 
 /**
  * Props to provide to the site
@@ -230,6 +231,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					}
 				</div>
 				<Banner />
+				<YearGroupCalendar />
 				<EventsList eventData={this.state.eventData} />
 			</>
 		);
