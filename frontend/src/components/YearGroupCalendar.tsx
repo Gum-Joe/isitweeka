@@ -17,7 +17,7 @@ export default class YearGroupCalendar extends React.Component {
 				padding: 50
 			}}>
 				<h1 style={{ fontSize: "3em", marginBottom: 0 }}>Year 12 Calendar</h1>
-				<h2>Contains UCAS Exam Details.</h2>
+				<h2>Contains Exam Details.</h2>
 				<h3 style={{ marginBottom: 30 }}>Other year groups to follow later.</h3>
 				<FullCalendar
 					plugins={[listPlugin, iCalendarPlugin]}
