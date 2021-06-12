@@ -27,11 +27,11 @@ export default class YearGroupCalendar extends React.Component {
 						format: "ics",
 					}}
 					visibleRange={{
-						start: "2021-06-06",
-						end: "2021-06-12"
+						start: "2021-06-14",
+						end: "2021-06-20"
 					}}
 					eventBackgroundColor="#fe5000"
-					viewDidMount={function (calendar) { calendar.view.calendar.gotoDate("2021-06-06"); }}
+					viewDidMount={function (calendar) { calendar.view.calendar.gotoDate("2021-06-14"); }}
 					height="auto"
 				/>
 			</div>
