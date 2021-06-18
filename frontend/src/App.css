@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
 @import url("./fonts/Metropolis/stylesheet.css");
+@import "youtube.css";
 
 @keyframes slide-in-top {
 	from {
@@ -1052,4 +1053,23 @@ a {
 		gap: 1.2em;
 		justify-content: center;
 	}
+}
+
+/** TEMP changes to full calendar */
+.fc-cell-shaded {
+	background: rgba(255, 255, 255, 0.12) !important;
+}
+
+.fc-list-event:hover td {
+	background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.fc .fc-list-sticky .fc-list-day > * {
+	background: none !important;
+}
+
+.fc-button-primary {
+	background: black !important;
+	border-color: var(--rykan-accent-secondary) !important;
+	border-width: 2px !important;
 }

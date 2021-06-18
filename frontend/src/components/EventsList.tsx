@@ -70,7 +70,9 @@ export interface EventItemFundraiser extends BaseEventItem {
 */
 export interface EventItemCharity extends BaseEventItem {
 	eventType: EventTypes.CHARITY | "charity";
-	url: string;
+	/* Omit URL for no ticket button */
+	url?: string;
+	
 	// Can now also use for regular, non-ticket events
 	ticketsSale?: {
 		start: string;

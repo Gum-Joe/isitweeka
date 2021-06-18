@@ -1233,6 +1233,46 @@
   dependencies:
     prop-types "^15.7.2"
 
+"@fullcalendar/common@~5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/common/-/common-5.7.0.tgz#fe83f6dbf631c4170654386e9b522ee85c2c064b"
+  integrity sha512-8zKa4q9cQ5xjuAyN0d8AlpCrEC9Kmar5Oq3iMcPbPIO2AtNXTvifzCG44VIgm3/skjDBZ/wYvjJyyB+4WdmT6g==
+  dependencies:
+    tslib "^2.0.3"
+
+"@fullcalendar/daygrid@^5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/daygrid/-/daygrid-5.7.0.tgz#a98ad53aec22e18e0896967223d01490ea031938"
+  integrity sha512-K/0A1XIcf527Q18Hg4eMXCdZwd9AkkfrOqm/rtzULnM5cRkd2oaHOksdrQ5V0kGHAQeV96sp9OCg8PPBrdlBoQ==
+  dependencies:
+    "@fullcalendar/common" "~5.7.0"
+    tslib "^2.0.3"
+
+"@fullcalendar/icalendar@^5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/icalendar/-/icalendar-5.7.0.tgz#b650b58d5173be186978a86cab5730d82a5e1fab"
+  integrity sha512-5wAuDyN6IA2T+i5XkHANk5JJTuqHYzOa/28LzZs5hW39P4PN+RayZCHCX9H8KZM2F8GH0X09xOEQCN5STdw/7A==
+  dependencies:
+    "@fullcalendar/common" "~5.7.0"
+    ical.js "^1.4.0"
+    tslib "^2.0.3"
+
+"@fullcalendar/list@^5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/list/-/list-5.7.0.tgz#f5f8a1c6108e461318c7c26220c3af6aa4147419"
+  integrity sha512-+EYUnWyjcCYppX52VRD4paaJx9c7ly8aCekGBKDsMbs3+KmgTbMEWNdoQKXJGE8Hn668x7OCo8RRZoT65YjTxQ==
+  dependencies:
+    "@fullcalendar/common" "~5.7.0"
+    tslib "^2.0.3"
+
+"@fullcalendar/react@^5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/react/-/react-5.7.0.tgz#886ff7d283abf7c5e43ddf895ae88fa15d523039"
+  integrity sha512-9JdaN/pZXlUFyUe8H1NHIvEt5UVe2p/sctcfsQbKSPJ9NNTVmK+kk3qfUpOWEho6DYuFRLqYI+VwmeVM5mE8rA==
+  dependencies:
+    "@fullcalendar/common" "~5.7.0"
+    tslib "^2.0.3"
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -6204,6 +6244,11 @@ human-signals@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
   integrity sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==
+
+ical.js@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/ical.js/-/ical.js-1.4.0.tgz#fc5619dc55fe03d909bf04362aa0677f4541b9d7"
+  integrity sha512-ltHZuOFNNjcyEYbzDgjemS7LWIFh2vydJeznxQHUh3dnarbxqOYsWONYteBVAq1MEOHnwXFGN2eskZReHclnrA==
 
 ical@^0.8.0:
   version "0.8.0"
@@ -11646,6 +11691,11 @@ tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
+
+tslib@^2.0.3:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.2.0.tgz#fb2c475977e35e241311ede2693cee1ec6698f5c"
+  integrity sha512-gS9GVHRU+RGn5KQM2rllAlR3dU6m7AcpJKdtH8gFvQiC4Otgk98XnmMU+nZenHt/+VhnBPWwgrJsyrdcw6i23w==
 
 tsutils@^3.17.1:
   version "3.21.0"
