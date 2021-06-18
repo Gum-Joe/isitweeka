@@ -84,3 +84,9 @@ html, body, #root, .App {
 		}
 	}
 }
+
+// "it stops links being default blue, and removes the underline" - Madeline
+a {
+	color: inherit;
+	text-decoration: none;
+}

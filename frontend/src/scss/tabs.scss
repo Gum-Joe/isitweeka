@@ -1,7 +1,49 @@
 @import "breakpoints";
+@import "variables";
 
 /** Styles for top tabs (the KECHB and KECHG labelled switch buttons) */
+// Root container of tabs
+.r-tab-container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-height: 100vh;
 
+	// Row of tabs
+	// Positioned slap bag at the top (hence position: absolute)
+	.r-tab-row {
+		display: flex;
+		width: 100%;
+		justify-content: center;
+		/*height: 40px;*/
+		padding: 68px 24px 0;
+		box-sizing: border-box;
+		position: absolute;
+		gap: 12px;
+	}
+
+	// Base tabe style
+	.r-tab {
+		font-size: 2em;
+		padding-bottom: 8px;
+		padding-top: 3px;
+		height: 40px;
+	}
+
+
+	// Underline for actibe tab
+	.r-tab.active::after {
+		content: "";
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background-color: var(--site-primary);
+	}
+}
+
+// Some phablet adjustments
 @include phablet {
 	.r-tab-row {
 		padding-top: 40px !important;

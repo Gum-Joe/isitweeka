@@ -570,6 +570,8 @@ button.back::after {
 	}
 }
 
+/* HERE */
+
 :root {
 	--site-primary: #F10DA2;
 	--site-secondary: #FE5000;
@@ -893,7 +895,7 @@ a {
 	color:rgba(0, 0, 0, 1);
 }
 
-
+/* ABOVE (Mailing list) has been copied but not sorted */
 
 /** Cookie Consent **/
 
