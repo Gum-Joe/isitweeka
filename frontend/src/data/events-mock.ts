@@ -17,7 +17,7 @@ export const KECHBEvents: EventData = {
 			headerURL: "/events/WILTY_Logo.png",
 			backgroundColor: "#2C1F39",
 			eventType: EventTypes.CHARITY,
-			hidden: false,
+			hidden: true,
 		},
 		{
 			title: "LockdownRuns­4Charity",
