@@ -1,1 +1,87 @@
 /** Footer at the bottom */
+@import "variables";
+@import "breakpoints";
+@import "mixins";
+
+// Base styles
+.footer {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	font-weight: 400;
+	padding-bottom: 30px;
+
+	// Items in the footer or in a list
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	// Hover colour for links
+	a:hover {
+		color: var(--link-blue);
+	}
+
+	// Button to give feedback - custom styles for it
+	#feedback-buttom {
+		margin: 25px auto 0;
+
+		&:hover {
+			color: #fff;
+		}
+	}
+
+	// IsItWeekA outbound links to things like our GitHub, email, prviacy policy, etc
+	.outbound-links {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 1em;
+
+		margin-top: 1em;
+	}
+
+	// Credits to the creator of IsItWeekA
+	.container-credits {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		margin-top: 3px;
+
+		h4 {
+			margin: 0.75em 0;
+		}
+
+		ul {
+			display: flex;
+			flex-direction: row;
+			gap: 1em;
+			justify-content: space-evenly;
+			flex-wrap: wrap;
+		}
+	}
+}
+
+/* Responsive design */
+@include phablet {
+	.footer {
+		padding-left: 5vw;
+		padding-right: 5vw;
+
+		.container-credits {
+			flex-direction: column;
+			justify-content: center;
+			gap: 25px;
+			margin-top: 10px;
+
+			ul {
+				flex-direction: row;
+				gap: 1.2em;
+				justify-content: center;
+			}
+		}
+	}
+}

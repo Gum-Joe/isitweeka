@@ -993,7 +993,7 @@ a {
 }
 
 .footer a:hover {
-	color: var(--french-blue-brighter);
+	color: var(--french-blue-brighter) ;
 }
 
 .footer #feedback-buttom {
