@@ -14,7 +14,7 @@
 ///  */
 $desktop: 1700px;
 $laptop: 1700px;
-$tablet: 1050px;
+$tablet: 1050px; /* NOTE: If 1050px is changes, make sure to change it in TSX! (const SHOW_MOBILE_AT_WIDTH in MailingListBanner.tsx */
 $phablet: 700px;
 $mobile: 500px;
 
