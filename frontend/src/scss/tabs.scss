@@ -54,8 +54,3 @@
 	}
 }
 
-@media screen and (max-height: 650px) {
-	.r-tab-row {
-		position: relative !important; // Fix #62 where tabs overlapped - can't apply generally as messes with desktop spacing
-	}
-}
