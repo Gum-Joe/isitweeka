@@ -13,12 +13,11 @@
 	a {
 		@include flex-fully-centred;
 		background: none;
-		color: $text-default;
+		color: $text-default !important;
 		border: solid 2px $text-default;
 		border-radius: 100px;
-		width: max(3.5em, 32px);
-		height: max(3.5em, 32px);
-		color: $text-default;
+		width: calc(max(3.5em, 32px));
+		height: calc(max(3.5em, 32px));
 		
 		// (Font Awesome) Social Icons
 		svg {

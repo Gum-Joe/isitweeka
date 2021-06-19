@@ -1,5 +1,6 @@
 /** All styles related to buttons */
 @import "variables";
+@import "icons.scss";
 
 button {
 	color: inherit;
@@ -45,7 +46,7 @@ button.forward {
 	width: auto;
 
 	// Add icon
-  @include  arrow-right(48px, 8px);
+  @include arrow-right(48px, 8px);
 	&::after {
 		margin: -8px;
 	}

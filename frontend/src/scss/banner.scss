@@ -5,7 +5,7 @@
 @import "icons.scss";
 @import "breakpoints";
 
-// Rootof the banner
+// Root of the banner
 .r-banner-container {
 	top: 168px;
 	left: 0;
@@ -28,7 +28,7 @@
   /** The way we do the banner onn phabelt and below is different */
   @include phablet {
     & {
-      top: min(20vh, 144px);
+      top: calc(min(20vh, 144px));
       /*bottom: 28px;*/
       /*position: initial;*/
       animation: slide-in-bottom 300ms both;
@@ -40,7 +40,7 @@
 
   @include mobile {
     .r-banner-container {
-      top: min(20vh, 112px);
+      top: calc(min(20vh, 112px));
     }
   }
   

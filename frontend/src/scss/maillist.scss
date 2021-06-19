@@ -85,7 +85,7 @@
 		}
 
 		/* checkbox wrapper */
-		.sosumi .input-checkbox-container {
+		.input-checkbox-container {
 			display: flex;
 			flex-direction: row;
 			gap: 10px;
@@ -269,7 +269,7 @@
 }
 
 // Above tablet size, don't show the mobile UI
-@include breakpoint-at("min", $tablet) {
+@include breakpoint-at($tablet, "min") {
 	.sosumi-mobile {
 		display: none !important;
 	}

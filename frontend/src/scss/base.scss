@@ -3,6 +3,7 @@
  * Also sets up main site theme of black BG and white text
  */
 @import "variables";
+@import "breakpoints";
 
 // Orgiinally from create-react-app, isn't really relevant here
 body {
