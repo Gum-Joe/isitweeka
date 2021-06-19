@@ -231,7 +231,8 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					}
 				</div>
 				<Banner />
-				<YearGroupCalendar />
+				{ /* Pulled offline due to jankiness. Readd once a better solution with proper mobile styles and dedicated place is found:
+					<YearGroupCalendar /> */ }
 				<EventsList eventData={this.state.eventData} />
 			</>
 		);

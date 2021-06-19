@@ -2,6 +2,11 @@
 @import url("./fonts/Metropolis/stylesheet.css");
 @import "youtube.css";
 
+/**
+ NOTE: HACK: FIXME: STOP!!!!!!
+ WE NOW USE SCSS FOR STYLES
+ */
+
 @keyframes slide-in-top {
 	from {
 		transform: translateY(-10vh);
