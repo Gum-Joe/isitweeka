@@ -26,6 +26,12 @@
   }
 
   /** The way we do the banner onn phabelt and below is different */
+  @include mobile {
+    & {
+      top: calc(min(20vh, 112px)) !important;
+    }
+  }
+
   @include phablet {
     & {
       top: calc(min(20vh, 144px));
@@ -35,12 +41,6 @@
       animation-delay: 100ms;
       padding: 0 10px;
       /*margin-top: 10px;*/
-    }
-  }
-
-  @include mobile {
-    .r-banner-container {
-      top: calc(min(20vh, 112px));
     }
   }
   
