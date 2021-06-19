@@ -1,0 +1,21 @@
+/** Cookie consent pop-up */
+@import "variables";
+@import "breakpoints";
+
+.CookieConsent, .CookieConsent button {
+	font-size: 1em !important;
+	font-weight: 500;
+	text-transform: none;
+	font-family: "Metropolis", "Open Sans", sans-serif !important;
+}
+
+.CookieConsent a {
+	color: #8ADBFF; // Different to other blues!
+}
+
+// Button to confirm Ok with cookies
+.CookieConsent #rcc-confirm-button {
+	/*background-color: #388E3C !important;*/
+	background-color: var(--great-northern-green) !important;
+	color: $text-default !important;
+}

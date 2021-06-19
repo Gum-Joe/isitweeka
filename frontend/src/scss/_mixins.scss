@@ -5,3 +5,11 @@
 	margin-top: 0;
 	margin-bottom: 0;
 }
+
+
+// Fully centred flex
+@mixin flex-fully-centred {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

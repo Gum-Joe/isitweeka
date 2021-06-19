@@ -1,6 +1,7 @@
 /** Controls styling of events section of the site */
 @import "variables";
 @import "breakpoints";
+@import "mixins";
 
 
 // CENTRE IT ALL!!!!
@@ -74,10 +75,8 @@
   // Style the containers
   > * > div {
     flex: 1;
-    display: flex;
+    @include flex-fully-centred;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
 }
 

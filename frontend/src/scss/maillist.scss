@@ -1,5 +1,6 @@
 @import "variables";
 @import "breakpoints";
+@import "mixins";
 /**
  * Styles for mailing list
  */
@@ -11,9 +12,7 @@
  * .sosumi is the container class
  */
 .sosumi {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	@include flex-fully-centred;
 	gap: 16px;
 
 	text-align: center;

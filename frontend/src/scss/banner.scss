@@ -122,6 +122,14 @@
 	margin: 10px auto auto 0px;
 }
 
+// HACK: .not-x pushes the main jumtotron and rest of the page DOWN so the banner doesn't overlap with it
+// Only necessary under a certain aspect ratio
+@media screen and (max-aspect-ratio: 1/2) {
+	.not-x {
+		display: none!important;
+	}
+}
+
 /** Alert levels */
 .r-banner-alert-LOW {
 	background-color: var(--great-northern-green);

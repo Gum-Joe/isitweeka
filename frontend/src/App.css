@@ -916,11 +916,7 @@ a {
 	color: #FFF !important;
 }
 
-@media screen and (max-aspect-ratio: 1/2) {
-	.not-x {
-		display: none!important;
-	}
-}
+
 /* Socials */
 .social-container {
 	display: flex;
