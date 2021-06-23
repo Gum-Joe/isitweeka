@@ -1,0 +1,89 @@
+/** Contains default header styles */
+@import "mixins";
+@import "breakpoints";
+
+.isitweeka {
+	h1, h2, h3, h4, h5, h6 {
+		display: inline-flex;
+	}
+
+	h1 {
+		font-size: 7em;
+		margin-top: 0;
+		margin-bottom: 0;
+		@include no-margin-top-bottom;
+	}
+
+	h2 {
+		font-size: 3em;
+	}
+
+	h3 {
+		font-size: 2.5em;
+	}
+
+	h4 {
+		font-size: 1.5em;
+	}
+
+	h5 {
+		font-size: 1em;
+	}
+
+	// Hide headers on mobile
+	h1, h2, h3, h4 {
+		&.mobile {
+			display: none;
+		}
+	}
+
+	/** Header adjustments on mobile */
+	@include mobile {
+		h1, h2, h3 {
+			display: inline-flex;
+		}
+
+		h1 {
+			/*font-size: 5em;*/
+			@include no-margin-top-bottom;
+		}
+
+		h2 {
+			font-size: 2.5em;
+			margin-bottom: 0.5em;
+			margin-top: 0.5em;
+		}
+
+		h3 {
+			font-size: 2em;
+		}
+
+		h4 {
+			margin-bottom: 0.5em;
+			margin-top: 0.5em;
+		}
+	}
+
+	@include phablet {
+		> h2.mobile {
+			justify-content: center;
+			font-size: 3em;
+			display: flex !important;
+		}
+
+		> h1.mobile {
+			justify-content: center;
+			font-size: 7em;
+			display: flex !important;
+		}
+
+		> h4 {
+			justify-content: center;
+		}
+	}
+}
+
+/* Use this to remove margins from header */
+.no-margin {
+	margin-top: 0;
+}

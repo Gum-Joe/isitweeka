@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import gaSetState from "./utils/gAnalytics";
-import "./App.css";
+//import "./App.css";
+import "./scss/index.scss";
 import CookieConsent from "react-cookie-consent";
 import SiteContainer from "./components/SiteContainer";
 import { TabContainer } from "./components/Tabs";

@@ -1,0 +1,62 @@
+/** Social buttons. Present both in the jumbotron & footer */
+@import "variables";
+@import "breakpoints";
+@import "mixins";
+
+.social-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 1.8em;
+
+	// The links themselves
+	a {
+		@include flex-fully-centred;
+		background: none;
+		color: $text-default !important;
+		border: solid 2px $text-default;
+		border-radius: 100px;
+		width: calc(max(3.5em, 32px));
+		height: calc(max(3.5em, 32px));
+		
+		// (Font Awesome) Social Icons
+		svg {
+			margin: 0 auto;
+			display: block;
+		}
+
+		&:hover {
+			background-color: rgba(255, 255, 255, 0.12);
+			color: $text-default !important;
+		}
+	}
+
+	// How it looks on the jumtotron
+	.isitweeka-jumbotron & {
+		transform: translate(0, 60px);
+		justify-content: left;
+	}
+}
+
+
+/* Old, coloured social icons */
+/*.social-container .instagram {
+	background-color: #F00075;
+}
+
+.social-container .instagram:hover {
+	background-color: #b10759;
+	color: #fff;
+}
+
+.social-container .twitter {
+	background-color: #1C9AEF;
+}
+
+.social-container .twitter:hover {
+	background-color: #187abb;
+	color: #fff;
+}*/
+ 
+
+

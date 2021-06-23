@@ -1,0 +1,276 @@
+@import "variables";
+@import "breakpoints";
+@import "mixins";
+/**
+ * Styles for mailing list
+ */
+// TODO
+
+/**
+ * COMBINED, BASE STYLES
+ * Some classes are kept separate:
+ * .sosumi is the container class
+ */
+.sosumi {
+	@include flex-fully-centred;
+	gap: 16px;
+
+	text-align: center;
+
+	color: #000;
+	background: #FFF;
+
+	padding: 10px 1vw;
+	box-sizing: border-box;
+
+	z-index: 3;
+
+	form {
+		display: flex;
+		font-weight: 500;
+
+		label {
+			margin: auto 0;
+			font-weight: 600;
+		}
+
+		// We wrap our inputs in a container
+		.input-container {
+			display: flex;
+			/*gap: 16px;*/
+			position: relative;
+			margin: auto;
+
+			// Actual inputs
+			input {
+				position: relative;
+				border: none;
+				padding: 8px;
+				/*border-bottom-color: var(--rykan-accent-primary);*/
+				/*border-bottom-width: 4px;*/
+				/*border-bottom-style: solid;*/
+				/*box-shadow: none;*/
+				/*box-shadow: inset 0 -4px 0 0 var(--rykan-accent-primary);*/
+				/*filter: saturate(0);*/
+				/*padding-bottom: 4px;*/
+				transition-duration: 200ms;
+
+				font-family: "Metropolis", "Open Sans", sans-serif !important;
+				font-weight: 500;
+			}
+
+			input:focus {
+				/*box-shadow: inset 0 0 0 4px var(--rykan-accent-primary);*/
+				/*box-shadow: inset 0 -4px 0 0 var(--great-northern-blue);*/
+				/*box-shadow: inset 0 -4px 0 0 var(--rykan-accent-secondary);*/
+				outline: none;
+				/*background-color: #D0EBFD;*/
+				/*filter: none;*/
+			}
+
+			// Underlines
+			&::after {
+				content: "";
+				position: absolute;
+				width: 100%;
+				height: 4px;
+				bottom: 0;
+				background-color: var(--site-primary);
+				transition-duration: 200ms;
+			}
+			// Underline when focused
+			&:focus-within::after {
+				background-color: var(--french-blue-brighter);
+			}
+		}
+
+		/* checkbox wrapper */
+		.input-checkbox-container {
+			display: flex;
+			flex-direction: row;
+			gap: 10px;
+			justify-content: center;
+
+			input { // actual checkbox input
+				margin: auto 0;
+				box-shadow: none;
+				width: fit-content;
+
+				&:focus {
+					margin: auto 0;
+					box-shadow: none;
+				}
+			}
+		}
+	}
+
+	// Privacy Policy Link
+	.privacy-policy-link {
+		color: var(--alt-blue);
+		text-decoration: underline;
+		margin: auto;
+		font-size: 0.87em;
+	}
+
+	// Responsive design
+	/** Between 1700 and 1050, make centre align and lift header onto new line so stufdf isn't too compacted and squished */
+	@include between($tablet, $desktop) {
+		& {
+			flex-direction: column;
+			gap: 10px !important;
+			padding: 20px !important;
+		}
+	}
+}
+
+/* Custom desktop ONLY styles */
+.sosumi-desktop {
+	position: sticky; // Stick to bottom
+
+	min-height: 90px;
+	margin: 0;
+
+	top: 0;
+	bottom: 0;
+
+	// Size of main header
+	h3 {
+		margin: auto 0;
+		font-size: 2em;
+	}
+
+	form {
+		flex-direction: row;
+		gap: 16px;
+		font-size: 1em;
+		margin: auto 0;
+	}
+
+	input {
+		padding: 8px;
+		/*padding-bottom: 4px;*/
+		font-size: 0.85em;
+		margin: 0;
+		width: 16em;
+	}
+
+	/* Text input wrapper */
+	.input-container {
+		flex-direction: row;
+		max-height: 32px;
+	}
+
+	/* Custom button styles */
+	button {
+		margin: auto;
+		min-width: 95px;
+	}
+}
+
+/* Custom mobile only styles */
+.sosumi-mobile {
+	position: fixed;
+	flex-direction: column;
+
+	width: 90vw;
+	height: 90vh;
+	margin: auto;
+
+	// Position the mobile UI, a pop-up, in the centre of the page
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	// Header for mailing list pop-up
+	h3 {
+		/* Ensure tnis looks nice on iPhone 5S -> iPhone X */
+		font-size: 4vh;
+		box-sizing: border-box;
+		padding: 0 5vw;
+		margin-top: 1.5em;
+		margin-bottom: 0;
+	}
+
+	form {
+		flex-direction: column;
+		/*gap: 1.75em;*/
+		gap: 4vh;
+		font-size: 1.2em;
+
+		width: 100%;
+		padding: 0 4vw;
+		box-sizing: border-box;
+	}
+
+	/* Message about required fields */
+	.sosumi-mobile #required-message {
+		margin: 0;
+		margin-bottom: 0.8em;
+		color: #272727;
+	}
+
+	label {
+		text-align: left;
+	}
+
+	input {
+		padding: 8px 0;
+		font-size: 1em;
+		box-sizing: border-box;
+	}
+
+	.input-container {
+		flex-direction: column;
+		width: 100%;
+	}
+
+	/** Dismiss styles for modal - mobile has a dismiss, desktop does not */
+	.sosumi-dismiss {
+		position: absolute;
+		right: 0.8em;
+		top: 0.8em;
+		margin: 0;
+		padding: 0;
+
+		// The icon itself
+		svg {
+			color:rgba(0, 0, 0, 0.65);
+			margin: 0;
+
+			&:hover {
+				color:rgba(0, 0, 0, 1);
+			}
+
+			&:focus {
+				color:rgba(0, 0, 0, 1);
+			}
+		}
+	}
+}
+
+/* Responsive design switches */
+/** For mailing list, past (i.e. below?) 1000px it ceases to looking good */
+/* These switches let us show the right one at certain screen sizes */
+@include tablet { /* NOTE: If 1050px is changes, make sure to change it in TSX! (const SHOW_MOBILE_AT_WIDTH in MailingListBanner.tsx */
+	// Hide desktop version below tablet size
+	.sosumi-desktop {
+		display: none !important;
+	}
+
+	// Positioning of cover that covers background on mobile, which our mailing list pop up sits on top
+	.mobile-bg-cover {
+		position: fixed;
+		width: 100vw;
+		height: 100vh;
+		background-color: $background-default;
+		opacity: 0.8;
+		top: 0;
+	}
+}
+
+// Above tablet size, don't show the mobile UI
+@include breakpoint-at($tablet, "min") {
+	.sosumi-mobile {
+		display: none !important;
+	}
+}

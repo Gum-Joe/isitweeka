@@ -2,6 +2,11 @@
 @import url("./fonts/Metropolis/stylesheet.css");
 @import "youtube.css";
 
+/**
+ NOTE: HACK: FIXME: STOP!!!!!!
+ WE NOW USE SCSS FOR STYLES
+ */
+
 @keyframes slide-in-top {
 	from {
 		transform: translateY(-10vh);
@@ -141,7 +146,7 @@ button.filled-button {
 	padding-top: 0px;
 	padding-right: 1em;
 	padding-left: 1em;
-	background-color: var(--rykan-accent-primary);
+	background-color: var(--site-primary);
 	color: #FFF;
 }
 
@@ -193,7 +198,7 @@ button.back::before {
 button.forward::before {
 	content: "";
 	/* background-image: linear-gradient(to right, var(--rykan-accent-primary), var(--rykan-accent-secondary)); */
-	background-color: var(--rykan-accent-primary);
+	background-color: var(--site-primary);
 	position: absolute;
 	height: calc(100% + 8px);
 	width: calc(100% + 8px);
@@ -225,7 +230,7 @@ button.forward.b:hover::before {
 button.back::after {
 	content: "";
 	/* background-image: linear-gradient(to right, var(--rykan-accent-primary), var(--rykan-accent-secondary)); */
-	background-color: var(--rykan-accent-primary);
+	background-color: var(--site-primary);
 	position: absolute;
 	height: 3px;
 	width: 100%;
@@ -406,13 +411,20 @@ button.back::after {
 	/* background-color: #B80000 */
 }
 
+/** Ensure spacing above phablet */
+@media screen and (min-width: 500px) {
+	/** Ensure nice bottom spacing */
+	.events-row a {
+		margin-bottom: 25px;
+	}
+}
+/** Phablet */
+@media screen and (max-width: 700px) {
 
-@media screen and (max-width: 600px) {
 	.events-row {
 		flex-direction: column;
 		height: 85vh;
 	}
-
 	.r-banner-container {
 		top: min(20vh, 144px);
 		/*bottom: 28px;*/
@@ -429,13 +441,15 @@ button.back::after {
 	}
 }
 
-@media screen and (min-width: 500px) {
-	.events-row a {
-		margin-bottom: 25px;
+/** At phablet sizes, use justify content to vertically centre events rows.  Below this, it no longer looks right (too much spacing!) */
+@media screen and (max-width: 700px) and (min-width: 500px) {
+	.events-row {
+		justify-content: center;
 	}
 }
 
-@media screen and (max-width: 400px) {
+/* Mobile */
+@media screen and (max-width: 500px) {
 	.isitweeka h1 {
 		/*font-size: 5em;*/
 		margin-top: 0;
@@ -561,9 +575,11 @@ button.back::after {
 	}
 }
 
+/* HERE */
+
 :root {
-	--rykan-accent-primary: #F10DA2;
-	--rykan-accent-secondary: #FE5000;
+	--site-primary: #F10DA2;
+	--site-secondary: #FE5000;
 	background: black;
 	color: white;
 	--icon-fill: white;
@@ -613,7 +629,7 @@ a {
 	left: 0;
 	right: 0;
 	height: 4px;
-	background-color: var(--rykan-accent-primary);
+	background-color: var(--site-primary);
 }
 
 .r-tab {
@@ -735,7 +751,7 @@ a {
 	width: 100%;
 	height: 4px;
 	bottom: 0;
-	background-color: var(--rykan-accent-primary);
+	background-color: var(--site-primary);
 	transition-duration: 200ms;
 }
 
@@ -884,7 +900,7 @@ a {
 	color:rgba(0, 0, 0, 1);
 }
 
-
+/* ABOVE (Mailing list) has been copied but not sorted */
 
 /** Cookie Consent **/
 
@@ -905,11 +921,7 @@ a {
 	color: #FFF !important;
 }
 
-@media screen and (max-aspect-ratio: 1/2) {
-	.not-x {
-		display: none!important;
-	}
-}
+
 /* Socials */
 .social-container {
 	display: flex;
@@ -986,7 +998,7 @@ a {
 }
 
 .footer a:hover {
-	color: var(--french-blue-brighter);
+	color: var(--french-blue-brighter) ;
 }
 
 .footer #feedback-buttom {
@@ -1026,7 +1038,7 @@ a {
 }
 
 /* Responsive design */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
 	.footer {
 		padding-left: 5vw;
 		padding-right: 5vw;

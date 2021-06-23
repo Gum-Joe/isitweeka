@@ -1,0 +1,20 @@
+/** Year Group Calendar */
+
+/** HACK: TEMP changes to full calendar */
+.fc-cell-shaded {
+	background: rgba(255, 255, 255, 0.12) !important;
+}
+
+.fc-list-event:hover td {
+	background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.fc .fc-list-sticky .fc-list-day > * {
+	background: none !important;
+}
+
+.fc-button-primary {
+	background: black !important;
+	border-color: var(--rykan-accent-secondary) !important;
+	border-width: 2px !important;
+}

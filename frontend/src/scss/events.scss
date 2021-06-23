@@ -1,0 +1,91 @@
+/** Controls styling of events section of the site */
+@import "variables";
+@import "breakpoints";
+@import "mixins";
+
+
+// CENTRE IT ALL!!!!
+.events * {
+	text-align: center;
+}
+
+// Base events list styling
+.events-list {
+	display: flex;
+  flex-direction: column;
+  
+  @include phablet {
+    & {
+      height: unset;
+      min-height: 50%;
+      /*flex: 1;*/
+    }
+
+    // Fix the height
+    & > * > div {
+      min-height: 40%;
+      max-height: 40%;
+    }
+  }
+
+  // Style each row
+  .events-row {
+    display: flex;
+    width: 100%;
+    min-height: 320px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--link-active);
+    margin: 0 -10vw;
+    padding: 0 var(--horizontal-indent);
+
+    // Add a border at the top (i think)
+    &:first-child {
+      border-top-style: solid;
+      border-top-width: 1px;
+      border-top-color: var(--link-active);
+    }
+
+    align-content: center;
+
+     /** Ensure spacing above phablet */
+    @include breakpoint-at($mobile, "min") {
+      /** Ensure nice bottom spacing */
+      a {
+        margin-bottom: 25px;
+      }
+    }
+
+    /** Phablet - below phablet size make events row vertical */
+    @include phablet {
+      & {
+        flex-direction: column;
+        height: 85vh;
+      }
+    }
+
+    /** At phablet sizes, use justify content to vertically centre events rows.  Below this, it no longer looks right (too much spacing!) */
+    @include between($mobile, $phablet) {
+      & {
+        justify-content: center;
+      }
+    }
+  }
+
+  // Style the containers
+  > * > div {
+    flex: 1;
+    @include flex-fully-centred;
+    flex-direction: column;
+  }
+}
+
+// Allows events header removal outside of mobile (so show it on mobile)
+@include mobile {
+  #no-events-header {
+		justify-content: center;
+		font-size: 4em;
+		display: flex !important;
+	}
+}
+

@@ -1,0 +1,93 @@
+/**
+ * Contains the base styles of the site, mostly responsbile for setting up the body, app container, etc so they expand and fit the page.
+ * Also sets up main site theme of black BG and white text
+ */
+@import "variables";
+@import "breakpoints";
+
+// Orgiinally from create-react-app, isn't really relevant here
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+// OUR STUFF:
+/**
+ * Setup:
+ * - fonts (default is Metropolis
+ * - site background colour (black)
+ * - site text colour default (white)
+ * - expand site to fite whole page
+ */
+html, body, #root, .App {
+  margin: 0;
+  min-height: 100%;
+  background-color: $background-default;
+	color: $text-default;
+	font-family: "Metropolis", "Open Sans", sans-serif !important;
+	font-weight: 400 !important;
+}
+
+/** Setup flex structure of application - .App is the react root of the site */
+.App {
+	justify-content: center;
+	flex-direction: column;
+}
+
+/** .isitweeka - wrapper class for site sections */
+.isitweeka {
+	// Maximise
+	min-height: 100vh;
+	/* Prevent overlap with mail list. Readded on mobile to prevent thing looking weird (left commented out here) */
+	/*height: 100vh;*/
+
+	// Setup flex displaying
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	// Indent
+	margin-left: var(--horizontal-indent);
+	margin-right: var(--horizontal-indent);
+}
+
+/* HACK */
+@include phablet {
+	#root {
+		overflow-x: hidden;
+	}
+}
+
+// Default showings of mobile and desktop only classes
+.mobile {
+	display: none !important;
+	@include phablet {
+		& {
+			display: inline-block !important;
+		}
+	}
+}
+
+.desktop {
+	display: inherit !important;
+	@include phablet {
+		& {
+			display: none !important;
+		}
+	}
+}
+
+// "it stops links being default blue, and removes the underline" - Madeline
+a {
+	color: inherit;
+	text-decoration: none;
+}

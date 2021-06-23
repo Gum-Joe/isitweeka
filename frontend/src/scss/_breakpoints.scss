@@ -1,0 +1,85 @@
+/**
+ * This file defines the breakpoints which are used to modiy CSS at different screen sizes (widths) 
+ * for responsive design purposes
+ */
+// From https://medium.com/codeartisan/breakpoints-and-media-queries-in-scss-46e8f551e2f2
+
+/// /**
+///  * BREAKPOINTS: (each level defines the number UNDER which styles should occur
+///  * - Desktop: >1700px
+///  * - Laptop: <= 1700px (laptops tend to have narrower screens, which can squish things)
+///  * - Tablet: <= 1050px
+///  * - Phablet: 700px
+///  * - Mobile: 500px (to account for narrower phones)
+///  */
+$desktop: 1700px;
+$laptop: 1700px;
+$tablet: 1050px; /* NOTE: If 1050px is changes, make sure to change it in TSX! (const SHOW_MOBILE_AT_WIDTH in MailingListBanner.tsx */
+$phablet: 700px;
+$mobile: 500px;
+
+/// Mixin for desktop only styles 
+@mixin desktop {
+	@media screen and (min-width: #{$desktop}) {
+		@content;
+	}
+}
+
+/// Mixin for laptop and below only styles 
+@mixin laptop {
+	@media screen and (max-width: #{$laptop}) {
+		@content;
+	}
+}
+
+/// Mixin for tablet and below only styles 
+@mixin tablet {
+	@media screen and (max-width: #{$tablet}) {
+		@content;
+	}
+}
+
+/// Mixin for phablet and below only styles 
+@mixin phablet {
+	@media screen and (max-width: #{$phablet}) {
+		@content;
+	}
+}
+
+/// Mixin for mobile and below only styles 
+@mixin mobile {
+	@media screen and (max-width: #{$mobile}) {
+		@content;
+	}
+}
+
+/// Mixin to have styles between two breakpoints.  Provides it one of the breakpoint vars above.
+/// @param {String} $minimum - Minimum screen size to activate at 
+/// @param {String} $maximum - Maximum screen size to activate at 
+@mixin between($minimum, $maximum) {
+	@media screen and (min-width: #{$minimum}) and (max-width: #{$maximum}) {
+		@content;
+	}
+}
+
+/// Mixin for arbitary breakpoints
+/// @param {String} $type "min" or "max" (min-width or max-width) 
+@mixin breakpoint-at($min-max-width: string, $breakpoint-type: "min" or "max") {
+	@if $breakpoint-type != "min" and $breakpoint-type != "max" {
+		@error "Invalid type provided!";
+	}
+	@if $breakpoint-type == "min" {
+		@media screen and (min-width: #{$min-max-width}) {
+			@content;
+		}
+	}
+	@if $breakpoint-type == "max" {
+		@media screen and (max-width: #{$min-max-width}) {
+			@content;
+		}
+	}
+}
+
+
+
+
