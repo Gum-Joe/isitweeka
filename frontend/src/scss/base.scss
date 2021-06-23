@@ -37,8 +37,12 @@ html, body, #root, .App {
   min-height: 100%;
   background-color: $background-default;
 	color: $text-default;
-	font-family: "Metropolis", "Open Sans", sans-serif !important;
-	font-weight: 400 !important;
+	font-family: "Metropolis", "Open Sans", sans-serif;
+	font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6, p, span {
+	font-family: "Metropolis", "Open Sans", sans-serif;
 }
 
 /** Setup flex structure of application - .App is the react root of the site */
