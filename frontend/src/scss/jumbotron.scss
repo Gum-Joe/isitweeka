@@ -22,3 +22,10 @@
 		transform: scale(0.8) translate(0, 60px) !important;
 	}
 }
+
+// Control the styling of the "if you believe this is in error, please contact <email>" shown
+// when the system can't detect A or B
+// Without this it is inline-flex and so on mobile looks incorecct as the email link and header text don't appear as one line - see issue #35
+#neitherAB-contact {
+	display: block;
+}

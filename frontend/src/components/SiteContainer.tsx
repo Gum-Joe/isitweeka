@@ -175,8 +175,9 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	async getCalendar() {
 		const inputDate = new Date();
 		// Used for fiddling:
+		// NOTE: Do NOT allow code into production where these value are uncommented
 		//inputDate.setDate(26);
-		//inputDate.setMonth(2);
+		//inputDate.setMonth(7);
 		//inputDate.setFullYear(2021);
 		// Get which week it is 
 		const weekChecker = new IsItWeekA(this.props.weekMarkerDate, this.props.calendarURL, inputDate);
@@ -199,7 +200,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h2>It is neither Week A nor B.</h2>
 					<h3>This means it&#39;s probably a holiday.</h3>
 					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>events</div></Button>
-					<h5>If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
+					<h5 id="neitherAB-contact">If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
 					<Socials />
 				</>
 			);
