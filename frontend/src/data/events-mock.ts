@@ -43,7 +43,7 @@ export const KECHBEvents: EventData = {
 				start: "01/01/2020"
 			},
 			description: "Countdown to CHAOS: the Camp Hill Amateur Operatic Society.  Little else is known at the moment.",
-			when: "Thursday 1st & Friday 2nd July",
+			when: "Monday 19th July 2021",
 			backgroundColor: "#752023",
 			hidden: false,
 		},
