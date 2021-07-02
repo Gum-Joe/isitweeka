@@ -36,6 +36,15 @@ export const KECHBEvents: EventData = {
 			hidden: true,
 		},
 		{
+			eventType: EventTypes.HOUSE,
+			title: "Sports Day",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Wednesday 14th July",
+			state: "todo",
+			description: "Get ready for Sports Day - the final event of the house calendar!",
+			backgroundColor: "#5E957C",
+		},
+		{
 			eventType: EventTypes.CHARITY,
 			title: "CHAOS",
 			headerURL: "/events/School-Logo.png",
@@ -55,7 +64,7 @@ export const KECHBEvents: EventData = {
 			state: "done",
 			currentVictor: "Seymour",
 			//description: "House Touch Rugby",
-			backgroundColor: "#FFBE5A",
+			backgroundColor: "#e8ae56",
 		},
 		{
 			eventType: EventTypes.HOUSE,
