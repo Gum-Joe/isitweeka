@@ -40,9 +40,11 @@ export const KECHBEvents: EventData = {
 			title: "Sports Day",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
 			dateTime: "Wednesday 14th July",
-			state: "todo",
-			description: "Get ready for Sports Day - the final event of the house calendar!",
-			backgroundColor: "#5E957C",
+			state: "done",
+			currentVictor: "Howard",
+			description: "Sports Day - the final event of the house calendar!",
+			//backgroundColor: "#5E957C",
+			backgroundColor: "#4286BB",
 		},
 		{
 			eventType: EventTypes.CHARITY,
@@ -54,7 +56,7 @@ export const KECHBEvents: EventData = {
 			description: "Countdown to CHAOS: the Camp Hill Amateur Operatic Society.  Little else is known at the moment.",
 			when: "Monday 19th July 2021",
 			backgroundColor: "#752023",
-			hidden: false,
+			hidden: true,
 		},
 		{
 			eventType: EventTypes.HOUSE,
