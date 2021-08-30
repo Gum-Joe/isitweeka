@@ -5,7 +5,51 @@
 
 import { EventData, EventTypes } from "../components/EventsList";
 
+/** Colour for events that are "todo" and on the house calendar */
+export const HOUSE_EVENT_PENDING_BG = "#752023";
+export const HOUSE_BEAUFORT = "#CC4545";
+export const HOUSE_SEYMOUR = "#e8ae56";
+export const HOUSE_HOWARD = "#4286BB";
+
 export const KECHBEvents: EventData = {
+	generatedAt: "0",
+	events: [
+		{
+			eventType: EventTypes.CHARITY,
+			title: "Year 7, 10 and 12 Photographs",
+			headerURL: "/events/School-Logo.png",
+			description: "The all-important school photographs.",
+			when: "Wednesday 8th September 2021",
+			backgroundColor: "#752023",
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Cross-Country",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Autumn 2021",
+			state: "todo",
+			//currentVictor: "Seymour",
+			//description: "House Touch Rugby",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Rugby",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Autumn 2021",
+			state: "todo",
+			//currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+	],
+};
+
+/**
+ * Events from 2021
+ */
+export const KECHB2021Events: EventData = {
 	events: [
 		{
 			title: "Would I Lie To You?",

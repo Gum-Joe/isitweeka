@@ -86,7 +86,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			this.getCalendar();
 			this.fetchEvents();
 			this.fetchNotifications();
-		} catch (err) {
+		} catch (err: any) {
 			console.error("Error: " + err?.message);
 		}
 	}
