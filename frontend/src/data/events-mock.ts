@@ -21,6 +21,7 @@ export const KECHBEvents: EventData = {
 			description: "The all-important school photographs.",
 			when: "Wednesday 8th September 2021",
 			backgroundColor: "#752023",
+			hidden: true,
 		},
 		{
 			eventType: EventTypes.HOUSE,
