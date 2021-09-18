@@ -32,6 +32,14 @@ export const KECHBEvents: EventData = {
 			hidden: true,
 		},
 		{
+			eventType: EventTypes.CHARITY,
+			title: "Online open evening",
+			headerURL: "/events/School-Logo.png",
+			description: "Open evening - in an online format",
+			//when: "filming on 30th September",
+			backgroundColor: "#752023",
+		},
+		{
 			eventType: EventTypes.HOUSE,
 			title: "House Football",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
@@ -66,7 +74,7 @@ export const KECHBEvents: EventData = {
 		},
 		{
 			eventType: EventTypes.HOUSE,
-			title: "House Cross-Country",
+			title: "House Cross Country",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
 			dateTime: "standards w/c 15th November 2021, final Thursday 2nd December",
 			state: "todo",
@@ -84,6 +92,14 @@ export const KECHBEvents: EventData = {
 			//description: "House Touch Rugby",
 			//backgroundColor: "#752023", // House default, or #5E957C
 			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "Prize Giving",
+			headerURL: "/events/School-Logo.png",
+			description: "A celebration of students' achievements, with a chance to reflect on the past academic year",
+			when: "Thursday 3rd December",
+			backgroundColor: "#752023",
 		},
 		{
 			eventType: EventTypes.HOUSE,
