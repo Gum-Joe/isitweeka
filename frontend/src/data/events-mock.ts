@@ -16,6 +16,14 @@ export const KECHBEvents: EventData = {
 	events: [
 		{
 			eventType: EventTypes.CHARITY,
+			title: "Head's hotseat - KS5",
+			headerURL: "/events/School-Logo.png",
+			description: "The chance to give your questions to Mr Bowen - check your email for how to submit them!",
+			when: "Thursday 23rd September 2021",
+			backgroundColor: "#752023",
+		},
+		{
+			eventType: EventTypes.CHARITY,
 			title: "Year 7, 10 and 12 Photographs",
 			headerURL: "/events/School-Logo.png",
 			description: "The all-important school photographs.",
@@ -25,9 +33,42 @@ export const KECHBEvents: EventData = {
 		},
 		{
 			eventType: EventTypes.HOUSE,
+			title: "House Football",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "w/c 27th September",
+			state: "todo",
+			//currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Rugby",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "starts Monday 4th October 2021",
+			state: "todo",
+			//currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Quiz - Seniors",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "starts Tuesday 9th November 2021",
+			state: "todo",
+			//currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
 			title: "House Cross-Country",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "Autumn 2021",
+			dateTime: "standards w/c 15th November 2021, final Thursday 2nd December",
 			state: "todo",
 			//currentVictor: "Seymour",
 			//description: "House Touch Rugby",
@@ -35,9 +76,20 @@ export const KECHBEvents: EventData = {
 		},
 		{
 			eventType: EventTypes.HOUSE,
-			title: "House Rugby",
+			title: "House Badminton",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "Autumn 2021",
+			dateTime: "starts Wednesday 1st December 2021",
+			state: "todo",
+			//currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Basketball",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "w/c 13th December 2021",
 			state: "todo",
 			//currentVictor: "Beaufort",
 			//description: "House Touch Rugby",
