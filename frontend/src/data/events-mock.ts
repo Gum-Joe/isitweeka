@@ -127,7 +127,26 @@ export const KECHB2021Events: EventData = {
 	generatedAt: "0"
 };
 
-export const KECHGEvents = {
-	events: [],
+export const KECHGEvents: EventData = {
+	events: [
+		{
+			eventType: EventTypes.CHARITY,
+			title: "Macmillan Coffee Morning",
+			when: "Friday 1st October",
+			backgroundColor: "#f7f7f7",
+			textColour: "#005C46",
+			headerURL: "/events/Macmillan_Cancer_Support.svg",
+			url: "https://coffee.macmillan.org.uk",
+			cta: {
+				color: "#fff",
+				type: "fill",
+				backgroundColor: "#005C46", // Possible A/B Test
+				text: "more info",
+			},
+			ticketsSale: {
+				start: "01/10/21"
+			}
+		},
+	],
 	generatedAt: "0",
 };

@@ -49,6 +49,8 @@ export interface BaseEventItem {
 		backgroundColor?: string;
 		/** underline: button has an underline. fill: button has a fill instead */
 		type: "underline" | "fill";
+		/** Change the CTA text */
+		text?: string,
 	},
 	/* String representation of the date/time of event */
 	when?: string,

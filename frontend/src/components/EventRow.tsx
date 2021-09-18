@@ -29,12 +29,17 @@ function reportOutboundButtonClick() {
 	});
 }
 
+/** Generates event row root div styling */
+function generateRootStyle(event: EventItem): Record<string, string> {
+	return { backgroundColor: event.backgroundColor, color: event.textColour || "#fff" };
+}
+
 export default class EventRow extends React.PureComponent<RowProps, never> {
 	render() {
 		switch (this.props.event.eventType) {
 			case EventTypes.CHARITY:
 				return (
-					<div className="events-row" style={{ backgroundColor: this.props.event.backgroundColor }}>
+					<div className="events-row" style={generateRootStyle(this.props.event)}>
 						<div>
 							<div style={{ backgroundImage: `url(${this.props.event.headerURL})`, ...baseEventImageStyle }}>
 								{/*<h4>[IMAGE SET AS BACKGROUND OF THIS DIV]</h4>*/}
@@ -45,10 +50,11 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
 							{typeof this.props.event.when !== "undefined" ? <h4 className="no-margin">When? {this.props.event.when}</h4> : null}
 							{typeof this.props.event.description !== "undefined" ? <h4 className="no-margin">{this.props.event.description}</h4> : null}
 							{
+								// Display the URL to buy tickets IF there is a ticket start time.
 								this.props.event.ticketsSale && this.props.event.url &&
 									new Date(this.props.event.ticketsSale.start).valueOf() < Date.now() ?
 									<a href={this.props.event.url}>
-										<Button onClick={reportOutboundButtonClick} style={{ ...this.props.event.cta }}>Buy Tickets</Button>
+										<Button onClick={reportOutboundButtonClick} buttonType={this.props.event.cta?.type || "underline"} style={{ ...this.props.event.cta }}>{ this.props.event.cta?.text || "Buy Tickets" }</Button>
 									</a> : null
 							}
 							{
@@ -64,7 +70,7 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
 			
 			case EventTypes.FUNDRIASER:
 				return (
-					<div className="events-row" style={{ backgroundColor: this.props.event.backgroundColor, color: this.props.event.textColour || "#fff" }}>
+					<div className="events-row" style={generateRootStyle(this.props.event)}>
 						<div>
 							<div style={{ backgroundImage: `url(${this.props.event.headerURL})`, ...baseEventImageStyle }}>
 								{/*<h4>[IMAGE SET AS BACKGROUND OF THIS DIV]</h4>*/}
@@ -75,7 +81,7 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
 							{typeof this.props.event.description !== "undefined" ? <h4 className="no-margin">{this.props.event.description}</h4> : null}
 							<h4 className="no-margin">Target: {this.props.event.target}</h4>
 							<a target="__blanK" href={this.props.event.url}>
-								<Button onClick={reportOutboundButtonClick} buttonType={this.props.event.cta?.type || "underline"} style={{ ...this.props.event.cta }}>Donate Now</Button>
+								<Button onClick={reportOutboundButtonClick} buttonType={this.props.event.cta?.type || "underline"} style={{ ...this.props.event.cta }}>{this.props.event.cta?.text || "Donate Now"}</Button>
 							</a>
 						</div>
 					</div>
@@ -83,7 +89,7 @@ export default class EventRow extends React.PureComponent<RowProps, never> {
 			
 			case EventTypes.HOUSE:
 				return (
-					<div className="events-row" style={{ backgroundColor: this.props.event.backgroundColor }}>
+					<div className="events-row" style={generateRootStyle(this.props.event)}>
 						<div>
 							<div style={{ backgroundImage: `url(${this.props.event.headerURL})`, ...baseEventImageStyle }}>
 								{/*<h4>[IMAGE SET AS BACKGROUND OF THIS DIV]</h4>*/}
