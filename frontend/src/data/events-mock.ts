@@ -135,13 +135,13 @@ export const KECHGEvents: EventData = {
 			title: "Macmillan Coffee Morning",
 			when: "Friday 1st October",
 			backgroundColor: "#f7f7f7",
-			textColour: "#005C46",
+			textColour: "#00754F",
 			headerURL: "/events/Macmillan_Cancer_Support.svg",
 			url: "https://coffee.macmillan.org.uk",
 			cta: {
 				color: "#fff",
 				type: "fill",
-				backgroundColor: "#005C46", // Possible A/B Test
+				backgroundColor: "#00754F", // Possible A/B Test
 				text: "more info",
 			},
 			ticketsSale: {
