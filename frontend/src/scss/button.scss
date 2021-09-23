@@ -36,7 +36,15 @@ button {
 	// Span I think is the button's actual contents
 	& > span { // = button > span
 		z-index: 2;
-		padding-top: 1px;
+		padding-top: 4px;
+		
+	}
+
+	// Button text is too low on Firefox with 5px padding.
+	@-moz-document url-prefix() {
+		& > span {
+			padding-top: 1px !important;
+		}		
 	}
 }
 
