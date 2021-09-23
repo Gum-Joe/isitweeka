@@ -16,10 +16,11 @@ export const KECHBEvents: EventData = {
 	events: [
 		{
 			eventType: EventTypes.CHARITY,
-			title: "Head's hotseat - KS5",
+			title: "Head's hotseat",
 			headerURL: "/events/School-Logo.png",
-			description: "The chance to give your questions to Mr Bowen - check your email for how to submit them!",
-			when: "Thursday 23rd September 2021",
+			//description: "The chance to give your questions to Mr Bowen - check your email for how to submit them!",
+			description: "The chance to give your questions to Mr Bowen!",
+			when: "TBC",
 			backgroundColor: "#752023",
 		},
 		{
