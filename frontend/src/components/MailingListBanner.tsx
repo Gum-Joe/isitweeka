@@ -1,6 +1,7 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import FocusTrap from "focus-trap-react";
+import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import FontAwesome from "react-fontawesome";
 import { Portal } from "react-portal";
@@ -65,6 +66,7 @@ const BaseMailingListForm: React.FC<MailListProps> = (props) => {
 };
 
 
+const MALING_LIST_DIMISS_COOKIE = "IsItWeekA_EmailBannerDismiss";
 const MailingListContainer: React.FC = (props) => {
 
 	const [mobileListIsOpen, setmobileListIsOpen] = useState(false);
@@ -76,6 +78,10 @@ const MailingListContainer: React.FC = (props) => {
 		document.body.style.position = "";
 		document.body.style.top = "";
 		window.scrollTo(0, parseInt(scrollY || "0") * -1);
+		// set cookie
+		Cookies.set(MALING_LIST_DIMISS_COOKIE, "true", {
+			expires: 14, // Expires in 3 weeks
+		});
 		setmobileListIsOpen(false);
 	}
 
@@ -85,13 +91,16 @@ const MailingListContainer: React.FC = (props) => {
 		setTimeout(() => {
 			// Inital body adjustments
 			// When the modal is shown, we want a fixed body#
-			if (window.innerWidth <= SHOW_MOBILE_AT_WIDTH) {
-				const scrolled = window.scrollY;
-				console.log(scrolled);
-				document.body.style.position = "fixed";
-				document.body.style.top = `-${scrolled}px`;
-				setmobileListIsOpen(true);
-			}
+			if (Cookies.get(MALING_LIST_DIMISS_COOKIE) !== "true") {
+				// Only show if not previously dismissed.
+				if (window.innerWidth <= SHOW_MOBILE_AT_WIDTH) {
+					const scrolled = window.scrollY;
+					console.log(scrolled);
+					document.body.style.position = "fixed";
+					document.body.style.top = `-${scrolled}px`;
+					setmobileListIsOpen(true);
+				}
+			}	
 		}, 4500);
 	}, []);
 

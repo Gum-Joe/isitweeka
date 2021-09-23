@@ -214,7 +214,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h1 className="desktop">Week {this.state.week}</h1>
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be week" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="mobile">{this.state.week}</h1>
-					<h4>More coming soon...</h4>
+					<h4>More coming soon - follow our social media for the latest updates!</h4>
 					<Button style={{ marginRight: "auto", marginTop: 25 }} className="forward" onClick={getScrollDownWithAdditional(0)}>events</Button>
 					<Socials />
 				</>
