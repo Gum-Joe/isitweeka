@@ -16,7 +16,7 @@ export const KECHBEvents: EventData = {
 	events: [
 		{
 			eventType: EventTypes.CHARITY,
-			title: "Head's hotseat",
+			title: "Head's Hotseat",
 			headerURL: "/events/School-Logo.png",
 			//description: "The chance to give your questions to Mr Bowen - check your email for how to submit them!",
 			description: "The chance to give your questions to Mr Bowen!",
@@ -34,10 +34,18 @@ export const KECHBEvents: EventData = {
 		},
 		{
 			eventType: EventTypes.CHARITY,
-			title: "Online open evening",
+			title: "Online Open Evening",
 			headerURL: "/events/School-Logo.png",
-			description: "Open evening - in an online format",
-			//when: "filming on 30th September",
+			description: "Open evening - in an online format. There will be a half-day for filming on Thursday 30th September",
+			//when: "Half-day for filming on 30th September",
+			backgroundColor: "#752023",
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "Teacher Training Day",
+			headerURL: "/events/School-Logo.png",
+			description: "A day off school for pupils.",
+			when: "Friday 1st October 2021",
 			backgroundColor: "#752023",
 		},
 		{
@@ -99,7 +107,7 @@ export const KECHBEvents: EventData = {
 			title: "Prize Giving",
 			headerURL: "/events/School-Logo.png",
 			description: "A celebration of students' achievements, with a chance to reflect on the past academic year",
-			when: "Thursday 3rd December",
+			when: "Friday 3rd December",
 			backgroundColor: "#752023",
 		},
 		{
