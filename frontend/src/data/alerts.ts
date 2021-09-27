@@ -12,8 +12,9 @@ export const KECHBAlerts: AlertResponce = {
 	showAlert: true,
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
-	message: "Welcome to IsItWeekA! We'll use these banners for important alerts in the future.",
-	alertLevel: ThreatLevels.LOW,
+	//message: "Welcome to IsItWeekA! We'll use these banners for important alerts in the future.",
+	alertLevel: ThreatLevels.INFO,
+	message: "Tudor annihilates Seymour 5-0 to take the lead in Senior House Football, as Beaufort and Howard draw at 2-2."
 	//linkText: "follow our social media for the latest updates",
 	//linkTo: "https://twitter.com/IsItWeekA"
 };

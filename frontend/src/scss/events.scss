@@ -48,6 +48,13 @@
 
     align-content: center;
 
+    // Make the current victor bold to stand out
+    .current-victor {
+      font-weight: 900;
+      text-decoration: underline 3px;
+
+    }
+
      /** Ensure spacing above phablet */
     @include breakpoint-at($mobile, "min") {
       /** Ensure nice bottom spacing */

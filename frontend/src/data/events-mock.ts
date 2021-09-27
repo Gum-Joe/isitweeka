@@ -10,10 +10,22 @@ export const HOUSE_EVENT_PENDING_BG = "#752023";
 export const HOUSE_BEAUFORT = "#CC4545";
 export const HOUSE_SEYMOUR = "#e8ae56";
 export const HOUSE_HOWARD = "#4286BB";
+export const HOUSE_TUDOR = "#5a9143";
 
 export const KECHBEvents: EventData = {
 	generatedAt: "0",
 	events: [
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Football",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "w/c 27th September",
+			state: "ongoing",
+			currentVictor: "Tudor",
+			description: "Tudor takes the lead after the first Senior Football fixtures",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_TUDOR,
+		},
 		{
 			eventType: EventTypes.CHARITY,
 			title: "Head's Hotseat",
@@ -47,17 +59,6 @@ export const KECHBEvents: EventData = {
 			description: "A day off school for pupils.",
 			when: "Friday 1st October 2021",
 			backgroundColor: "#752023",
-		},
-		{
-			eventType: EventTypes.HOUSE,
-			title: "House Football",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "w/c 27th September",
-			state: "todo",
-			//currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
 		},
 		{
 			eventType: EventTypes.HOUSE,
