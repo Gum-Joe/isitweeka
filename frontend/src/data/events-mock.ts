@@ -21,10 +21,10 @@ export const KECHBEvents: EventData = {
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
 			dateTime: "w/c 27th September",
 			state: "ongoing",
-			currentVictor: "Tudor",
-			description: "Tudor takes the lead after the first Senior Football fixtures",
+			currentVictor: "Howard",
+			description: "Howard takes the lead after the second set of Senior Football fixtures",
 			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_TUDOR,
+			backgroundColor: HOUSE_HOWARD,
 		},
 		{
 			eventType: EventTypes.CHARITY,

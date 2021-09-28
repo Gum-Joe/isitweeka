@@ -14,9 +14,9 @@ export const KECHBAlerts: AlertResponce = {
 	// alertLevel: ThreatLevels.CRITICAL,
 	//message: "Welcome to IsItWeekA! We'll use these banners for important alerts in the future.",
 	alertLevel: ThreatLevels.INFO,
-	message: "Tudor annihilates Seymour 5-0 to take the lead in Senior House Football, as Beaufort and Howard draw at 2-2."
-	//linkText: "follow our social media for the latest updates",
-	//linkTo: "https://twitter.com/IsItWeekA"
+	message: "Howard takes the lead in Senior Football after thrashing Tudor 4-0, whilst Beaufort and Seymour draw at 0-0.",
+	linkText: "see tweets",
+	linkTo: "https://twitter.com/IsItWeekA/status/1442875276963168258"
 };
 
 export const KECHGAlerts: AlertResponce = {
