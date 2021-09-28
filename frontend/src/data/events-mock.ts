@@ -226,6 +226,14 @@ export const KECHGEvents: EventData = {
 				start: "01/10/21"
 			}
 		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "Teacher Training Day",
+			headerURL: "/events/School-Logo.png",
+			description: "A day off school for pupils.",
+			when: "Monday 4th October 2021",
+			backgroundColor: "#752023",
+		},
 	],
 	generatedAt: "0",
 };
