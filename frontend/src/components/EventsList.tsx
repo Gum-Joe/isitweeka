@@ -157,13 +157,14 @@ export interface EventsListProps {
 export default class EventsList extends Component<EventsListProps> {
 
 	render() {
+		const filteredEvents = this.props.eventData.events.filter(theEvent => theEvent.hidden !== true);
 		return (
 			<div className="isitweeka events">
 				{/* TODO: Sort out back button for mobile */}
 				<h2 className=""><button onClick={scrollUp} className="back" /> Upcoming Events</h2>
 				<div className="events-list">
 					
-					{this.props.eventData.events.length > 0 ? this.props.eventData.events.filter(theEvent => theEvent.hidden !== true).map((theEvent, index) => (
+					{filteredEvents.length > 0 ? filteredEvents.map((theEvent, index) => (
 						<EventRow key={index} event={theEvent} />
 					)) :
 						<h1 id="no-events-header">There are no events.</h1>

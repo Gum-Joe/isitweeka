@@ -14,9 +14,9 @@ export const KECHBAlerts: AlertResponce = {
 	// alertLevel: ThreatLevels.CRITICAL,
 	//message: "Welcome to IsItWeekA! We'll use these banners for important alerts in the future.",
 	alertLevel: ThreatLevels.INFO,
-	message: "Howard takes the lead in Senior Football after thrashing Tudor 4-0, whilst Beaufort and Seymour draw at 0-0.",
-	linkText: "see tweets",
-	linkTo: "https://twitter.com/IsItWeekA/status/1442875276963168258"
+	message: "HOWARD IN THE HOUSE: Howard takes the Senior Football title, as Beaufort snatches second place from Tudor.",
+	linkText: "see more",
+	linkTo: "https://www.instagram.com/p/CUp1nGPIqLr/?utm_source=ig_web_copy_link"
 };
 
 export const KECHGAlerts: AlertResponce = {

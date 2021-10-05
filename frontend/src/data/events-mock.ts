@@ -22,7 +22,7 @@ export const KECHBEvents: EventData = {
 			dateTime: "w/c 27th September",
 			state: "ongoing",
 			currentVictor: "Howard",
-			description: "Howard takes the lead after the second set of Senior Football fixtures",
+			description: "Howard wins Senior Football - now can they take the overall House Football trophy?",
 			//backgroundColor: "#752023", // House default, or #5E957C
 			backgroundColor: HOUSE_HOWARD,
 		},
@@ -34,6 +34,7 @@ export const KECHBEvents: EventData = {
 			description: "The chance to give your questions to Mr Bowen!",
 			when: "TBC",
 			backgroundColor: "#752023",
+			hidden: true,
 		},
 		{
 			eventType: EventTypes.CHARITY,
@@ -51,6 +52,7 @@ export const KECHBEvents: EventData = {
 			description: "Open evening - in an online format. There will be a half-day for filming on Thursday 30th September",
 			//when: "Half-day for filming on 30th September",
 			backgroundColor: "#752023",
+			hidden: true,
 		},
 		{
 			eventType: EventTypes.CHARITY,
@@ -59,13 +61,14 @@ export const KECHBEvents: EventData = {
 			description: "A day off school for pupils.",
 			when: "Friday 1st October 2021",
 			backgroundColor: "#752023",
+			hidden: true,
 		},
 		{
 			eventType: EventTypes.HOUSE,
 			title: "House Rugby",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
 			dateTime: "starts Monday 4th October 2021",
-			state: "todo",
+			state: "ongoing",
 			//currentVictor: "Beaufort",
 			//description: "House Touch Rugby",
 			//backgroundColor: "#752023", // House default, or #5E957C
@@ -224,7 +227,8 @@ export const KECHGEvents: EventData = {
 			},
 			ticketsSale: {
 				start: "01/10/21"
-			}
+			},
+			hidden: true,
 		},
 		{
 			eventType: EventTypes.CHARITY,
@@ -233,6 +237,7 @@ export const KECHGEvents: EventData = {
 			description: "A day off school for pupils.",
 			when: "Monday 4th October 2021",
 			backgroundColor: "#752023",
+			hidden: true,
 		},
 	],
 	generatedAt: "0",
