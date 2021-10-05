@@ -22,7 +22,7 @@ export const KECHBEvents: EventData = {
 			dateTime: "w/c 27th September",
 			state: "ongoing",
 			currentVictor: "Howard",
-			description: "Howard wins Senior Football - now can they take the overall House Football trophy?",
+			description: "Howard wins Senior Football - but will they win overall?",
 			//backgroundColor: "#752023", // House default, or #5E957C
 			backgroundColor: HOUSE_HOWARD,
 		},
@@ -69,10 +69,14 @@ export const KECHBEvents: EventData = {
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
 			dateTime: "starts Monday 4th October 2021",
 			state: "ongoing",
-			//currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
+			currentVictor: "Tudor",
+			description: "IsItWeekA understands Tudor has the lead, with the other houses tied (as of 05/10/21)",
+			// Tud: 9
+			// Beau: 5
+			// How: 5
+			// Sey: 5
 			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
+			backgroundColor: HOUSE_TUDOR,
 		},
 		{
 			eventType: EventTypes.HOUSE,
