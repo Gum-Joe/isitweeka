@@ -13,10 +13,10 @@ export const KECHBAlerts: AlertResponce = {
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
 	//message: "Welcome to IsItWeekA! We'll use these banners for important alerts in the future.",
-	alertLevel: ThreatLevels.INFO,
-	message: "HOWARD IN THE HOUSE: Howard takes the Senior Football title, as Beaufort snatches second place from Tudor.",
+	alertLevel: ThreatLevels.LOW,
+	message: "Congratulations to Mr Azam!",
 	linkText: "see more",
-	linkTo: "https://www.instagram.com/p/CUp1nGPIqLr"
+	linkTo: "https://www.instagram.com/p/CVDfuKTlmSZ"
 };
 
 export const KECHGAlerts: AlertResponce = {
