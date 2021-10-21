@@ -16,6 +16,15 @@ export const KECHBEvents: EventData = {
 	generatedAt: "0",
 	events: [
 		{
+			eventType: EventTypes.CHARITY,
+			title: "Year 11 & 13 December Mocks",
+			headerURL: "/events/School-Logo.png",
+			//description: "The chance to give your questions to Mr Bowen - check your email for how to submit them!",
+			description: "Year 11 & 13 contingency assessments - check your emails for the official details.",
+			when: "Monday 6th - Friday 17th December",
+			backgroundColor: "#752023",
+		},
+		{
 			eventType: EventTypes.HOUSE,
 			title: "House Football",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
@@ -80,17 +89,6 @@ export const KECHBEvents: EventData = {
 		},
 		{
 			eventType: EventTypes.HOUSE,
-			title: "House Quiz - Seniors",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "starts Tuesday 9th November 2021",
-			state: "todo",
-			//currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
-		{
-			eventType: EventTypes.HOUSE,
 			title: "House Cross Country",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
 			dateTime: "standards w/c 15th November 2021, final Thursday 2nd December",
@@ -101,9 +99,9 @@ export const KECHBEvents: EventData = {
 		},
 		{
 			eventType: EventTypes.HOUSE,
-			title: "House Badminton",
+			title: "House Badminton - Seniors & Juniors",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "starts Wednesday 1st December 2021",
+			dateTime: "Wednesday 1st December 2021",
 			state: "todo",
 			//currentVictor: "Beaufort",
 			//description: "House Touch Rugby",
@@ -123,6 +121,17 @@ export const KECHBEvents: EventData = {
 			title: "House Basketball",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
 			dateTime: "w/c 13th December 2021",
+			state: "todo",
+			//currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Quiz - Seniors",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "starts Tuesday 18th January 2021",
 			state: "todo",
 			//currentVictor: "Beaufort",
 			//description: "House Touch Rugby",

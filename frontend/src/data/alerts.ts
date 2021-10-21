@@ -13,10 +13,10 @@ export const KECHBAlerts: AlertResponce = {
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
 	//message: "Welcome to IsItWeekA! We'll use these banners for important alerts in the future.",
-	alertLevel: ThreatLevels.LOW,
-	message: "Congratulations to Mr Azam!",
-	linkText: "see more",
-	linkTo: "https://www.instagram.com/p/CVDfuKTlmSZ"
+	alertLevel: ThreatLevels.CRITICAL,
+	message: "Year 11 and 13 to have contingency exams this December and March, as (part) exclusively revealed by us earlier this week",
+	linkText: "get the details",
+	linkTo: "https://www.instagram.com/p/CVS5neso2H9/?utm_source=ig_web_copy_link"
 };
 
 export const KECHGAlerts: AlertResponce = {
