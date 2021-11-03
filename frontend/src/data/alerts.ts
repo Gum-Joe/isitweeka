@@ -14,9 +14,9 @@ export const KECHBAlerts: AlertResponce = {
 	// alertLevel: ThreatLevels.CRITICAL,
 	//message: "Welcome to IsItWeekA! We'll use these banners for important alerts in the future.",
 	alertLevel: ThreatLevels.CRITICAL,
-	message: "Year 11 and 13 to have contingency exams this December and March, as (part) exclusively revealed by us earlier this week",
-	linkText: "get the details",
-	linkTo: "https://www.instagram.com/p/CVS5neso2H9/?utm_source=ig_web_copy_link"
+	message: "Good luck to everyone with their university admission tests!",
+	linkText: "see more",
+	linkTo: "https://www.instagram.com/p/CVzp3lFrNgB"
 };
 
 export const KECHGAlerts: AlertResponce = {
