@@ -9,14 +9,14 @@ import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 };*/
 
 export const KECHBAlerts: AlertResponce = {
-	showAlert: false,
+	showAlert: true,
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
 	//message: "Welcome to IsItWeekA! We'll use these banners for important alerts in the future.",
 	alertLevel: ThreatLevels.CRITICAL,
-	message: "Good luck to everyone with their university admission tests!",
-	linkText: "see more",
-	linkTo: "https://www.instagram.com/p/CVzp3lFrNgB"
+	message: "BREAKING: Year 11 and 13 December Mocks Timetable released - check you email for the details",
+	linkText: "more info",
+	linkTo: "https://www.instagram.com/p/CWJBwXYI4eH"
 };
 
 export const KECHGAlerts: AlertResponce = {
