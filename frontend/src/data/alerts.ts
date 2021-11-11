@@ -14,7 +14,7 @@ export const KECHBAlerts: AlertResponce = {
 	// alertLevel: ThreatLevels.CRITICAL,
 	//message: "Welcome to IsItWeekA! We'll use these banners for important alerts in the future.",
 	alertLevel: ThreatLevels.CRITICAL,
-	message: "BREAKING: Year 11 and 13 December Mocks Timetable released - check you email for the details",
+	message: "BREAKING: Year 11 and 13 December Mocks Timetable released - check your email for the details",
 	linkText: "more info",
 	linkTo: "https://www.instagram.com/p/CWJBwXYI4eH"
 };
