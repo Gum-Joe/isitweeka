@@ -13,14 +13,14 @@ export const KECHBAlerts: AlertResponce = {
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
 	//message: "Welcome to IsItWeekA! We'll use these banners for important alerts in the future.",
-	alertLevel: ThreatLevels.CRITICAL,
-	message: "BREAKING: Year 11 and 13 December Mocks Timetable released - check your email for the details",
+	alertLevel: ThreatLevels.LOW,
+	message: "Good luck to Years 7-10 with the Camp Hill Mile this week!",
 	linkText: "more info",
 	linkTo: "https://www.instagram.com/p/CWJBwXYI4eH"
 };
 
 export const KECHGAlerts: AlertResponce = {
-	showAlert: true,
+	showAlert: false,
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
 	message: "KECHG raises £1160.26 from a doughnut sale for the Macmillan Coffee Morning, selling 490 doughnuts in 5 minutes!",
