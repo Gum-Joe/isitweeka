@@ -26,6 +26,25 @@ export const KECHBEvents: EventData = {
 		},
 		{
 			eventType: EventTypes.HOUSE,
+			title: "House Quiz - Seniors",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Tuesday 30th November",
+			state: "todo",
+			//currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "Prize Giving",
+			headerURL: "/events/School-Logo.png",
+			description: "A celebration of students' achievements, with a chance to reflect on the past academic year",
+			when: "Friday 3rd December",
+			backgroundColor: "#752023",
+		},
+		{
+			eventType: EventTypes.HOUSE,
 			title: "House Football",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
 			dateTime: "w/c 27th September",
@@ -109,14 +128,6 @@ export const KECHBEvents: EventData = {
 			backgroundColor: HOUSE_EVENT_PENDING_BG,
 		},
 		{
-			eventType: EventTypes.CHARITY,
-			title: "Prize Giving",
-			headerURL: "/events/School-Logo.png",
-			description: "A celebration of students' achievements, with a chance to reflect on the past academic year",
-			when: "Friday 3rd December",
-			backgroundColor: "#752023",
-		},
-		{
 			eventType: EventTypes.HOUSE,
 			title: "House Basketball",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
@@ -127,20 +138,53 @@ export const KECHBEvents: EventData = {
 			//backgroundColor: "#752023", // House default, or #5E957C
 			backgroundColor: HOUSE_EVENT_PENDING_BG,
 		},
-		{
-			eventType: EventTypes.HOUSE,
-			title: "House Quiz - Seniors",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "starts Tuesday 18th January 2021",
-			state: "todo",
-			//currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
 	],
 };
 
+export const KECHGEvents: EventData = {
+	events: [
+		{
+			eventType: EventTypes.CHARITY,
+			title: "Macmillan Coffee Morning",
+			when: "Friday 1st October",
+			backgroundColor: "#f7f7f7",
+			textColour: "#00754F",
+			headerURL: "/events/Macmillan_Cancer_Support.svg",
+			url: "https://coffee.macmillan.org.uk",
+			cta: {
+				color: "#fff",
+				type: "fill",
+				backgroundColor: "#00754F", // Possible A/B Test
+				text: "more info",
+			},
+			ticketsSale: {
+				start: "01/10/21"
+			},
+			hidden: true,
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "Teacher Training Day",
+			headerURL: "/events/School-Logo.png",
+			description: "A day off school for pupils.",
+			when: "Monday 4th October 2021",
+			backgroundColor: "#752023",
+			hidden: true,
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "Year 13 December Mocks",
+			headerURL: "/events/School-Logo.png",
+			//description: "The chance to give your questions to Mr Bowen - check your email for how to submit them!",
+			description: "Year 13 mock exams.",
+			when: "Monday 6th - Friday 17th December",
+			backgroundColor: "#752023",
+		},
+	],
+	generatedAt: "0",
+};
+
+/** KECHB Events from 2021 */
 /**
  * Events from 2021
  */
@@ -220,38 +264,4 @@ export const KECHB2021Events: EventData = {
 		}
 	],
 	generatedAt: "0"
-};
-
-export const KECHGEvents: EventData = {
-	events: [
-		{
-			eventType: EventTypes.CHARITY,
-			title: "Macmillan Coffee Morning",
-			when: "Friday 1st October",
-			backgroundColor: "#f7f7f7",
-			textColour: "#00754F",
-			headerURL: "/events/Macmillan_Cancer_Support.svg",
-			url: "https://coffee.macmillan.org.uk",
-			cta: {
-				color: "#fff",
-				type: "fill",
-				backgroundColor: "#00754F", // Possible A/B Test
-				text: "more info",
-			},
-			ticketsSale: {
-				start: "01/10/21"
-			},
-			hidden: true,
-		},
-		{
-			eventType: EventTypes.CHARITY,
-			title: "Teacher Training Day",
-			headerURL: "/events/School-Logo.png",
-			description: "A day off school for pupils.",
-			when: "Monday 4th October 2021",
-			backgroundColor: "#752023",
-			hidden: true,
-		},
-	],
-	generatedAt: "0",
 };
