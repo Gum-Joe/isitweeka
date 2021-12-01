@@ -39,7 +39,7 @@ export const KECHBEvents: EventData = {
 			dateTime: "Tuesday 30th November",
 			state: "done",
 			currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
+			description: "Beaufort win House Quiz for the seniors - but will runner-up Seymour speed past them in the lower years?",
 			//backgroundColor: "#752023", // House default, or #5E957C
 			backgroundColor: HOUSE_BEAUFORT,
 		},
@@ -47,23 +47,23 @@ export const KECHBEvents: EventData = {
 			eventType: EventTypes.HOUSE,
 			title: "House Rugby",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "starts Monday 4th October 2021",
+			dateTime: "started Monday 4th October 2021",
 			state: "ongoing",
-			currentVictor: "Tudor",
-			description: "IsItWeekA understands Tudor has the lead, with the other houses tied (as of 05/10/21)",
+			currentVictor: "Howard",
+			description: "IsItWeekA understands, with just the Seniors left to play, Howard has the lead with Seymour second and Tudor & Beaufort tied for 4th (as of 01/12/21)",
 			// Tud: 9
 			// Beau: 5
 			// How: 5
 			// Sey: 5
 			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_TUDOR,
+			backgroundColor: HOUSE_HOWARD,
 		},
 		{
 			eventType: EventTypes.HOUSE,
 			title: "House Cross Country",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
 			dateTime: "standards w/c 15th November 2021, final Thursday 2nd December",
-			state: "todo",
+			state: "ongoing",
 			//currentVictor: "Seymour",
 			//description: "House Touch Rugby",
 			backgroundColor: HOUSE_EVENT_PENDING_BG,
@@ -73,11 +73,11 @@ export const KECHBEvents: EventData = {
 			title: "House Badminton - Seniors & Juniors",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
 			dateTime: "Wednesday 1st December 2021",
-			state: "todo",
-			//currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
+			state: "ongoing",
+			currentVictor: "Tudor",
+			description: "IsItWeekA understands Tudor has the lead, with results from the Seniors left to come in",
 			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
+			backgroundColor: HOUSE_TUDOR,
 		},
 		{
 			eventType: EventTypes.HOUSE,
