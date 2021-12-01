@@ -25,23 +25,59 @@ export const KECHBEvents: EventData = {
 			backgroundColor: "#752023",
 		},
 		{
-			eventType: EventTypes.HOUSE,
-			title: "House Quiz - Seniors",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "Tuesday 30th November",
-			state: "todo",
-			//currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
-		{
 			eventType: EventTypes.CHARITY,
 			title: "Prize Giving",
 			headerURL: "/events/School-Logo.png",
 			description: "A celebration of students' achievements, with a chance to reflect on the past academic year",
 			when: "Friday 3rd December",
 			backgroundColor: "#752023",
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Quiz - Seniors",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Tuesday 30th November",
+			state: "done",
+			currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_BEAUFORT,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Rugby",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "starts Monday 4th October 2021",
+			state: "ongoing",
+			currentVictor: "Tudor",
+			description: "IsItWeekA understands Tudor has the lead, with the other houses tied (as of 05/10/21)",
+			// Tud: 9
+			// Beau: 5
+			// How: 5
+			// Sey: 5
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_TUDOR,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Cross Country",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "standards w/c 15th November 2021, final Thursday 2nd December",
+			state: "todo",
+			//currentVictor: "Seymour",
+			//description: "House Touch Rugby",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Badminton - Seniors & Juniors",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Wednesday 1st December 2021",
+			state: "todo",
+			//currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
 		},
 		{
 			eventType: EventTypes.HOUSE,
@@ -90,42 +126,6 @@ export const KECHBEvents: EventData = {
 			when: "Friday 1st October 2021",
 			backgroundColor: "#752023",
 			hidden: true,
-		},
-		{
-			eventType: EventTypes.HOUSE,
-			title: "House Rugby",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "starts Monday 4th October 2021",
-			state: "ongoing",
-			currentVictor: "Tudor",
-			description: "IsItWeekA understands Tudor has the lead, with the other houses tied (as of 05/10/21)",
-			// Tud: 9
-			// Beau: 5
-			// How: 5
-			// Sey: 5
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_TUDOR,
-		},
-		{
-			eventType: EventTypes.HOUSE,
-			title: "House Cross Country",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "standards w/c 15th November 2021, final Thursday 2nd December",
-			state: "todo",
-			//currentVictor: "Seymour",
-			//description: "House Touch Rugby",
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
-		{
-			eventType: EventTypes.HOUSE,
-			title: "House Badminton - Seniors & Juniors",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "Wednesday 1st December 2021",
-			state: "todo",
-			//currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
 		},
 		{
 			eventType: EventTypes.HOUSE,
