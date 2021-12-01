@@ -14,17 +14,17 @@ export const KECHBAlerts: AlertResponce = {
 	// alertLevel: ThreatLevels.CRITICAL,
 	//message: "Welcome to IsItWeekA! We'll use these banners for important alerts in the future.",
 	alertLevel: ThreatLevels.INFO,
-	message: "Sixth form mixing returns on Monday 6th December",
+	message: "Sixth form mixing to NOT go ahead",
 	linkText: "more info",
-	linkTo: "https://www.instagram.com/p/CWvsQ2oIp9I"
+	linkTo: "https://www.instagram.com/p/CW8oED8IooV"
 };
 
 export const KECHGAlerts: AlertResponce = {
 	showAlert: true,
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
-	message: "Sixth form mixing returns on Monday 6th December",
+	message: "Sixth form mixing to NOT go ahead",
 	alertLevel: ThreatLevels.INFO,
 	linkText: "more info",
-	linkTo: "https://www.instagram.com/p/CWvsQ2oIp9I"
+	linkTo: "https://www.instagram.com/p/CW8oED8IooV"
 };
