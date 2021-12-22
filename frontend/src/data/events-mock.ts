@@ -265,7 +265,7 @@ export const KECHGEvents: EventData = {
 			eventType: EventTypes.CHARITY,
 			title: "Songs from the Shows (Show Choir)",
 			headerURL: "/events/School-Logo.png",
-			description: "A performance of songs from the musicals \"Matilda\" and \"Chicago\" by ~100 students, along with acting and dance numbers!",
+			description: "A performance of songs from the musicals \"Matilda\" and \"Chicago\" by ~100 students, along with acting and dance!",
 			when: "15th & 16th February",
 			backgroundColor: "#752023",
 			hidden: false,
