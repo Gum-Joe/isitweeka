@@ -16,6 +16,94 @@ export const KECHBEvents: EventData = {
 	generatedAt: "0",
 	events: [
 		{
+			eventType: EventTypes.HOUSE,
+			title: "House Chess",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "starts Monday 17th January 2022",
+			state: "todo",
+			//currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Swimming Gala",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Thursday 3rd February 2022",
+			state: "todo",
+			//currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Handball",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "starts w/c 7th February 2022",
+			state: "todo",
+			//currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Volleyball",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "starts w/c 14th March 2022",
+			state: "todo",
+			//currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Intermediate & Senior House Hockey",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Monday 21st & Wednesday 23rd March 2022",
+			state: "todo",
+			//currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Senior 7s House Rugby",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Wednesday 30th March 2022",
+			state: "todo",
+			//currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Table Tennis (all years)",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Monday 4th April - Wednesday 6th April 2022",
+			state: "todo",
+			//currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Music",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Tuesday 5th April 2022",
+			state: "todo",
+			//currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
 			eventType: EventTypes.CHARITY,
 			title: "Year 11 & 13 December Mocks",
 			headerURL: "/events/School-Logo.png",
@@ -23,6 +111,7 @@ export const KECHBEvents: EventData = {
 			description: "Year 11 & 13 contingency assessments - check your emails for the official details.",
 			when: "Monday 6th - Friday 17th December",
 			backgroundColor: "#752023",
+			hidden: true,
 		},
 		{
 			eventType: EventTypes.CHARITY,
@@ -31,13 +120,14 @@ export const KECHBEvents: EventData = {
 			description: "A celebration of students' achievements, with a chance to reflect on the past academic year",
 			when: "Friday 3rd December",
 			backgroundColor: "#752023",
+			hidden: true,
 		},
 		{
 			eventType: EventTypes.HOUSE,
-			title: "House Quiz - Seniors",
+			title: "House Quiz",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "Tuesday 30th November",
-			state: "done",
+			dateTime: "Intermediate competition starts Tuesday 15th March 2022",
+			state: "ongoing",
 			currentVictor: "Beaufort",
 			description: "Beaufort win House Quiz for the seniors - but will runner-up Seymour speed past them in the lower years?",
 			//backgroundColor: "#752023", // House default, or #5E957C
@@ -73,11 +163,11 @@ export const KECHBEvents: EventData = {
 			title: "House Badminton - Seniors & Juniors",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
 			dateTime: "Wednesday 1st December 2021",
-			state: "ongoing",
-			currentVictor: "Tudor",
-			description: "IsItWeekA understands Tudor has the lead, with results from the Seniors left to come in",
+			state: "done",
+			currentVictor: "Howard",
+			description: "Howard wins House Badminton, after blitzing past the other houses in the Seniors section.",
 			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_TUDOR,
+			backgroundColor: HOUSE_HOWARD,
 		},
 		{
 			eventType: EventTypes.HOUSE,
@@ -167,9 +257,18 @@ export const KECHGEvents: EventData = {
 			title: "Teacher Training Day",
 			headerURL: "/events/School-Logo.png",
 			description: "A day off school for pupils.",
-			when: "Monday 4th October 2021",
+			when: "Tuesday 4th January 2022",
 			backgroundColor: "#752023",
-			hidden: true,
+			hidden: false,
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "Songs from the Shows (Show Choir)",
+			headerURL: "/events/School-Logo.png",
+			description: "A performance of songs from the musicals \"Matilda\" and \"Chicago\" by ~100 students, along with acting and dance numbers!",
+			when: "15th & 16th February",
+			backgroundColor: "#752023",
+			hidden: false,
 		},
 		{
 			eventType: EventTypes.CHARITY,
@@ -179,6 +278,43 @@ export const KECHGEvents: EventData = {
 			description: "Year 13 mock exams.",
 			when: "Monday 6th - Friday 17th December",
 			backgroundColor: "#752023",
+			hidden: true,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Year 13 House Dance",
+			headerURL: "/events/KECHGTMPHouseChampionshipDefault.jpg",
+			dateTime: "Wednesday 20th October 2021",
+			state: "done",
+			currentVictor: "Lichfield",
+			description: "Lichfield wins the Year 13 House Dance competition, where all houses choreographed a dance to 'Kiss You' by One Direction.",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: "#F8F9F4",
+			textColour: "#E70420"
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Year 12 Christmas Quiz",
+			headerURL: "/events/KECHGTMPHouseChampionshipDefault.jpg",
+			dateTime: "Wednesday 15th December 2021",
+			state: "done",
+			currentVictor: "Stratford",
+			description: "Stratford wins the Year 12 House Christmas Quiz, gaining 100 house points, whilst Lichfield places 2nd and Priory 3rd.",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			textColour: "#6690B3",
+			backgroundColor: "#F8F9F4",
+			//textColour: "#000"
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Fair",
+			headerURL: "/events/KECHGTMPHouseChampionshipDefault.jpg",
+			dateTime: "Friday 1st April 2022",
+			state: "todo",
+			//currentVictor: "Stratford",
+			description: "The House Fair.",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG
 		},
 	],
 	generatedAt: "0",
