@@ -4,6 +4,10 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "frontend"
-  ]
+    "frontend",
+    "server"
+  ],
+  "dependencies": {
+    "@loopback/cli": "^3.0.0"
+  }
 }
