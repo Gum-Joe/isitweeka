@@ -7,7 +7,7 @@ import Button from "./Button.Forward";
 import { faGithub, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faAt, faLink } from "@fortawesome/free-solid-svg-icons";
 import Socials from "./Socials";
-import { version } from "../../package.json";
+import packageJSON from "../../package.json";
 
 const Footer: React.FC = () => {
 	return (
@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
 				&#169; {(new Date()).getFullYear()}, source available on GitHub under the MIT license.<br /><br />
 				Data controller information: data controlled by {/*Kishan Sambhi, */}a KECH pupil {/*}, */}and will only ever be viewed by KECH pupils.<br />
 				All changes to this site are reviewed, merged and deployed by a KECH pupil.<br /><br />
-				Version {version}
+				Version {packageJSON.version}
 			</p>
 
 			<Socials />

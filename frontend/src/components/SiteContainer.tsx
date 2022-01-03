@@ -3,7 +3,6 @@ import EventsList, { EventData } from "./EventsList";
 import Button from "./Button.Forward";
 import { GregorianDay } from "../utils/constants";
 import { getScrollDownWithAdditional } from "../utils/scroll";
-import * as ical from "ical";
 import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 import AlertBanner from "./AlterBanner";
 import Banner from "./MailingListBanner";

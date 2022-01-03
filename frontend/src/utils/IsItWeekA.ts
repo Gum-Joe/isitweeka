@@ -1,5 +1,5 @@
 import { GregorianDay } from "./constants";
-import * as ical from "ical";
+import * as ical from "ical/ical";
 
 /** Return values from IsItWeekA . First type is a return where the week is know, with a specifier if it is a weekend, second is if the week could not be detected (e.g. is holiday) */
 type IsItWeekAReturn = {

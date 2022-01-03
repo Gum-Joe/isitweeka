@@ -47,10 +47,10 @@ class App extends Component<Record<string, never>> {
 	updateCookie(tab: string, index: number) {
 		// ONLY set cookie if opt in set.
 		if (Cookies.get("CookieConsent") === "true") {
-			Cookies.set(COOKIE_SCHOOL_PREFERENCE, {
+			Cookies.set(COOKIE_SCHOOL_PREFERENCE, JSON.stringify({
 				school: tab,
 				tabIndex: index,
-			}, {
+			}), {
 				secure: true,
 				sameSite: "strict",
 			});
@@ -103,7 +103,7 @@ class App extends Component<Record<string, never>> {
 							/>
 						),
 					},
-				]} onTabChange={this.updateCookie} initialTab={(() => Cookies.getJSON(COOKIE_SCHOOL_PREFERENCE)?.tabIndex || 0)()}/>
+				]} onTabChange={this.updateCookie} initialTab={(() => JSON.parse(Cookies.get(COOKIE_SCHOOL_PREFERENCE) || "{}")?.tabIndex || 0)()}/>
 
 				<Footer />
 
