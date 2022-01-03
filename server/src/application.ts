@@ -7,6 +7,7 @@ import {
 import {RepositoryMixin} from '@loopback/repository';
 import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
+import {LoggingBindings, LoggingComponent} from '@loopback/logging';
 import path from 'path';
 import {MySequence} from './sequence';
 
@@ -29,6 +30,10 @@ export class IsitweekaApplication extends BootMixin(
       path: '/explorer',
     });
     this.component(RestExplorerComponent);
+    this.configure(LoggingBindings.COMPONENT).to({
+      enableFluent: false
+    });    
+    this.component(LoggingComponent);
 
     this.projectRoot = __dirname;
     // Customize @loopback/boot Booter Conventions here
