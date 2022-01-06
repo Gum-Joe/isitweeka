@@ -1,18 +1,14 @@
 {
-  "name": "isitweeka-server",
+  "name": "@isitweeka/service-kech",
   "packageManager": "yarn@3.1.1",
-  "version": "1.0.0",
+  "main": "index.js",
   "dependencies": {
-    "chalk": "^4.1.2",
-    "fastify": "^3.25.3",
+    "@isitweeka/core": "workspace:^",
     "libisitweeka": "workspace:^",
-    "morgan": "^1.10.0",
-    "redis": "next",
+    "redis": "^4.0.1",
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "@types/chalk": "^2.2.0",
-    "@types/morgan": "^1.9.3",
     "@types/redis": "^4.0.11",
     "@types/winston": "^2.4.4",
     "ts-node": "^10.4.0",

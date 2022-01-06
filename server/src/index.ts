@@ -1,39 +1,108 @@
-import {ApplicationConfig, IsitweekaApplication} from './application';
+/* eslint-disable @typescript-eslint/no-var-requires */
+/**
+ * Entry point for ECMS - starts ECMS up
+ * @packageDocumentation
+ */
 
-export * from './application';
+// Preable log line
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore - get weird error since package.json outside src/ (and therefore rootDir)
+import packageJSON from "../package.json";
+console.log(`IsItWeekA as a Service v${packageJSON.version}`);
+console.log("Starting IsItWeekA...");
 
-export async function main(options: ApplicationConfig = {}) {
-  const app = new IsitweekaApplication(options);
-  await app.boot();
-  await app.start();
+/** Intitalise our config into environmntal variables */
+import dotenv from "dotenv";
+dotenv.config();
 
-  const url = app.restServer.url;
-  console.log(`Server is running at ${url}`);
-  console.log(`Try ${url}/ping`);
+import createLogger from "./utils/logger";
+const logger = createLogger("server");
 
-  return app;
-}
+logger.debug("IsItWeekA Logger Loaded.");
 
-if (require.main === module) {
-  // Run the application
-  const config = {
-    rest: {
-      port: +(process.env.PORT ?? 4000),
-      host: process.env.HOST,
-      // The `gracePeriodForClose` provides a graceful close for http/https
-      // servers with keep-alive clients. The default value is `Infinity`
-      // (don't force-close). If you want to immediately destroy all sockets
-      // upon stop, set its value to `0`.
-      // See https://www.npmjs.com/package/stoppable
-      gracePeriodForClose: 5000, // 5 seconds
-      openApiSpec: {
-        // useful when used with OpenAPI-to-GraphQL to locate your application
-        setServersFromRequest: true,
-      },
-    },
-  };
-  main(config).catch(err => {
-    console.error('Cannot start the application.', err);
-    process.exit(1);
-  });
-}
+import connectToRedis from "./utils/redis";
+
+// Init redis & DB
+logger.info("Loading Connections...");
+const redis = connectToRedis();
+
+import { join } from "path";
+import express, { Request, Response, NextFunction } from "express";
+import morgan from "morgan";
+import { REDIS_KEY_KECHB, REDIS_KEY_KECHG } from "@isitweeka/core";
+import { IsItWeekAReturn } from "libisitweeka";
+
+/** Initiale Express */
+const app = express();
+
+// TEST ROUTE
+app.get("/heartbeat", (req, res, next) => {
+	res.json({
+		message: "Server alive",
+	});
+});
+
+app.get('/isitweeka/kechb', async (req, res, next) => {
+  logger.info("Getting week from redis...");
+	try {
+		const fromRedis = await redis.HGETALL(REDIS_KEY_KECHB);
+		let finalResponse: IsItWeekAReturn;
+
+		if (fromRedis.isWeekend === "1") {
+			finalResponse = {
+				...(fromRedis as unknown as IsItWeekAReturn),
+				isWeekend: true
+			}
+		} else {
+			finalResponse = {
+				...(fromRedis as unknown as IsItWeekAReturn),
+				isWeekend: false
+			}
+		}
+		res.json(finalResponse);
+		logger.info(`Done. Got It Is Week ${finalResponse.week} and isWeekend: ${finalResponse.isWeekend} from redis.`);
+	} catch (err) {
+		next(err);
+	}
+});
+
+const handleServingWeek = (redisKey: string) => async (req: Request, res: Response, next: NextFunction) => {
+	logger.info("Getting week from redis key ${REDIS_KEY_KECHG}...");
+	try {
+		const fromRedis = await redis.HGETALL(redisKey);
+		let finalResponse: IsItWeekAReturn;
+
+		if (fromRedis.isWeekend === "1") {
+			finalResponse = {
+				...(fromRedis as unknown as IsItWeekAReturn),
+				isWeekend: true
+			};
+		} else {
+			finalResponse = {
+				...(fromRedis as unknown as IsItWeekAReturn),
+				isWeekend: false
+			};
+		}
+		res.json(finalResponse);
+		logger.info(`Done. Got It Is Week ${finalResponse.week} and isWeekend: ${finalResponse.isWeekend} from redis.`);
+	} catch (err) {
+		next(err);
+	}
+};
+app.get('/isitweeka/kechb', handleServingWeek(REDIS_KEY_KECHB));
+app.get('/isitweeka/kechg', handleServingWeek(REDIS_KEY_KECHG));
+
+
+
+// Baseline middleware
+//app.use(helmet()); // Security
+app.use(express.json());
+app.use(express.urlencoded());
+// Setup logging here
+app.use(morgan(process.env.NODE_ENV === "development" ? "dev" : "combined"));
+
+app.listen(4000, () => {
+	logger.info("Server started.");
+});
+
+
