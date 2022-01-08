@@ -14,22 +14,22 @@ import { KECHBAlerts, KECHGAlerts } from "./data/alerts";
 
 /*function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+	<div className="App">
+	  <header className="App-header">
+		<img src={logo} className="App-logo" alt="logo" />
+		<p>
+		  Edit <code>src/App.tsx</code> and save to reload.
+		</p>
+		<a
+		  className="App-link"
+		  href="https://reactjs.org"
+		  target="_blank"
+		  rel="noopener noreferrer"
+		>
+		  Learn React
+		</a>
+	  </header>
+	</div>
   );
 }*/
 
@@ -37,7 +37,10 @@ class App extends Component<Record<string, never>> {
 
 	constructor(props: Record<string, never>) {
 		super(props);
+		this.shouldShowCookieConsent = new URLSearchParams(window.location.search).has("autoDeclineCookies");
 	}
+
+	shouldShowCookieConsent: boolean;
 
 	/**
 	 * Provided to TabContainer to update the cookie with whichever school the user has clicked
@@ -103,7 +106,7 @@ class App extends Component<Record<string, never>> {
 							/>
 						),
 					},
-				]} onTabChange={this.updateCookie} initialTab={(() => Cookies.getJSON(COOKIE_SCHOOL_PREFERENCE)?.tabIndex || 0)()}/>
+				]} onTabChange={this.updateCookie} initialTab={(() => Cookies.getJSON(COOKIE_SCHOOL_PREFERENCE)?.tabIndex || 0)()} />
 
 				<Footer />
 
@@ -120,8 +123,11 @@ class App extends Component<Record<string, never>> {
 						onDecline={
 							() => { gaSetState(true); window.location.reload(); }
 						}
+						// Due to the version of react-cookie-consent used missing the type declaration for the "visible" prop, this hack is sadly required.
+						/// @ts-expect-error
+						visible={this.shouldShowCookieConsent ? "hidden" : "byCookieValue"}
 					>
-					This website uses cookies for preferences and analytics (via Google Analytics).
+						This website uses cookies for preferences and analytics (via Google Analytics).
 						<a href={process.env.PUBLIC_URL + "/privacy.html"}> View Privacy Policy</a>
 					</CookieConsent>
 				</Navbar>
