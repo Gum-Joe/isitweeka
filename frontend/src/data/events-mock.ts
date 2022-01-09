@@ -153,10 +153,10 @@ export const KECHBEvents: EventData = {
 			title: "House Cross Country",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
 			dateTime: "standards w/c 15th November 2021, final Thursday 2nd December",
-			state: "ongoing",
-			//currentVictor: "Seymour",
+			state: "done",
+			currentVictor: "Howard",
 			//description: "House Touch Rugby",
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
+			backgroundColor: HOUSE_HOWARD,
 		},
 		{
 			eventType: EventTypes.HOUSE,
