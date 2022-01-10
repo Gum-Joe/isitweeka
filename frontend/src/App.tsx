@@ -123,6 +123,7 @@ class App extends Component<Record<string, never>> {
 						onDecline={
 							() => { gaSetState(true); window.location.reload(); }
 						}
+						style={this.shouldShowCookieConsent ? undefined : { display: "none" }}
 						// Due to the version of react-cookie-consent used missing the type declaration for the "visible" prop, this hack is sadly required.
 						/// @ts-expect-error
 						visible={this.shouldShowCookieConsent ? "hidden" : "byCookieValue"}
