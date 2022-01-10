@@ -37,10 +37,10 @@ class App extends Component<Record<string, never>> {
 
 	constructor(props: Record<string, never>) {
 		super(props);
-		this.shouldShowCookieConsent = new URLSearchParams(window.location.search).has("autoDeclineCookies");
+		this.hideCookieConsent = new URLSearchParams(window.location.search).has("autoDeclineCookies");
 	}
 
-	shouldShowCookieConsent: boolean;
+	hideCookieConsent: boolean;
 
 	/**
 	 * Provided to TabContainer to update the cookie with whichever school the user has clicked
@@ -123,10 +123,10 @@ class App extends Component<Record<string, never>> {
 						onDecline={
 							() => { gaSetState(true); window.location.reload(); }
 						}
-						style={this.shouldShowCookieConsent ? undefined : { display: "none" }}
+						style={this.hideCookieConsent ? undefined : { display: "none" }}
 						// Due to the version of react-cookie-consent used missing the type declaration for the "visible" prop, this hack is sadly required.
 						/// @ts-expect-error
-						visible={this.shouldShowCookieConsent ? "hidden" : "byCookieValue"}
+						visible={this.hideCookieConsent ? "hidden" : "byCookieValue"}
 					>
 						This website uses cookies for preferences and analytics (via Google Analytics).
 						<a href={process.env.PUBLIC_URL + "/privacy.html"}> View Privacy Policy</a>
