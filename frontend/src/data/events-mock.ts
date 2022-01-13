@@ -259,7 +259,7 @@ export const KECHGEvents: EventData = {
 			description: "A day off school for pupils.",
 			when: "Tuesday 4th January 2022",
 			backgroundColor: "#752023",
-			hidden: false,
+			hidden: true,
 		},
 		{
 			eventType: EventTypes.CHARITY,
