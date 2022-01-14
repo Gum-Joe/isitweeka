@@ -14,9 +14,9 @@ export const KECHBAlerts: AlertResponce = {
 	// alertLevel: ThreatLevels.CRITICAL,
 	//message: "Welcome to IsItWeekA! We'll use these banners for important alerts in the future.",
 	alertLevel: ThreatLevels.INFO,
-	message: "\"Oliver!\" to be the next Camp Hill Musical",
-	linkText: "more info",
-	linkTo: "https://www.instagram.com/p/CYcI989LXwh"
+	message: "Anyone to be able to stand in upcoming Student Council election, not just SC members.",
+	linkText: "read more",
+	linkTo: "https://www.instagram.com/isitweeka/p/CYt5gRaIvJK/?utm_medium=copy_link"
 };
 
 export const KECHGAlerts: AlertResponce = {
