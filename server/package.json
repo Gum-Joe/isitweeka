@@ -10,6 +10,10 @@
     "redis": "next",
     "winston": "^3.3.3"
   },
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./lib/index.js"
+  },
   "devDependencies": {
     "@types/chalk": "^2.2.0",
     "@types/morgan": "^1.9.3",

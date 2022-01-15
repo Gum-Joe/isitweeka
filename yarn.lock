@@ -1729,6 +1729,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@isitweeka/service-eventbrite@workspace:packages/@isitweeka/service-eventbrite":
+  version: 0.0.0-use.local
+  resolution: "@isitweeka/service-eventbrite@workspace:packages/@isitweeka/service-eventbrite"
+  dependencies:
+    "@isitweeka/core": "workspace:^"
+    "@types/redis": ^4.0.11
+    "@types/winston": ^2.4.4
+    libisitweeka: "workspace:^"
+    redis: ^4.0.1
+    ts-node: ^10.4.0
+    typescript: ^4.5.4
+    winston: ^3.3.3
+  languageName: unknown
+  linkType: soft
+
 "@isitweeka/service-kech@workspace:packages/@isitweeka/service-kech":
   version: 0.0.0-use.local
   resolution: "@isitweeka/service-kech@workspace:packages/@isitweeka/service-kech"
