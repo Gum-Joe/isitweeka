@@ -270,7 +270,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<div className="cw-widget">
 						<h2>Charity Week</h2>
 						<div className="raised-content">
-							<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={50} text={(this.state.raised.ticketQuantity / FAKE_TICKET_TOTAL* 100).toFixed(0) + "%"} /></div>
+							<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={this.state.raised.ticketQuantity / FAKE_TICKET_TOTAL* 100} text={(this.state.raised.ticketQuantity / FAKE_TICKET_TOTAL* 100).toFixed(0) + "%"} /></div>
 							<div className="raised-text">
 								<h1>£{this.state.raised.net}</h1>
 								<h3>raised</h3>
@@ -311,7 +311,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 								<div className="cw-raised">
 									<h2>Ticket Stats</h2>
 									<div className="raised-content">
-										<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={50} text={(this.state.raised.ticketQuantity / FAKE_TICKET_TOTAL* 100).toFixed(0) + "%"} /></div>
+										<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={this.state.raised.ticketQuantity / FAKE_TICKET_TOTAL* 100} text={(this.state.raised.ticketQuantity / FAKE_TICKET_TOTAL* 100).toFixed(0) + "%"} /></div>
 										<div className="raised-text">
 											<h1>£{this.state.raised.net}</h1>
 											<h3>raised</h3>
