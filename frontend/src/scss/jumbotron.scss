@@ -18,6 +18,11 @@ $grid-gap: 20px;
 	padding-left: var(--horizontal-indent);
 	padding-right: calc(var(--horizontal-indent) * 2);
 
+	@include tablet {
+		flex-direction: column;
+		margin-left: var(--horizontal-indent);
+	}
+
 	.isitweeka {
 		flex: 1;
 	}
@@ -25,6 +30,9 @@ $grid-gap: 20px;
 	.cw-cards {
 		margin-top: 180px;
 		width: 60%;
+		@include tablet {
+			width: 100%;
+		}
 		/*.cw-content {
 			display: grid; 
 			grid-template-columns: 1fr 1fr; 
@@ -37,6 +45,10 @@ $grid-gap: 20px;
 			//margin-left: -1px;
 			> div {
 				width: 600px;
+				@include tablet {
+					width: 100%;
+					box-sizing: border-box;
+				}
 			}
 		}
 
@@ -45,6 +57,9 @@ $grid-gap: 20px;
 			font-weight: 700;
 			font-style: normal;	
 			font-size: 1.5em;
+			@include tablet {
+				font-size: 1.2em;
+			}
 		}
 
 		h1 {
@@ -53,6 +68,9 @@ $grid-gap: 20px;
 			margin-top: 0;
 			margin-bottom: 10px;
 			font-size: 3.5em;
+			@include tablet {
+				font-size: 3em;
+			}
 		}
 
 		h2 {
@@ -62,6 +80,9 @@ $grid-gap: 20px;
 		h4 {
 			margin-top: 0;
 			font-size: 20px;
+			@include tablet {
+				font-size: 18px;
+			}
 		}
 
 		h3, h4, h5, h6, p {
@@ -72,6 +93,13 @@ $grid-gap: 20px;
 
 		.cw-header {
 			padding-right: 20px;
+			@include tablet {
+				padding-right: 0;
+				h1 {
+					text-align: center;
+				}
+				
+			}
 		}
 
 		.cw-charity-link {
@@ -108,12 +136,27 @@ $grid-gap: 20px;
 				justify-content: center;
 				align-items: center;
 
+				@include tablet {
+					padding: 0;
+				}
+
 				h1 {
 					flex: 1;
 					text-align: center;
 					font-size: 4em;
 					//transform: scaleX(0.9);
 					line-height: 70px;
+
+					@include tablet {
+						font-size: 3.5em;
+					}
+				}
+
+				@include tablet {
+					.raised-text:last-child {
+						display: none;
+					}
+
 				}
 				
 				.raised-text {
@@ -124,6 +167,8 @@ $grid-gap: 20px;
 					justify-content: right;
 					align-items: flex-end;
 					text-align: right;
+
+					
 
 					h1, h3 {
 						margin-bottom: 0;
@@ -152,6 +197,8 @@ $grid-gap: 20px;
 			.cw-raised h2 {
 				margin-bottom: 20px;
 			}
+
+			
 		}
 		.cw-content > div {
 			padding: 20px;
