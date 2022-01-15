@@ -24,7 +24,7 @@ const logFactory = new LoggerFactory("./");
   ],
 });*/
 
-const logger = logFactory.createLogger("kechb");
+const logger = logFactory.createLogger("kech");
 
 //
 // If we're not in production then log to the `console` with the format:
@@ -78,6 +78,13 @@ async function getWeek(redis: ReturnType<typeof createClient>, markerDate: Grego
     await client.connect();
 
     logger.info("Connected to redis.");
+
+    logger.info("Running initial week check...");
+    logger.info("Updating week for KECHB...");
+    await getWeek(client, WEEK_MARKER_DATE_KECHB, CALENDAR_URL_KECHB, new Date(), REDIS_KEY_KECHB);
+
+    logger.info("Updating week for KECHG...");
+    await getWeek(client, WEEK_MARKER_DATE_KECHG, CALENDAR_URL_KECHG, new Date(), REDIS_KEY_KECHG);
   
     setInterval(async () => {
       logger.info("Updating week for KECHB...");

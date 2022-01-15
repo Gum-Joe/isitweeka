@@ -13,6 +13,9 @@
 			"path": "./packages/@isitweeka/service-kech"
 		},
 		{
+			"path": "./packages/@isitweeka/service-eventbrite"
+		},
+		{
 			"path": "./packages/libisitweeka"
 		},
 		{

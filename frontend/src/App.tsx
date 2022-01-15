@@ -7,7 +7,7 @@ import SiteContainer from "./components/SiteContainer";
 import { TabContainer } from "./components/Tabs";
 import { Navbar } from "react-bootstrap";
 import Cookies from "js-cookie";
-import { COOKIE_SCHOOL_PREFERENCE } from "./utils/constants";
+import { COOKIE_SCHOOL_PREFERENCE, IIWA_KECHB_URL, IIWA_KECHG_URL } from "./utils/constants";
 import { KECHBEvents, KECHGEvents } from "./data/events-mock";
 import Footer from "./components/Footer";
 import { KECHBAlerts, KECHGAlerts } from "./data/alerts";
@@ -77,6 +77,7 @@ class App extends Component<Record<string, never>> {
 						component: (
 							<SiteContainer
 								calendarURL="/cal/KECHB/basic.ics"
+								iiwaURL={IIWA_KECHB_URL}
 								weekMarkerDate={1}
 								eventsFetcher={
 									async () => KECHBEvents
@@ -92,6 +93,7 @@ class App extends Component<Record<string, never>> {
 						component: (
 							<SiteContainer
 								calendarURL="/cal/KECHG/basic.ics"
+								iiwaURL={IIWA_KECHG_URL}
 								weekMarkerDate={0}
 								eventsFetcher={
 									async () => KECHGEvents

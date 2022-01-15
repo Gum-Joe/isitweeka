@@ -8,11 +8,12 @@ services:
       dockerfile: ./server/Dockerfile
     environment:
       NODE_ENV: production
-      IIWA_REDIS_URL: redis://redis_comms:6390
+      IIWA_REDIS_URL: redis://redis_comms:6379
     ports:
       - 4000:4000
     links:
       - redis
+    
   service-kech:
     image: isitweeka-service-kech
     build:
@@ -20,11 +21,26 @@ services:
       dockerfile: ./packages/@isitweeka/service-kech/Dockerfile
     environment:
       NODE_ENV: production
-      IIWA_REDIS_URL: redis://redis_comms:6390
+      IIWA_REDIS_URL: redis://redis_comms:6379
     links:
       - redis
+  
+  service-eventbrite:
+    image: isitweeka-service-eventbrite
+    build:
+      context: .
+      dockerfile: ./packages/@isitweeka/service-eventbrite/Dockerfile
+    environment:
+      NODE_ENV: production
+      IIWA_REDIS_URL: redis://redis_comms:6379
+      IIWA_EVENTBRITE_ORG_ID: ${IIWA_EVENTBRITE_ORG_ID}
+      IIWA_EVENTBRITE_EVENT_ID: ${IIWA_EVENTBRITE_EVENT_ID}
+      IIWA_EVENTBRITE_ACCESS_TOKEN: ${IIWA_EVENTBRITE_ACCESS_TOKEN}
+    links:
+      - redis
+    
   redis:
     image: redis:alpine
     container_name: redis_comms
     ports:
-      - 6390:6379
+      - 6379:6379

@@ -19,7 +19,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const libisitweeka_1 = __importDefault(require("libisitweeka"));
 const redis_1 = require("redis");
 const core_1 = require("@isitweeka/core");
-const winston_1 = __importDefault(require("winston"));
 const logFactory = new core_1.LoggerFactory("./");
 /*const logger = winston.createLogger({
   level: 'info',
@@ -34,16 +33,16 @@ const logFactory = new core_1.LoggerFactory("./");
     new winston.transports.File({ filename: 'combined.log' }),
   ],
 });*/
-const logger = logFactory.createLogger("kechb");
+const logger = logFactory.createLogger("kech");
 //
 // If we're not in production then log to the `console` with the format:
 // `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
 //
-if (process.env.NODE_ENV !== 'production') {
-    logger.add(new winston_1.default.transports.Console({
-        format: winston_1.default.format.simple(),
-    }));
-}
+/*if (process.env.NODE_ENV !== 'production') {
+  logger.add(new winston.transports.Console({
+    format: winston.format.simple(),
+  }));
+}*/
 function getWeek(redis, markerDate, calendarURL, today, redisKey) {
     return __awaiter(this, void 0, void 0, function* () {
         logger.info("Getting week...");
@@ -77,6 +76,11 @@ function getWeek(redis, markerDate, calendarURL, today, redisKey) {
         client.on('error', (err) => logger.error('Redis Client Error', err));
         yield client.connect();
         logger.info("Connected to redis.");
+        logger.info("Running initial week check...");
+        logger.info("Updating week for KECHB...");
+        yield getWeek(client, core_1.WEEK_MARKER_DATE_KECHB, core_1.CALENDAR_URL_KECHB, new Date(), core_1.REDIS_KEY_KECHB);
+        logger.info("Updating week for KECHG...");
+        yield getWeek(client, core_1.WEEK_MARKER_DATE_KECHG, core_1.CALENDAR_URL_KECHG, new Date(), core_1.REDIS_KEY_KECHG);
         setInterval(() => __awaiter(void 0, void 0, void 0, function* () {
             logger.info("Updating week for KECHB...");
             yield getWeek(client, core_1.WEEK_MARKER_DATE_KECHB, core_1.CALENDAR_URL_KECHB, new Date(), core_1.REDIS_KEY_KECHB);

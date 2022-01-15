@@ -28,12 +28,25 @@ const redis = connectToRedis();
 
 import { join } from "path";
 import express, { Request, Response, NextFunction } from "express";
+import cors from "cors";
 import morgan from "morgan";
-import { REDIS_KEY_KECHB, REDIS_KEY_KECHG } from "@isitweeka/core";
+import { REDIS_KEY_EVENTBRITE_CW, REDIS_KEY_KECHB, REDIS_KEY_KECHG } from "@isitweeka/core";
 import { IsItWeekAReturn } from "libisitweeka";
 
 /** Initiale Express */
 const app = express();
+
+logger.info("Setting up CORS...");
+// From https://www.npmjs.com/package/cors
+// DO NOT ADD AN EMPTY STRING TO THIS!
+const whitelist = ['http://isitweeka.com', 'http://localhost:4000', 'https://isitweeka.com', ""]
+const corsOptions: cors.CorsOptions = {
+  origin: whitelist
+}
+
+app.use(cors(corsOptions));
+// @ts-ignore: Types wrong?
+//app.options("*", cors(corsOptions));
 
 // TEST ROUTE
 app.get("/heartbeat", (req, res, next) => {
@@ -91,6 +104,16 @@ const handleServingWeek = (redisKey: string) => async (req: Request, res: Respon
 };
 app.get('/isitweeka/kechb', handleServingWeek(REDIS_KEY_KECHB));
 app.get('/isitweeka/kechg', handleServingWeek(REDIS_KEY_KECHG));
+app.get("/eventbrite/cw", async (req, res, next) => {
+	logger.info("Getting eventbrite CW data from redis...");
+	try {
+		const fromRedis = await redis.HGETALL(REDIS_KEY_EVENTBRITE_CW);
+		res.json(fromRedis);
+		logger.info(`Done.`);
+	} catch (err) {
+		next(err);
+	}
+});
 
 
 

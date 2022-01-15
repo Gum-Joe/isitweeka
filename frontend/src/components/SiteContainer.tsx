@@ -10,13 +10,19 @@ import Socials from "./Socials";
 import IsItWeekA from "../utils/IsItWeekA";
 import YoutubeContainer from "./YoutubeContainer";
 import YearGroupCalendar from "./YearGroupCalendar";
+import { IsItWeekAReturn } from "libisitweeka";
 
 /**
  * Props to provide to the site
  */
 export interface SiteProps {
-	/** Calendar to fetch events from, e.g. `calendar@camphillboys.bham.sch.uk` */
+	/**
+	 * Calendar to fetch events from, e.g. `calendar@camphillboys.bham.sch.uk`
+	 * @deprecated Use the IsItWeekA as a Service URL instead
+	 */
 	calendarURL: string;
+	/** EXACT URL of the path on the isitweeka server to get the current week from */
+	iiwaURL: string;
 	/** Day of the Week A/B event that marks a week as being A/B, 0-6, where 0 is Sunday */
 	weekMarkerDate: GregorianDay;
 	/** Events data - eventually replaced with state */
@@ -179,13 +185,36 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		//inputDate.setMonth(7);
 		//inputDate.setFullYear(2021);
 		// Get which week it is 
-		const weekChecker = new IsItWeekA(this.props.weekMarkerDate, this.props.calendarURL, inputDate);
-		const theWeek = await weekChecker.isItWeekAorB();
-		this.setState({
-			apiHasRan: true,
-			week: theWeek.week,
-			isWeekend: theWeek.isWeekend,
-		});
+		// Use the new API
+		
+		try {
+			const apiRes = await fetch(this.props.iiwaURL, {
+				mode: "no-cors"
+			});
+			const apiResJSON: IsItWeekAReturn = await apiRes.json();
+			if (!apiResJSON.week || !("isWeekend" in apiResJSON)) {
+				throw new Error("One or both of week or isWeekend not in response");
+			}
+			this.setState({
+				apiHasRan: true,
+				week: apiResJSON.week,
+				isWeekend: apiResJSON.isWeekend,
+			});
+		} catch (err) {
+			console.error("Error using IsItWeekA API!");
+			console.error(err);
+			console.error("Falling back to old API!");
+			const weekChecker = new IsItWeekA(this.props.weekMarkerDate, this.props.calendarURL, inputDate);
+			const theWeek = await weekChecker.isItWeekAorB();
+			this.setState({
+				apiHasRan: true,
+				week: theWeek.week,
+				isWeekend: theWeek.isWeekend,
+			});
+		}
+		
+
+		
 	}
 
 	/**

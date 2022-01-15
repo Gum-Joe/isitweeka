@@ -34,10 +34,21 @@ const redis_1 = __importDefault(require("./utils/redis"));
 logger.info("Loading Connections...");
 const redis = (0, redis_1.default)();
 const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const morgan_1 = __importDefault(require("morgan"));
 const core_1 = require("@isitweeka/core");
 /** Initiale Express */
 const app = (0, express_1.default)();
+logger.info("Setting up CORS...");
+// From https://www.npmjs.com/package/cors
+// DO NOT ADD AN EMPTY STRING TO THIS!
+const whitelist = ['http://isitweeka.com', 'http://localhost:4000', 'https://isitweeka.com', ""];
+const corsOptions = {
+    origin: whitelist
+};
+app.use((0, cors_1.default)(corsOptions));
+// @ts-ignore: Types wrong?
+app.options("*", (0, cors_1.default)(corsOptions));
 // TEST ROUTE
 app.get("/heartbeat", (req, res, next) => {
     res.json({
@@ -82,6 +93,17 @@ const handleServingWeek = (redisKey) => (req, res, next) => __awaiter(void 0, vo
 });
 app.get('/isitweeka/kechb', handleServingWeek(core_1.REDIS_KEY_KECHB));
 app.get('/isitweeka/kechg', handleServingWeek(core_1.REDIS_KEY_KECHG));
+app.get("/eventbrite/cw", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    logger.info("Getting eventbrite CW data from redis...");
+    try {
+        const fromRedis = yield redis.HGETALL(core_1.REDIS_KEY_EVENTBRITE_CW);
+        res.json(fromRedis);
+        logger.info(`Done.`);
+    }
+    catch (err) {
+        next(err);
+    }
+}));
 // Baseline middleware
 //app.use(helmet()); // Security
 app.use(express_1.default.json());
