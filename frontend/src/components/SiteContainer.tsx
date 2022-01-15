@@ -267,6 +267,19 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h1 className="desktop">Week {this.state.week}</h1>
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be week" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="mobile">{this.state.week}</h1>
+					<div className="cw-widget">
+						<h2>Charity Week</h2>
+						<div className="raised-content">
+							<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={50} text={(this.state.raised.ticketQuantity / FAKE_TICKET_TOTAL* 100).toFixed(0) + "%"} /></div>
+							<div className="raised-text">
+								<h1>£{this.state.raised.net}</h1>
+								<h3>raised</h3>
+							</div>
+						</div>
+						<a href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite"><button><p>Buy Tickets Now</p> <FontAwesomeIcon icon={faArrowRight} /></button></a>
+					</div>
+				
+					
 					<Button style={{ marginRight: "auto", marginTop: 25 }} className="forward" onClick={getScrollDownWithAdditional(0)}>events</Button>
 					<Socials />
 				</>

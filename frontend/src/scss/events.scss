@@ -37,7 +37,7 @@
     border-bottom-width: 1px;
     border-bottom-color: var(--link-active);
     margin: 0 calc(var(--horizontal-indent) * -1);
-    padding: 0 calc(var(--horizontal-indent) * 0.5);
+    padding: 0 calc(var(--horizontal-indent));
 
     // Add a border at the top (i think)
     &:first-child {

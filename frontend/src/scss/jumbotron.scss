@@ -10,6 +10,130 @@
 
 $grid-gap: 20px;
 
+@include tablet {
+	.cw-widget {
+		display: flex !important;
+		flex-direction: column;
+	}
+
+	.cw-cards {
+		margin-top: 0 !important;
+	}
+
+	// CW stuff
+	.isitweeka {
+		h2.mobile {
+			font-size: 2em;
+		}
+		h1.mobile {
+			font-size: 5em;
+		}
+
+		.forward {
+			display: none;
+		}
+
+		.social-container {
+			margin-top: -20px;
+		}
+	}
+}
+
+.cw-widget {
+	display: none;
+	padding: 20px;
+	background-color: #202435;
+	border-radius: 12px;
+	max-width: 75vw;
+	margin-top: 15px;
+	h1, h2, button p {
+		font-family: aniuk, sans-serif !important;
+		font-weight: 700;
+		font-style: normal;	
+	}
+	h2 {
+		font-size: 1.3em;
+		
+	}
+
+	> h2 {
+		margin-top: 0;
+	}
+
+	.raised-content {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-bottom: 20px;
+	}
+
+	.ring-cont {
+		width: 80px;
+		margin-right: 25px;
+
+	}
+
+	.CircularProgressbar-trail {
+		stroke: rgba(255, 255, 255, 0.0605) !important;
+	}
+	.CircularProgressbar-path {
+		stroke: #ffc255 !important;
+	}
+
+	text {
+		font-family: aniuk, sans-serif;
+		font-weight: 700;
+		font-style: normal;
+		fill: #fff !important;
+		//transform: scaleX(0.9);
+		text-align: center;
+		font-size: 1.8em !important;
+	}
+
+	.raised-text {
+		flex: 1;
+
+		h3 {
+			text-align: right;
+			margin: 0;
+			font-size: 1.5em;
+		}
+		
+	
+		h1 {
+			margin: 0;
+			font-size: 3em;
+			text-align: right;
+			line-height: 50px;
+		}
+
+		display: flex;
+		flex-direction: column;
+		justify-content: right;
+	}
+	
+	button {
+		background: #01b960;
+		border: 1.18069px solid #00753C;
+		box-sizing: border-box;
+		border-radius: 7.08414px;
+		width: 100%;
+		text-align: center;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #fff;
+		font-size: 1.3em;
+		p {
+			margin-right: 10px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+	}
+}
+
+
 .isitweeka-jumbotron {
 	display: flex;
 	flex-direction: row;
@@ -32,6 +156,7 @@ $grid-gap: 20px;
 		width: 60%;
 		@include tablet {
 			width: 100%;
+			//margin: auto;
 		}
 		/*.cw-content {
 			display: grid; 
@@ -153,7 +278,7 @@ $grid-gap: 20px;
 				}
 
 				@include tablet {
-					.raised-text:last-child {
+					.raised-text:nth-child(2) {
 						display: none;
 					}
 
