@@ -74,6 +74,7 @@ app.get('/isitweeka/kechb', async (req, res, next) => {
 		}
 		res.json(finalResponse);
 		logger.info(`Done. Got It Is Week ${finalResponse.week} and isWeekend: ${finalResponse.isWeekend} from redis.`);
+		res.end();
 	} catch (err) {
 		next(err);
 	}
@@ -98,6 +99,7 @@ const handleServingWeek = (redisKey: string) => async (req: Request, res: Respon
 		}
 		res.json(finalResponse);
 		logger.info(`Done. Got It Is Week ${finalResponse.week} and isWeekend: ${finalResponse.isWeekend} from redis.`);
+		res.end();
 	} catch (err) {
 		next(err);
 	}
@@ -110,6 +112,7 @@ app.get("/eventbrite/cw", async (req, res, next) => {
 		const fromRedis = await redis.HGETALL(REDIS_KEY_EVENTBRITE_CW);
 		res.json(fromRedis);
 		logger.info(`Done.`);
+		res.end();
 	} catch (err) {
 		next(err);
 	}

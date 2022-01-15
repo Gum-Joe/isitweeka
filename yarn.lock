@@ -8793,6 +8793,7 @@ __metadata:
     node-sass: ^6.0.0
     react: ^17.0.2
     react-bootstrap: ^2.1.0
+    react-circular-progressbar: ^2.0.4
     react-cookie-consent: ^7.2.1
     react-dom: ^17.0.2
     react-portal: ^4.2.1
@@ -15478,6 +15479,15 @@ __metadata:
     react: ">=16.14.0"
     react-dom: ">=16.14.0"
   checksum: 9d25fcd9dbfdcb930f40e6792f0e5124a1d0dfdf97ff030042b0053cb8b8682debda6576abf8f59cd4c7e2890ef0ab5730496973e568642d76b32a1f16e8127c
+  languageName: node
+  linkType: hard
+
+"react-circular-progressbar@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "react-circular-progressbar@npm:2.0.4"
+  peerDependencies:
+    react: ^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+  checksum: c9b550e81027c2ebffe8eedc44570cf016731939df9bdb0647d24d5f6b6a97ea70347b73a0e5141ee123ef448bf0df9621c2d30f73d63f6b87f5e304e21035d5
   languageName: node
   linkType: hard
 

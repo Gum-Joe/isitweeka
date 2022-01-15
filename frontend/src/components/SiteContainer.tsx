@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import EventsList, { EventData } from "./EventsList";
 import Button from "./Button.Forward";
-import { GregorianDay } from "../utils/constants";
+import { GregorianDay, IIWA_CW_URL } from "../utils/constants";
 import { getScrollDownWithAdditional } from "../utils/scroll";
 import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 import AlertBanner from "./AlterBanner";
@@ -11,6 +11,10 @@ import IsItWeekA from "../utils/IsItWeekA";
 import YoutubeContainer from "./YoutubeContainer";
 import YearGroupCalendar from "./YearGroupCalendar";
 import { IsItWeekAReturn } from "libisitweeka";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 /**
  * Props to provide to the site
@@ -50,6 +54,10 @@ interface TheState {
 	isWeekend: boolean;
 	eventData: EventData;
 	alert: AlertResponce;
+	raised: {
+		net: string,
+		ticketQuantity: number,
+	}
 }
 
 /**
@@ -81,6 +89,10 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				message: "ATTENTION: ALL EXAMS ARE CANCELLED - Albus Dumbledore",
 				showAlert: false,
 				alertLevel: ThreatLevels.LOW,
+			},
+			raised: {
+				net: "0.00",
+				ticketQuantity: -1,
 			}
 			,
 		};
@@ -91,9 +103,20 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			this.getCalendar();
 			this.fetchEvents();
 			this.fetchNotifications();
+			this.getAmountRaised();
 		} catch (err: any) {
 			console.error("Error: " + err?.message);
 		}
+	}
+
+	async getAmountRaised() {
+		const res = await fetch(IIWA_CW_URL, {
+			mode: "no-cors"
+		});
+		const raised = await res.json();
+		this.setState({
+			raised: raised,
+		});
 	}
 
 	/** Fetches any alerts that need to be diplayed */
@@ -242,7 +265,6 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h1 className="desktop">Week {this.state.week}</h1>
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be week" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="mobile">{this.state.week}</h1>
-					<h4>More coming soon - follow our social media for the latest updates!</h4>
 					<Button style={{ marginRight: "auto", marginTop: 25 }} className="forward" onClick={getScrollDownWithAdditional(0)}>events</Button>
 					<Socials />
 				</>
@@ -253,13 +275,43 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	render() {
 		return (
 			<>
-				<div className="isitweeka isitweeka-jumbotron">
+				<div className="isitweeka-jumbotron">
 					{this.state.alert.showAlert ? <AlertBanner alert={this.state.alert} /> : null}
-					{
-						this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
-					}
+					<div className="isitweeka">
+						{
+							this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
+						}
+					</div>
+					<div className="cw-cards">
+						<div className="cw-header">
+							<h1>Charity Week</h1>
+						</div>
+						<div className="cw-content">
+							<div>
+								<div className="cw-buy">
+									<h2>About</h2>
+									<h4>With Who Wants to be a Millionaire, THE GRAND DEBATE, Mario Kart Tournament, Talent Show and Would I Lie To You!</h4>
+									<a href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite"><button><p>Buy Tickets Now</p> <FontAwesomeIcon icon={faArrowRight} /></button></a>
+								</div>
+								<div className="cw-raised">
+									<h2>Amount raised</h2>
+									<div className="raised-content">
+										<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={50} text="50%" /></div>
+										<div className="raised-text">
+											<h1>£{this.state.raised.net}</h1>
+											<h3>raised</h3>
+										</div>
+										
+									</div>
+									
+								</div>
+							</div>
+
+						</div>
+						
+					</div>
 				</div>
-				<Banner />
+				{ /* <Banner /> */ }
 				{ /* Pulled offline due to jankiness. Readd once a better solution with proper mobile styles and dedicated place is found:
 					<YearGroupCalendar /> */ }
 				<EventsList eventData={this.state.eventData} />
