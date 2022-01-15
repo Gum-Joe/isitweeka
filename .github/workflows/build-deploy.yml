@@ -31,10 +31,9 @@ on:
   push:
     branches:
       - "main"
+      - "isitweeka-as-a-service"
   pull_request:
-    branches:
-    - "main"
-    - "isitweeka-as-a-service"
+   
 
 jobs:
   install:
