@@ -4,6 +4,8 @@ export type GregorianDay = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 /** Name of Cookie used to store school preference */
 export const COOKIE_SCHOOL_PREFERENCE = "SchoolPreference";
 
+export const FAKE_TICKET_TOTAL = (475 * 4 + (34 * 7));
+
 /**
  * Base URL of IsItWeekA as a Service
  */

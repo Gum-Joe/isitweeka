@@ -39,7 +39,7 @@ const app = express();
 logger.info("Setting up CORS...");
 // From https://www.npmjs.com/package/cors
 // DO NOT ADD AN EMPTY STRING TO THIS!
-const whitelist = ['http://isitweeka.com', 'http://localhost:4000', 'https://isitweeka.com', ""]
+const whitelist = ['http://isitweeka.com', 'http://localhost:3000', 'https://isitweeka.com', ""]
 const corsOptions: cors.CorsOptions = {
   origin: whitelist
 }

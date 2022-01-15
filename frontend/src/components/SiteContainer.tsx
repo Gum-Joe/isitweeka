@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import EventsList, { EventData } from "./EventsList";
 import Button from "./Button.Forward";
-import { GregorianDay, IIWA_CW_URL } from "../utils/constants";
+import { FAKE_TICKET_TOTAL, GregorianDay, IIWA_CW_URL } from "../utils/constants";
 import { getScrollDownWithAdditional } from "../utils/scroll";
 import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 import AlertBanner from "./AlterBanner";
@@ -92,9 +92,8 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			},
 			raised: {
 				net: "0.00",
-				ticketQuantity: -1,
-			}
-			,
+				ticketQuantity: 0,
+			},
 		};
 	}
 
@@ -110,10 +109,15 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	}
 
 	async getAmountRaised() {
-		const res = await fetch(IIWA_CW_URL, {
-			mode: "no-cors"
-		});
+		const res = await fetch(IIWA_CW_URL);
 		const raised = await res.json();
+		if (raised.net.split(".")[1].length === 1) {
+			raised.net = raised.net + "0";
+		}
+
+		if (raised.net.split(".")[0].length > 3) {
+			raised.net = raised.net.split(".")[0];
+		}
 		this.setState({
 			raised: raised,
 		});
@@ -211,9 +215,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		// Use the new API
 		
 		try {
-			const apiRes = await fetch(this.props.iiwaURL, {
-				mode: "no-cors"
-			});
+			const apiRes = await fetch(this.props.iiwaURL);
 			const apiResJSON: IsItWeekAReturn = await apiRes.json();
 			if (!apiResJSON.week || !("isWeekend" in apiResJSON)) {
 				throw new Error("One or both of week or isWeekend not in response");
@@ -290,20 +292,28 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 							<div>
 								<div className="cw-buy">
 									<h2>About</h2>
-									<h4>With Who Wants to be a Millionaire, THE GRAND DEBATE, Mario Kart Tournament, Talent Show and Would I Lie To You!</h4>
+									<h4>Camp Hill's return to charity events, with Who Wants to be a Millionaire, THE GRAND DEBATE, a Mario Kart Tournament, the Talent Show and Would I Lie To You!</h4>
 									<a href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite"><button><p>Buy Tickets Now</p> <FontAwesomeIcon icon={faArrowRight} /></button></a>
 								</div>
 								<div className="cw-raised">
-									<h2>Amount raised</h2>
+									<h2>Ticket Stats</h2>
 									<div className="raised-content">
-										<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={50} text="50%" /></div>
+										<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={50} text={(this.state.raised.ticketQuantity / FAKE_TICKET_TOTAL* 100).toFixed(0) + "%"} /></div>
 										<div className="raised-text">
 											<h1>£{this.state.raised.net}</h1>
 											<h3>raised</h3>
 										</div>
+										<div className="raised-text">
+											<h1>{this.state.raised.ticketQuantity}</h1>
+											<h3>sold</h3>
+										</div>
 										
 									</div>
 									
+								</div>
+								<div className="cw-charity-link">
+									<p>Supporting Beat -</p>
+									<a target="__blank" href="https://www.beateatingdisorders.org.uk/about-beat/">more info &gt;&gt;&gt;</a>
 								</div>
 							</div>
 

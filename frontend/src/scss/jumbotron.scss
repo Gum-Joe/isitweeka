@@ -74,6 +74,21 @@ $grid-gap: 20px;
 			padding-right: 20px;
 		}
 
+		.cw-charity-link {
+			text-align: center;
+			a, p {
+				display: inline;
+				text-align: center;
+				font-family: aniuk, sans-serif;
+				font-weight: 400;
+				font-style: normal;
+				font-size: 16px;
+			}
+			a {
+				margin-left: 5px;
+			}
+		}
+
 		text {
 			font-family: aniuk, sans-serif;
 			font-weight: 700;
@@ -96,7 +111,7 @@ $grid-gap: 20px;
 				h1 {
 					flex: 1;
 					text-align: center;
-					font-size: 4.5em;
+					font-size: 4em;
 					//transform: scaleX(0.9);
 					line-height: 70px;
 				}
@@ -114,6 +129,10 @@ $grid-gap: 20px;
 						margin-bottom: 0;
 						margin-top: 0;
 						text-align: right;
+					}
+
+					h3 {
+						padding-right: 4px;
 					}
 				}
 			}
