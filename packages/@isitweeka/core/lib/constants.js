@@ -14,4 +14,3 @@ exports.WEEK_MARKER_DATE_KECHB = 1;
 exports.CALENDAR_URL_KECHB = "https://calendar.google.com/calendar/ical/calendar%40camphillboys.bham.sch.uk/public/basic.ics";
 exports.WEEK_MARKER_DATE_KECHG = 0;
 exports.CALENDAR_URL_KECHG = "https://calendar.google.com/calendar/ical/calendar%40kechg.org.uk/public/basic.ics";
-//# sourceMappingURL=constants.js.map

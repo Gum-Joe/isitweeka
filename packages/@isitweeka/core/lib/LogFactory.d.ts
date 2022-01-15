@@ -47,4 +47,3 @@ export declare class LoggerFactory {
     */
     createLogger(moduleName: string): winston.Logger;
 }
-//# sourceMappingURL=LogFactory.d.ts.map

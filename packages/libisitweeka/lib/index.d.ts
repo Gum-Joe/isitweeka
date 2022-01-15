@@ -58,4 +58,3 @@ export default class IsItWeekA {
      */
     isItWeekAorB(): Promise<IsItWeekAReturn>;
 }
-//# sourceMappingURL=index.d.ts.map

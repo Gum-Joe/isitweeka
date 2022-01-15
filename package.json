@@ -8,7 +8,11 @@
     "frontend",
     "server"
   ],
+  "scripts": {
+    "build": "tsc -b"
+  },
   "dependencies": {
-    "@loopback/cli": "^3.0.0"
+    "@loopback/cli": "^3.0.0",
+    "typescript": "^4.5.4"
   }
 }
