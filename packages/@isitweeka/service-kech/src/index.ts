@@ -30,15 +30,15 @@ const logger = logFactory.createLogger("kechb");
 // If we're not in production then log to the `console` with the format:
 // `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
 //
-if (process.env.NODE_ENV !== 'production') {
+/*if (process.env.NODE_ENV !== 'production') {
   logger.add(new winston.transports.Console({
     format: winston.format.simple(),
   }));
-}
+}*/
 
 
 
-async function getWeek(redis: RedisClientType, markerDate: GregorianDay, calendarURL: string, today: Date, redisKey: string): Promise<void> {
+async function getWeek(redis: ReturnType<typeof createClient>, markerDate: GregorianDay, calendarURL: string, today: Date, redisKey: string): Promise<void> {
   logger.info("Getting week...");
   
   const inputDate = new Date();
@@ -81,10 +81,10 @@ async function getWeek(redis: RedisClientType, markerDate: GregorianDay, calenda
   
     setInterval(async () => {
       logger.info("Updating week for KECHB...");
-      await getWeek(client as RedisClientType, WEEK_MARKER_DATE_KECHB, CALENDAR_URL_KECHB, new Date(), REDIS_KEY_KECHB);
+      await getWeek(client, WEEK_MARKER_DATE_KECHB, CALENDAR_URL_KECHB, new Date(), REDIS_KEY_KECHB);
 
       logger.info("Updating week for KECHG...");
-      await getWeek(client as RedisClientType, WEEK_MARKER_DATE_KECHG, CALENDAR_URL_KECHG, new Date(), REDIS_KEY_KECHG);
+      await getWeek(client, WEEK_MARKER_DATE_KECHG, CALENDAR_URL_KECHG, new Date(), REDIS_KEY_KECHG);
       
     }, 30 * 1000);
   } catch (err) {

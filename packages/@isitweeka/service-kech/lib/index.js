@@ -18,23 +18,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 const libisitweeka_1 = __importDefault(require("libisitweeka"));
 const redis_1 = require("redis");
+const core_1 = require("@isitweeka/core");
 const winston_1 = __importDefault(require("winston"));
-const WEEK_MARKER_DATE_KECHB = 1;
-const CALENDAR_URL_KECHB = "https://calendar.google.com/calendar/ical/calendar%40camphillboys.bham.sch.uk/public/basic.ics";
-const REDIS_KEY = "isitweeka:kechb" || process.env.IIWA_REDIS_KEY;
-const logger = winston_1.default.createLogger({
-    level: 'info',
-    format: winston_1.default.format.json(),
-    defaultMeta: { service: 'user-service' },
-    transports: [
-        //
-        // - Write all logs with importance level of `error` or less to `error.log`
-        // - Write all logs with importance level of `info` or less to `combined.log`
-        //
-        new winston_1.default.transports.File({ filename: 'error.log', level: 'error' }),
-        new winston_1.default.transports.File({ filename: 'combined.log' }),
-    ],
-});
+const logFactory = new core_1.LoggerFactory("./");
+/*const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  defaultMeta: { service: 'user-service' },
+  transports: [
+    //
+    // - Write all logs with importance level of `error` or less to `error.log`
+    // - Write all logs with importance level of `info` or less to `combined.log`
+    //
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'combined.log' }),
+  ],
+});*/
+const logger = logFactory.createLogger("kechb");
 //
 // If we're not in production then log to the `console` with the format:
 // `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
@@ -44,40 +44,45 @@ if (process.env.NODE_ENV !== 'production') {
         format: winston_1.default.format.simple(),
     }));
 }
-function getKECHBWeek() {
+function getWeek(redis, markerDate, calendarURL, today, redisKey) {
     return __awaiter(this, void 0, void 0, function* () {
         logger.info("Getting week...");
         const inputDate = new Date();
         logger.info(`Date is ${inputDate}`);
-        const weekChecker = new libisitweeka_1.default(WEEK_MARKER_DATE_KECHB, CALENDAR_URL_KECHB, inputDate);
+        const weekChecker = new libisitweeka_1.default(markerDate, calendarURL, today);
         logger.info("Running week checker...");
         const theWeek = yield weekChecker.isItWeekAorB();
         logger.info("Week check done.");
-        return theWeek;
+        logger.info(`It is week ${theWeek.week} and isWeekend: ${theWeek.isWeekend}`);
+        logger.info("Storing in redis...");
+        const theWeekRedis = Object.assign(Object.assign({}, theWeek), { isWeekend: 0 });
+        if (theWeek.isWeekend === true) {
+            theWeekRedis.isWeekend = 1;
+        }
+        else {
+            theWeekRedis.isWeekend = 0;
+        }
+        yield redis.HSET(redisKey, theWeekRedis)
+            .catch((err) => logger.error('Error getting week', err));
+        logger.info("Set week in Redis successfully.");
     });
 }
 (() => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        logger.info("Starting IsItWeekA service for KECHB...");
+        logger.info("Starting IsItWeekA service for KECHB & G...");
+        logger.info("Connecting to redis...");
         const client = (0, redis_1.createClient)({
-            url: process.env.IIWA_REDIS_URL,
+            url: process.env.IIWA_REDIS_URL || "redis://localhost:6379",
         });
         client.on('error', (err) => logger.error('Redis Client Error', err));
         yield client.connect();
+        logger.info("Connected to redis.");
         setInterval(() => __awaiter(void 0, void 0, void 0, function* () {
-            logger.info("Updating week...");
-            const theWeek = yield getKECHBWeek();
-            const theWeekRedis = Object.assign(Object.assign({}, theWeek), { isWeekend: 0 });
-            if (theWeek.isWeekend === true) {
-                theWeekRedis.isWeekend = 1;
-            }
-            else {
-                theWeekRedis.isWeekend = 0;
-            }
-            yield client.HSET(REDIS_KEY, theWeekRedis)
-                .catch((err) => logger.error('Error getting week', err));
-            logger.info("Set week in Redis successfully.");
-        }), 60 * 1000);
+            logger.info("Updating week for KECHB...");
+            yield getWeek(client, core_1.WEEK_MARKER_DATE_KECHB, core_1.CALENDAR_URL_KECHB, new Date(), core_1.REDIS_KEY_KECHB);
+            logger.info("Updating week for KECHG...");
+            yield getWeek(client, core_1.WEEK_MARKER_DATE_KECHG, core_1.CALENDAR_URL_KECHG, new Date(), core_1.REDIS_KEY_KECHG);
+        }), 30 * 1000);
     }
     catch (err) {
         console.log('Error ', err);

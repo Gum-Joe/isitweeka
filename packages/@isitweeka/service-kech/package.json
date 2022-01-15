@@ -1,7 +1,7 @@
 {
   "name": "@isitweeka/service-kech",
   "packageManager": "yarn@3.1.1",
-  "main": "index.js",
+  "main": "lib/index.js",
   "version": "1.0.0",
   "dependencies": {
     "@isitweeka/core": "workspace:^",
@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "node ./index.js"
+    "start": "node ./lib/index.js"
   },
   "devDependencies": {
     "@types/redis": "^4.0.11",

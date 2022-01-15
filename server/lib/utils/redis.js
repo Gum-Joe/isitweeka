@@ -24,12 +24,13 @@ let attemptsToConnect = 0;
 function connectToRedis() {
     const logger = (0, logger_1.default)("redis");
     logger.info("Creating new Redis connection...");
+    logger.info(`Connecting to ${process.env.IIWA_REDIS_URL}`);
     if (typeof theClient !== "undefined") {
         logger.info("Reusing already created Redis Client...");
         return theClient;
     }
     theClient = (0, redis_1.createClient)({
-        url: process.env.ECMS_REDIS_URL,
+        url: process.env.IIWA_REDIS_URL,
     });
     theClient.on("error", (err) => {
         logger.error("Redis Client Error", err);
