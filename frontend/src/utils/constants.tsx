@@ -9,7 +9,7 @@ export const FAKE_TICKET_TOTAL = (475 * 4 + (34 * 7));
 /**
  * Base URL of IsItWeekA as a Service
  */
-export const IIWA_BASE_URL = "http://localhost:4000";
+export const IIWA_BASE_URL = "https://api.isitweeka.com";
 export const IIWA_KECHB_URL = `${IIWA_BASE_URL}/isitweeka/kechb`;
 export const IIWA_KECHG_URL = `${IIWA_BASE_URL}/isitweeka/kechg`;
 export const IIWA_CW_URL = `${IIWA_BASE_URL}/eventbrite/cw`;
