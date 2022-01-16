@@ -124,11 +124,15 @@ $grid-gap: 20px;
 		align-items: center;
 		justify-content: center;
 		color: #fff;
-		font-size: 1.3em;
+		font-size: 1.4em;
 		p {
 			margin-right: 10px;
 			margin-top: 10px;
 			margin-bottom: 10px;
+		}
+
+		svg {
+			margin-top: 1px;
 		}
 	}
 }
@@ -369,6 +373,11 @@ $grid-gap: 20px;
 			&:hover {
 				background: #008143;
 				cursor: pointer;
+			}
+
+			@include mobile {
+				padding: 0 20px;
+				line-height: 35px;
 			}
 		}
 	}
