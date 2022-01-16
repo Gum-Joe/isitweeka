@@ -9,7 +9,7 @@ import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 };*/
 
 export const KECHBAlerts: AlertResponce = {
-	showAlert: true,
+	showAlert: false,
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
 	//message: "Welcome to IsItWeekA! We'll use these banners for important alerts in the future.",
@@ -20,7 +20,7 @@ export const KECHBAlerts: AlertResponce = {
 };
 
 export const KECHGAlerts: AlertResponce = {
-	showAlert: true,
+	showAlert: false,
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
 	message: "\"Oliver!\" to be the next KECHB Musical - hopefully with KECHG as well",
