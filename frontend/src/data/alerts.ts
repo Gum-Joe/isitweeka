@@ -13,18 +13,18 @@ export const KECHBAlerts: AlertResponce = {
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
 	//message: "Welcome to IsItWeekA! We'll use these banners for important alerts in the future.",
-	alertLevel: ThreatLevels.LOW,
-	message: "Have a nice holiday everyone.",
-	//linkText: "more info",
-	//linkTo: "https://www.instagram.com/p/CW8oED8IooV"
+	alertLevel: ThreatLevels.INFO,
+	message: "Anyone to be able to stand in upcoming Student Council election, not just SC members.",
+	linkText: "read more",
+	linkTo: "https://www.instagram.com/isitweeka/p/CYt5gRaIvJK/?utm_medium=copy_link"
 };
 
 export const KECHGAlerts: AlertResponce = {
 	showAlert: true,
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
-	message: "Headteacher Mrs Johnson to retire at the end of the academic year",
-	alertLevel: ThreatLevels.CRITICAL,
-	linkText: "read more now",
-	linkTo: "https://www.instagram.com/p/CXrTk2hrjm5"
+	message: "\"Oliver!\" to be the next KECHB Musical - hopefully with KECHG as well",
+	alertLevel: ThreatLevels.INFO,
+	linkText: "more info",
+	linkTo: "https://www.instagram.com/p/CYcI989LXwh"
 };
