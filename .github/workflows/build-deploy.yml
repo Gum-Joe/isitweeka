@@ -76,6 +76,8 @@ jobs:
       #   if: steps.yarn-cache.outputs.cache-hit == 'true'
       #   working-directory: ./frontend
 
+      - name: Yarn version
+        run: yarn set version ./.yarn/releases/yarn-3.1.1.cjs
       - name: Install dependencies
         run: yarn install
 
@@ -114,6 +116,8 @@ jobs:
       #     key: ${{ runner.os }}-node-modules-${{ github.sha }}-${{ hashFiles('**/yarn.lock') }}
       #     restore-keys: |
       #       ${{ runner.os }}-node-modules-${{ github.sha }}-
+      - name: Yarn version
+        run: yarn set version ./.yarn/releases/yarn-3.1.1.cjs
       - name: Install dependencies
         run: yarn install
 
@@ -181,6 +185,8 @@ jobs:
       #     key: ${{ runner.os }}-node-modules-${{ github.sha }}-${{ hashFiles('**/yarn.lock') }}
       #     restore-keys: |
       #       ${{ runner.os }}-node-modules-${{ github.sha }}-
+      - name: Yarn version
+        run: yarn set version ./.yarn/releases/yarn-3.1.1.cjs
       - name: Install dependencies
         run: yarn install
 
