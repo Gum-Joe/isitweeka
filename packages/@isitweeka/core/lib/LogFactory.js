@@ -16,6 +16,7 @@ exports.LoggerFactory = void 0;
  */
 const chalk_1 = __importDefault(require("chalk"));
 const winston_1 = __importDefault(require("winston"));
+require("winston-daily-rotate-file");
 const { combine, colorize, printf, timestamp } = winston_1.default.format;
 /**
  * Used to create Loggers.
@@ -71,6 +72,21 @@ class LoggerFactory {
                         return `${chalk_1.default.grey(info.timestamp)} ${chalk_1.default.magenta(moduleName)} ${info.level} ${info.message}`;
                     })),
                     level: this.maxLogLevel,
+                }),
+                new winston_1.default.transports.DailyRotateFile({
+                    filename: "ecms-log-%DATE%.log",
+                    dirname: this.logFileLocation,
+                    datePattern: "YYYY-MM-DD",
+                    zippedArchive: true,
+                    maxFiles: "365d",
+                    /*format: combine(
+                        timestamp(),
+                        printf((info) => {
+                            info.moduleName = moduleName;
+                            return `${info.timestamp} ${moduleName} ${info.level} ${info.message}`;
+                        }),
+                    ),*/
+                    level: "debug",
                 }),
             ],
         };

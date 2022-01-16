@@ -35,7 +35,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const redis_1 = require("redis");
 const core_1 = require("@isitweeka/core");
 const cross_fetch_1 = __importStar(require("cross-fetch"));
-const logFactory = new core_1.LoggerFactory("./");
+const logFactory = new core_1.LoggerFactory("./logs");
 /*const logger = winston.createLogger({
   level: 'info',
   format: winston.format.json(),
@@ -74,8 +74,10 @@ function updateEventbrite(redis, orgID, eventID, accessToken, redisKey) {
             net: resJSON.totals.net,
             ticketQuantity: resJSON.totals.quantity,
         };
+        logger.debug("Information fetched.");
         yield redis.HSET(redisKey, response)
             .catch((err) => logger.error('Error storing in redis:', err));
+        logger.debug("Information fetched & stored.");
     });
 }
 function checkEnvVars() {

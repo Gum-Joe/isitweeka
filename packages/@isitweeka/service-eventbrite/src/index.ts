@@ -7,7 +7,7 @@ import { REDIS_KEY_EVENTBRITE_CW, LoggerFactory } from "@isitweeka/core";
 import fetch, { Headers } from "cross-fetch";
 
 
-const logFactory = new LoggerFactory("./");
+const logFactory = new LoggerFactory("./logs");
 
 /*const logger = winston.createLogger({
   level: 'info',
@@ -53,9 +53,11 @@ async function updateEventbrite(redis: ReturnType<typeof createClient>, orgID: s
     net: resJSON.totals.net,
     ticketQuantity: resJSON.totals.quantity,
   }
+  logger.debug("Information fetched.");
 
   await redis.HSET(redisKey, response)
     .catch((err) => logger.error('Error storing in redis:', err))
+  logger.debug("Information fetched & stored.");
 
 }
 

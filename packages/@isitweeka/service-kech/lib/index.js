@@ -19,7 +19,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const libisitweeka_1 = __importDefault(require("libisitweeka"));
 const redis_1 = require("redis");
 const core_1 = require("@isitweeka/core");
-const logFactory = new core_1.LoggerFactory("./");
+const logFactory = new core_1.LoggerFactory("./logs");
 /*const logger = winston.createLogger({
   level: 'info',
   format: winston.format.json(),

@@ -42,13 +42,13 @@ const app = (0, express_1.default)();
 logger.info("Setting up CORS...");
 // From https://www.npmjs.com/package/cors
 // DO NOT ADD AN EMPTY STRING TO THIS!
-const whitelist = ['http://isitweeka.com', 'http://localhost:4000', 'https://isitweeka.com', ""];
+const whitelist = ['http://isitweeka.com', 'http://localhost:3000', 'https://isitweeka.com', ""];
 const corsOptions = {
     origin: whitelist
 };
 app.use((0, cors_1.default)(corsOptions));
 // @ts-ignore: Types wrong?
-app.options("*", (0, cors_1.default)(corsOptions));
+//app.options("*", cors(corsOptions));
 // TEST ROUTE
 app.get("/heartbeat", (req, res, next) => {
     res.json({
@@ -68,6 +68,7 @@ app.get('/isitweeka/kechb', (req, res, next) => __awaiter(void 0, void 0, void 0
         }
         res.json(finalResponse);
         logger.info(`Done. Got It Is Week ${finalResponse.week} and isWeekend: ${finalResponse.isWeekend} from redis.`);
+        res.end();
     }
     catch (err) {
         next(err);
@@ -86,6 +87,7 @@ const handleServingWeek = (redisKey) => (req, res, next) => __awaiter(void 0, vo
         }
         res.json(finalResponse);
         logger.info(`Done. Got It Is Week ${finalResponse.week} and isWeekend: ${finalResponse.isWeekend} from redis.`);
+        res.end();
     }
     catch (err) {
         next(err);
@@ -99,6 +101,7 @@ app.get("/eventbrite/cw", (req, res, next) => __awaiter(void 0, void 0, void 0, 
         const fromRedis = yield redis.HGETALL(core_1.REDIS_KEY_EVENTBRITE_CW);
         res.json(fromRedis);
         logger.info(`Done.`);
+        res.end();
     }
     catch (err) {
         next(err);

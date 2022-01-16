@@ -1,4 +1,5 @@
 import winston from "winston";
+import "winston-daily-rotate-file";
 /** The logger created by core */
 export declare type Logger = winston.Logger;
 /**

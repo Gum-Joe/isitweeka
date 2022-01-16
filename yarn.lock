@@ -1811,6 +1811,7 @@ __metadata:
     chalk: ^4.1.2
     typescript: ^4.5.4
     winston: ^3.3.3
+    winston-daily-rotate-file: ^4.5.5
   languageName: unknown
   linkType: soft
 
@@ -8462,6 +8463,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"file-stream-rotator@npm:^0.5.7":
+  version: 0.5.7
+  resolution: "file-stream-rotator@npm:0.5.7"
+  dependencies:
+    moment: ^2.11.2
+  checksum: 2e76726780803186f5851da596d7b3d0306649114f25e95689a269668f7a8b58528695b2cbbd8ffcee4f220e682eb58630ac19c7e3cc6eda5a139d9a72883cca
+  languageName: node
+  linkType: hard
+
 "file-uri-to-path@npm:1.0.0":
   version: 1.0.0
   resolution: "file-uri-to-path@npm:1.0.0"
@@ -12731,7 +12741,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"moment@npm:^2.15.1, moment@npm:^2.24.0":
+"moment@npm:^2.11.2, moment@npm:^2.15.1, moment@npm:^2.24.0":
   version: 2.29.1
   resolution: "moment@npm:2.29.1"
   checksum: 1e14d5f422a2687996be11dd2d50c8de3bd577c4a4ca79ba5d02c397242a933e5b941655de6c8cb90ac18f01cc4127e55b4a12ae3c527a6c0a274e455979345e
@@ -13430,6 +13440,13 @@ __metadata:
     define-property: ^0.2.5
     kind-of: ^3.0.3
   checksum: a9e35f07e3a2c882a7e979090360d1a20ab51d1fa19dfdac3aa8873b328a7c4c7683946ee97c824ae40079d848d6740a3788fa14f2185155dab7ed970a72c783
+  languageName: node
+  linkType: hard
+
+"object-hash@npm:^2.0.1":
+  version: 2.2.0
+  resolution: "object-hash@npm:2.2.0"
+  checksum: 55ba841e3adce9c4f1b9b46b41983eda40f854e0d01af2802d3ae18a7085a17168d6b81731d43fdf1d6bcbb3c9f9c56d22c8fea992203ad90a38d7d919bc28f1
   languageName: node
   linkType: hard
 
@@ -19464,7 +19481,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"winston-transport@npm:^4.4.2":
+"winston-daily-rotate-file@npm:^4.5.5":
+  version: 4.5.5
+  resolution: "winston-daily-rotate-file@npm:4.5.5"
+  dependencies:
+    file-stream-rotator: ^0.5.7
+    object-hash: ^2.0.1
+    triple-beam: ^1.3.0
+    winston-transport: ^4.4.0
+  peerDependencies:
+    winston: ^3
+  checksum: ba02643a2a4a2f1586d48f5fa67deccb502687ec73f365f38f4c9ebf969a5c641f32e0acbd8717923ed2379cd8115737ff8dee4d06b7a6dd81d841d6217daa4f
+  languageName: node
+  linkType: hard
+
+"winston-transport@npm:^4.4.0, winston-transport@npm:^4.4.2":
   version: 4.4.2
   resolution: "winston-transport@npm:4.4.2"
   dependencies:

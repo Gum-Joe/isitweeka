@@ -8,7 +8,7 @@ import { REDIS_KEY_KECHB, WEEK_MARKER_DATE_KECHB, CALENDAR_URL_KECHB, REDIS_KEY_
 import winston from "winston";
 
 
-const logFactory = new LoggerFactory("./");
+const logFactory = new LoggerFactory("./logs");
 
 /*const logger = winston.createLogger({
   level: 'info',

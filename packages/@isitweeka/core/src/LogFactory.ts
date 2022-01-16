@@ -10,6 +10,7 @@
  */
 import chalk from "chalk";
 import winston from "winston";
+import "winston-daily-rotate-file";
 
 const { combine, colorize, printf, timestamp } = winston.format;
 
@@ -84,6 +85,21 @@ export class LoggerFactory {
 						}),
 					),
 					level: this.maxLogLevel,
+				}),
+				new winston.transports.DailyRotateFile({
+					filename: "ecms-log-%DATE%.log", 
+					dirname: this.logFileLocation,
+					datePattern: "YYYY-MM-DD", // see https://momentjs.com/docs/#/displaying/format/ - controls when logs rotated (once a month as system won't be used daily)
+					zippedArchive: true,
+					maxFiles: "365d", // Keep the last year of logs
+					/*format: combine(
+						timestamp(),
+						printf((info) => {
+							info.moduleName = moduleName;
+							return `${info.timestamp} ${moduleName} ${info.level} ${info.message}`;
+						}),
+					),*/
+					level: "debug",
 				}),
 			],
 		};
