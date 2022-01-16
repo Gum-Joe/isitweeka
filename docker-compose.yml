@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   isitweeka:
-    image: isitweeka
+    image: ghcr.io/gum-joe/isitweeka
     build:
       context: .
       dockerfile: ./server/Dockerfile
@@ -15,7 +15,7 @@ services:
       - redis
     
   service-kech:
-    image: isitweeka-service-kech
+    image: ghcr.io/gum-joe/isitweeka-service-kech
     build:
       context: .
       dockerfile: ./packages/@isitweeka/service-kech/Dockerfile
@@ -26,7 +26,7 @@ services:
       - redis
   
   service-eventbrite:
-    image: isitweeka-service-eventbrite
+    image: ghcr.io/gum-joe/isitweeka-service-eventbrite
     build:
       context: .
       dockerfile: ./packages/@isitweeka/service-eventbrite/Dockerfile
