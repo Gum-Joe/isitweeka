@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import EventsList, { EventData } from "./EventsList";
 import Button from "./Button.Forward";
-import { FAKE_TICKET_TOTAL, GregorianDay, IIWA_CW_URL } from "../utils/constants";
+import { CW_TARGET, FAKE_TICKET_TOTAL, GregorianDay, IIWA_CW_URL } from "../utils/constants";
 import { getScrollDownWithAdditional } from "../utils/scroll";
 import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 import AlertBanner from "./AlterBanner";
@@ -270,7 +270,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<div className="cw-widget">
 						<h2>Charity Week</h2>
 						<div className="raised-content">
-							<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={this.state.raised.ticketQuantity / FAKE_TICKET_TOTAL* 100} text={(this.state.raised.ticketQuantity / FAKE_TICKET_TOTAL* 100).toFixed(0) + "%"} /></div>
+							<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={parseFloat(this.state.raised.net) / CW_TARGET * 100} text={(parseFloat(this.state.raised.net) / CW_TARGET * 100).toFixed(0) + "%"} /></div>
 							<div className="raised-text">
 								<h1>£{this.state.raised.net}</h1>
 								<h3>raised</h3>
@@ -311,7 +311,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 								<div className="cw-raised">
 									<h2>Ticket Stats</h2>
 									<div className="raised-content">
-										<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={this.state.raised.ticketQuantity / FAKE_TICKET_TOTAL* 100} text={(this.state.raised.ticketQuantity / FAKE_TICKET_TOTAL* 100).toFixed(0) + "%"} /></div>
+										<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={parseFloat(this.state.raised.net) / CW_TARGET * 100} text={(parseFloat(this.state.raised.net) / CW_TARGET * 100).toFixed(0) + "%"} /></div>
 										<div className="raised-text">
 											<h1>£{this.state.raised.net}</h1>
 											<h3>raised</h3>

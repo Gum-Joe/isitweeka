@@ -5,6 +5,7 @@ export type GregorianDay = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 export const COOKIE_SCHOOL_PREFERENCE = "SchoolPreference";
 
 export const FAKE_TICKET_TOTAL = (475 * 4 + (34 * 7));
+export const CW_TARGET = 1500;
 
 /**
  * Base URL of IsItWeekA as a Service
