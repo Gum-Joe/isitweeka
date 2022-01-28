@@ -15,8 +15,8 @@ export const KECHBAlerts: AlertResponce = {
 	//message: "Welcome to IsItWeekA! We'll use these banners for important alerts in the future.",
 	alertLevel: ThreatLevels.DEATH,
 	message: "Charity Week ticket sales delayed due to COVID-19 cases in KECHB",
-	//linkText: "read more",
-	//linkTo: "https://www.instagram.com/isitweeka/p/CYt5gRaIvJK/?utm_medium=copy_link"
+	linkText: "more info",
+	linkTo: "https://www.instagram.com/p/CZSJNPMLH8C"
 };
 
 export const KECHGAlerts: AlertResponce = {
