@@ -5,6 +5,382 @@
 .isitweeka-jumbotron a {
 	color: var(--link-blue);
 	display: inline-flex;
+
+}
+
+$grid-gap: 20px;
+
+@include tablet {
+	.cw-widget {
+		display: flex !important;
+		flex-direction: column;
+	}
+
+	.cw-cards {
+		margin-top: 0 !important;
+	}
+
+	// CW stuff
+	.isitweeka {
+		h2.mobile {
+			font-size: 2em;
+		}
+		h1.mobile {
+			font-size: 5em;
+		}
+
+		.forward {
+			display: none;
+		}
+
+		.social-container {
+			margin-top: -20px;
+		}
+	}
+}
+
+.cw-widget {
+	display: none;
+	padding: 20px;
+	background-color: #202435;
+	border-radius: 12px;
+	max-width: 75vw;
+	margin-top: 15px;
+	h1, h2, button p {
+		font-family: aniuk, sans-serif !important;
+		font-weight: 700;
+		font-style: normal;	
+	}
+	h2 {
+		font-size: 1.3em;
+		
+	}
+
+	> h2 {
+		margin-top: 0;
+	}
+
+	.raised-content {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-bottom: 20px;
+	}
+
+	.ring-cont {
+		width: 80px;
+		margin-right: 25px;
+
+	}
+
+	.CircularProgressbar-trail {
+		stroke: rgba(255, 255, 255, 0.0605) !important;
+	}
+	.CircularProgressbar-path {
+		stroke: #ffc255 !important;
+	}
+
+	text {
+		font-family: aniuk, sans-serif;
+		font-weight: 700;
+		font-style: normal;
+		fill: #fff !important;
+		//transform: scaleX(0.9);
+		text-align: center;
+		font-size: 1.8em !important;
+	}
+
+	.raised-text {
+		flex: 1;
+
+		h3 {
+			text-align: right;
+			margin: 0;
+			font-size: 1.5em;
+		}
+		
+	
+		h1 {
+			margin: 0;
+			font-size: 3em;
+			text-align: right;
+			line-height: 50px;
+		}
+
+		display: flex;
+		flex-direction: column;
+		justify-content: right;
+	}
+	
+	button {
+		background: #01b960;
+		border: 1.18069px solid #00753C;
+		box-sizing: border-box;
+		border-radius: 7.08414px;
+		width: 100%;
+		text-align: center;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #fff;
+		font-size: 1.4em;
+		p {
+			margin-right: 10px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		svg {
+			margin-top: 1px;
+		}
+	}
+}
+
+
+.isitweeka-jumbotron {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0;
+	padding-left: var(--horizontal-indent);
+	padding-right: calc(var(--horizontal-indent) * 2);
+
+	@include tablet {
+		flex-direction: column;
+		margin-left: var(--horizontal-indent);
+	}
+
+	.isitweeka {
+		flex: 1;
+	}
+
+	.cw-cards {
+		margin-top: 180px;
+		width: 60%;
+		@include tablet {
+			width: 100%;
+			//margin: auto;
+		}
+		/*.cw-content {
+			display: grid; 
+			grid-template-columns: 1fr 1fr; 
+			gap: 0px $grid-gap; 
+		}*/
+
+		.cw-content {
+			display: flex;
+			justify-content: right;
+			//margin-left: -1px;
+			> div {
+				width: 600px;
+				@include tablet {
+					width: 100%;
+					box-sizing: border-box;
+				}
+			}
+		}
+
+		h1, h2, button p {
+			font-family: aniuk, sans-serif !important;
+			font-weight: 700;
+			font-style: normal;	
+			font-size: 1.5em;
+			@include tablet {
+				font-size: 1.2em;
+			}
+		}
+
+		h1 {
+			text-align: right;
+			width: 100%;
+			margin-top: 0;
+			margin-bottom: 10px;
+			font-size: 3.5em;
+			@include tablet {
+				font-size: 3em;
+			}
+		}
+
+		h2 {
+			margin-bottom: 13px;
+		}
+
+		h4 {
+			margin-top: 0;
+			font-size: 20px;
+			@include tablet {
+				font-size: 18px;
+			}
+		}
+
+		h3, h4, h5, h6, p {
+			font-family: aniuk, sans-serif;
+			font-weight: 400;
+			font-style: normal;
+		}
+
+		.cw-header {
+			padding-right: 20px;
+			@include tablet {
+				padding-right: 0;
+				h1 {
+					text-align: center;
+				}
+				
+			}
+		}
+
+		.cw-charity-link {
+			text-align: center;
+			a, p {
+				display: inline;
+				text-align: center;
+				font-family: aniuk, sans-serif;
+				font-weight: 400;
+				font-style: normal;
+				font-size: 16px;
+			}
+			a {
+				margin-left: 5px;
+			}
+		}
+
+		text {
+			font-family: aniuk, sans-serif;
+			font-weight: 700;
+			font-style: normal;
+			fill: #fff !important;
+			//transform: scaleX(0.9);
+			text-align: center;
+			font-size: 2em;
+		}
+
+		.cw-raised {
+			
+			.raised-content {
+				padding: 0 50px;
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+
+				@include tablet {
+					padding: 0;
+				}
+
+				h1 {
+					flex: 1;
+					text-align: center;
+					font-size: 4em;
+					//transform: scaleX(0.9);
+					line-height: 70px;
+
+					@include tablet {
+						font-size: 3.5em;
+					}
+				}
+
+				@include tablet {
+					.raised-text:nth-child(2) {
+						display: none;
+					}
+
+				}
+				
+				.raised-text {
+					display: flex;
+					//flex: 1;
+					margin-left: 50px;
+					flex-direction: column;
+					justify-content: right;
+					align-items: flex-end;
+					text-align: right;
+
+					
+
+					h1, h3 {
+						margin-bottom: 0;
+						margin-top: 0;
+						text-align: right;
+					}
+
+					h3 {
+						padding-right: 4px;
+					}
+				}
+			}
+
+			.ring-cont {
+				width: 120px;
+				margin: 5px 0;
+			}
+
+			.CircularProgressbar-trail {
+				stroke: rgba(255, 255, 255, 0.0605);
+			}
+			.CircularProgressbar-path {
+				stroke: #ffc255;
+			}
+
+			.cw-raised h2 {
+				margin-bottom: 20px;
+			}
+
+			
+		}
+		.cw-content > div {
+			padding: 20px;
+			background-color: #202435;
+			border-radius: 12px;
+			margin-bottom: 20px;
+			& > div {
+				margin-bottom: $grid-gap;
+			}
+		}
+
+		.cw-content > div > div:last-child {
+			margin-bottom: 0;
+		}
+
+		
+		.cw-buy a {
+			width: 100%;
+		}
+
+		.cw-buy button {
+			background: #01b960;
+			border: 1.18069px solid #00753C;
+			box-sizing: border-box;
+			border-radius: 7.08414px;
+			width: 100%;
+			text-align: center;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: #fff;
+			p {
+				margin-right: 10px;
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+
+			&::after {
+				display: none;
+			}
+
+			&:hover {
+				background: #008143;
+				cursor: pointer;
+			}
+
+			@include mobile {
+				padding: 0 20px;
+				line-height: 35px;
+			}
+		}
+	}
 }
 
 @include mobile {

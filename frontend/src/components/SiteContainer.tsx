@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import EventsList, { EventData } from "./EventsList";
 import Button from "./Button.Forward";
-import { GregorianDay } from "../utils/constants";
+import { CW_TARGET, FAKE_TICKET_TOTAL, GregorianDay, IIWA_CW_URL } from "../utils/constants";
 import { getScrollDownWithAdditional } from "../utils/scroll";
-import * as ical from "ical";
 import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 import AlertBanner from "./AlterBanner";
 import Banner from "./MailingListBanner";
@@ -11,13 +10,23 @@ import Socials from "./Socials";
 import IsItWeekA from "../utils/IsItWeekA";
 import YoutubeContainer from "./YoutubeContainer";
 import YearGroupCalendar from "./YearGroupCalendar";
+import { IsItWeekAReturn } from "libisitweeka";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 /**
  * Props to provide to the site
  */
 export interface SiteProps {
-	/** Calendar to fetch events from, e.g. `calendar@camphillboys.bham.sch.uk` */
+	/**
+	 * Calendar to fetch events from, e.g. `calendar@camphillboys.bham.sch.uk`
+	 * @deprecated Use the IsItWeekA as a Service URL instead
+	 */
 	calendarURL: string;
+	/** EXACT URL of the path on the isitweeka server to get the current week from */
+	iiwaURL: string;
 	/** Day of the Week A/B event that marks a week as being A/B, 0-6, where 0 is Sunday */
 	weekMarkerDate: GregorianDay;
 	/** Events data - eventually replaced with state */
@@ -45,6 +54,10 @@ interface TheState {
 	isWeekend: boolean;
 	eventData: EventData;
 	alert: AlertResponce;
+	raised: {
+		net: string,
+		ticketQuantity: number,
+	}
 }
 
 /**
@@ -76,8 +89,11 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				message: "ATTENTION: ALL EXAMS ARE CANCELLED - Albus Dumbledore",
 				showAlert: false,
 				alertLevel: ThreatLevels.LOW,
-			}
-			,
+			},
+			raised: {
+				net: "0.00",
+				ticketQuantity: 0,
+			},
 		};
 	}
 
@@ -86,9 +102,25 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			this.getCalendar();
 			this.fetchEvents();
 			this.fetchNotifications();
+			this.getAmountRaised();
 		} catch (err: any) {
 			console.error("Error: " + err?.message);
 		}
+	}
+
+	async getAmountRaised() {
+		const res = await fetch(IIWA_CW_URL);
+		const raised = await res.json();
+		if (raised.net.split(".")[1].length === 1) {
+			raised.net = raised.net + "0";
+		}
+
+		if (raised.net.split(".")[0].length > 3) {
+			raised.net = raised.net.split(".")[0];
+		}
+		this.setState({
+			raised: raised,
+		});
 	}
 
 	/** Fetches any alerts that need to be diplayed */
@@ -180,13 +212,34 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		//inputDate.setMonth(7);
 		//inputDate.setFullYear(2021);
 		// Get which week it is 
-		const weekChecker = new IsItWeekA(this.props.weekMarkerDate, this.props.calendarURL, inputDate);
-		const theWeek = await weekChecker.isItWeekAorB();
-		this.setState({
-			apiHasRan: true,
-			week: theWeek.week,
-			isWeekend: theWeek.isWeekend,
-		});
+		// Use the new API
+		
+		try {
+			const apiRes = await fetch(this.props.iiwaURL);
+			const apiResJSON: IsItWeekAReturn = await apiRes.json();
+			if (!apiResJSON.week || !("isWeekend" in apiResJSON)) {
+				throw new Error("One or both of week or isWeekend not in response");
+			}
+			this.setState({
+				apiHasRan: true,
+				week: apiResJSON.week,
+				isWeekend: apiResJSON.isWeekend,
+			});
+		} catch (err) {
+			console.error("Error using IsItWeekA API!");
+			console.error(err);
+			console.error("Falling back to old API!");
+			const weekChecker = new IsItWeekA(this.props.weekMarkerDate, this.props.calendarURL, inputDate);
+			const theWeek = await weekChecker.isItWeekAorB();
+			this.setState({
+				apiHasRan: true,
+				week: theWeek.week,
+				isWeekend: theWeek.isWeekend,
+			});
+		}
+		
+
+		
 	}
 
 	/**
@@ -214,7 +267,19 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h1 className="desktop">Week {this.state.week}</h1>
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be week" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="mobile">{this.state.week}</h1>
-					<h4>More coming soon - follow our social media for the latest updates!</h4>
+					<div className="cw-widget">
+						<h2>Charity Week</h2>
+						<div className="raised-content">
+							<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={parseFloat(this.state.raised.net) / CW_TARGET * 100} text={(parseFloat(this.state.raised.net) / CW_TARGET * 100).toFixed(0) + "%"} /></div>
+							<div className="raised-text">
+								<h1>£{this.state.raised.net}</h1>
+								<h3>raised</h3>
+							</div>
+						</div>
+						<a href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite"><button><p>Buy tickets Now</p> <FontAwesomeIcon icon={faArrowRight} /></button></a>
+					</div>
+				
+					
 					<Button style={{ marginRight: "auto", marginTop: 25 }} className="forward" onClick={getScrollDownWithAdditional(0)}>events</Button>
 					<Socials />
 				</>
@@ -225,13 +290,51 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	render() {
 		return (
 			<>
-				<div className="isitweeka isitweeka-jumbotron">
+				<div className="isitweeka-jumbotron">
 					{this.state.alert.showAlert ? <AlertBanner alert={this.state.alert} /> : null}
-					{
-						this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
-					}
+					<div className="isitweeka">
+						{
+							this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
+						}
+					</div>
+					<div className="cw-cards">
+						<div className="cw-header">
+							<h1>Charity Week</h1>
+						</div>
+						<div className="cw-content">
+							<div>
+								<div className="cw-buy">
+									<h2>About</h2>
+									<h4>Camp Hill's return to charity events, with Who Wants to Be a Millionaire?, THE GRAND DEBATE, a Mario Kart tournament, Camp Hill&apos;s Got Talent and Would I Lie To You: Students vs Teachers!</h4>
+									<a href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite"><button><p>Donate &amp; Buy Tickets Now</p> <FontAwesomeIcon icon={faArrowRight} /></button></a>
+								</div>
+								<div className="cw-raised">
+									<h2>Ticket Stats</h2>
+									<div className="raised-content">
+										<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={parseFloat(this.state.raised.net) / CW_TARGET * 100} text={(parseFloat(this.state.raised.net) / CW_TARGET * 100).toFixed(0) + "%"} /></div>
+										<div className="raised-text">
+											<h1>£{this.state.raised.net}</h1>
+											<h3>raised</h3>
+										</div>
+										<div className="raised-text">
+											<h1>{this.state.raised.ticketQuantity}</h1>
+											<h3>sold</h3>
+										</div>
+										
+									</div>
+									
+								</div>
+								<div className="cw-charity-link">
+									<p>Supporting Beat -</p>
+									<a target="__blank" href="https://www.beateatingdisorders.org.uk/about-beat/">more info &gt;&gt;&gt;</a>
+								</div>
+							</div>
+
+						</div>
+						
+					</div>
 				</div>
-				<Banner />
+				{ /* <Banner /> */ }
 				{ /* Pulled offline due to jankiness. Readd once a better solution with proper mobile styles and dedicated place is found:
 					<YearGroupCalendar /> */ }
 				<EventsList eventData={this.state.eventData} />

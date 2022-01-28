@@ -1,0 +1,52 @@
+version: '3.4'
+
+services:
+  isitweeka:
+    image: ghcr.io/gum-joe/isitweeka
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    environment:
+      NODE_ENV: production
+      IIWA_REDIS_URL: redis://redis_comms:6379
+    ports:
+      - 80:4000
+    links:
+      - redis
+    volumes:
+      - /opt/isitweeka/logs-server:/usr/src/app/server/logs
+    
+  service-kech:
+    image: ghcr.io/gum-joe/isitweeka-service-kech
+    build:
+      context: .
+      dockerfile: ./packages/@isitweeka/service-kech/Dockerfile
+    environment:
+      NODE_ENV: production
+      IIWA_REDIS_URL: redis://redis_comms:6379
+    links:
+      - redis
+    volumes:
+      - /opt/isitweeka/logs-service-kech:/usr/src/app/packages/@isitweeka/service-kech/logs
+  
+  service-eventbrite:
+    image: ghcr.io/gum-joe/isitweeka-service-eventbrite
+    build:
+      context: .
+      dockerfile: ./packages/@isitweeka/service-eventbrite/Dockerfile
+    environment:
+      NODE_ENV: production
+      IIWA_REDIS_URL: redis://redis_comms:6379
+      IIWA_EVENTBRITE_ORG_ID: ${IIWA_EVENTBRITE_ORG_ID}
+      IIWA_EVENTBRITE_EVENT_ID: ${IIWA_EVENTBRITE_EVENT_ID}
+      IIWA_EVENTBRITE_ACCESS_TOKEN: ${IIWA_EVENTBRITE_ACCESS_TOKEN}
+    links:
+      - redis
+    volumes:
+      - /opt/isitweeka/logs-service-eventbrite:/usr/src/app/packages/@isitweeka/service-eventbrite/logs
+    
+  redis:
+    image: redis:alpine
+    container_name: redis_comms
+    ports:
+      - 6379:6379

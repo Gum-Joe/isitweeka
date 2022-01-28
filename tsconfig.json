@@ -1,0 +1,25 @@
+{
+	"extends": "./config/tsconfig.base.json",
+	"compilerOptions": {
+		"incremental": true, /* Enable incremental compilation */
+		"composite": true, /* Enable constraints that allow a TypeScript project to be used with project references. */
+	},
+	"files": [],
+	"references": [
+		{
+			"path": "./packages/@isitweeka/core"
+		},
+		{
+			"path": "./packages/@isitweeka/service-kech"
+		},
+		{
+			"path": "./packages/@isitweeka/service-eventbrite"
+		},
+		{
+			"path": "./packages/libisitweeka"
+		},
+		{
+			"path": "./server"
+		},
+	],
+}

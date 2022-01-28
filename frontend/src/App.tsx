@@ -7,7 +7,7 @@ import SiteContainer from "./components/SiteContainer";
 import { TabContainer } from "./components/Tabs";
 import { Navbar } from "react-bootstrap";
 import Cookies from "js-cookie";
-import { COOKIE_SCHOOL_PREFERENCE } from "./utils/constants";
+import { COOKIE_SCHOOL_PREFERENCE, IIWA_KECHB_URL, IIWA_KECHG_URL } from "./utils/constants";
 import { KECHBEvents, KECHGEvents } from "./data/events-mock";
 import Footer from "./components/Footer";
 import { KECHBAlerts, KECHGAlerts } from "./data/alerts";
@@ -50,10 +50,10 @@ class App extends Component<Record<string, never>> {
 	updateCookie(tab: string, index: number) {
 		// ONLY set cookie if opt in set.
 		if (Cookies.get("CookieConsent") === "true") {
-			Cookies.set(COOKIE_SCHOOL_PREFERENCE, {
+			Cookies.set(COOKIE_SCHOOL_PREFERENCE, JSON.stringify({
 				school: tab,
 				tabIndex: index,
-			}, {
+			}), {
 				secure: true,
 				sameSite: "strict",
 			});
@@ -80,6 +80,7 @@ class App extends Component<Record<string, never>> {
 						component: (
 							<SiteContainer
 								calendarURL="/cal/KECHB/basic.ics"
+								iiwaURL={IIWA_KECHB_URL}
 								weekMarkerDate={1}
 								eventsFetcher={
 									async () => KECHBEvents
@@ -95,6 +96,7 @@ class App extends Component<Record<string, never>> {
 						component: (
 							<SiteContainer
 								calendarURL="/cal/KECHG/basic.ics"
+								iiwaURL={IIWA_KECHG_URL}
 								weekMarkerDate={0}
 								eventsFetcher={
 									async () => KECHGEvents
@@ -106,7 +108,7 @@ class App extends Component<Record<string, never>> {
 							/>
 						),
 					},
-				]} onTabChange={this.updateCookie} initialTab={(() => Cookies.getJSON(COOKIE_SCHOOL_PREFERENCE)?.tabIndex || 0)()} />
+				]} onTabChange={this.updateCookie} initialTab={(() => JSON.parse(Cookies.get(COOKIE_SCHOOL_PREFERENCE) || "{}")?.tabIndex || 0)()}/>
 
 				<Footer />
 
@@ -124,7 +126,8 @@ class App extends Component<Record<string, never>> {
 							() => { gaSetState(true); window.location.reload(); }
 						}
 						style={this.hideCookieConsent ? { display: "none" } : undefined}
-						/// @ts-expect-error Due to the version of react-cookie-consent used missing the type declaration for the "visible" prop, this hack is sadly required.
+						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+						/// @ts-ignore Due to the version of react-cookie-consent used missing the type declaration for the "visible" prop, this hack is sadly required.
 						visible={this.hideCookieConsent ? "hidden" : "byCookieValue"}
 					>
 						This website uses cookies for preferences and analytics (via Google Analytics).
