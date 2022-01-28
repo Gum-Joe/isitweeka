@@ -24,6 +24,8 @@ function getClassNameFromAlertLevel(level: ThreatLevels): `r-banner-alert-${Thre
 			return "r-banner-alert-SEVERE";
 		case ThreatLevels.CRITICAL:
 			return "r-banner-alert-CRITICAL";
+		case ThreatLevels.DEATH:
+			return "r-banner-alert-DEATH";
 	}
 }
 

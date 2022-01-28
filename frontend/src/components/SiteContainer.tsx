@@ -102,7 +102,8 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			this.getCalendar();
 			this.fetchEvents();
 			this.fetchNotifications();
-			this.getAmountRaised();
+			// NOTE: REENABLE!
+			//this.getAmountRaised();
 		} catch (err: any) {
 			console.error("Error: " + err?.message);
 		}
@@ -276,7 +277,8 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 								<h3>raised</h3>
 							</div>
 						</div>
-						<a href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite"><button><p>Buy tickets Now</p> <FontAwesomeIcon icon={faArrowRight} /></button></a>
+						{/*<a href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite"><button><p>Buy tickets Now</p> <FontAwesomeIcon icon={faArrowRight} /></button></a> */}
+						<a className="cw-delayed" href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite" aria-disabled><button aria-disabled disabled><p>ticket sales delayed</p></button></a>
 					</div>
 				
 					
@@ -306,7 +308,8 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 								<div className="cw-buy">
 									<h2>About</h2>
 									<h4>Camp Hill's return to charity events, with Who Wants to Be a Millionaire?, THE GRAND DEBATE, a Mario Kart tournament, Camp Hill&apos;s Got Talent and Would I Lie To You: Students vs Teachers!</h4>
-									<a href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite"><button><p>Donate &amp; Buy Tickets Now</p> <FontAwesomeIcon icon={faArrowRight} /></button></a>
+									{/*<a href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite"><button><p>Donate &amp; Buy Tickets Now</p> <FontAwesomeIcon icon={faArrowRight} /></button></a>*/}
+									<a className="cw-delayed" href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite" aria-disabled><button aria-disabled disabled><p>ticket sales delayed</p></button></a>
 								</div>
 								<div className="cw-raised">
 									<h2>Ticket Stats</h2>

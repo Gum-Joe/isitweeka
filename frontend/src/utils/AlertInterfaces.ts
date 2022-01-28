@@ -7,6 +7,7 @@ export enum ThreatLevels {
 	SUBSTANTIAL = "SUBSTANTIAL",
 	SEVERE = "SEVERE",
 	CRITICAL = "CRITICAL",
+	DEATH = "DEATH",
 }
 
 export interface AlertResponce {
