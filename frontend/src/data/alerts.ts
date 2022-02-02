@@ -13,10 +13,10 @@ export const KECHBAlerts: AlertResponce = {
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
 	//message: "Welcome to IsItWeekA! We'll use these banners for important alerts in the future.",
-	alertLevel: ThreatLevels.DEATH,
-	message: "Charity Week ticket sales delayed due to COVID-19 cases in KECHB",
-	linkText: "more info",
-	linkTo: "https://www.instagram.com/p/CZSJNPMLH8C"
+	alertLevel: ThreatLevels.INFO,
+	message: "Charity Week update: discussions for new dates for events are ongoing.",
+	//linkText: "more info",
+	//linkTo: "https://www.instagram.com/p/CZSJNPMLH8C"
 };
 
 export const KECHGAlerts: AlertResponce = {
