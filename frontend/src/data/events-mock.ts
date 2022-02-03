@@ -69,6 +69,19 @@ export const KECHBEvents: EventData = {
 			},
 		},
 		{
+			hidden: true,
+			eventType: EventTypes.CHARITY,
+			title: "Camp Hill's Got Talent",
+			description: "Following its tremendous success in 2018, Omar will return to the stage to host the return of Camp Hill’s Got Talent!",
+			headerURL: "/events/CharityWeek.png",
+			when: "Charity Week",
+			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
+			backgroundColor: "#0f192a",
+			ticketsSale: {
+				start: "02/02/22"
+			},
+		},
+		{
 			title: "Would I Lie To You?",
 			description: "Come hear teachers tell their funny & embarrassing stories!",
 			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",

@@ -282,7 +282,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					</div>
 				
 					
-					<Button style={{ marginRight: "auto", marginTop: 25 }} className="forward" onClick={getScrollDownWithAdditional(0)}>events</Button>
+					<Button style={{ marginRight: "auto", marginTop: 25 }} className="forward" id="event-scroll-button" onClick={getScrollDownWithAdditional(0)}>events</Button>
 					<Socials />
 				</>
 			);
