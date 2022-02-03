@@ -70,7 +70,7 @@ export const KECHBEvents: EventData = {
 		},
 		{
 			title: "Would I Lie To You?",
-			description: "Come here teachers tell their funny & embarrassing stories!",
+			description: "Come hear teachers tell their funny & embarrassing stories!",
 			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
 			ticketsSale: {
 				start: "01/01/2020"
