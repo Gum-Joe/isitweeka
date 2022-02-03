@@ -16,6 +16,70 @@ export const KECHBEvents: EventData = {
 	generatedAt: "0",
 	events: [
 		{
+			eventType: EventTypes.CHARITY,
+			title: "Charity Week 2022",
+			description: "It's been 2 years since the last charity event. Let's change that, with a whole week of tremendous events.",
+			headerURL: "/events/CharityWeek.png",
+			when: "w/c 14th February",
+			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
+			backgroundColor: "#202435",
+			ticketsSale: {
+				start: "02/02/22"
+			}
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "THE GRAND DEBATE",
+			description: "Get your brains ready, tone primed and dramatic pauses fixed as you face the undisputable masters of debate - the teachers.",
+			headerURL: "/events/Logo-Charity-Commitee.png",
+			when: "Charity Week",
+			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
+			backgroundColor: "#ffffff",
+			ticketsSale: {
+				start: "02/02/22"
+			},
+			textColour: "#000000",
+			cta: {
+				backgroundColor: "#5ab947",
+				type: "fill",
+			}
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "Mario Kart Tournament",
+			description: "Get ready to race your classmates in Camp Hill's first Mario Kart tournament!",
+			headerURL: "/events/CharityWeek.png",
+			when: "Charity Week",
+			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
+			backgroundColor: "#000000",
+			ticketsSale: {
+				start: "02/02/22"
+			},
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "Who Wants To Be A Millionaire?",
+			description: "Get ready to take to the stage, as you could be in your chance to win a £50 Amazon Giftcard in \"Who Wants to Be a Millionaire?\"",
+			headerURL: "/events/who_wants_to_be_a_millionaire__uk_2018_logo_remake_by_zackthetimelordrblx_dcm12hz-fullview.png",
+			when: "Charity Week",
+			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
+			backgroundColor: "#1e012d",
+			ticketsSale: {
+				start: "02/02/22"
+			},
+		},
+		{
+			title: "Would I Lie To You?",
+			description: "Come here teachers tell their funny & embarrassing stories!",
+			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
+			ticketsSale: {
+				start: "01/01/2020"
+			},
+			headerURL: "/events/WILTY_Logo.png",
+			backgroundColor: "#2C1F39",
+			eventType: EventTypes.CHARITY,
+		},
+		{
 			eventType: EventTypes.HOUSE,
 			title: "House Chess",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
