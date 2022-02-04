@@ -69,7 +69,7 @@ export const KECHBEvents: EventData = {
 			},
 		},
 		{
-			hidden: true,
+			hidden: false,
 			eventType: EventTypes.CHARITY,
 			title: "Camp Hill's Got Talent",
 			description: "Following its tremendous success in 2018, Omar will return to the stage to host the return of Camp Hill’s Got Talent!",
