@@ -254,6 +254,18 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h2>It is neither Week A nor B.</h2>
 					<h3>This means it&#39;s probably a holiday.</h3>
 					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>events</div></Button>
+					<div className="cw-widget">
+						<h2>Charity Week</h2>
+						<div className="raised-content">
+							<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={parseFloat(this.state.raised.net) / CW_TARGET * 100} text={(parseFloat(this.state.raised.net) / CW_TARGET * 100).toFixed(0) + "%"} /></div>
+							<div className="raised-text">
+								<h1>£{this.state.raised.net}</h1>
+								<h3>raised</h3>
+							</div>
+						</div>
+						<a href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite"><button><p>Buy tickets Now</p> <FontAwesomeIcon icon={faArrowRight} /></button></a>
+						{/*<a className="cw-delayed" href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite" aria-disabled><button aria-disabled disabled><p>ticket sales delayed</p></button></a>*/}
+					</div>
 					<h5 id="neitherAB-contact">If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
 					<Socials />
 				</>
