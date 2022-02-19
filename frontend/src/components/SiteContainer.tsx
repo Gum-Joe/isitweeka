@@ -252,7 +252,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			return (
 				<>
 					<h2>It is neither Week A nor B.</h2>
-					<h3>This means it&#39;s probably a holiday.</h3>
+					{/* <h3>This means it&#39;s probably a holiday.</h3> */} 
 					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>events</div></Button>
 					<div className="cw-widget">
 						<h2>Charity Week</h2>
