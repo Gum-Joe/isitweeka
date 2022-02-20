@@ -263,7 +263,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 								<h3>raised</h3>
 							</div>
 						</div>
-						<a href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite"><button><p>Donate Now!</p> <FontAwesomeIcon icon={faArrowRight} /></button></a>
+						<a href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite"><button><p>Donate Now</p> <FontAwesomeIcon icon={faArrowRight} /></button></a>
 						{/*<a className="cw-delayed" href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite" aria-disabled><button aria-disabled disabled><p>ticket sales delayed</p></button></a>*/}
 					</div>
 					<h5 id="neitherAB-contact">If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
@@ -289,7 +289,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 								<h3>raised</h3>
 							</div>
 						</div>
-						<a href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite"><button><p>Donate Now!</p> <FontAwesomeIcon icon={faArrowRight} /></button></a>
+						<a href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite"><button><p>Donate Now</p> <FontAwesomeIcon icon={faArrowRight} /></button></a>
 						{/*<a className="cw-delayed" href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite" aria-disabled><button aria-disabled disabled><p>ticket sales delayed</p></button></a>*/}
 					</div>
 				
