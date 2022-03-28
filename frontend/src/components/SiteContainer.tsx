@@ -103,7 +103,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			this.fetchEvents();
 			this.fetchNotifications();
 			// NOTE: REENABLE!
-			// this.getAmountRaised();
+			//this.getAmountRaised();
 		} catch (err: any) {
 			console.error("Error: " + err?.message);
 		}
