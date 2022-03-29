@@ -1,4 +1,5 @@
 import React from "react";
+import { HOUSE_EVENT_PENDING_BG } from "../../data/events-mock";
 import { EventItem, EventTypes } from "../EventsList";
 
 type CardTypes = "legacy" | "new";
@@ -10,7 +11,7 @@ export const Card: React.FunctionComponent<EventItem & NewCardExt> = (props) => 
 	if (props.hidden) return null;
 	
 	const panelStyle = props.backgroundColor ? {
-		backgroundColor: props.backgroundColor,
+		backgroundColor: props.eventType === EventTypes.HOUSE ? HOUSE_EVENT_PENDING_BG : props.backgroundColor,
 		color: props.textColour,
 	} : undefined;
 	
@@ -21,19 +22,22 @@ export const Card: React.FunctionComponent<EventItem & NewCardExt> = (props) => 
 					<div className="panel title text big" style={panelStyle}>{props.title}</div>
 					{props.description ? <div className="panel description text body" style={panelStyle}>{props.description}</div> : null}
 					<div className="panel stats" style={panelStyle}>
-						{props.when ? <div className="stat">
+						{///@ts-expect-error JS object checking existence TS doesn't like...
+							props.when || props.dateTime ? <div className="stat">
 							<div className="stat-label text big">When</div>
-							<div className="stat-value text big">{props.when}</div>
+							<div className="stat-value text big">{props.when ||
+								/// @ts-expect-error I know I know...
+								props.dateTime}</div>
 						</div> : null}
 					</div>
-					{props.eventType === EventTypes.HOUSE ? <div className="panel stats" style={panelStyle}>
+					{props.eventType === EventTypes.HOUSE && props.currentVictor ? <div className="panel stats" style={{ backgroundColor: props.backgroundColor }}>
 						<div className="stat">
-							<div className="stat-label">Victor</div>
-							<div className="stat-value">{props.currentVictor}</div>
+							<div className="stat-label text big">Victor</div>
+							<div className="stat-value text big">{props.currentVictor}</div>
 						</div>
 					</div> : null}
-					{props.eventType === EventTypes.CHARITY || props.eventType === EventTypes.FUNDRIASER && props.url ? <div className="panel cta" style={panelStyle}>
-						<div className="cta text big">Buy Tickets  →</div>
+					{props.eventType === EventTypes.CHARITY || props.eventType === EventTypes.FUNDRIASER && props.url ? <div className="panel cta">
+						<div className="text big">Buy Tickets  →</div>
 					</div> : null}
 				</div>
 			);
