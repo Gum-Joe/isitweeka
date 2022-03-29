@@ -12,7 +12,7 @@ export const EventsGrid: React.FunctionComponent<EventsListProps> = (props) => {
 	return (
 		<div className="isitweeka events">
 			{/* TODO: Sort out back button for mobile */}
-			<h2 className=""><button onClick={scrollUp} className="back" /> Upcoming Events</h2>
+			<h2 className=""><button onClick={scrollUp} className="back" /> Events & News</h2>
 			<div className="events-grid">
 				
 				{filteredEvents.length > 0 ? filteredEvents.map((theEvent, index) => (
