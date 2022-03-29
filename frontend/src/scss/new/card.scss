@@ -1,0 +1,45 @@
+.card {
+	border-radius: 12px;
+	padding: 4px;
+	gap: 4px;
+	display: flex;
+	flex-direction: column;
+	background: white;
+	max-width: 480px;
+	
+	.panel {
+		border-radius: 8px;
+		background: black;
+		padding: 16px;
+	}
+	
+	.title {
+		text-align: center;
+	}
+	
+	.description {
+		
+	}
+	
+	.stats {
+		display: flex;
+		flex-direction: column;
+		
+		.stat {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			width: 100%;
+			
+			.stat-label {
+				margin-right: auto;
+				text-align: left;
+			}
+			
+			.stat-value {
+				margin-left: auto;
+				text-align: right;
+			}
+		}
+	}
+}
