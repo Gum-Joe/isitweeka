@@ -254,7 +254,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				<>
 					<h2>It is neither Week A nor B.</h2>
 					{/* <h3>This means it&#39;s probably a holiday.</h3> */} 
-					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>Events & News  → </div></Button>
+					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>Events & News  →</div></Button>
 					<h5 id="neitherAB-contact">If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
 					<Socials />
 				</>
@@ -269,7 +269,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h1 className="desktop">Week {this.state.week}</h1>
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be week" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="mobile">{this.state.week}</h1>
-					<Button style={{ marginRight: "auto", marginTop: 25 }} className="forward" id="event-scroll-button" onClick={getScrollDownWithAdditional(0)}>Events & News  → </Button>
+					<Button style={{ marginRight: "auto", marginTop: 25 }} className="forward" id="event-scroll-button" onClick={getScrollDownWithAdditional(0)}>Events & News  →</Button>
 					<Socials />
 				</>
 			);
