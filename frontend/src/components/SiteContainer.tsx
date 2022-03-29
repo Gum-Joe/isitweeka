@@ -15,6 +15,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import EventsGrid from "./New/EventsGrid";
 
 /**
  * Props to provide to the site
@@ -352,6 +353,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				{ /* <Banner /> */ }
 				{ /* Pulled offline due to jankiness. Readd once a better solution with proper mobile styles and dedicated place is found:
 					<YearGroupCalendar /> */ }
+				<EventsGrid eventData={this.state.eventData} />
 				<EventsList eventData={this.state.eventData} />
 			</>
 		);
