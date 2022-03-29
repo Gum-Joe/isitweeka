@@ -6,6 +6,8 @@
 	flex-direction: column;
 	background: white;
 	max-width: 480px;
+	flex-grow: 1;
+	margin-bottom: auto;
 	
 	.panel {
 		border-radius: 8px;
@@ -46,5 +48,15 @@
 	.cta {
 		text-align: right;
 		white-space: pre;
+		background-color: var(--site-primary);
+		user-select: none;
+		
+		&:hover {
+			filter: brightness(80%);
+			
+			&:active {
+				filter: brightness(60%);
+			}
+		}
 	}
 }
