@@ -32,6 +32,9 @@ export const Card: React.FunctionComponent<EventItem & NewCardExt> = (props) => 
 							<div className="stat-value">{props.currentVictor}</div>
 						</div>
 					</div> : null}
+					{props.eventType === EventTypes.CHARITY || props.eventType === EventTypes.FUNDRIASER && props.url ? <div className="panel cta" style={panelStyle}>
+						<div className="cta text big">Buy Tickets  →</div>
+					</div> : null}
 				</div>
 			);
 	}
