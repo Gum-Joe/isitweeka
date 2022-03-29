@@ -70,7 +70,7 @@ button.forward {
 	}
 
 	&:hover::before {
-		transform: scaleY(1) translateY(-2px);
+		transform: scaleY(0.1) scaleX(1) /* translateY(-2px) */;
 	}
 }
 
@@ -98,7 +98,7 @@ button.forward::before {
 	height: 40px;
 	width: 100%;
 	// left: -4px;
-	transform: scaleY(0.1);
+	transform: scaleY(0.1) scaleX(0);
 	transform-origin: 0 100%;
 	z-index: 0;
 }
