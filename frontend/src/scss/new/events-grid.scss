@@ -3,4 +3,10 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	gap: 80px;
+	
+	.column {
+		max-width: 480px;
+		display: flex;
+		flex-grow: 1;
+	}
 }
