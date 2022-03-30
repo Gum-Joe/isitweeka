@@ -19,17 +19,27 @@
 		padding: 68px 24px 0;
 		box-sizing: border-box;
 		position: absolute;
-		gap: 12px;
+		gap: 40px;
 	}
 
 	// Base tabe style
+	// .r-tab {
+	// 	font-size: 2em;
+	// 	padding-bottom: 8px;
+	// 	padding-top: 3px;
+	// 	height: 40px;
+	// }
+	
 	.r-tab {
-		font-size: 2em;
-		padding-bottom: 8px;
-		padding-top: 3px;
-		height: 40px;
+		font-size: 1.5em;
+		line-height: 1.5;
+		// height: 40px;
+		font-weight: 400;
 	}
 
+	.r-tab.active {
+		font-weight: 800;
+	}
 
 	// Underline for actibe tab
 	.r-tab.active::after {
