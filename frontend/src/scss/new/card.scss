@@ -20,7 +20,7 @@
 	}
 	
 	.description {
-		
+		text-align: left;
 	}
 	
 	.stats {
@@ -36,6 +36,7 @@
 			.stat-label {
 				margin-right: auto;
 				text-align: left;
+				padding-right: 1em;
 			}
 			
 			.stat-value {
