@@ -107,12 +107,17 @@ export interface EventItemHouse extends BaseEventItem {
 	backgroundColor: string;
 }*/
 
+export interface NewsItem extends BaseEventItem {
+	eventType: "news";
+	stats: [{ title: "Posted", value: string }, { title: "By", value: string }];
+}
+
 /**
  * IMPORTANT: Merges the event types into one type.
  * 
  * TS type inference then auto-picks the right type based on `eventType` field.
  */
-export type EventItem = EventItemFundraiser | EventItemCharity | EventItemHouse;
+export type EventItem = EventItemFundraiser | EventItemCharity | EventItemHouse | NewsItem;
 
 /**
  * Expected API response
