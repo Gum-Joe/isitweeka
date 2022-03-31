@@ -17,6 +17,19 @@ export const KECHBEvents: EventData = {
 	events: [
 		{
 			eventType: EventTypes.CHARITY,
+			title: "Oliver!",
+			headerURL: "/events/School-Logo.png",
+			ticketsSale: {
+				start: "31/03/2022"
+			},
+			description: "Oliver! - Camp Hill's first post-COVID musical!",
+			when: "Thursday 31st - Saturday 2nd April",
+			url: "https://www.eventbrite.co.uk/e/oliver-tickets-300557273897",
+			backgroundColor: "#752023",
+			hidden: false,
+		},
+		{
+			eventType: EventTypes.CHARITY,
 			title: "Charity Week 2022",
 			description: "It's been 2 years since the last charity event. Let's change that, with a whole week of tremendous events.",
 			headerURL: "/events/CharityWeek.png",
