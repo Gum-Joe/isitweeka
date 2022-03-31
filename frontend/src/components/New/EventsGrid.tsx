@@ -18,6 +18,7 @@ function calculateMasonry<T>(items: Array<T>, numberOfColumns: number) {
 		// Use super-cool maths to assign each element to the correct column array!
 		// REDUNDANT:
 		//sortedItems[i % numberOfColumns][Math.floor(i / numberOfColumns)] = items[i];
+		// Use modulo and revolutionary Array.push() to append item to the end of the correct column
 		sortedItems[i % numberOfColumns].push(items[i]);
 	}
 	console.log(sortedItems);
