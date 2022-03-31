@@ -85,9 +85,10 @@ button.back {
 	height: 100%;
 	justify-content: center;
 	flex-direction: column;
+	font: inherit;
 
 	// Add icon
-	// @include arrow-left(48px, 16px);
+	@include arrow-left(48px, 16px);
 }
 
 // Add underlines
@@ -111,13 +112,13 @@ button.forward::before {
 	transform-origin: 0 100%;
 	z-index: 0;
 }
-button.back::after {
-	height: 3px;
-	width: 100%;
-	left: 0;
-	transform: scaleX(0);
-	transform-origin: 0 0;
-}
+// button.back::after {
+// 	height: 3px;
+// 	width: 100%;
+// 	left: 0;
+// 	transform: scaleX(0);
+// 	transform-origin: 0 0;
+// }
 
 // A B tests for buttons
 button.forward.a::before {
