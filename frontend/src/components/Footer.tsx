@@ -12,7 +12,7 @@ import packageJSON from "../../package.json";
 const Footer: React.FC = () => {
 	return (
 		<div className="footer">
-			<a id="feedback-buttom" target="__blank" href="https://forms.gle/KaS2VUAmZqfS1Nf26"><Button>Give Feedback  →</Button></a>
+			<a id="feedback-buttom" target="__blank" href="https://forms.gle/KaS2VUAmZqfS1Nf26"><Button>Send Feedback  →</Button></a>
 
 			<p>
 				Created and maintained by Kishan Sambhi &amp; Madeline Hart. <br />
