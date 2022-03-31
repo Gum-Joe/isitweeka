@@ -32,7 +32,7 @@ function calculateMasonry<T>(items: Array<T>, numberOfColumns: number) {
 export const EventsGrid: React.FunctionComponent<EventsListProps> = (props) => {
 	const { width, height } = useWindowDimensions();
 	const filteredEvents = props.eventData.events.filter(theEvent => theEvent.hidden !== true);
-	const masonryColumns = calculateMasonry(filteredEvents, Math.floor((width - (width / 20)) / 480) || 1);
+	const masonryColumns = calculateMasonry(filteredEvents, Math.floor((width) / 480) || 1);
 	return (
 		<div className="isitweeka events">
 			{/* TODO: Sort out back button for mobile */}
