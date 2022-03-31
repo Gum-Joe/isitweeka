@@ -28,7 +28,7 @@ export const KECHBAlerts: AlertResponce = {
 };
 
 export const KECHGAlerts: AlertResponce = {
-	showAlert: true,
+	showAlert: false,
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
 	message: "Remember to get your tickets for Songs from the Shows!",
