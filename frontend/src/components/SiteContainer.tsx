@@ -207,6 +207,16 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	 * @see SiteContainer documentation for more information on the algoirthm
 	 */
 	async getCalendar() {
+		
+		// APRIL FOOLS OVERRIDE
+		// At the top to prevent unnecessary API requests
+		this.setState({
+			apiHasRan: true,
+			/// @ts-expect-error Overriding week value for April 1st 2022.
+			week: "C",
+			isWeekend: true,
+		}); return;
+		
 		const inputDate = new Date();
 		// Used for fiddling:
 		// NOTE: Do NOT allow code into production where these value are uncommented
@@ -241,7 +251,6 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		}
 		
 
-		
 	}
 
 	/**
