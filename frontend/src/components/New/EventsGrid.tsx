@@ -8,11 +8,14 @@ function calculateMasonry<T>(items: Array<T>, numberOfColumns: number) {
 	// const numberOfColumns = 2;
 	console.log(items);
 	console.log(numberOfColumns);
+	// Initialise the parent array
 	const sortedItems: Array<Array<T>> = [];
 	for (let i = 0; i < numberOfColumns; i++){
+		// Populate said parent array with appropriate number of empty arrays
 		sortedItems[i] = [];
 	}
 	for (let i = 0; i < items.length; i++){
+		// Use super-cool maths to assign each element to the correct column array
 		sortedItems[i % numberOfColumns][Math.floor(i / numberOfColumns)] = items[i];
 	}
 	console.log(sortedItems);
