@@ -20,7 +20,7 @@
 	}
 	
 	.description {
-		
+		text-align: left;
 	}
 	
 	.stats {
@@ -36,6 +36,7 @@
 			.stat-label {
 				margin-right: auto;
 				text-align: left;
+				padding-right: 1em;
 			}
 			
 			.stat-value {
@@ -51,12 +52,14 @@
 		background-color: var(--site-primary);
 		user-select: none;
 		
-		&:hover {
-			filter: brightness(80%);
-			
-			&:active {
-				filter: brightness(60%);
-			}
+		transition-duration: 100ms;
+		
+		// &:hover {
+		// 	filter: brightness(80%);
+		// }
+		
+		&:hover:active {
+			filter: brightness(60%);
 		}
 	}
 }

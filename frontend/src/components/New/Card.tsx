@@ -38,7 +38,7 @@ export const Card: React.FunctionComponent<EventItem & NewCardExt> = (props) => 
 							props.when || props.dateTime ? <div className="stat">
 							<div className="stat-label text big">When</div>
 							<div className="stat-value text big">{props.when ||
-								/// @ts-expect-error I know I know...
+								/// @ts-expect-error TS Doesn't understand that I know better than it when certain data exists
 								props.dateTime}</div>
 						</div> : null}
 					</div>

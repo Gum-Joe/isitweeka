@@ -8,15 +8,23 @@ import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 	alertLevel: ThreatLevels.INFO,
 };*/
 
+// export const KECHBAlerts: AlertResponce = {
+// 	showAlert: false,
+// 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
+// 	// alertLevel: ThreatLevels.CRITICAL,
+// 	//message: "Welcome to IsItWeekA! We'll use these banners for important alerts in the future.",
+// 	alertLevel: ThreatLevels.INFO,
+// 	message: "Charity Week update: discussions for new dates for events are ongoing.",
+// 	//linkText: "more info",
+// 	//linkTo: "https://www.instagram.com/p/CZSJNPMLH8C"
+// };
+
 export const KECHBAlerts: AlertResponce = {
 	showAlert: false,
-	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
-	// alertLevel: ThreatLevels.CRITICAL,
-	//message: "Welcome to IsItWeekA! We'll use these banners for important alerts in the future.",
 	alertLevel: ThreatLevels.INFO,
-	message: "Charity Week update: discussions for new dates for events are ongoing.",
-	//linkText: "more info",
-	//linkTo: "https://www.instagram.com/p/CZSJNPMLH8C"
+	message: "Senate Holdings Plc (our parent company) announces acquisition of K.E. Foundation.",
+	linkText: "more info",
+	linkTo: "#"
 };
 
 export const KECHGAlerts: AlertResponce = {
