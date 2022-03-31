@@ -1,12 +1,13 @@
 .events-grid {
 	display: flex;
 	flex-direction: row;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	gap: 80px;
 	
 	// Not used yet, will be properly utilised post-1st April
 	.column {
 		max-width: 480px;
+		min-width: 360px;
 		display: flex;
 		flex-grow: 1;
 		flex-shrink: 1;
