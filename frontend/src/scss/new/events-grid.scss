@@ -4,9 +4,23 @@
 	flex-wrap: wrap;
 	gap: 80px;
 	
+	// Not used yet, will be properly utilised post-1st April
 	.column {
 		max-width: 480px;
 		display: flex;
 		flex-grow: 1;
+	}
+	
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	justify-items: stretch;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	
+	.card {
+		margin: 0 auto auto;
+		justify-self: stretch;
+		width: 100%;
 	}
 }
