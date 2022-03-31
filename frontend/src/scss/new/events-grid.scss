@@ -9,18 +9,24 @@
 		max-width: 480px;
 		display: flex;
 		flex-grow: 1;
+		flex-shrink: 1;
+		flex-direction: column;
+		gap: inherit;
+		justify-items: flex-start;
+		justify-content: flex-start;
+		margin-bottom: auto;
 	}
 	
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	// display: grid;
+	// grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 	justify-items: stretch;
 	justify-content: center;
 	align-items: center;
 	align-content: center;
 	
-	.card {
-		margin: 0 auto auto;
-		justify-self: stretch;
-		width: 100%;
-	}
+	// .card {
+	// 	margin: 0 auto auto;
+	// 	justify-self: stretch;
+	// 	width: 100%;
+	// }
 }
