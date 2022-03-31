@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
 			<a id="feedback-buttom" target="__blank" href="https://forms.gle/KaS2VUAmZqfS1Nf26"><Button>Give Feedback  →</Button></a>
 
 			<p>
-				Created by Kishan Sambhi &amp; Madeline Hart. <br />
+				Created and maintained by Kishan Sambhi &amp; Madeline Hart. <br />
 				&#169; {(new Date()).getFullYear()}, source available on GitHub under the MIT license.<br /><br />
 				Data controller information: data controlled by Kishan Sambhi, a KECH pupil, and will only ever be viewed by KECH pupils.<br />
 				All changes to this site are reviewed, merged and deployed by a KECH pupil.<br /><br />
