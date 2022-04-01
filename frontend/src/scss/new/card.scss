@@ -1,0 +1,65 @@
+.card {
+	border-radius: 12px;
+	padding: 4px;
+	gap: 4px;
+	display: flex;
+	flex-direction: column;
+	background: white;
+	max-width: 480px;
+	flex-grow: 1;
+	margin-bottom: auto;
+	
+	.panel {
+		border-radius: 8px;
+		background: black;
+		padding: 16px;
+	}
+	
+	.title {
+		text-align: center;
+	}
+	
+	.description {
+		text-align: left;
+	}
+	
+	.stats {
+		display: flex;
+		flex-direction: column;
+		
+		.stat {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			width: 100%;
+			
+			.stat-label {
+				margin-right: auto;
+				text-align: left;
+				padding-right: 1em;
+			}
+			
+			.stat-value {
+				margin-left: auto;
+				text-align: right;
+			}
+		}
+	}
+	
+	.cta {
+		text-align: right;
+		white-space: pre;
+		background-color: var(--site-primary);
+		user-select: none;
+		
+		transition-duration: 100ms;
+		
+		// &:hover {
+		// 	filter: brightness(80%);
+		// }
+		
+		&:hover:active {
+			filter: brightness(60%);
+		}
+	}
+}

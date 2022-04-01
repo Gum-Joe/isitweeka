@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import EventsList, { EventData } from "./EventsList";
-import Button from "./Button.Forward";
+import Button from "./New/Button";
 import { CW_TARGET, FAKE_TICKET_TOTAL, GregorianDay, IIWA_CW_URL } from "../utils/constants";
 import { getScrollDownWithAdditional } from "../utils/scroll";
 import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
@@ -15,6 +15,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import EventsGrid from "./New/EventsGrid";
 
 /**
  * Props to provide to the site
@@ -103,7 +104,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			this.fetchEvents();
 			this.fetchNotifications();
 			// NOTE: REENABLE!
-			this.getAmountRaised();
+			//this.getAmountRaised();
 		} catch (err: any) {
 			console.error("Error: " + err?.message);
 		}
@@ -206,6 +207,16 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	 * @see SiteContainer documentation for more information on the algoirthm
 	 */
 	async getCalendar() {
+		
+		// APRIL FOOLS OVERRIDE
+		// At the top to prevent unnecessary API requests
+		this.setState({
+			apiHasRan: true,
+			/// @ts-expect-error Overriding week value for April 1st 2022.
+			week: "C",
+			isWeekend: true,
+		}); return;
+		
 		const inputDate = new Date();
 		// Used for fiddling:
 		// NOTE: Do NOT allow code into production where these value are uncommented
@@ -253,19 +264,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				<>
 					<h2>It is neither Week A nor B.</h2>
 					{/* <h3>This means it&#39;s probably a holiday.</h3> */} 
-					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>events</div></Button>
-					<div className="cw-widget">
-						<h2>Charity Week</h2>
-						<div className="raised-content">
-							<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={parseFloat(this.state.raised.net) / CW_TARGET * 100} text={(parseFloat(this.state.raised.net) / CW_TARGET * 100).toFixed(0) + "%"} /></div>
-							<div className="raised-text">
-								<h1>£{this.state.raised.net}</h1>
-								<h3>raised</h3>
-							</div>
-						</div>
-						<a href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite"><button><p>Donate Now</p> <FontAwesomeIcon icon={faArrowRight} /></button></a>
-						{/*<a className="cw-delayed" href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite" aria-disabled><button aria-disabled disabled><p>ticket sales delayed</p></button></a>*/}
-					</div>
+					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>Events & News  →</div></Button>
 					<h5 id="neitherAB-contact">If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
 					<Socials />
 				</>
@@ -280,21 +279,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h1 className="desktop">Week {this.state.week}</h1>
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be week" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="mobile">{this.state.week}</h1>
-					<div className="cw-widget">
-						<h2>Charity Week</h2>
-						<div className="raised-content">
-							<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={parseFloat(this.state.raised.net) / CW_TARGET * 100} text={(parseFloat(this.state.raised.net) / CW_TARGET * 100).toFixed(0) + "%"} /></div>
-							<div className="raised-text">
-								<h1>£{this.state.raised.net}</h1>
-								<h3>raised</h3>
-							</div>
-						</div>
-						<a href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite"><button><p>Donate Now</p> <FontAwesomeIcon icon={faArrowRight} /></button></a>
-						{/*<a className="cw-delayed" href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite" aria-disabled><button aria-disabled disabled><p>ticket sales delayed</p></button></a>*/}
-					</div>
-				
-					
-					<Button style={{ marginRight: "auto", marginTop: 25 }} className="forward" id="event-scroll-button" onClick={getScrollDownWithAdditional(0)}>events</Button>
+					<Button style={{ marginRight: "auto", marginTop: 0 }} className="forward" id="event-scroll-button" onClick={getScrollDownWithAdditional(0)}>Events & News  →</Button>
 					<Socials />
 				</>
 			);
@@ -352,8 +337,27 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				{ /* <Banner /> */ }
 				{ /* Pulled offline due to jankiness. Readd once a better solution with proper mobile styles and dedicated place is found:
 					<YearGroupCalendar /> */ }
-				<EventsList eventData={this.state.eventData} />
+				<EventsGrid eventData={this.state.eventData} />
+				{/* All features are re-implemented in cards, so now commented out! */}
+				{/* <EventsList eventData={this.state.eventData} /> */}
 			</>
 		);
 	}
 }
+
+/* Charity Week Widget */
+
+/* 
+	<div className="cw-widget">
+		<h2>Charity Week</h2>
+		<div className="raised-content">
+			<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={parseFloat(this.state.raised.net) / CW_TARGET * 100} text={(parseFloat(this.state.raised.net) / CW_TARGET * 100).toFixed(0) + "%"} /></div>
+			<div className="raised-text">
+				<h1>£{this.state.raised.net}</h1>
+				<h3>raised</h3>
+			</div>
+		</div>
+		<a href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite"><button><p>Donate Now</p> <FontAwesomeIcon icon={faArrowRight} /></button></a>
+		<a className="cw-delayed" href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite" aria-disabled><button aria-disabled disabled><p>ticket sales delayed</p></button></a>
+	</div>
+*/

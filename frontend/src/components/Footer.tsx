@@ -12,12 +12,12 @@ import packageJSON from "../../package.json";
 const Footer: React.FC = () => {
 	return (
 		<div className="footer">
-			<a id="feedback-buttom" target="__blank" href="https://forms.gle/KaS2VUAmZqfS1Nf26"><Button>give feedback</Button></a>
+			<a id="feedback-buttom" target="__blank" href="https://forms.gle/KaS2VUAmZqfS1Nf26"><Button>Send Feedback  →</Button></a>
 
 			<p>
-				{ /* Data Protection comment out: Created by Kishan Sambhi &amp; Madeline Hart. <br /> */ }
+				Created and maintained by Kishan Sambhi &amp; Madeline Hart. <br />
 				&#169; {(new Date()).getFullYear()}, source available on GitHub under the MIT license.<br /><br />
-				Data controller information: data controlled by {/*Kishan Sambhi, */}a KECH pupil {/*}, */}and will only ever be viewed by KECH pupils.<br />
+				Data controller information: data controlled by Kishan Sambhi, a KECH pupil, and will only ever be viewed by KECH pupils.<br />
 				All changes to this site are reviewed, merged and deployed by a KECH pupil.<br /><br />
 				Version {packageJSON.version}
 			</p>
@@ -39,16 +39,15 @@ const Footer: React.FC = () => {
 				<a target="__blank" href="/privacy.html"><u>Privacy Policy</u></a>
 			</div>
 
-			{ // For data protection purposes, we've had to comment this out 
-			/*<div className="container-credits">
+			<div className="container-credits">
 				<div>
 					<h4>Find Kishan here:</h4>
 					<ul>
 						<a target="__blank" href="https://github.com/Gum-Joe"><li><FontAwesomeIcon icon={faGithub} /> GitHub</li></a>
 						<a target="__blank" href="https://twitter.com/k_sam_mighty"><li><FontAwesomeIcon icon={faTwitter} /> Twitter</li></a>
-						<a target="__blank" href="https://instagram.com/k_sam_mighty"><li><FontAwesomeIcon icon={faInstagram} /> Instagram</li></a>*/
-						/*{*//* NOTE: Change to a personal e-mail when leaving school *//*}*/
-						/*<a target="__blank" href="mailto:15Sambhi614@camphillboys.bham.sch.uk"><li><FontAwesomeIcon icon={faEnvelope} /> Email</li></a>
+						<a target="__blank" href="https://instagram.com/k_sam_mighty"><li><FontAwesomeIcon icon={faInstagram} /> Instagram</li></a>
+						{/* NOTE: Change to a personal e-mail when leaving school */}
+						<a target="__blank" href="mailto:15Sambhi614@camphillboys.bham.sch.uk"><li><FontAwesomeIcon icon={faEnvelope} /> Email</li></a>
 					</ul>
 				</div>
 
@@ -57,10 +56,11 @@ const Footer: React.FC = () => {
 					<ul>
 						<a target="__blank" href="https://github.com/ILikeTeaALot"><li><FontAwesomeIcon icon={faGithub} /> GitHub</li></a>
 						<a target="__blank" href="https://www.rykan.net"><li><FontAwesomeIcon icon={faLink} /> rykan.net</li></a>
+						<a target="__blank" href="https://www.madelinehart.co.uk"><li><FontAwesomeIcon icon={faLink} /> madelinehart.co.uk</li></a>
 						<a target="__blank" href="mailto:madeline@rykan.net"><li><FontAwesomeIcon icon={faAt} /> Email</li></a>
 					</ul>
 				</div>
-			</div> */ }
+			</div>
 
 		</div>
 	);

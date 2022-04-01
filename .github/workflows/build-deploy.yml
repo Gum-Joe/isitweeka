@@ -77,7 +77,7 @@ jobs:
       #   working-directory: ./frontend
 
       - name: Yarn version
-        run: yarn set version ./.yarn/releases/yarn-3.1.1.cjs
+        run: yarn set version ./.yarn/releases/yarn-3.2.0.cjs
       - name: Install dependencies
         run: yarn install
 
@@ -117,7 +117,7 @@ jobs:
       #     restore-keys: |
       #       ${{ runner.os }}-node-modules-${{ github.sha }}-
       - name: Yarn version
-        run: yarn set version ./.yarn/releases/yarn-3.1.1.cjs
+        run: yarn set version ./.yarn/releases/yarn-3.2.0.cjs
       - name: Install dependencies
         run: yarn install
 
@@ -186,7 +186,7 @@ jobs:
       #     restore-keys: |
       #       ${{ runner.os }}-node-modules-${{ github.sha }}-
       - name: Yarn version
-        run: yarn set version ./.yarn/releases/yarn-3.1.1.cjs
+        run: yarn set version ./.yarn/releases/yarn-3.2.0.cjs
       - name: Install dependencies
         run: yarn install
 
