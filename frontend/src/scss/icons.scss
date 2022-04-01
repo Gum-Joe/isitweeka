@@ -15,7 +15,8 @@
 @mixin arrow-right($width-and-height, $left-padding) {
   &::after {
 		@include base-arrow($width-and-height);
-		content: url("../appbar.arrow.right.svg");
+		// content: url("../appbar.arrow.right.svg");
+		content: "→";
 		padding-left: $left-padding;
 	}
 }
