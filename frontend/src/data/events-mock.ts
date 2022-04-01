@@ -27,30 +27,30 @@ export const KECHBEvents: EventData = {
 		// 		{ title: "By", value: "Supreme Council" },
 		// 	]
 		// },
-		// {
-		// 	eventType: "news",
-		// 	title: "Supreme Council Directive №3",
-		// 	description: "From 10am today, Senate Holdings Plc will be seizing all assets of KECH news organisations, and will be dissolving them with immediate effect.",
-		// 	backgroundColor: "#000000",
-		// 	textColour: "#FFFFFF",
-		// 	headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-		// 	stats: [
-		// 		{ title: "Posted", value: "10:00 Today" },
-		// 		{ title: "By", value: "Supreme Council" },
-		// 	]
-		// },
-		// {
-		// 	eventType: "news",
-		// 	title: "Supreme Council Directive №2",
-		// 	description: "Effective immediately, the Student Council shall be dissolved. All assets are to be liquified along with it. If an asset cannot be liquified, it shall be shot instead.",
-		// 	backgroundColor: "#000000",
-		// 	textColour: "#FFFFFF",
-		// 	headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-		// 	stats: [
-		// 		{ title: "Posted", value: "09:00 Today" },
-		// 		{ title: "By", value: "Supreme Council" },
-		// 	]
-		// },
+		{
+			eventType: "news",
+			title: "Supreme Council Directive №3",
+			description: "From 10am today, Senate Holdings Plc will be seizing all assets of KECH news organisations, and will be dissolving them with immediate effect.",
+			backgroundColor: "#000000",
+			textColour: "#FFFFFF",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			stats: [
+				{ title: "Posted", value: "10:15 Today" },
+				{ title: "By", value: "Supreme Council" },
+			]
+		},
+		{
+			eventType: "news",
+			title: "Supreme Council Directive №2",
+			description: "Effective immediately, the Student Council shall be dissolved. All assets are to be liquified along with it. If an asset cannot be liquified, it shall be shot instead.",
+			backgroundColor: "#000000",
+			textColour: "#FFFFFF",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			stats: [
+				{ title: "Posted", value: "10:15 Today" },
+				{ title: "By", value: "Supreme Council" },
+			]
+		},
 		{
 			eventType: "news",
 			title: "Supreme Council Directive №1",
@@ -383,30 +383,30 @@ export const KECHGEvents: EventData = {
 		// 		{ title: "By", value: "Supreme Council" },
 		// 	]
 		// },
-		// {
-		// 	eventType: "news",
-		// 	title: "Supreme Council Directive №3",
-		// 	description: "From 10am today, Senate Holdings Plc will be seizing all assets of KECH news organisations, and will be dissolving them with immediate effect.",
-		// 	backgroundColor: "#000000",
-		// 	textColour: "#FFFFFF",
-		// 	headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-		// 	stats: [
-		// 		{ title: "Posted", value: "10:00 Today" },
-		// 		{ title: "By", value: "Supreme Council" },
-		// 	]
-		// },
-		// {
-		// 	eventType: "news",
-		// 	title: "Supreme Council Directive №2",
-		// 	description: "Effective immediately, the Student Council shall be dissolved. All assets are to be liquified along with it. If an asset cannot be liquified, it shall be shot instead.",
-		// 	backgroundColor: "#000000",
-		// 	textColour: "#FFFFFF",
-		// 	headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-		// 	stats: [
-		// 		{ title: "Posted", value: "09:00 Today" },
-		// 		{ title: "By", value: "Supreme Council" },
-		// 	]
-		// },
+		{
+			eventType: "news",
+			title: "Supreme Council Directive №3",
+			description: "From 10am today, Senate Holdings Plc will be seizing all assets of KECH news organisations, and will be dissolving them with immediate effect.",
+			backgroundColor: "#000000",
+			textColour: "#FFFFFF",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			stats: [
+				{ title: "Posted", value: "10:15 Today" },
+				{ title: "By", value: "Supreme Council" },
+			]
+		},
+		{
+			eventType: "news",
+			title: "Supreme Council Directive №2",
+			description: "Effective immediately, the Student Council shall be dissolved. All assets are to be liquified along with it. If an asset cannot be liquified, it shall be shot instead.",
+			backgroundColor: "#000000",
+			textColour: "#FFFFFF",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			stats: [
+				{ title: "Posted", value: "10:15 Today" },
+				{ title: "By", value: "Supreme Council" },
+			]
+		},
 		{
 			eventType: "news",
 			title: "Supreme Council Directive №1",
