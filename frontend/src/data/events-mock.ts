@@ -51,18 +51,18 @@ export const KECHBEvents: EventData = {
 		// 		{ title: "By", value: "Supreme Council" },
 		// 	]
 		// },
-		// {
-		// 	eventType: "news",
-		// 	title: "Supreme Council Directive №1",
-		// 	description: "From today, we shall introduce a new week. This week shall be known as Week C. It shall replace weeks A & B as the sole week in the timetable, past, present, and future.",
-		// 	backgroundColor: "#000000",
-		// 	textColour: "#FFFFFF",
-		// 	headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-		// 	stats: [
-		// 		{ title: "Posted", value: "08:00 Today" },
-		// 		{ title: "By", value: "Supreme Council" },
-		// 	]
-		// },
+		{
+			eventType: "news",
+			title: "Supreme Council Directive №1",
+			description: "From today, we shall introduce a new week. This week shall be known as Week C. It shall replace weeks A & B as the sole week in the timetable, past, present, and future.",
+			backgroundColor: "#000000",
+			textColour: "#FFFFFF",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			stats: [
+				{ title: "Posted", value: "08:15 Today" },
+				{ title: "By", value: "Supreme Council" },
+			]
+		},
 		{
 			eventType: EventTypes.CHARITY,
 			title: "Oliver!",
@@ -371,6 +371,54 @@ export const KECHBEvents: EventData = {
 
 export const KECHGEvents: EventData = {
 	events: [
+		// {
+		// 	eventType: "news",
+		// 	title: "Supreme Council Directive №4",
+		// 	description: "Studies have shown that seeing cute imagery both increases dopamine and reduces cortisol (the stress hormone). As such, the viewing of cat pictures will be mandatory every morning before lessons begin, across K.E. Foundation schools.",
+		// 	backgroundColor: "#000000",
+		// 	textColour: "#FFFFFF",
+		// 	headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+		// 	stats: [
+		// 		{ title: "Posted", value: "11:00 Today" },
+		// 		{ title: "By", value: "Supreme Council" },
+		// 	]
+		// },
+		// {
+		// 	eventType: "news",
+		// 	title: "Supreme Council Directive №3",
+		// 	description: "From 10am today, Senate Holdings Plc will be seizing all assets of KECH news organisations, and will be dissolving them with immediate effect.",
+		// 	backgroundColor: "#000000",
+		// 	textColour: "#FFFFFF",
+		// 	headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+		// 	stats: [
+		// 		{ title: "Posted", value: "10:00 Today" },
+		// 		{ title: "By", value: "Supreme Council" },
+		// 	]
+		// },
+		// {
+		// 	eventType: "news",
+		// 	title: "Supreme Council Directive №2",
+		// 	description: "Effective immediately, the Student Council shall be dissolved. All assets are to be liquified along with it. If an asset cannot be liquified, it shall be shot instead.",
+		// 	backgroundColor: "#000000",
+		// 	textColour: "#FFFFFF",
+		// 	headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+		// 	stats: [
+		// 		{ title: "Posted", value: "09:00 Today" },
+		// 		{ title: "By", value: "Supreme Council" },
+		// 	]
+		// },
+		{
+			eventType: "news",
+			title: "Supreme Council Directive №1",
+			description: "From today, we shall introduce a new week. This week shall be known as Week C. It shall replace weeks A & B as the sole week in the timetable, past, present, and future.",
+			backgroundColor: "#000000",
+			textColour: "#FFFFFF",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			stats: [
+				{ title: "Posted", value: "08:15 Today" },
+				{ title: "By", value: "Supreme Council" },
+			]
+		},
 		{
 			eventType: EventTypes.CHARITY,
 			title: "Macmillan Coffee Morning",
