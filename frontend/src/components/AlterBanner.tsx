@@ -80,7 +80,7 @@ const AlertBanner: React.FC<AlertBannerProps> = (props) => {
 					<h3 className="desktop">
 						{props.alert.message}{/*&nbsp;*/}
 						{props.alert.linkTo ?
-							<a className="r-banner-link" href={props.alert.linkTo} target="__blank" onClick={reportAlertButtonClick}>{props.alert.linkText || "View More"}</a>
+							<a className="r-banner-link" href={props.alert.linkTo} target="__blank" onClick={reportAlertButtonClick}>{props.alert.linkText || "View More  →"}</a>
 							: null
 						}
 					</h3>

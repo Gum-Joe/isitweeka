@@ -20,11 +20,11 @@ import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 // };
 
 export const KECHBAlerts: AlertResponce = {
-	showAlert: false,
+	showAlert: true,
 	alertLevel: ThreatLevels.INFO,
 	message: "Senate Holdings Plc (our parent company) announces acquisition of K.E. Foundation.",
-	linkText: "more info",
-	linkTo: "#"
+	linkText: "More Info  →",
+	linkTo: "https://www.instagram.com/tv/CbzHfPWAnYu/"
 };
 
 export const KECHGAlerts: AlertResponce = {

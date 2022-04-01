@@ -90,7 +90,7 @@
 .r-banner-link {
 	display: inline-flex !important;
 	border-bottom: solid 3px;
-	text-transform: lowercase;
+	// text-transform: lowercase;
 	color: #FFFFFF !important;
 	height: 1em;
 	line-height: 1;
@@ -109,12 +109,12 @@
   }
 
   // Add icon
-  @include  arrow-right(1em, 4px);
-	&::after {
-		//margin: -8px;
-    display: inline-block;
-    transform: scale(2);
-	}
+  // @include  arrow-right(1em, 4px);
+	// &::after {
+	// 	//margin: -8px;
+  //   display: inline-block;
+  //   transform: scale(2);
+	// }
 }
 
 // Customer mobile styling for links
