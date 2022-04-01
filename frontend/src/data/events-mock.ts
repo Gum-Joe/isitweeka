@@ -15,18 +15,18 @@ export const HOUSE_TUDOR = "#5a9143";
 export const KECHBEvents: EventData = {
 	generatedAt: "0",
 	events: [
-		// {
-		// 	eventType: "news",
-		// 	title: "Supreme Council Directive №4",
-		// 	description: "Studies have shown that seeing cute imagery both increases dopamine and reduces cortisol (the stress hormone). As such, the viewing of cat pictures will be mandatory every morning before lessons begin, across K.E. Foundation schools.",
-		// 	backgroundColor: "#000000",
-		// 	textColour: "#FFFFFF",
-		// 	headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-		// 	stats: [
-		// 		{ title: "Posted", value: "11:00 Today" },
-		// 		{ title: "By", value: "Supreme Council" },
-		// 	]
-		// },
+		{
+			eventType: "news",
+			title: "Supreme Council Directive №4",
+			description: "Studies have shown that seeing cute imagery both increases dopamine and reduces cortisol (the stress hormone). As such, the viewing of cat pictures will be mandatory every morning before lessons begin, across K.E. Foundation schools.",
+			backgroundColor: "#000000",
+			textColour: "#FFFFFF",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			stats: [
+				{ title: "Posted", value: "11:00 Today" },
+				{ title: "By", value: "Supreme Council" },
+			]
+		},
 		{
 			eventType: "news",
 			title: "Supreme Council Directive №3",
@@ -371,18 +371,18 @@ export const KECHBEvents: EventData = {
 
 export const KECHGEvents: EventData = {
 	events: [
-		// {
-		// 	eventType: "news",
-		// 	title: "Supreme Council Directive №4",
-		// 	description: "Studies have shown that seeing cute imagery both increases dopamine and reduces cortisol (the stress hormone). As such, the viewing of cat pictures will be mandatory every morning before lessons begin, across K.E. Foundation schools.",
-		// 	backgroundColor: "#000000",
-		// 	textColour: "#FFFFFF",
-		// 	headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-		// 	stats: [
-		// 		{ title: "Posted", value: "11:00 Today" },
-		// 		{ title: "By", value: "Supreme Council" },
-		// 	]
-		// },
+		{
+			eventType: "news",
+			title: "Supreme Council Directive №4",
+			description: "Studies have shown that seeing cute imagery both increases dopamine and reduces cortisol (the stress hormone). As such, the viewing of cat pictures will be mandatory every morning before lessons begin, across K.E. Foundation schools.",
+			backgroundColor: "#000000",
+			textColour: "#FFFFFF",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			stats: [
+				{ title: "Posted", value: "11:00 Today" },
+				{ title: "By", value: "Supreme Council" },
+			]
+		},
 		{
 			eventType: "news",
 			title: "Supreme Council Directive №3",
