@@ -210,12 +210,12 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		
 		// APRIL FOOLS OVERRIDE
 		// At the top to prevent unnecessary API requests
-		this.setState({
+		/* this.setState({
 			apiHasRan: true,
 			/// @ts-expect-error Overriding week value for April 1st 2022.
 			week: "C",
 			isWeekend: true,
-		}); return;
+		}); return; */
 		
 		const inputDate = new Date();
 		// Used for fiddling:
