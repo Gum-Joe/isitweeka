@@ -13,6 +13,21 @@
 		border-radius: 8px;
 		background: black;
 		padding: 16px;
+		gap: 20px;
+		display: flex;
+		flex-direction: column;
+	}
+	
+	&.light {
+		background: black;
+		color: black;
+		border: 2px solid white;
+		margin: -2px;
+		font-weight: 700;
+		
+		.panel {
+			background: white;
+		}
 	}
 	
 	.title {

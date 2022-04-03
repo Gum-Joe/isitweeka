@@ -16,6 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import EventsGrid from "./New/EventsGrid";
+import { StudentCouncilElectionTracker } from "./New/Special/StudentCouncilElectionTracker";
 
 /**
  * Props to provide to the site
@@ -296,6 +297,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 							this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
 						}
 					</div>
+					<StudentCouncilElectionTracker total={31} candidateOne={{ colour: "#EB2A1C", name: "Dirujan Senthilvasan", votes: 12 }} candidateTwo={{ colour: "#1D77BC", name: "Ayan Butt", votes: 11 }} summary="We don't know yet!" />
 					<div className="cw-cards">
 						<div className="cw-header">
 							<h1>Charity Week</h1>
