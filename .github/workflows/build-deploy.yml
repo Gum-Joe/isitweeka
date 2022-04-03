@@ -33,7 +33,10 @@ on:
       - "main"
       - "isitweeka-as-a-service"
   pull_request:
-   
+
+env:
+  # Because I use windows, yarn.lock is different to CI builds
+  YARN_ENABLE_IMMUTABLE_INSTALLS: false   
 
 jobs:
   install:
