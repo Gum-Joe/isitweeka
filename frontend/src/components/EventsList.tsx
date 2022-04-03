@@ -54,6 +54,10 @@ export interface BaseEventItem {
 	},
 	/* String representation of the date/time of event */
 	when?: string,
+	/** Allow any event to have a URL */	
+	url?: string;
+	/** Allow any event to have link text */
+	linkText?: string;
 }
 
 /**

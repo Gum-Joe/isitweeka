@@ -48,8 +48,9 @@ export const Card: React.FunctionComponent<EventItem & NewCardExt> = (props) => 
 							<div className="stat-value text big">{props.currentVictor}</div>
 						</div>
 					</div> : null}
-					{props.eventType === EventTypes.CHARITY || props.eventType === EventTypes.FUNDRIASER && props.url ? <a className="panel cta" onClick={reportOutboundButtonClick} href={props.url}>
-						<div className="text big">Buy Tickets  →</div>
+					{/* Allow House Events to have links */}
+					{props.url ? <a className="panel cta" onClick={reportOutboundButtonClick} href={props.url}>
+						<div className="text big">{props.linkText || "Buy Tickets"}  →</div>
 					</a> : null}
 				</div>
 			);

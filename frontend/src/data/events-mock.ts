@@ -64,162 +64,6 @@ export const KECHBEvents: EventData = {
 		// 	]
 		// },
 		{
-			eventType: EventTypes.CHARITY,
-			title: "Oliver!",
-			headerURL: "/events/School-Logo.png",
-			ticketsSale: {
-				start: "31/03/2022"
-			},
-			description: "Oliver! - Camp Hill's first post-COVID musical!",
-			when: "Thursday 31st - Saturday 2nd April",
-			url: "https://www.eventbrite.co.uk/e/oliver-tickets-300557273897",
-			backgroundColor: "#752023",
-			hidden: false,
-		},
-		{
-			eventType: EventTypes.CHARITY,
-			title: "Charity Week 2022",
-			description: "It's been 2 years since the last charity event. Let's change that, with a whole week of tremendous events.",
-			headerURL: "/events/CharityWeek.png",
-			when: "w/c 14th February",
-			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
-			backgroundColor: "#202435",
-			ticketsSale: {
-				start: "02/02/22"
-			}
-		},
-		{
-			eventType: EventTypes.CHARITY,
-			title: "THE GRAND DEBATE",
-			description: "Get your brains ready, tone primed and dramatic pauses fixed as you face the undisputable masters of debate - the teachers.",
-			headerURL: "/events/Logo-Charity-Commitee.png",
-			when: "Charity Week",
-			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
-			backgroundColor: "#ffffff",
-			ticketsSale: {
-				start: "02/02/22"
-			},
-			textColour: "#000000",
-			cta: {
-				backgroundColor: "#5ab947",
-				type: "fill",
-			}
-		},
-		{
-			eventType: EventTypes.CHARITY,
-			title: "Mario Kart Tournament",
-			description: "Get ready to race your classmates in Camp Hill's first Mario Kart tournament!",
-			headerURL: "/events/CharityWeek.png",
-			when: "Charity Week",
-			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
-			backgroundColor: "#000000",
-			ticketsSale: {
-				start: "02/02/22"
-			},
-		},
-		{
-			eventType: EventTypes.CHARITY,
-			title: "Who Wants To Be A Millionaire?",
-			description: "Get ready to take to the stage, as you could be in your chance to win a £50 Amazon Giftcard in \"Who Wants to Be a Millionaire?\"",
-			headerURL: "/events/who_wants_to_be_a_millionaire__uk_2018_logo_remake_by_zackthetimelordrblx_dcm12hz-fullview.png",
-			when: "Charity Week",
-			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
-			backgroundColor: "#1e012d",
-			ticketsSale: {
-				start: "02/02/22"
-			},
-		},
-		{
-			hidden: false,
-			eventType: EventTypes.CHARITY,
-			title: "Camp Hill's Got Talent",
-			description: "Following its tremendous success in 2018, Omar will return to the stage to host the return of Camp Hill’s Got Talent!",
-			headerURL: "/events/CharityWeek.png",
-			when: "Charity Week",
-			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
-			backgroundColor: "#0f192a",
-			ticketsSale: {
-				start: "02/02/22"
-			},
-		},
-		{
-			title: "Would I Lie To You?",
-			description: "Come hear teachers tell their funny & embarrassing stories!",
-			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
-			ticketsSale: {
-				start: "01/01/2020"
-			},
-			headerURL: "/events/WILTY_Logo.png",
-			backgroundColor: "#2C1F39",
-			eventType: EventTypes.CHARITY,
-		},
-		{
-			eventType: EventTypes.HOUSE,
-			title: "House Chess",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "17th January 2022",
-			state: "todo",
-			//currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
-		{
-			eventType: EventTypes.HOUSE,
-			title: "House Swimming Gala",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "3rd February 2022",
-			state: "todo",
-			//currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
-		{
-			eventType: EventTypes.HOUSE,
-			title: "House Handball",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "w/c 7th February 2022",
-			state: "todo",
-			//currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
-		{
-			eventType: EventTypes.HOUSE,
-			title: "House Volleyball",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "w/c 14th March 2022",
-			state: "todo",
-			//currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
-		{
-			eventType: EventTypes.HOUSE,
-			title: "Intermediate & Senior House Hockey",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "21st & 23rd March 2022",
-			state: "todo",
-			//currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
-		{
-			eventType: EventTypes.HOUSE,
-			title: "Senior 7s House Rugby",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "30th March 2022",
-			state: "todo",
-			//currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
-		{
 			eventType: EventTypes.HOUSE,
 			title: "House Table Tennis (all years)",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
@@ -241,6 +85,241 @@ export const KECHBEvents: EventData = {
 			//backgroundColor: "#752023", // House default, or #5E957C
 			backgroundColor: HOUSE_EVENT_PENDING_BG,
 		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Intermediate & Senior House Hockey",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "21st & 23rd March 2022",
+			state: "ongoing",
+			currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Chess",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "17th January 2022",
+			state: "todo",
+			currentVictor: "UNKNOWN",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Swimming Gala",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "3rd February 2022",
+			state: "todo",
+			//currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Handball",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "w/c 7th February 2022",
+			state: "done",
+			currentVictor: "Howard",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Volleyball",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "w/c 14th March 2022",
+			state: "done",
+			currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Senior 7s House Rugby",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "30th March 2022",
+			state: "todo",
+			//currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Y10 Careers Detective",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Monday 25th April 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Junior Maths Challenge, Y7 and Y8",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Wednesday 27th April 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Y7 & 8 Chris Bradford Author Visit",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Thursday 28th April 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Senior Concert, TBC",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Tuesday 3rd May 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Year 12 UCAS Exams",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "w/c Monday 9th May 2022 to Friday 20th May 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Year 11 Study Leave starts",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Wednesday 11th May 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Year 13 - final day",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Friday 13th May 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Year 8, 10 exams",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "w/c 23rd May 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Year 10 battlefields trip",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Friday 27th May -  Monday 30th May 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "June Half-Term Holiday",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Friday 27th May -  Monday 6th June 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Year 7, 9 exams",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "w/c 6th June 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Year 8 Conway Residential",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Monday 6th June -  Thursday 9th June 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Summer Soiree @ CHB",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Tuesday 14th June 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Year 13 Prom",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Wednesday 29th June 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "St David's Rock Climbing",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Thusday 30th June -  Sunday 3rd July 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Year 9 Enrichment Day",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Thursday 9th July",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Sports Day",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Wednesday 20th July",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Junior Presentation Evening",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Monday 18th July",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Intermediate Presentation Evening",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Tuesday 19th July",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "End of academic year 21/22",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Thursday 21st July",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Italy Adventure Trip",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Friday 22nd - Thursday 28th July",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		
 		{
 			eventType: EventTypes.CHARITY,
 			title: "Year 11 & 13 December Mocks",
@@ -360,11 +439,101 @@ export const KECHBEvents: EventData = {
 			title: "House Basketball",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
 			dateTime: "w/c 13th December 2021",
-			state: "todo",
-			//currentVictor: "Beaufort",
+			state: "done",
+			currentVictor: "Howard",
 			//description: "House Touch Rugby",
 			//backgroundColor: "#752023", // House default, or #5E957C
 			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "Oliver!",
+			headerURL: "/events/School-Logo.png",
+			ticketsSale: {
+				start: "31/03/2022"
+			},
+			description: "Oliver! - Camp Hill's first post-COVID musical!",
+			when: "Thursday 31st - Saturday 2nd April",
+			//url: "https://www.eventbrite.co.uk/e/oliver-tickets-300557273897",
+			backgroundColor: "#752023",
+			hidden: false,
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "Charity Week 2022",
+			description: "It's been 2 years since the last charity event. Let's change that, with a whole week of tremendous events.",
+			headerURL: "/events/CharityWeek.png",
+			when: "w/c 14th February",
+			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
+			backgroundColor: "#202435",
+			ticketsSale: {
+				start: "02/02/22"
+			}
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "THE GRAND DEBATE",
+			description: "Get your brains ready, tone primed and dramatic pauses fixed as you face the undisputable masters of debate - the teachers.",
+			headerURL: "/events/Logo-Charity-Commitee.png",
+			when: "Charity Week",
+			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
+			backgroundColor: "#ffffff",
+			ticketsSale: {
+				start: "02/02/22"
+			},
+			textColour: "#000000",
+			cta: {
+				backgroundColor: "#5ab947",
+				type: "fill",
+			}
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "Mario Kart Tournament",
+			description: "Get ready to race your classmates in Camp Hill's first Mario Kart tournament!",
+			headerURL: "/events/CharityWeek.png",
+			when: "Charity Week",
+			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
+			backgroundColor: "#000000",
+			ticketsSale: {
+				start: "02/02/22"
+			},
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "Who Wants To Be A Millionaire?",
+			description: "Get ready to take to the stage, as you could be in your chance to win a £50 Amazon Giftcard in \"Who Wants to Be a Millionaire?\"",
+			headerURL: "/events/who_wants_to_be_a_millionaire__uk_2018_logo_remake_by_zackthetimelordrblx_dcm12hz-fullview.png",
+			when: "Charity Week",
+			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
+			backgroundColor: "#1e012d",
+			ticketsSale: {
+				start: "02/02/22"
+			},
+		},
+		{
+			hidden: false,
+			eventType: EventTypes.CHARITY,
+			title: "Camp Hill's Got Talent",
+			description: "Following its tremendous success in 2018, Omar will return to the stage to host the return of Camp Hill’s Got Talent!",
+			headerURL: "/events/CharityWeek.png",
+			when: "Charity Week",
+			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
+			backgroundColor: "#0f192a",
+			ticketsSale: {
+				start: "02/02/22"
+			},
+		},
+		{
+			title: "Would I Lie To You?",
+			description: "Come hear teachers tell their funny & embarrassing stories!",
+			url: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
+			ticketsSale: {
+				start: "01/01/2020"
+			},
+			headerURL: "/events/WILTY_Logo.png",
+			backgroundColor: "#2C1F39",
+			eventType: EventTypes.CHARITY,
 		},
 	],
 };
@@ -420,6 +589,19 @@ export const KECHGEvents: EventData = {
 		// 	]
 		// },
 		{
+			eventType: EventTypes.HOUSE,
+			title: "House Fair",
+			headerURL: "/events/KECHGTMPHouseChampionshipDefault.jpg",
+			dateTime: "1st April 2022",
+			state: "todo",
+			//currentVictor: "Stratford",
+			description: "The House Fair.",
+			linkText: "View event video",
+			url: "https://www.instagram.com/tv/Cb2pjcijFzj",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG
+		},
+		{
 			eventType: EventTypes.CHARITY,
 			title: "Macmillan Coffee Morning",
 			when: "1st October",
@@ -454,7 +636,7 @@ export const KECHGEvents: EventData = {
 			description: "A performance of songs from the musicals \"Matilda\" and \"Chicago\" by ~100 students, along with acting and dance!",
 			when: "15th & 16th February",
 			backgroundColor: "#752023",
-			hidden: false,
+			hidden: true,
 		},
 		{
 			eventType: EventTypes.CHARITY,
@@ -493,14 +675,59 @@ export const KECHGEvents: EventData = {
 		},
 		{
 			eventType: EventTypes.HOUSE,
-			title: "House Fair",
-			headerURL: "/events/KECHGTMPHouseChampionshipDefault.jpg",
-			dateTime: "1st April 2022",
+			title: "Senior Concert, TBC",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Tuesday 3rd May 2022",
 			state: "todo",
-			//currentVictor: "Stratford",
-			description: "The House Fair.",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Gardner Cup (Senior Rounders) @KE Handsworth",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Thursday 9th June 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Foundation athletics @ KEHS",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Tuesday 14th June 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Fry cup (Senior Tennis) @ KEHS",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Wednesday 15th June 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Summer Soiree @ CHB",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Tuesday 14th June 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Year 7 Anglesey",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Monday 20th - Wednesday 22th June 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Enrichment Week",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "Tuesday 21st - Friday 24th June 2022",
+			state: "todo",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
 		},
 	],
 	generatedAt: "0",
