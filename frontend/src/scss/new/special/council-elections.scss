@@ -32,3 +32,9 @@
 		margin: auto 0;
 	}
 }
+
+.special-election-tracker-container {
+	// padding: 0 var(--horizontal-indent);
+	display: flex;
+	flex: 0.7;
+}
