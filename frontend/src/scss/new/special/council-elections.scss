@@ -1,0 +1,34 @@
+.special-candidate-info-container {
+	display: flex;
+	gap: 20px;
+	
+	div {
+		display: flex;
+	}
+	
+	&.first {
+		margin-left: 0;
+		margin-right: auto;
+		// flex-shrink: 1;
+	}
+	
+	&.second {
+		margin-left: auto;
+		margin-right: 0;
+		// align-items: flex-end;
+		// justify-items: flex-end;
+		// flex-shrink: 1;
+	}
+	
+	.special-candidate-photo {
+		width: 60px;
+		height: 60px;
+		border-radius: 100%;
+		overflow: hidden;
+	}
+	
+	.special-candidate-name {
+		white-space: nowrap;
+		margin: auto 0;
+	}
+}

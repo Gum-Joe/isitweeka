@@ -35,3 +35,33 @@
 	line-height: 30px;
 	font-weight: 400;
 }
+
+.light {
+	.text.title {
+		font-weight: 600;
+	}
+	
+	.text.week {
+		font-weight: 600;
+	}
+	
+	.text.big {
+		font-weight: 600;
+	}
+	
+	.text.control {
+		font-weight: 600;
+	}
+	
+	.text.control-active {
+		font-weight: 900;
+	}
+	
+	.text.control-inactive {
+		font-weight: 500;
+	}
+	
+	.text.body {
+		font-weight: 500;
+	}
+}
