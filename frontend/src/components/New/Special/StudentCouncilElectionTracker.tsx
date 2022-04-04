@@ -22,6 +22,7 @@ export const ComparisonBar: React.FunctionComponent<ComparisonBarProps> = (props
 interface CandidateInfo {
 	colour: string;
 	name: string;
+	photoUrl: string;
 	votes: number;
 }
 
@@ -42,7 +43,7 @@ export const StudentCouncilElectionTracker: React.FunctionComponent<TrackerProps
 				</div>
 				<div className="panel">
 					<div className="special-candidate-info-container text big first">
-						<div className="special-candidate-photo"><img src="https://placekitten.com/120/120" alt={props.candidateOne.name} /></div>
+						<div className="special-candidate-photo"><img src={props.candidateTwo.photoUrl} alt={props.candidateOne.name} /></div>
 						<div className="special-candidate-name">{props.candidateOne.name}</div>
 					</div>
 					<div className="text body">{props.candidateOne.votes} Votes · {(props.candidateOne.votes / props.total * 100).toFixed(1)}%</div>
@@ -50,7 +51,7 @@ export const StudentCouncilElectionTracker: React.FunctionComponent<TrackerProps
 					<div className="text body" style={{ marginLeft: "auto", textAlign: "right" }}>{props.candidateTwo.votes} Votes · {(props.candidateTwo.votes / props.total * 100).toFixed(1)}%</div>
 					<div className="special-candidate-info-container text big second">
 						<div className="special-candidate-name">{props.candidateTwo.name}</div>
-						<div className="special-candidate-photo"><img src="https://placekitten.com/120/120" alt={props.candidateTwo.name} /></div>
+						<div className="special-candidate-photo"><img src={props.candidateTwo.photoUrl} alt={props.candidateTwo.name} /></div>
 					</div>
 				</div>
 				<div className="panel description" style={{ gap: 0 }}>
