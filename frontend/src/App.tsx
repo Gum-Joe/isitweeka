@@ -82,6 +82,7 @@ class App extends Component<Record<string, never>> {
 								calendarURL="/cal/KECHB/basic.ics"
 								iiwaURL={IIWA_KECHB_URL}
 								weekMarkerDate={1}
+								showCard
 								eventsFetcher={
 									async () => KECHBEvents
 								}

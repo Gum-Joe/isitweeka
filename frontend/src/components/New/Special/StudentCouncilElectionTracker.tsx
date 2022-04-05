@@ -43,7 +43,7 @@ export const StudentCouncilElectionTracker: React.FunctionComponent<TrackerProps
 				</div>
 				<div className="panel">
 					<div className="special-candidate-info-container text big first">
-						<div className="special-candidate-photo"><img src={props.candidateTwo.photoUrl} alt={props.candidateOne.name} /></div>
+						<div className="special-candidate-photo"><img src={props.candidateOne.photoUrl} alt={props.candidateOne.name} /></div>
 						<div className="special-candidate-name">{props.candidateOne.name}</div>
 					</div>
 					<div className="text body">{props.candidateOne.votes} Votes · {(props.candidateOne.votes / props.total * 100).toFixed(1)}%</div>

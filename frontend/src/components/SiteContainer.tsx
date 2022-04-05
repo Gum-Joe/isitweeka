@@ -35,6 +35,10 @@ export interface SiteProps {
 	eventsFetcher: () => Promise<EventData>;
 	/** Fetches site alert */
 	alertsFetcher: () => Promise<AlertResponce>;
+	/**
+	 * Whether the card should be shown in the jumbotron
+	 */
+	showCard?: boolean;
 }
 
 const baseEventImageStyle = {
@@ -297,7 +301,12 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 							this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
 						}
 					</div>
-					<StudentCouncilElectionTracker total={31} candidateOne={{ colour: "#EB2A1C", name: "Dirujan Senthilvasan", photoUrl: "https://placekitten.com/120/120", votes: 11 }} candidateTwo={{ colour: "#1D77BC", name: "Ayan Butt", photoUrl: "https://placekitten.com/120/120", votes: 12 }} summary="We don't know yet!" />
+					{ this.props.showCard && <StudentCouncilElectionTracker
+						total={30}
+						candidateOne={{ colour: "#EB2A1C", name: "Dirujan Senthilvasan", photoUrl: "/sc/Dirujan.png", votes: 7 }}
+						candidateTwo={{ colour: "#1D77BC", name: "Ayan Butt", photoUrl: "/sc/Ayan.png", votes: 14 }}
+						summary="Inconclusive" />
+					}
 					<div className="cw-cards">
 						<div className="cw-header">
 							<h1>Charity Week</h1>
