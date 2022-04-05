@@ -39,7 +39,7 @@ export const StudentCouncilElectionTracker: React.FunctionComponent<TrackerProps
 			<div className="card light">
 				<div className="panel title" style={{ gap: 0 }}>
 					<div className="text big">Student Council Election</div>
-					<div className="text body" style={{ textTransform: "uppercase" }}>Councillor Opinion Poll</div>
+					<div className="text body" style={{ textTransform: "uppercase" }}>Exit Poll</div>
 				</div>
 				<div className="panel">
 					<div className="special-candidate-info-container text big first">
