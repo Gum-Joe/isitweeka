@@ -1,3 +1,7 @@
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 500;
+}
+
 .text.title {
 	font-size: 48px;
 	line-height: 72px;
@@ -37,6 +41,10 @@
 }
 
 .light {
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: 600;
+	}
+	
 	.text.title {
 		font-weight: 600;
 	}
