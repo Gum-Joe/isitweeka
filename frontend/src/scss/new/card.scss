@@ -27,6 +27,12 @@
 		
 		.panel {
 			background: white;
+			
+			&.dark {
+				color: white;
+				// background: black;
+				font-weight: 500;
+			}
 		}
 	}
 	

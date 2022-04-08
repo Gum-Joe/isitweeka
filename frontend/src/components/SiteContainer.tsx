@@ -302,10 +302,10 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						}
 					</div>
 					{ this.props.showCard && <StudentCouncilElectionTracker
-						total={30}
-						candidateOne={{ colour: "#EB2A1C", name: "Dirujan Senthilvasan", photoUrl: "/sc/Dirujan.png", votes: 7 }}
-						candidateTwo={{ colour: "#1D77BC", name: "Ayan Butt", photoUrl: "/sc/Ayan.png", votes: 14 }}
-						summary="Inconclusive" />
+						total={25}
+						candidateOne={{ colour: "#EB2A1C", name: "Dirujan Senthilvasan", photoUrl: "/sc/Dirujan.png", votes: 11 }}
+						candidateTwo={{ colour: "#1D77BC", name: "Ayan Butt", photoUrl: "/sc/Ayan.png", votes: 13 }}
+						summary="Ayan Wins" />
 					}
 					<div className="cw-cards">
 						<div className="cw-header">
