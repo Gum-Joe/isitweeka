@@ -424,5 +424,6 @@ $grid-gap: 20px;
 // Without this it is inline-flex and so on mobile looks incorecct as the email link and header text don't appear as one line - see issue #35
 #neitherAB-contact {
 	display: block;
-	margin: 20px 0;
+	// margin: 20px 0;
+	margin-bottom: 20px;
 }

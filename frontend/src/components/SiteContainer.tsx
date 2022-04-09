@@ -267,9 +267,9 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			// NOTE: getScrollDownWithAdditional was originally fed 150 instead of 0
 			return (
 				<>
-					<h2>It is neither Week A nor B.</h2>
-					{/* <h3>This means it&#39;s probably a holiday.</h3> */} 
-					<h5 id="neitherAB-contact" className="text body">If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
+					<h2 className="text title">It is neither Week A nor B.</h2>
+					<h3 className="text body">This means it&#39;s probably a holiday.</h3> 
+					<h5 id="neitherAB-contact" className="text">If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
 					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>Events & News  →</div></Button>
 					<Socials />
 				</>
