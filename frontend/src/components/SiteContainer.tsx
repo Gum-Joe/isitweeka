@@ -269,8 +269,8 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				<>
 					<h2>It is neither Week A nor B.</h2>
 					{/* <h3>This means it&#39;s probably a holiday.</h3> */} 
+					<h5 id="neitherAB-contact" className="text body">If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
 					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>Events & News  →</div></Button>
-					<h5 id="neitherAB-contact">If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
 					<Socials />
 				</>
 			);
