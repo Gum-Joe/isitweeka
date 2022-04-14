@@ -5,18 +5,16 @@ import { CW_TARGET, FAKE_TICKET_TOTAL, GregorianDay, IIWA_CW_URL } from "../util
 import { getScrollDownWithAdditional } from "../utils/scroll";
 import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 import AlertBanner from "./AlterBanner";
-import Banner from "./MailingListBanner";
+// import Banner from "./MailingListBanner";
 import Socials from "./Socials";
 import IsItWeekA from "../utils/IsItWeekA";
-import YoutubeContainer from "./YoutubeContainer";
-import YearGroupCalendar from "./YearGroupCalendar";
+// import YoutubeContainer from "./YoutubeContainer";
+// import YearGroupCalendar from "./YearGroupCalendar";
 import { IsItWeekAReturn } from "libisitweeka";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import EventsGrid from "./New/EventsGrid";
 import { StudentCouncilElectionTracker } from "./New/Special/StudentCouncilElectionTracker";
+import { CharityWeekWidget } from "./New/Special/CharityWeekWidget";
 
 /**
  * Props to provide to the site
@@ -307,43 +305,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						candidateTwo={{ colour: "#1D77BC", name: "Ayan Butt", photoUrl: "/sc/Ayan.png", votes: 13 }}
 						summary="Ayan Wins" />
 					}
-					<div className="cw-cards">
-						<div className="cw-header">
-							<h1>Charity Week</h1>
-						</div>
-						<div className="cw-content">
-							<div>
-								<div className="cw-buy">
-									<h2>About</h2>
-									<h4>Camp Hill's return to charity events, with Who Wants to Be a Millionaire?, THE GRAND DEBATE, a Mario Kart tournament, Camp Hill&apos;s Got Talent and Would I Lie To You: Students vs Teachers! Donations close 7pm Tuesday - all money goes to Beat UK!</h4>
-									<a href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite"><button><p>donate now</p> <FontAwesomeIcon icon={faArrowRight} /></button></a>
-									{/*<a className="cw-delayed" href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite" aria-disabled><button aria-disabled disabled><p>ticket sales delayed</p></button></a>*/}
-								</div>
-								<div className="cw-raised">
-									<h2>Ticket Stats</h2>
-									<div className="raised-content">
-										<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={parseFloat(this.state.raised.net) / CW_TARGET * 100} text={(parseFloat(this.state.raised.net) / CW_TARGET * 100).toFixed(0) + "%"} /></div>
-										<div className="raised-text">
-											<h1>£{this.state.raised.net}</h1>
-											<h3>raised</h3>
-										</div>
-										<div className="raised-text">
-											<h1>{this.state.raised.ticketQuantity}</h1>
-											<h3>sold</h3>
-										</div>
-										
-									</div>
-									
-								</div>
-								<div className="cw-charity-link">
-									<p>Supporting Beat -</p>
-									<a target="__blank" href="https://www.beateatingdisorders.org.uk/about-beat/">more info &gt;&gt;&gt;</a>
-								</div>
-							</div>
-
-						</div>
-						
-					</div>
+					{/* <CharityWeekWidget raised={this.state.raised} /> */}
 				</div>
 				{ /* <Banner /> */ }
 				{ /* Pulled offline due to jankiness. Readd once a better solution with proper mobile styles and dedicated place is found:
