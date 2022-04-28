@@ -14,7 +14,7 @@ import { IsItWeekAReturn } from "libisitweeka";
 import "react-circular-progressbar/dist/styles.css";
 import EventsGrid from "./New/EventsGrid";
 import { StudentCouncilElectionTracker } from "./New/Special/StudentCouncilElectionTracker";
-import { CharityWeekWidget } from "./New/Special/CharityWeekWidget";
+import { CharityWidget } from "./New/Special/CharityWeekWidget";
 
 /**
  * Props to provide to the site
@@ -61,6 +61,7 @@ interface TheState {
 	raised: {
 		net: string,
 		ticketQuantity: number,
+		target: number;
 	}
 }
 
@@ -95,8 +96,9 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				alertLevel: ThreatLevels.LOW,
 			},
 			raised: {
-				net: "0.00",
-				ticketQuantity: 0,
+				net: "0.60",
+				ticketQuantity: 1,
+				target: 1,
 			},
 		};
 	}
@@ -299,13 +301,20 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 							this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
 						}
 					</div>
-					{ this.props.showCard && <StudentCouncilElectionTracker
+					{/* { this.props.showCard && <StudentCouncilElectionTracker
 						total={25}
 						candidateOne={{ colour: "#EB2A1C", name: "Dirujan Senthilvasan", photoUrl: "/sc/Dirujan.png", votes: 11 }}
 						candidateTwo={{ colour: "#1D77BC", name: "Ayan Butt", photoUrl: "/sc/Ayan.png", votes: 13 }}
 						summary="Ayan Wins" />
-					}
-					{/* <CharityWeekWidget raised={this.state.raised} /> */}
+					} */}
+					<CharityWidget raised={this.state.raised} title={"Beat the Beats"} description={"Get ready for Camp Hill's first ever beat competition, with home made beats straight from the most talented of the Camp Hill body!"} donateURL={"https://www.eventbrite.co.uk/e/charity-committees-beat-the-beats-tickets-328230465157"} charity={{
+						name: "Beat",
+						url: "https://www.beateatingdisorders.org.uk/about-beat/"
+					}} style={{
+						background: "#000",
+						text: "#FFF",
+						ringColour: "#F00",
+					}} />
 				</div>
 				{ /* <Banner /> */ }
 				{ /* Pulled offline due to jankiness. Readd once a better solution with proper mobile styles and dedicated place is found:
