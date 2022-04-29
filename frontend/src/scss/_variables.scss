@@ -2,14 +2,13 @@
  * Contains site-wide variable
  */
 
-
 // Many of these were originally CSS vars, so have left these as is
-:root {
+html {
 	background: black;
 	color: white;
 
-	--site-primary: #F10DA2;
-	--site-secondary: #FE5000;
+	--site-primary: #f10da2;
+	--site-secondary: #fe5000;
 	--background-default: #000000;
 
 	// Text
@@ -17,18 +16,25 @@
 	--text-default: #fff;
 	--link-active: rgba(255, 255, 255, 0.6);
 
+	// Light style overrides
+	.light {
+		--icon-fill: black;
+		--text-default: black;
+		--link-active: rgba(255, 255, 255, 0.6);
+	}
+
 	// We use this colours for a variety of purposes, namely the alert banners
-	--midland-red: #DC143C;
-	--south-eastern-yellow: #FECB09;
+	--midland-red: #dc143c;
+	--south-eastern-yellow: #fecb09;
 	--great-western-green: #013602;
 	/* Slighty darkened, original was #00A550 */
 	--great-northern-green: rgb(0, 156, 76);
 	--north-western-blue: #080028;
-	--french-blue-brighter: #2B69D4;
+	--french-blue-brighter: #2b69d4;
 	--alt-blue: #0284db;
-	--an-orange: #F4511E;
+	--an-orange: #f4511e;
 
-	--link-blue:  #00B0FF; // Or at least, is used in jumbotron!
+	--link-blue: #00b0ff; // Or at least, is used in jumbotron!
 
 	// Margin and spacing vars
 	--horizontal-indent: 5vw;
