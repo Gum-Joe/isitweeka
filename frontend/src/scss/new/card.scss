@@ -1,3 +1,16 @@
+@mixin light-card-styles {
+	background: black;
+	color: black;
+	border: 2px solid white;
+	margin: -2px;
+	font-weight: 700;
+}
+
+@mixin light-panel-styles {
+	background: white;
+	color: var(--text-default);
+}
+
 .card {
 	border-radius: 12px;
 	padding: 4px;
@@ -8,7 +21,7 @@
 	max-width: 480px;
 	flex-grow: 1;
 	margin-bottom: auto;
-	
+
 	.panel {
 		border-radius: 8px;
 		background: black;
@@ -16,18 +29,18 @@
 		gap: 20px;
 		display: flex;
 		flex-direction: column;
+
+		&.light {
+			@include light-panel-styles();
+		}
 	}
-	
+
 	&.light {
-		background: black;
-		color: black;
-		border: 2px solid white;
-		margin: -2px;
-		font-weight: 700;
-		
+		@include light-card-styles();
+
 		.panel {
-			background: white;
-			
+			@include light-panel-styles();
+
 			&.dark {
 				color: white;
 				// background: black;
@@ -35,52 +48,52 @@
 			}
 		}
 	}
-	
+
 	.title {
 		text-align: center;
 	}
-	
+
 	.description {
 		text-align: left;
 	}
-	
+
 	.stats {
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
-		
+
 		.stat {
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
 			width: 100%;
-			
+
 			.stat-label {
 				margin-right: auto;
 				text-align: left;
 				padding-right: 1em;
 			}
-			
+
 			.stat-value {
 				margin-left: auto;
 				text-align: right;
 			}
 		}
 	}
-	
+
 	.cta {
 		text-align: right;
 		white-space: pre;
 		background-color: var(--site-primary);
 		color: var(--text-default);
 		user-select: none;
-		
+
 		transition-duration: 100ms;
-		
+
 		// &:hover {
 		// 	filter: brightness(80%);
 		// }
-		
+
 		&:hover:active {
 			filter: brightness(60%);
 		}
