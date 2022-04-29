@@ -14,7 +14,7 @@ import { IsItWeekAReturn } from "libisitweeka";
 import "react-circular-progressbar/dist/styles.css";
 import EventsGrid from "./New/EventsGrid";
 import { StudentCouncilElectionTracker } from "./New/Special/StudentCouncilElectionTracker";
-import { CharityWidget } from "./New/Special/CharityWeekWidget";
+import { CharityWidget } from "./New/Special/CharityWidget";
 
 /**
  * Props to provide to the site
