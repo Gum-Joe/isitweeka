@@ -253,20 +253,20 @@ $grid-gap: 20px;
 			}
 		}
 
-		.cw-charity-link {
-			text-align: center;
-			a, p {
-				display: inline;
-				text-align: center;
-			// font-family: aniuk, sans-serif;
-				font-weight: 400;
-				font-style: normal;
-				font-size: 16px;
-			}
-			a {
-				margin-left: 5px;
-			}
-		}
+		// .cw-charity-link {
+		// 	text-align: center;
+		// 	a, p {
+		// 		display: inline;
+		// 		text-align: center;
+		// 	// font-family: aniuk, sans-serif;
+		// 		font-weight: 400;
+		// 		font-style: normal;
+		// 		font-size: 16px;
+		// 	}
+		// 	a {
+		// 		margin-left: 5px;
+		// 	}
+		// }
 
 		text {
 		// font-family: aniuk, sans-serif;
@@ -281,10 +281,10 @@ $grid-gap: 20px;
 		.cw-raised {
 			
 			.raised-content {
-				padding: 0 50px;
+				// padding: 0 50px;
 				display: flex;
 				flex-direction: row;
-				justify-content: center;
+				// justify-content: center;
 				align-items: center;
 
 				@include tablet {
@@ -337,6 +337,8 @@ $grid-gap: 20px;
 				min-width: 120px;
 				width: 120px;
 				margin: 5px 0;
+				// padding-left: 20px;
+				padding-bottom: 20px;
 			}
 
 			.CircularProgressbar-trail {
