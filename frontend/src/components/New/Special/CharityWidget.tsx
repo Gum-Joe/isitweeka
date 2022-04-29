@@ -22,7 +22,7 @@ interface TheProps {
 	style?: {
 		background: string;
 		text: string;
-		ringColour: string;
+		accent: string;
 	};
 }
 
@@ -41,13 +41,10 @@ export const CharityWidget: React.FunctionComponent<TheProps> = (props) => {
 						{/* <a style={{ color: "inherit" }} href={props.donateURL}><Button>Donate Now  →</Button></a> */}
 						{/*<a className="cw-delayed" href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite" aria-disabled><button aria-disabled disabled><p>ticket sales delayed</p></button></a>*/}
 					</div>
-					<a className="panel cta" style={{ background: props.style?.ringColour }} href={props.donateURL}>
-						<span className="text big">Donate Now  →</span>
-					</a>
 					<div className="cw-raised panel">
 						<h2 className="text big">Ticket Stats</h2>
 						<div className="raised-content">
-							<div className="ring-cont"><CircularProgressbar styles={{ path: { stroke: props.style?.ringColour } }} strokeWidth={10} value={parseFloat(props.raised.net) / props.raised.target * 100} text={(parseFloat(props.raised.net) / props.raised.target * 100).toFixed(0) + "%"} /></div>
+							<div className="ring-cont"><CircularProgressbar styles={{ path: { stroke: props.style?.accent } }} strokeWidth={10} value={parseFloat(props.raised.net) / props.raised.target * 100} text={(parseFloat(props.raised.net) / props.raised.target * 100).toFixed(0) + "%"} /></div>
 							<div className="raised-text">
 								<h1>£{props.raised.net}</h1>
 								<h3>Raised</h3>
@@ -58,9 +55,11 @@ export const CharityWidget: React.FunctionComponent<TheProps> = (props) => {
 							</div>
 						</div>
 					</div>
-					<div className="panel cw-charity-link" style={{ display: "block" }}>
-						<p>Supporting {props.charity.name} -</p>
-						<a target="__blank" href={props.charity.url}>more info »</a>
+					<a className="panel cta" style={{ background: props.style?.accent }} href={props.donateURL}>
+						<span className="text big">Donate Now  →</span>
+					</a>
+					<div className="panel light cw-charity-link" style={{ display: "block" }}>
+						<p className="text body centred">Supporting {props.charity.name} - <a target="__blank" href={props.charity.url}>more info »</a></p>
 					</div>
 				</div>
 
