@@ -303,12 +303,11 @@ $grid-gap: 20px;
 					}
 				}
 
-				@include tablet {
-					.raised-text:nth-child(2) {
-						display: none;
-					}
-
-				}
+				// @include phablet {
+				// 	.raised-text:nth-child(2) {
+				// 		display: none;
+				// 	}
+				// }
 				
 				.raised-text {
 					display: flex;
