@@ -155,11 +155,11 @@ $grid-gap: 20px;
 	align-items: center;
 	padding: 0;
 	padding-left: var(--horizontal-indent);
-	padding-right: calc(var(--horizontal-indent) * 2);
+	padding-right: var(--horizontal-indent);
 
 	@include tablet {
 		flex-direction: column;
-		margin-left: var(--horizontal-indent);
+		// margin-left: var(--horizontal-indent);
 	}
 
 	.isitweeka {
