@@ -312,8 +312,8 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						url: "https://www.macmillan.org.uk/about-us/"
 					}} style={{
 						background: "#000",
-						text: "#FFF",
-						ringColour: "#D00",
+						text: "var(--text-default)",
+						accent: "#D00",
 					}} />
 				</div>
 				{ /* <Banner /> */ }
