@@ -29,12 +29,13 @@ interface TheProps {
 export const CharityWidget: React.FunctionComponent<TheProps> = (props) => {
 	return (
 		<div className="cw-cards">
-			<div className="cw-header">
+			<div className="cw-header desktop">
 				<h1>{props.title}</h1>
 			</div>
 			<div className="cw-content">
 				<div className="card" style={{ background: props.style?.text, color: props.style?.text, maxWidth: 600 }}>
-					<div className="panel" style={{ borderColor: props.style?.text }}>
+					<div className="panel title text big mobile">{props.title}</div>
+					<div className="panel desktop" style={{ borderColor: props.style?.text }}>
 						<h2 className="text big">About</h2>
 						<span className="text body" style={{ whiteSpace: "pre-wrap" }}>{props.description}</span>
 						{/* <a href={props.donateURL}><button style={{ whiteSpace: "pre" }}><p>Donate Now  →</p><FontAwesomeIcon icon={faArrowRight} /></button></a> */}
@@ -49,7 +50,7 @@ export const CharityWidget: React.FunctionComponent<TheProps> = (props) => {
 								<h1>£{props.raised.net}</h1>
 								<h3>Raised</h3>
 							</div>
-							<div className="raised-text">
+							<div className="raised-text desktop">
 								<h1>{props.raised.ticketQuantity}</h1>
 								<h3>Sold</h3>
 							</div>
@@ -58,7 +59,7 @@ export const CharityWidget: React.FunctionComponent<TheProps> = (props) => {
 					<a className="panel cta" style={{ background: props.style?.accent }} href={props.donateURL}>
 						<span className="text big">Donate Now  →</span>
 					</a>
-					<div className="panel light cw-charity-link" style={{ display: "block" }}>
+					<div className="panel desktop cw-charity-link" style={{ display: "block" }}>
 						<p className="text body centred">Supporting {props.charity.name} - <a target="__blank" href={props.charity.url}>more info »</a></p>
 					</div>
 				</div>
