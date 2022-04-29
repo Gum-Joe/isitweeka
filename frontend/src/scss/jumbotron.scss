@@ -178,7 +178,7 @@ $grid-gap: 20px;
 	.cw-cards {
 		// Removed margin - Maddie
 		// margin-top: 180px;
-		width: 60%;
+		// width: 60%;
 		@include tablet {
 			width: 100%;
 			//margin: auto;
@@ -191,7 +191,7 @@ $grid-gap: 20px;
 
 		.cw-content {
 			display: flex;
-			justify-content: right;
+			justify-content: center;
 			//margin-left: -1px;
 			> div {
 				width: 600px;
