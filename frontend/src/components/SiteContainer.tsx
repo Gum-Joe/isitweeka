@@ -96,9 +96,9 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				alertLevel: ThreatLevels.LOW,
 			},
 			raised: {
-				net: "0.60",
-				ticketQuantity: 1,
-				target: 1,
+				net: "176.77",
+				ticketQuantity: 156,
+				target: 200,
 			},
 		};
 	}
@@ -307,13 +307,13 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						candidateTwo={{ colour: "#1D77BC", name: "Ayan Butt", photoUrl: "/sc/Ayan.png", votes: 13 }}
 						summary="Ayan Wins" />
 					} */}
-					<CharityWidget raised={this.state.raised} title={"Beat the Beats"} description={"Get ready for Camp Hill's first ever beat competition, with home made beats straight from the most talented of the Camp Hill body!"} donateURL={"https://www.eventbrite.co.uk/e/charity-committees-beat-the-beats-tickets-328230465157"} charity={{
+					<CharityWidget raised={this.state.raised} title={"Beat the Beats"} description={"KECH Charity Committee presents the very first Camp Hill Boys Beat the Beats.\n\nOn this momentous day, take to the hall and experience the brain defying beat drops, the enticing tempo and the crowd going crazy at each note.\n\nIt's the first ever event like it and you especially won't want to miss as we crown someone Camp Hill's Official Best Producer."} donateURL={"https://www.eventbrite.co.uk/e/charity-committees-beat-the-beats-tickets-328230465157"} charity={{
 						name: "Beat",
 						url: "https://www.beateatingdisorders.org.uk/about-beat/"
 					}} style={{
 						background: "#000",
 						text: "#FFF",
-						ringColour: "#F00",
+						ringColour: "#D00",
 					}} />
 				</div>
 				{ /* <Banner /> */ }

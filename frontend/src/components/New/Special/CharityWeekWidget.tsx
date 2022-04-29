@@ -4,6 +4,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { CW_TARGET } from "../../../utils/constants";
+import Button from "../Button";
 
 interface TheProps {
 	title: string;
@@ -32,15 +33,19 @@ export const CharityWidget: React.FunctionComponent<TheProps> = (props) => {
 				<h1>{props.title}</h1>
 			</div>
 			<div className="cw-content">
-				<div style={{ background: props.style?.background, color: props.style?.text }}>
-					<div className="cw-buy">
-						<h2>About</h2>
-						<h4>{props.description}</h4>
-						<a href={props.donateURL}><button style={{ whiteSpace: "pre" }}><p>Donate Now  →</p>{/* <FontAwesomeIcon icon={faArrowRight} /> */}</button></a>
+				<div className="card" style={{ background: props.style?.text, color: props.style?.text, maxWidth: 600 }}>
+					<div className="panel" style={{ borderColor: props.style?.text }}>
+						<h2 className="text big">About</h2>
+						<span className="text body" style={{ whiteSpace: "pre-wrap" }}>{props.description}</span>
+						{/* <a href={props.donateURL}><button style={{ whiteSpace: "pre" }}><p>Donate Now  →</p><FontAwesomeIcon icon={faArrowRight} /></button></a> */}
+						{/* <a style={{ color: "inherit" }} href={props.donateURL}><Button>Donate Now  →</Button></a> */}
 						{/*<a className="cw-delayed" href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite" aria-disabled><button aria-disabled disabled><p>ticket sales delayed</p></button></a>*/}
 					</div>
-					<div className="cw-raised">
-						<h2>Ticket Stats</h2>
+					<a className="panel cta" style={{ background: props.style?.ringColour }} href={props.donateURL}>
+						<span className="text big">Donate Now  →</span>
+					</a>
+					<div className="cw-raised panel">
+						<h2 className="text big">Ticket Stats</h2>
 						<div className="raised-content">
 							<div className="ring-cont"><CircularProgressbar styles={{ path: { stroke: props.style?.ringColour } }} strokeWidth={10} value={parseFloat(props.raised.net) / props.raised.target * 100} text={(parseFloat(props.raised.net) / props.raised.target * 100).toFixed(0) + "%"} /></div>
 							<div className="raised-text">
@@ -51,11 +56,9 @@ export const CharityWidget: React.FunctionComponent<TheProps> = (props) => {
 								<h1>{props.raised.ticketQuantity}</h1>
 								<h3>Sold</h3>
 							</div>
-
 						</div>
-
 					</div>
-					<div className="cw-charity-link">
+					<div className="panel cw-charity-link" style={{ display: "block" }}>
 						<p>Supporting {props.charity.name} -</p>
 						<a target="__blank" href={props.charity.url}>more info »</a>
 					</div>
