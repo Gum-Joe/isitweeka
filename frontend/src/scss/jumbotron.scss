@@ -290,6 +290,8 @@ $grid-gap: 20px;
 
 				@include tablet {
 					padding: 0;
+					// justify-content: space-between;
+					justify-content: center;
 				}
 
 				h1 {
@@ -340,7 +342,7 @@ $grid-gap: 20px;
 				// padding-left: 20px;
 				padding-bottom: 20px;
 				
-				@include mobile {
+				@include tablet {
 					padding-top: 20px;
 				}
 			}
