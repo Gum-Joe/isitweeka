@@ -58,15 +58,18 @@ h1, h2, h3, h4, h5, h6, p, span {
 	min-height: 100vh;
 	/* Prevent overlap with mail list. Readded on mobile to prevent thing looking weird (left commented out here) */
 	/*height: 100vh;*/
+	// Fill container element width (and not over)
+	width: 100%;
 
+	
 	// Setup flex displaying
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-
+	
 	// Indent
-	margin-left: var(--horizontal-indent);
-	margin-right: var(--horizontal-indent);
+	box-sizing: border-box;
+	padding: 0 var(--horizontal-indent);
 }
 
 /* HACK */
