@@ -249,7 +249,7 @@ export const KECHBEvents: EventData = {
 		},
 		{
 			eventType: EventTypes.HOUSE,
-			title: "Summer Soiree @ CHB",
+			title: "Summer Soirée @ CHB",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
 			dateTime: "Tuesday 14th June 2022",
 			state: "todo",
