@@ -14,7 +14,7 @@ import { IsItWeekAReturn } from "libisitweeka";
 import "react-circular-progressbar/dist/styles.css";
 import EventsGrid from "./New/EventsGrid";
 import { StudentCouncilElectionTracker } from "./New/Special/StudentCouncilElectionTracker";
-import { CharityWidget } from "./New/Special/CharityWidget";
+import { CharityProps, CharityWidget } from "./New/Special/CharityWidget";
 
 /**
  * Props to provide to the site
@@ -62,7 +62,8 @@ interface TheState {
 		net: string,
 		ticketQuantity: number,
 		target: number;
-	}
+	};
+	charityData: CharityProps;
 }
 
 /**
@@ -100,6 +101,25 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				ticketQuantity: 156,
 				target: 200,
 			},
+			charityData: {
+				title: "Beat the Beats",
+				description: "KECH Charity Committee presents the very first Camp Hill Boys Beat the Beats.\n\nOn this momentous day, take to the hall and experience the brain defying beat drops, the enticing tempo and the crowd going crazy at each note.\n\nIt's the first ever event like it and you especially won't want to miss as we crown someone Camp Hill's Official Best Producer.",
+				donateURL: "https://www.eventbrite.co.uk/e/charity-committees-beat-the-beats-tickets-328230465157",
+				charity: {
+					name: "Macmillan",
+					url: "https://www.macmillan.org.uk/about-us/"
+				},
+				raised: {
+					net: "176.77",
+					ticketQuantity: 156,
+					target: 200,
+				},
+				style: {
+					background: "#000",
+					text: "var(--text-default)",
+					accent: "#D00",
+				},
+			}
 		};
 	}
 
@@ -307,14 +327,9 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						candidateTwo={{ colour: "#1D77BC", name: "Ayan Butt", photoUrl: "/sc/Ayan.png", votes: 13 }}
 						summary="Ayan Wins" />
 					} */}
-					<CharityWidget raised={this.state.raised} title={"Beat the Beats"} description={"KECH Charity Committee presents the very first Camp Hill Boys Beat the Beats.\n\nOn this momentous day, take to the hall and experience the brain defying beat drops, the enticing tempo and the crowd going crazy at each note.\n\nIt's the first ever event like it and you especially won't want to miss as we crown someone Camp Hill's Official Best Producer."} donateURL={"https://www.eventbrite.co.uk/e/charity-committees-beat-the-beats-tickets-328230465157"} charity={{
-						name: "Macmillan",
-						url: "https://www.macmillan.org.uk/about-us/"
-					}} style={{
-						background: "#000",
-						text: "var(--text-default)",
-						accent: "#D00",
-					}} />
+					<div className="desktop">
+						<CharityWidget {...this.state.charityData} />
+					</div>
 				</div>
 				{ /* <Banner /> */ }
 				{ /* Pulled offline due to jankiness. Readd once a better solution with proper mobile styles and dedicated place is found:
@@ -333,9 +348,9 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	<div className="cw-widget">
 		<h2>Charity Week</h2>
 		<div className="raised-content">
-			<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={parseFloat(this.state.raised.net) / CW_TARGET * 100} text={(parseFloat(this.state.raised.net) / CW_TARGET * 100).toFixed(0) + "%"} /></div>
+			<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={parseFloat(this.state.charityData.raised.net) / CW_TARGET * 100} text={(parseFloat(this.state.charityData.raised.net) / CW_TARGET * 100).toFixed(0) + "%"} /></div>
 			<div className="raised-text">
-				<h1>£{this.state.raised.net}</h1>
+				<h1>£{this.state.charityData.raised.net}</h1>
 				<h3>raised</h3>
 			</div>
 		</div>
