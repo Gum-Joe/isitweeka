@@ -6,7 +6,7 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import { CW_TARGET } from "../../../utils/constants";
 import Button from "../Button";
 
-interface TheProps {
+export interface CharityProps {
 	title: string;
 	description: string;
 	donateURL: string;
@@ -26,7 +26,7 @@ interface TheProps {
 	};
 }
 
-export const CharityWidget: React.FunctionComponent<TheProps> = (props) => {
+export const CharityWidget: React.FunctionComponent<CharityProps> = (props) => {
 	return (
 		<div className="cw-cards">
 			<div className="cw-header desktop">
@@ -70,7 +70,7 @@ export const CharityWidget: React.FunctionComponent<TheProps> = (props) => {
 	);
 };
 
-export const CHARITY_WEEK_DATA_ARCHIVE: TheProps = {
+export const CHARITY_WEEK_DATA_ARCHIVE: CharityProps = {
 	title: "Charity Week",
 	description: "Camp Hill's return to charity events, with Who Wants to Be a Millionaire?, THE GRAND DEBATE, a Mario Kart tournament, Camp Hill&apos;s Got Talent and Would I Lie To You: Students vs Teachers! Donations close 7pm Tuesday - all money goes to Beat UK!",
 	donateURL: "https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite",
