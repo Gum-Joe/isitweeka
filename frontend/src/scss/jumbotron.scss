@@ -339,6 +339,10 @@ $grid-gap: 20px;
 				margin: 5px 0;
 				// padding-left: 20px;
 				padding-bottom: 20px;
+				
+				@include mobile {
+					padding-top: 20px;
+				}
 			}
 
 			.CircularProgressbar-trail {
