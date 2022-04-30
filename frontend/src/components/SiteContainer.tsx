@@ -291,6 +291,9 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h3 className="text body">This means it&#39;s probably a holiday.</h3> 
 					<h5 id="neitherAB-contact" className="text">If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
 					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>Events & News  →</div></Button>
+					<div className="mobile">
+						<CharityWidget {...this.state.charityData} />
+					</div>
 					<Socials />
 				</>
 			);
@@ -305,6 +308,9 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be week" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="mobile">{this.state.week}</h1>
 					<Button style={{ marginRight: "auto", marginTop: 0 }} className="forward" id="event-scroll-button" onClick={getScrollDownWithAdditional(0)}>Events & News  →</Button>
+					<div className="mobile">
+						<CharityWidget {...this.state.charityData} />
+					</div>
 					<Socials />
 				</>
 			);
