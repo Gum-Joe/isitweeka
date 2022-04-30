@@ -46,11 +46,11 @@ export const CharityWidget: React.FunctionComponent<CharityProps> = (props) => {
 						<h2 className="text big">Ticket Stats</h2>
 						<div className="raised-content">
 							<div className="ring-cont"><CircularProgressbar styles={{ path: { stroke: props.style?.accent } }} strokeWidth={10} value={parseFloat(props.raised.net) / props.raised.target * 100} text={(parseFloat(props.raised.net) / props.raised.target * 100).toFixed(0) + "%"} /></div>
-							<div className="raised-text">
+							<div className="raised-text desktop">
 								<h1>£{props.raised.net}</h1>
 								<h3>Raised</h3>
 							</div>
-							<div className="raised-text desktop">
+							<div className="raised-text">
 								<h1>{props.raised.ticketQuantity}</h1>
 								<h3>Sold</h3>
 							</div>
