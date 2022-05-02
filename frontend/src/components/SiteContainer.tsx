@@ -110,8 +110,8 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					url: "https://www.macmillan.org.uk/about-us/"
 				},
 				raised: {
-					net: "176.77",
-					ticketQuantity: 156,
+					net: "0",
+					ticketQuantity: 0,
 					target: 200,
 				},
 				style: {
@@ -129,12 +129,15 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			this.fetchEvents();
 			this.fetchNotifications();
 			// NOTE: REENABLE!
-			//this.getAmountRaised();
+			this.getAmountRaised();
 		} catch (err: any) {
 			console.error("Error: " + err?.message);
 		}
 	}
 
+	/**
+	 * Retreive the amount raised for the Charity Card
+	 */
 	async getAmountRaised() {
 		const res = await fetch(IIWA_CW_URL);
 		const raised = await res.json();
@@ -145,7 +148,15 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		if (raised.net.split(".")[0].length > 3) {
 			raised.net = raised.net.split(".")[0];
 		}
+		console.log(raised);
 		this.setState({
+			charityData: {
+				...this.state.charityData,
+				raised: {
+					...this.state.charityData.raised,
+					...raised,
+				},
+			},
 			raised: raised,
 		});
 	}
