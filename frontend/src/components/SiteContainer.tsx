@@ -14,7 +14,7 @@ import { IsItWeekAReturn } from "libisitweeka";
 import "react-circular-progressbar/dist/styles.css";
 import EventsGrid from "./New/EventsGrid";
 import { StudentCouncilElectionTracker } from "./New/Special/StudentCouncilElectionTracker";
-import { CharityWeekWidget } from "./New/Special/CharityWeekWidget";
+import { CharityProps, CharityWidget } from "./New/Special/CharityWidget";
 
 /**
  * Props to provide to the site
@@ -61,7 +61,9 @@ interface TheState {
 	raised: {
 		net: string,
 		ticketQuantity: number,
-	}
+		target: number;
+	};
+	charityData: CharityProps;
 }
 
 /**
@@ -95,9 +97,29 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				alertLevel: ThreatLevels.LOW,
 			},
 			raised: {
-				net: "0.00",
-				ticketQuantity: 0,
+				net: "176.77",
+				ticketQuantity: 156,
+				target: 200,
 			},
+			charityData: {
+				title: "Beat the Beats",
+				description: "KECH Charity Committee presents the very first Camp Hill Boys Beat the Beats.\n\nOn this momentous day, take to the hall and experience the brain defying beat drops, the enticing tempo and the crowd going crazy at each note.\n\nIt's the first ever event like it and you especially won't want to miss as we crown someone Camp Hill's Official Best Producer.",
+				donateURL: "https://www.eventbrite.co.uk/e/charity-committees-beat-the-beats-tickets-328230465157?aff=isitweekasite",
+				charity: {
+					name: "Macmillan",
+					url: "https://www.macmillan.org.uk/about-us/"
+				},
+				raised: {
+					net: "0",
+					ticketQuantity: 0,
+					target: 200,
+				},
+				style: {
+					background: "#000",
+					text: "var(--text-default)",
+					accent: "#D00",
+				},
+			}
 		};
 	}
 
@@ -107,12 +129,15 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			this.fetchEvents();
 			this.fetchNotifications();
 			// NOTE: REENABLE!
-			//this.getAmountRaised();
+			this.getAmountRaised();
 		} catch (err: any) {
 			console.error("Error: " + err?.message);
 		}
 	}
 
+	/**
+	 * Retreive the amount raised for the Charity Card
+	 */
 	async getAmountRaised() {
 		const res = await fetch(IIWA_CW_URL);
 		const raised = await res.json();
@@ -123,7 +148,15 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		if (raised.net.split(".")[0].length > 3) {
 			raised.net = raised.net.split(".")[0];
 		}
+		console.log(raised);
 		this.setState({
+			charityData: {
+				...this.state.charityData,
+				raised: {
+					...this.state.charityData.raised,
+					...raised,
+				},
+			},
 			raised: raised,
 		});
 	}
@@ -269,6 +302,9 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h3 className="text body">This means it&#39;s probably a holiday.</h3> 
 					<h5 id="neitherAB-contact" className="text">If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
 					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>Events & News  →</div></Button>
+					<div className="mobile">
+						<CharityWidget {...this.state.charityData} />
+					</div>
 					<Socials />
 				</>
 			);
@@ -283,6 +319,9 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be week" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="mobile">{this.state.week}</h1>
 					<Button style={{ marginRight: "auto", marginTop: 0 }} className="forward" id="event-scroll-button" onClick={getScrollDownWithAdditional(0)}>Events & News  →</Button>
+					<div className="mobile">
+						<CharityWidget {...this.state.charityData} />
+					</div>
 					<Socials />
 				</>
 			);
@@ -299,13 +338,15 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 							this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
 						}
 					</div>
-					{ this.props.showCard && <StudentCouncilElectionTracker
+					{/* { this.props.showCard && <StudentCouncilElectionTracker
 						total={25}
 						candidateOne={{ colour: "#EB2A1C", name: "Dirujan Senthilvasan", photoUrl: "/sc/Dirujan.png", votes: 11 }}
 						candidateTwo={{ colour: "#1D77BC", name: "Ayan Butt", photoUrl: "/sc/Ayan.png", votes: 13 }}
 						summary="Ayan Wins" />
-					}
-					{/* <CharityWeekWidget raised={this.state.raised} /> */}
+					} */}
+					<div className="desktop">
+						<CharityWidget {...this.state.charityData} />
+					</div>
 				</div>
 				{ /* <Banner /> */ }
 				{ /* Pulled offline due to jankiness. Readd once a better solution with proper mobile styles and dedicated place is found:
@@ -324,9 +365,9 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	<div className="cw-widget">
 		<h2>Charity Week</h2>
 		<div className="raised-content">
-			<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={parseFloat(this.state.raised.net) / CW_TARGET * 100} text={(parseFloat(this.state.raised.net) / CW_TARGET * 100).toFixed(0) + "%"} /></div>
+			<div className="ring-cont"><CircularProgressbar strokeWidth={10} value={parseFloat(this.state.charityData.raised.net) / CW_TARGET * 100} text={(parseFloat(this.state.charityData.raised.net) / CW_TARGET * 100).toFixed(0) + "%"} /></div>
 			<div className="raised-text">
-				<h1>£{this.state.raised.net}</h1>
+				<h1>£{this.state.charityData.raised.net}</h1>
 				<h3>raised</h3>
 			</div>
 		</div>

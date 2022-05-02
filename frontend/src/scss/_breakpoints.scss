@@ -8,13 +8,13 @@
 ///  * BREAKPOINTS: (each level defines the number UNDER which styles should occur
 ///  * - Desktop: >1700px
 ///  * - Laptop: <= 1700px (laptops tend to have narrower screens, which can squish things)
-///  * - Tablet: <= 1050px
+///  * - Tablet: <= 1152px
 ///  * - Phablet: 700px
 ///  * - Mobile: 500px (to account for narrower phones)
 ///  */
 $desktop: 1700px;
-$laptop: 1700px;
-$tablet: 1050px; /* NOTE: If 1050px is changes, make sure to change it in TSX! (const SHOW_MOBILE_AT_WIDTH in MailingListBanner.tsx */
+$laptop: $desktop; // 1700px
+$tablet: 1152px; /* NOTE: If 1152px is changes, make sure to change it in TSX! (const SHOW_MOBILE_AT_WIDTH in MailingListBanner.tsx */
 $phablet: 700px;
 $mobile: 500px;
 
