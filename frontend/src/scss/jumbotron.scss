@@ -160,6 +160,7 @@ $grid-gap: 20px;
 	@include tablet {
 		flex-direction: column;
 		// margin-left: var(--horizontal-indent);
+		padding: 10vh var(--horizontal-indent);
 	}
 
 	.isitweeka {
