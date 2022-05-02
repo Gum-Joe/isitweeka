@@ -33,9 +33,9 @@ export const CharityWidget: React.FunctionComponent<CharityProps> = (props) => {
 				<h1>{props.title}</h1>
 			</div>
 			<div className="cw-content">
-				<div className="card" style={{ background: props.style?.text, color: props.style?.text, maxWidth: 600 }}>
+				<div className="card cw-card" style={{ background: props.style?.text, color: props.style?.text, maxWidth: "min(600px, 50vw)" }}>
 					<div className="panel title text big mobile">{props.title}</div>
-					<div className="panel desktop" style={{ borderColor: props.style?.text }}>
+					<div className="panel hide-tablet" style={{ borderColor: props.style?.text }}>
 						<h2 className="text big">About</h2>
 						<span className="text body" style={{ whiteSpace: "pre-wrap" }}>{props.description}</span>
 						{/* <a href={props.donateURL}><button style={{ whiteSpace: "pre" }}><p>Donate Now  →</p><FontAwesomeIcon icon={faArrowRight} /></button></a> */}
