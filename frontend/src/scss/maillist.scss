@@ -251,7 +251,7 @@
 /* Responsive design switches */
 /** For mailing list, past (i.e. below?) 1000px it ceases to looking good */
 /* These switches let us show the right one at certain screen sizes */
-@include tablet { /* NOTE: If 1050px is changes, make sure to change it in TSX! (const SHOW_MOBILE_AT_WIDTH in MailingListBanner.tsx */
+@include phablet { /* NOTE: If 1050px is changes, make sure to change it in TSX! (const SHOW_MOBILE_AT_WIDTH in MailingListBanner.tsx */
 	// Hide desktop version below tablet size
 	.sosumi-desktop {
 		display: none !important;
