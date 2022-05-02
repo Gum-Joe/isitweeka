@@ -157,7 +157,7 @@ $grid-gap: 20px;
 	padding-left: var(--horizontal-indent);
 	padding-right: var(--horizontal-indent);
 
-	@include tablet {
+	@include phablet {
 		flex-direction: column;
 		// margin-left: var(--horizontal-indent);
 		padding: 10vh var(--horizontal-indent);
@@ -181,7 +181,7 @@ $grid-gap: 20px;
 		// Removed margin - Maddie
 		// margin-top: 180px;
 		// width: 60%;
-		@include tablet {
+		@include phablet {
 			width: 100%;
 			//margin: auto;
 		}
@@ -198,7 +198,7 @@ $grid-gap: 20px;
 			> div {
 				width: 600px;
 				// border: solid 4px;
-				@include tablet {
+				@include phablet {
 					width: 100%;
 					box-sizing: border-box;
 				}
@@ -210,7 +210,7 @@ $grid-gap: 20px;
 		// 	// font-weight: 700;
 		// 	// font-style: normal;
 		// 	// font-size: 1.5em;
-		// 	@include tablet {
+		// 	@include phablet {
 		// 		font-size: 1.2em;
 		// 	}
 		// }
@@ -221,7 +221,7 @@ $grid-gap: 20px;
 			margin-top: 0;
 			margin-bottom: 10px;
 			font-size: 3.5em;
-			@include tablet {
+			@include phablet {
 				font-size: 3em;
 			}
 		}
@@ -233,7 +233,7 @@ $grid-gap: 20px;
 		h4 {
 			margin-top: 0;
 			font-size: 20px;
-			@include tablet {
+			@include phablet {
 				font-size: 18px;
 			}
 		}
@@ -246,7 +246,7 @@ $grid-gap: 20px;
 
 		.cw-header {
 			padding-right: 20px;
-			@include tablet {
+			@include phablet {
 				padding-right: 0;
 				h1 {
 					text-align: center;
@@ -289,7 +289,7 @@ $grid-gap: 20px;
 				// justify-content: center;
 				align-items: center;
 
-				@include tablet {
+				@include phablet {
 					padding: 0;
 					// justify-content: space-between;
 					justify-content: center;
@@ -302,7 +302,7 @@ $grid-gap: 20px;
 					//transform: scaleX(0.9);
 					line-height: 70px;
 
-					@include tablet {
+					@include phablet {
 						font-size: 3.5em;
 					}
 				}
@@ -343,7 +343,7 @@ $grid-gap: 20px;
 				// padding-left: 20px;
 				padding-bottom: 20px;
 				
-				@include tablet {
+				@include phablet {
 					padding-top: 20px;
 				}
 			}
