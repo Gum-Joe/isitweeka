@@ -89,6 +89,24 @@ h1, h2, h3, h4, h5, h6, p, span {
 	}
 }
 
+.hide-mobile {
+	@include mobile {
+		display: none!important;
+	}
+}
+
+.hide-tablet {
+	@include tablet {
+		display: none!important;
+	}
+}
+
+.hide-desktop {
+	@include desktop {
+		display: none!important;
+	}
+}
+
 .desktop {
 	display: inherit !important;
 	@include phablet {
