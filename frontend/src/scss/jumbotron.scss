@@ -21,35 +21,6 @@ a.cw-delayed, a.cw-delayed button {
 
 $grid-gap: 20px;
 
-@include tablet {
-	.cw-widget {
-		display: flex !important;
-		flex-direction: column;
-	}
-
-	.cw-cards {
-		margin-top: 0 !important;
-	}
-
-	// CW stuff
-	.isitweeka {
-		h2.mobile {
-			font-size: 2em;
-		}
-		h1.mobile {
-			font-size: 5em;
-		}
-
-		#event-scroll-button {
-			display: none;
-		}
-
-		.social-container {
-			margin-top: -20px;
-		}
-	}
-}
-
 .cw-widget {
 	display: none;
 	padding: 20px;
@@ -433,6 +404,38 @@ $grid-gap: 20px;
 	.isitweeka-jumbotron .social-container {
 		justify-content: center !important;
 		transform: scale(0.8) translate(0, 60px) !important;
+	}
+}@include phablet {
+	.cw-widget {
+		display: flex !important;
+		flex-direction: column;
+	}
+
+	.cw-cards {
+		margin-top: 0 !important;
+	}
+
+	.cw-card {
+		max-width: initial!important;
+	}
+
+	// CW stuff
+	.isitweeka {
+		h2.mobile {
+			font-size: 2em;
+		}
+
+		h1.mobile {
+			font-size: 5em;
+		}
+
+		#event-scroll-button {
+			display: none;
+		}
+
+		.social-container {
+			margin-top: -20px;
+		}
 	}
 }
 
