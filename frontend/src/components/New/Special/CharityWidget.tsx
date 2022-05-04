@@ -46,11 +46,11 @@ export const CharityWidget: React.FunctionComponent<CharityProps> = (props) => {
 						<h2 className="text big desktop">Ticket Stats</h2>
 						<div className="raised-content">
 							<div className="ring-cont"><CircularProgressbar styles={{ path: { stroke: props.style?.accent } }} strokeWidth={10} value={parseFloat(props.raised.net) / props.raised.target * 100} text={(parseFloat(props.raised.net) / props.raised.target * 100).toFixed(0) + "%"} /></div>
-							<div className="raised-text desktop">
+							<div className="raised-text">
 								<h1>£{props.raised.net}</h1>
 								<h3>Raised</h3>
 							</div>
-							<div className="raised-text">
+							<div className="raised-text hide-mobile">
 								<h1>{props.raised.ticketQuantity}</h1>
 								<h3>Sold</h3>
 							</div>
@@ -59,7 +59,7 @@ export const CharityWidget: React.FunctionComponent<CharityProps> = (props) => {
 					<a className="panel cta" style={{ background: props.style?.accent }} href={props.donateURL}>
 						<span className="text big">Donate Now  →</span>
 					</a>
-					<div className="panel desktop cw-charity-link" style={{ display: "block" }}>
+					<div className="panel hide-tablet cw-charity-link" style={{ display: "block" }}>
 						<p className="text body centred">Supporting {props.charity.name} - <a target="__blank" href={props.charity.url}>more info »</a></p>
 					</div>
 				</div>
