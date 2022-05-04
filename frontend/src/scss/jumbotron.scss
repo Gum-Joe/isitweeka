@@ -167,7 +167,7 @@ $grid-gap: 20px;
 			justify-content: center;
 			//margin-left: -1px;
 			> div {
-				width: 600px;
+				width: min-content;
 				// border: solid 4px;
 				@include phablet {
 					width: 100%;
@@ -261,6 +261,7 @@ $grid-gap: 20px;
 				// justify-content: center;
 				align-items: center;
 				gap: 40px;
+				padding-right: 20px;
 
 				@include phablet {
 					padding: 0;
