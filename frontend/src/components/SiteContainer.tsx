@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import EventsList, { EventData } from "./EventsList";
 import Button from "./New/Button";
-import { CW_TARGET, FAKE_TICKET_TOTAL, GregorianDay, IIWA_CW_URL } from "../utils/constants";
+import { CW_TARGET, FAKE_TICKET_TOTAL, GregorianDay, IIWA_CW_URL, SHOW_CHARITY_CARD } from "../utils/constants";
 import { getScrollDownWithAdditional } from "../utils/scroll";
 import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 import AlertBanner from "./AlterBanner";
@@ -302,9 +302,9 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h3 className="text body">This means it&#39;s probably a holiday.</h3> 
 					<h5 id="neitherAB-contact" className="text">If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
 					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>Events & News  →</div></Button>
-					<div className="mobile">
+					{SHOW_CHARITY_CARD ? <div className="mobile">
 						<CharityWidget {...this.state.charityData} />
-					</div>
+					</div> : null}
 					<Socials />
 				</>
 			);
@@ -319,9 +319,9 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be week" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="mobile">{this.state.week}</h1>
 					<Button style={{ marginRight: "auto", marginTop: 0 }} className="forward" id="event-scroll-button" onClick={getScrollDownWithAdditional(0)}>Events & News  →</Button>
-					<div className="mobile">
+					{SHOW_CHARITY_CARD ? <div className="mobile">
 						<CharityWidget {...this.state.charityData} />
-					</div>
+					</div> : null}
 					<Socials />
 				</>
 			);
@@ -344,9 +344,9 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						candidateTwo={{ colour: "#1D77BC", name: "Ayan Butt", photoUrl: "/sc/Ayan.png", votes: 13 }}
 						summary="Ayan Wins" />
 					} */}
-					<div className="desktop">
+					{SHOW_CHARITY_CARD ? <div className="desktop">
 						<CharityWidget {...this.state.charityData} />
-					</div>
+					</div> : null}
 				</div>
 				{ /* <Banner /> */ }
 				{ /* Pulled offline due to jankiness. Readd once a better solution with proper mobile styles and dedicated place is found:
