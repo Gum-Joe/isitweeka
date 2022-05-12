@@ -14,3 +14,5 @@ export const IIWA_BASE_URL = "https://api.isitweeka.com";
 export const IIWA_KECHB_URL = `${IIWA_BASE_URL}/isitweeka/kechb`;
 export const IIWA_KECHG_URL = `${IIWA_BASE_URL}/isitweeka/kechg`;
 export const IIWA_CW_URL = `${IIWA_BASE_URL}/eventbrite/cw`;
+
+export const SHOW_CHARITY_CARD = false;
