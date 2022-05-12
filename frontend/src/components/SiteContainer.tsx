@@ -64,6 +64,7 @@ interface TheState {
 		target: number;
 	};
 	charityData: CharityProps;
+	showCharityCard: boolean;
 }
 
 /**
@@ -119,7 +120,8 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					text: "var(--text-default)",
 					accent: "#D00",
 				},
-			}
+			},
+			showCharityCard: SHOW_CHARITY_CARD,
 		};
 	}
 
@@ -139,26 +141,47 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	 * Retreive the amount raised for the Charity Card
 	 */
 	async getAmountRaised() {
-		const res = await fetch(IIWA_CW_URL);
-		const raised = await res.json();
-		if (raised.net.split(".")[1].length === 1) {
-			raised.net = raised.net + "0";
-		}
-
-		if (raised.net.split(".")[0].length > 3) {
-			raised.net = raised.net.split(".")[0];
-		}
-		console.log(raised);
-		this.setState({
-			charityData: {
-				...this.state.charityData,
-				raised: {
-					...this.state.charityData.raised,
-					...raised,
+		try {
+			const res = await fetch(IIWA_CW_URL);
+			const raised = await res.json();
+			if (raised.net.split(".")[1].length === 1) {
+				raised.net = raised.net + "0";
+			}
+	
+			if (raised.net.split(".")[0].length > 3) {
+				raised.net = raised.net.split(".")[0];
+			}
+			console.log(raised);
+			this.setState((prevState) => ({
+				...prevState,
+				charityData: {
+					...prevState.charityData,
+					raised: {
+						...prevState.charityData.raised,
+						...raised,
+					},
 				},
-			},
-			raised: raised,
-		});
+				raised: raised,
+			}));
+		} catch (e) {
+			const raised = {
+				net: "0.00",
+				ticketQuantity: 0,
+				target: 1,
+			}
+			this.setState((prevState) => ({
+				...prevState,
+				charityData: {
+					...prevState.charityData,
+					raised: {
+						...prevState.charityData.raised,
+						...raised,
+					},
+				},
+				raised: raised,
+				showCharityCard: false,
+			}));
+		}
 	}
 
 	/** Fetches any alerts that need to be diplayed */
@@ -302,7 +325,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h3 className="text body">This means it&#39;s probably a holiday.</h3> 
 					<h5 id="neitherAB-contact" className="text">If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
 					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>Events & News  →</div></Button>
-					{SHOW_CHARITY_CARD ? <div className="mobile">
+					{this.state.showCharityCard ? <div className="mobile">
 						<CharityWidget {...this.state.charityData} />
 					</div> : null}
 					<Socials />
@@ -319,7 +342,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be week" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="mobile">{this.state.week}</h1>
 					<Button style={{ marginRight: "auto", marginTop: 0 }} className="forward" id="event-scroll-button" onClick={getScrollDownWithAdditional(0)}>Events & News  →</Button>
-					{SHOW_CHARITY_CARD ? <div className="mobile">
+					{this.state.showCharityCard ? <div className="mobile">
 						<CharityWidget {...this.state.charityData} />
 					</div> : null}
 					<Socials />
@@ -344,7 +367,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						candidateTwo={{ colour: "#1D77BC", name: "Ayan Butt", photoUrl: "/sc/Ayan.png", votes: 13 }}
 						summary="Ayan Wins" />
 					} */}
-					{SHOW_CHARITY_CARD ? <div className="desktop">
+					{this.state.showCharityCard ? <div className="desktop">
 						<CharityWidget {...this.state.charityData} />
 					</div> : null}
 				</div>
