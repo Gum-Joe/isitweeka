@@ -127,6 +127,7 @@ $grid-gap: 20px;
 	padding: 0;
 	padding-left: var(--horizontal-indent);
 	padding-right: var(--horizontal-indent);
+	min-height: 100vh;
 
 	@include phablet {
 		flex-direction: column;
@@ -407,7 +408,6 @@ $grid-gap: 20px;
 	.isitweeka-jumbotron {
 		/*padding-top: 80px;*/
 		box-sizing: border-box;
-		min-height: 100vh;
 	}
 }
 
