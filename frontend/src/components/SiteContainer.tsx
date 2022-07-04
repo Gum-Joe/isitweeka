@@ -286,7 +286,13 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		// Use the new API
 		
 		try {
-			const apiRes = await fetch(this.props.iiwaURL);
+			// Controller timeout from https://thewebdev.info/2022/04/21/how-to-set-request-timeout-with-fetch-api/
+			// TODO: REMOVE WHEN API FUNCTIONAL!
+			throw new Error("API non-functional!");
+			const controller = new AbortController();
+			const timeoutId = setTimeout(() => controller.abort(), 500);
+			const apiRes = await fetch(this.props.iiwaURL,  { signal: controller.signal });
+			clearTimeout(timeoutId);
 			const apiResJSON: IsItWeekAReturn = await apiRes.json();
 			if (!apiResJSON.week || !("isWeekend" in apiResJSON)) {
 				throw new Error("One or both of week or isWeekend not in response");
