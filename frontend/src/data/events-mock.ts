@@ -177,6 +177,21 @@ export const KECHBEvents: EventData = {
 			backgroundColor: HOUSE_EVENT_PENDING_BG,
 		},*/
 		{
+			title: "Walk to Ukraine",
+			description: "The Walk to Ukraine - check emails for more info",
+			url: "https://www.justgiving.com/fundraising/chb-charity-committee?utm_medium=qrcode&utm_source=offline&utm_term=d00419302",
+			cta: {
+				type: "fill",
+				text: "Donate Now",
+				backgroundColor: "#f3cb1d",
+				color: "#1277bb"
+			},
+			when: "Tuesday 5th July",
+			headerURL: "/events/WILTY_Logo.png",
+			backgroundColor: "#1277bb",
+			eventType: EventTypes.CHARITY,
+		},
+		{
 			eventType: EventTypes.HOUSE,
 			title: "St David's Rock Climbing",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
