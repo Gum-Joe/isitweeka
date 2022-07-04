@@ -12,6 +12,7 @@ export const HOUSE_SEYMOUR = "#e8ae56";
 export const HOUSE_HOWARD = "#4286BB";
 export const HOUSE_TUDOR = "#5a9143";
 
+const randomNumber = Math.random();
 export const KECHBEvents: EventData = {
 	generatedAt: "0",
 	events: [
@@ -63,95 +64,7 @@ export const KECHBEvents: EventData = {
 		// 		{ title: "By", value: "Supreme Council" },
 		// 	]
 		// },
-		{
-			eventType: EventTypes.HOUSE,
-			title: "House Table Tennis (all years)",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "4th April - 6th April 2022",
-			state: "todo",
-			//currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
-		{
-			eventType: EventTypes.HOUSE,
-			title: "House Music",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "5th April 2022",
-			state: "todo",
-			//currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
-		{
-			eventType: EventTypes.HOUSE,
-			title: "Intermediate & Senior House Hockey",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "21st & 23rd March 2022",
-			state: "ongoing",
-			currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
-		{
-			eventType: EventTypes.HOUSE,
-			title: "House Chess",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "17th January 2022",
-			state: "todo",
-			currentVictor: "UNKNOWN",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
-		{
-			eventType: EventTypes.HOUSE,
-			title: "House Swimming Gala",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "3rd February 2022",
-			state: "todo",
-			//currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
-		{
-			eventType: EventTypes.HOUSE,
-			title: "House Handball",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "w/c 7th February 2022",
-			state: "done",
-			currentVictor: "Howard",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
-		{
-			eventType: EventTypes.HOUSE,
-			title: "House Volleyball",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "w/c 14th March 2022",
-			state: "done",
-			currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
-		{
-			eventType: EventTypes.HOUSE,
-			title: "Senior 7s House Rugby",
-			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
-			dateTime: "30th March 2022",
-			state: "todo",
-			//currentVictor: "Beaufort",
-			//description: "House Touch Rugby",
-			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
-		{
+		/*{
 			eventType: EventTypes.HOUSE,
 			title: "Y10 Careers Detective",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
@@ -262,7 +175,7 @@ export const KECHBEvents: EventData = {
 			dateTime: "Wednesday 29th June 2022",
 			state: "todo",
 			backgroundColor: HOUSE_EVENT_PENDING_BG,
-		},
+		},*/
 		{
 			eventType: EventTypes.HOUSE,
 			title: "St David's Rock Climbing",
@@ -341,14 +254,121 @@ export const KECHBEvents: EventData = {
 		},
 		{
 			eventType: EventTypes.HOUSE,
+			title: "House Cricket",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "April - May",
+			state: "done",
+			currentVictor: "Seymour",
+			description: "Note: we had to manually calculate the scores for the matches.",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_SEYMOUR,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Tennis (seniors)",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "27th April 2022",
+			state: "done",
+			currentVictor: "Tudor & Howard & Beaufort",
+			backgroundColor: randomNumber < 0.3 ? HOUSE_TUDOR : (randomNumber < 0.6 ? HOUSE_HOWARD : HOUSE_BEAUFORT),
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Table Tennis (all years)",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "4th April - 6th April 2022",
+			state: "done",
+			currentVictor: "Howard",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_HOWARD,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Music",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "5th April 2022",
+			state: "done",
+			currentVictor: "Tudor & Seymour",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: randomNumber > 0.5 ? HOUSE_TUDOR : HOUSE_SEYMOUR,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Intermediate & Senior House Hockey",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "21st & 23rd March 2022",
+			state: "ongoing",
+			currentVictor: "Beaufort",
+			description: "NOTE: We are unsure of Senior results, so this may be wrong.",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_BEAUFORT,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Chess",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "17th January 2022",
+			state: "ongoing",
+			currentVictor: "Reports indicate Howard",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_HOWARD,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Swimming Gala",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "3rd February 2022",
+			state: "done",
+			currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_BEAUFORT,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Handball",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "w/c 7th February 2022",
+			state: "done",
+			currentVictor: "Howard",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_HOWARD,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Volleyball",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "w/c 14th March 2022",
+			state: "done",
+			currentVictor: "Beaufort",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_BEAUFORT,
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "Senior 7s House Rugby",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			dateTime: "30th March 2022",
+			state: "todo",
+			currentVictor: "UNKNOWN",
+			//description: "House Touch Rugby",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+		},
+		{
+			eventType: EventTypes.HOUSE,
 			title: "House Quiz",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
 			dateTime: "Intermediate competition 15th March 2022",
-			state: "ongoing",
-			currentVictor: "Beaufort",
-			description: "Beaufort win House Quiz for the seniors - but will runner-up Seymour speed past them in the lower years?",
+			state: "done",
+			currentVictor: "Seymour",
 			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_BEAUFORT,
+			backgroundColor: HOUSE_SEYMOUR,
 		},
 		{
 			eventType: EventTypes.HOUSE,
@@ -367,7 +387,7 @@ export const KECHBEvents: EventData = {
 		},
 		{
 			eventType: EventTypes.HOUSE,
-			title: "House Cross Country",
+			title: "House Cross-Country",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
 			dateTime: "standards w/c 15th November 2021, final 2nd December",
 			state: "done",
@@ -443,7 +463,7 @@ export const KECHBEvents: EventData = {
 			currentVictor: "Howard",
 			//description: "House Touch Rugby",
 			//backgroundColor: "#752023", // House default, or #5E957C
-			backgroundColor: HOUSE_EVENT_PENDING_BG,
+			backgroundColor: HOUSE_HOWARD,
 		},
 		{
 			eventType: EventTypes.CHARITY,
