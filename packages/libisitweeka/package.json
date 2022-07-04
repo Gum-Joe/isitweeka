@@ -25,7 +25,7 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
-    "cross-fetch": "^3.1.4",
+    "cross-fetch": "^3.1.5",
     "ical": "^0.8.0"
   }
 }
