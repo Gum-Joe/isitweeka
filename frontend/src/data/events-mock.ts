@@ -628,11 +628,114 @@ export const KECHGEvents: EventData = {
 			title: "House Fair",
 			headerURL: "/events/KECHGTMPHouseChampionshipDefault.jpg",
 			dateTime: "1st April 2022",
-			state: "todo",
-			//currentVictor: "Stratford",
+			state: "done",
+			currentVictor: "Priory & Cartland",
 			description: "The House Fair.",
 			linkText: "View event video",
+			cta: {
+				type: "fill",
+				text: "View event video",
+			},
 			url: "https://www.instagram.com/tv/Cb2pjcijFzj",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Dance (Year 7)",
+			headerURL: "/events/KECHGTMPHouseChampionshipDefault.jpg",
+			dateTime: "Spring Term",
+			state: "done",
+			currentVictor: "Warwick",
+			description: "Part of the House Games Championships",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Dance (Year 8)",
+			headerURL: "/events/KECHGTMPHouseChampionshipDefault.jpg",
+			dateTime: "Spring Term",
+			state: "done",
+			currentVictor: "Cartland",
+			description: "Part of the House Games Championships",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Dance (Year 9)",
+			headerURL: "/events/KECHGTMPHouseChampionshipDefault.jpg",
+			dateTime: "Spring Term",
+			state: "done",
+			currentVictor: "Lichfield",
+			description: "Part of the House Games Championships",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Handball (Year 7)",
+			headerURL: "/events/KECHGTMPHouseChampionshipDefault.jpg",
+			dateTime: "Spring Term",
+			state: "done",
+			currentVictor: "Meriden",
+			description: "Part of the House Games Championships",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Handball (Year 8)",
+			headerURL: "/events/KECHGTMPHouseChampionshipDefault.jpg",
+			dateTime: "Spring Term",
+			state: "done",
+			currentVictor: "Meriden",
+			description: "Part of the House Games Championships",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Handball (Year 9)",
+			headerURL: "/events/KECHGTMPHouseChampionshipDefault.jpg",
+			dateTime: "Spring Term",
+			state: "done",
+			currentVictor: "Priory",
+			description: "Part of the House Games Championships",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Netball (Year 7)",
+			headerURL: "/events/KECHGTMPHouseChampionshipDefault.jpg",
+			dateTime: "Spring Term",
+			state: "done",
+			currentVictor: "Cartland",
+			description: "Part of the House Games Championships",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Netball (Year 8)",
+			headerURL: "/events/KECHGTMPHouseChampionshipDefault.jpg",
+			dateTime: "Spring Term",
+			state: "done",
+			currentVictor: "Cartland",
+			description: "Part of the House Games Championships",
+			//backgroundColor: "#752023", // House default, or #5E957C
+			backgroundColor: HOUSE_EVENT_PENDING_BG
+		},
+		{
+			eventType: EventTypes.HOUSE,
+			title: "House Netball (Year 9)",
+			headerURL: "/events/KECHGTMPHouseChampionshipDefault.jpg",
+			dateTime: "Spring Term",
+			state: "done",
+			currentVictor: "Cartland",
+			description: "Part of the House Games Championships",
 			//backgroundColor: "#752023", // House default, or #5E957C
 			backgroundColor: HOUSE_EVENT_PENDING_BG
 		},
@@ -715,6 +818,7 @@ export const KECHGEvents: EventData = {
 			dateTime: "Tuesday 3rd May 2022",
 			state: "todo",
 			backgroundColor: HOUSE_EVENT_PENDING_BG,
+			hidden: true,
 		},
 		{
 			eventType: EventTypes.HOUSE,
@@ -723,6 +827,7 @@ export const KECHGEvents: EventData = {
 			dateTime: "Thursday 9th June 2022",
 			state: "todo",
 			backgroundColor: HOUSE_EVENT_PENDING_BG,
+			hidden: true,
 		},
 		{
 			eventType: EventTypes.HOUSE,
@@ -731,6 +836,7 @@ export const KECHGEvents: EventData = {
 			dateTime: "Tuesday 14th June 2022",
 			state: "todo",
 			backgroundColor: HOUSE_EVENT_PENDING_BG,
+			hidden: true,
 		},
 		{
 			eventType: EventTypes.HOUSE,
@@ -739,6 +845,7 @@ export const KECHGEvents: EventData = {
 			dateTime: "Wednesday 15th June 2022",
 			state: "todo",
 			backgroundColor: HOUSE_EVENT_PENDING_BG,
+			hidden: true,
 		},
 		{
 			eventType: EventTypes.HOUSE,
@@ -747,6 +854,7 @@ export const KECHGEvents: EventData = {
 			dateTime: "Tuesday 14th June 2022",
 			state: "todo",
 			backgroundColor: HOUSE_EVENT_PENDING_BG,
+			hidden: true,
 		},
 		{
 			eventType: EventTypes.HOUSE,
@@ -755,6 +863,7 @@ export const KECHGEvents: EventData = {
 			dateTime: "Monday 20th - Wednesday 22th June 2022",
 			state: "todo",
 			backgroundColor: HOUSE_EVENT_PENDING_BG,
+			hidden: true,
 		},
 		{
 			eventType: EventTypes.HOUSE,
@@ -763,6 +872,7 @@ export const KECHGEvents: EventData = {
 			dateTime: "Tuesday 21st - Friday 24th June 2022",
 			state: "todo",
 			backgroundColor: HOUSE_EVENT_PENDING_BG,
+			hidden: true,
 		},
 	],
 	generatedAt: "0",
