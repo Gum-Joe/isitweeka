@@ -192,6 +192,37 @@ export const KECHBEvents: EventData = {
 			eventType: EventTypes.CHARITY,
 		},
 		{
+			title: "Blindness awareness",
+			description: "Blindness awareness - more information coming soon ",
+			url: "#",
+			cta: {
+				type: "fill",
+				text: "More Info",
+				//backgroundColor: "#f3cb1d",
+				//color: "#1277bb"
+			},
+			when: "w/c 11th July 2022",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			backgroundColor: HOUSE_EVENT_PENDING_BG,
+			eventType: EventTypes.CHARITY,
+		},
+		{
+			title: "Combatting Denial: Challenging Hatred ",
+			description: "A Conference organised by King Edward VI Camp Hill School for Boys to mark Srebrenica Memorial Day",
+			url: "https://www.eventbrite.co.uk/e/combatting-denial-challenging-hatred-conference-by-king-edward-camp-hill-tickets-377366733057",
+			cta: {
+				type: "fill",
+				text: "More Info",
+				backgroundColor: "#008752",
+				color: "#FFFFFF"
+			},
+			when: "Thursday 14th July 2022",
+			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
+			backgroundColor: "#FFFFFF",
+			textColour: "#42545e",
+			eventType: EventTypes.CHARITY,
+		},
+		{
 			eventType: EventTypes.HOUSE,
 			title: "St David's Rock Climbing",
 			headerURL: "/events/TMPHouseChampionshipDefault.jpg",
@@ -623,6 +654,19 @@ export const KECHGEvents: EventData = {
 		// 		{ title: "By", value: "Supreme Council" },
 		// 	]
 		// },
+		{
+			eventType: EventTypes.CHARITY,
+			title: "An evening of Shakespeare",
+			headerURL: "/events/School-Logo.png",
+			ticketsSale: {
+				start: "31/03/2022"
+			},
+			description: "Tickets are £3 for one or £2.50 for two. You can buy them on the door or in the chg foyer at break/lunch.",
+			when: "Wednesday 6th July at 7pm",
+			//url: "https://www.eventbrite.co.uk/e/oliver-tickets-300557273897",
+			backgroundColor: "#752023",
+			hidden: false,
+		},
 		{
 			eventType: EventTypes.HOUSE,
 			title: "House Fair",
