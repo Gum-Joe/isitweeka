@@ -20,11 +20,11 @@ import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 // };
 
 export const KECHBAlerts: AlertResponce = {
-	showAlert: false,
+	showAlert: true,
 	alertLevel: ThreatLevels.INFO,
-	message: "Senate Holdings Plc announces acquisition of K.E. Foundation.",
-	linkText: "More Info  →",
-	linkTo: "https://www.instagram.com/tv/CbzHfPWAnYu/"
+	message: "Donate now to the Walk to Ukraine fundraiser",
+	linkText: "Donate Now  →",
+	linkTo: "https://www.justgiving.com/fundraising/chb-charity-committee?utm_medium=qrcode&utm_source=offline&utm_term=d00419302"
 };
 
 export const KECHGAlerts: AlertResponce = {
