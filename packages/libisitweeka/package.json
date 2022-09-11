@@ -1,6 +1,6 @@
 {
   "name": "libisitweeka",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Library to fetch and parse iCal files to determine what week it is",
   "main": "lib/index.js",
   "scripts": {
