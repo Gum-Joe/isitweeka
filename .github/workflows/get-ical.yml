@@ -40,10 +40,12 @@ jobs:
     - name: Wait if needed
       run: sleep ${{matrix.waitTime}}
     - name: Stage and commit changes
+      # "git config --global --add safe.directory /github/workspace" is required due to https://github.com/ad-m/github-push-action
       run: |
         git config user.email "kishansambhi@hotmail.co.uk"
         git config user.name "Kishan Build Agent"
         git config pull.rebase true
+        git config --global --add safe.directory /github/workspace
         git add .
         git commit -m "iCal CI Fetch push for ${{matrix.school}}, commit $GITHUB_SHA run ID $GITHUB_RUN_ID"
         git pull

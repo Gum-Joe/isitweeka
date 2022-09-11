@@ -114,6 +114,7 @@ class IsItWeekA {
      * @see SiteContainer documentation for more information on the algoirthm
      */
     isItWeekAorB() {
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
             // Get to the start of the week
             const weekStart = this.forwardOrRewindToDay(this.inputDate, this.weekMarkerDate, [6]);
@@ -173,7 +174,8 @@ class IsItWeekA {
             // Filter events to those that are "Week A" or "Week B"
             let theEvent;
             map.forEach((entry, key) => {
-                if (entry.summary === "Week A" || entry.summary === "Week B") {
+                var _a, _b;
+                if (((_a = entry.summary) === null || _a === void 0 ? void 0 : _a.toLowerCase()) === "week a" || ((_b = entry.summary) === null || _b === void 0 ? void 0 : _b.toLowerCase()) === "week b") {
                     theEvent = entry;
                 }
                 else {
@@ -193,14 +195,14 @@ class IsItWeekA {
             }
             else {
                 // const theEvent = eventsToday[0];
-                switch (theEvent.summary) {
-                    case "Week A":
+                switch ((_a = theEvent.summary) === null || _a === void 0 ? void 0 : _a.toLowerCase()) { // NORMALISE!
+                    case "week a":
                         return {
                             week: "A",
                             isWeekend: this.isWeekend,
                         };
                         break;
-                    case "Week B":
+                    case "week b":
                         return {
                             week: "B",
                             isWeekend: this.isWeekend,

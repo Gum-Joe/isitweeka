@@ -181,7 +181,8 @@ export default class IsItWeekA {
 		// Filter events to those that are "Week A" or "Week B"
 		let theEvent: ical.CalendarComponent | undefined;
 		map.forEach((entry, key) => {
-			if (entry.summary === "Week A" || entry.summary === "Week B") {
+			
+			if (entry.summary?.toLowerCase() === "week a" || entry.summary?.toLowerCase() === "week b") {
 				theEvent = entry;
 			} else {
 				map.delete(key);
@@ -200,14 +201,14 @@ export default class IsItWeekA {
 		} else {
 			// const theEvent = eventsToday[0];
 
-			switch (theEvent.summary) {
-				case "Week A":
+			switch (theEvent.summary?.toLowerCase()) { // NORMALISE!
+				case "week a":
 					return {
 						week: "A",
 						isWeekend: this.isWeekend,
 					};
 					break;
-				case "Week B":
+				case "week b":
 					return {
 						week: "B",
 						isWeekend: this.isWeekend,
