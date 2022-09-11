@@ -25,7 +25,7 @@
     "ical": "^0.8.0",
     "js-cookie": "^3.0.1",
     "libisitweeka": "^1.0.1",
-    "node-sass": "^6.0.0",
+    "node-sass": "^7.0.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.0",
     "react-circular-progressbar": "^2.0.4",
