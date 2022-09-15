@@ -21,18 +21,18 @@ import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 
 export const KECHBAlerts: AlertResponce = {
 	showAlert: true,
-	alertLevel: ThreatLevels.INFO,
-	message: "Welcome back everyone!",
+	alertLevel: ThreatLevels.DEATH,
+	message: "HM Queen Elizabeth II, 1926-2022",
 	//linkText: "Donate Now  →",
-	//linkTo: "https://www.justgiving.com/fundraising/chb-charity-committee?utm_medium=qrcode&utm_source=offline&utm_term=d00419302"
+	linkTo: "https://www.bbc.co.uk/news/uk-61585886"
 };
 
 export const KECHGAlerts: AlertResponce = {
-	showAlert: false,
+	showAlert: true,
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
-	message: "Remember to get your tickets for Songs from the Shows!",
-	alertLevel: ThreatLevels.INFO,
+	message: "HM Queen Elizabeth II, 1926-2022",
+	alertLevel: ThreatLevels.DEATH,
 	//linkText: "more info",
-	//linkTo: "https://www.instagram.com/p/CYcI989LXwh"
+	linkTo: "https://www.bbc.co.uk/news/uk-61585886"
 };
