@@ -9,10 +9,10 @@ export type IsItWeekAReturn = {
 } | {
 	isWeekend: boolean;
 	week: "unknown";
-}
+};
 
 /** Type to represent a (Gregorian calendar!) day */
-export type GregorianDay = 0 | 1 | 2 | 3 | 4 | 5 | 6; 
+export type GregorianDay = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 /**
  * Base class used to determine if it is Week A or B
@@ -51,6 +51,7 @@ export default class IsItWeekA {
 	) {
 		this.weekMarkerDate = weekMarkerDate;
 		this.calendarURL = calendarURL;
+		// inputDate should probably have a default of Date.now()
 		this.inputDate = new Date(inputDate); // So we can adjust it
 	}
 
@@ -110,7 +111,7 @@ export default class IsItWeekA {
 	 * @see SiteContainer documentation for more information on the algoirthm
 	 */
 	public async isItWeekAorB(): Promise<IsItWeekAReturn> {
-		
+
 		// Get to the start of the week
 		const weekStart = this.forwardOrRewindToDay(this.inputDate, this.weekMarkerDate, [6]);
 		weekStart.setUTCHours(0, 0, 0, 0); // Set to start of day
@@ -172,17 +173,34 @@ export default class IsItWeekA {
 				shouldDelete = false;
 			}
 
+			// In the event of issues, uncomment this to spit out all week events for the current year to the console
+
+			// if (v.summary?.toLowerCase().startsWith("week")) {
+			// 	if (v.start?.getFullYear() === 2022) {
+			// 		console.log(v.start);
+			// 		console.log(v.summary);
+			// 	}
+			// 	// return;
+			// }
+
 			// Delete this key if none of our conditions met
 			if (shouldDelete) {
 				map.delete(key);
 			}
 		});
 
+		// const testMap2 = new Map(map);
+
+		// console.log(testMap2);
+
 		// Filter events to those that are "Week A" or "Week B"
 		let theEvent: ical.CalendarComponent | undefined;
 		map.forEach((entry, key) => {
-			
-			if (entry.summary?.toLowerCase() === "week a" || entry.summary?.toLowerCase() === "week b") {
+			const summary = entry.summary?.toLowerCase();
+			// This was originally just (summary === "week a" || summary === "week b") but someone put two spaces in one week so now it's this.
+			if (summary?.startsWith("week") && summary.endsWith("a")) {
+				theEvent = entry;
+			} else if (summary?.startsWith("week") && summary.endsWith("b")) {
 				theEvent = entry;
 			} else {
 				map.delete(key);
