@@ -20,7 +20,7 @@ import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 // };
 
 export const KECHBAlerts: AlertResponce = {
-	showAlert: true,
+	showAlert: false,
 	alertLevel: ThreatLevels.DEATH,
 	message: "HM Queen Elizabeth II, 1926-2022",
 	//linkText: "Donate Now  →",
@@ -28,7 +28,7 @@ export const KECHBAlerts: AlertResponce = {
 };
 
 export const KECHGAlerts: AlertResponce = {
-	showAlert: true,
+	showAlert: false,
 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
 	// alertLevel: ThreatLevels.CRITICAL,
 	message: "HM Queen Elizabeth II, 1926-2022",
