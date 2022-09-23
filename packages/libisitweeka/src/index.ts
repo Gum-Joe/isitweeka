@@ -152,8 +152,9 @@ export default class IsItWeekA {
 		// Convert to map for easy parsing
 		const map = new Map(Object.entries(data));
 
-		// Narrow down to only events that are around the date we are looking for
-		map.forEach((v, key) => {
+		let recurrencesFound = false;
+
+		const filterEvents = (v: ical.CalendarComponent, key: string): void => {
 			// Flag that is set to false if the event matches our conditions to then be checked if "Week A" or "Week B" marker event
 			let shouldDelete = true;
 
@@ -165,7 +166,7 @@ export default class IsItWeekA {
 			 * Sometimes, e.g. daylight savings, the start time of the "Week A" event in the calendar is NOT at midnight
 			 * (by this I mean normally the start time is, for a all-day Week A/B event on a Monday, normally Monday at 00:00)
 			 * E.g. for a Monday Week A event, the start time may be Sunday 23:00 due to daylight saving (see issue #57)
-			 * 
+			 *
 			 * Here, we check if the event is the day before or day after `weekStart`, and also the day itself for extra measure, to catch the error described above.
 			 * THis is done by checking if the UNIX time value of the event is within 24hrs of the target time
 			 */
@@ -173,25 +174,54 @@ export default class IsItWeekA {
 				shouldDelete = false;
 			}
 
-			// In the event of issues, uncomment this to spit out all week events for the current year to the console
+			if (v.summary?.toLowerCase().startsWith("week")) {
+				if (v.start?.getMonth() === 8) {
+					shouldDelete = false;
+				} else if (v.start?.getMonth() === 9) {
+					shouldDelete = false;
+				}
+				// In the event of issues, uncomment this if-block to spit out all week events for the current year to the console
+				if (v.start?.getFullYear() === new Date().getFullYear()) {
+					console.log(v.start);
+					console.log(v.summary);
+					console.log(v.rrule);
+					console.log(v.recurrences);
+					console.log(v.recurrenceid);
+				}
+				// return;
+			}
 
-			// if (v.summary?.toLowerCase().startsWith("week")) {
-			// 	if (v.start?.getFullYear() === 2022) {
-			// 		console.log(v.start);
-			// 		console.log(v.summary);
-			// 	}
-			// 	// return;
-			// }
+			if (v.recurrences) {
+				console.log("recurrences found!", v.recurrences.length);
+				console.log("typeof recurrences", typeof v.recurrences);
+				console.log("recurrences (O.values)", Object.values(v.recurrences));
+				console.log("recurrences (Arr.from)", Array.from(v.recurrences));
+				recurrencesFound = true;
+				for (const recurrence of Object.values(v.recurrences)) {
+					console.log("recurrence");
+					console.log(recurrence.start);
+					if (typeof recurrence.recurrenceid !== "undefined") {
+						console.log("recurrence has an id");
+						map.set(recurrence.recurrenceid.toISOString(), recurrence);
+					}
+				}
+			}
 
 			// Delete this key if none of our conditions met
 			if (shouldDelete) {
 				map.delete(key);
 			}
-		});
+		};
 
-		// const testMap2 = new Map(map);
+		// Narrow down to only events that are around the date we are looking for
+		map.forEach(filterEvents);
 
-		// console.log(testMap2);
+		// If recurrences are found, they're added to the map and we re-run the filter function to include the new events
+		if (recurrencesFound) map.forEach(filterEvents);
+
+		const testMap2 = new Map(map.entries());
+
+		console.log(testMap2);
 
 		// Filter events to those that are "Week A" or "Week B"
 		let theEvent: ical.CalendarComponent | undefined;
