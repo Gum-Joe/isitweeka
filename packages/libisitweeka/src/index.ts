@@ -401,7 +401,7 @@ export default class IsItWeekA {
 			// const theEvent = eventsToday[0];
 			console.debug("One event found:", theEvent);
 
-			switch (theEvent.summary?.toLowerCase().slice(-1)) { // NORMALISE!
+			switch (theEvent.summary?.toLowerCase().trim().slice(-1)) { // NORMALISE!
 				case "a":
 					return {
 						week: "A",

@@ -349,7 +349,7 @@ class IsItWeekA {
             else {
                 // const theEvent = eventsToday[0];
                 console.debug("One event found:", theEvent);
-                switch ((_a = theEvent.summary) === null || _a === void 0 ? void 0 : _a.toLowerCase().slice(-1)) { // NORMALISE!
+                switch ((_a = theEvent.summary) === null || _a === void 0 ? void 0 : _a.toLowerCase().trim().slice(-1)) { // NORMALISE!
                     case "a":
                         return {
                             week: "A",
