@@ -164,6 +164,7 @@ class IsItWeekA {
                     let endDate = event.end || new Date();
                     // Calculate the duration of the event for use with recurring events.
                     let duration = endDate.getTime() - startDate.getTime();
+                    // **PART OF IF/ELSE BLOCK**
                     // Simple case - no recurrences, just print out the calendar event.
                     if (typeof event.rrule === 'undefined') {
                         if ((title === null || title === void 0 ? void 0 : title.toLowerCase().startsWith("week")) && startDate.getFullYear() === 2022 && startDate.getMonth() > 6) {
@@ -174,6 +175,7 @@ class IsItWeekA {
                             // console.log("event type:", "non-recurrence");
                             // console.log();
                         }
+                        // **ELSE BLOCK BELOW**
                     }
                     // Complicated case - if an RRULE exists, handle multiple recurrences of the event.
                     else if (typeof event.rrule !== 'undefined') {
@@ -222,6 +224,7 @@ class IsItWeekA {
                             const startDate = new Date(date);
                             // Use just the date of the recurrence to look up overrides and exceptions (i.e. chop off time information)
                             let dateLookupKey = date.toISOString().substring(0, 10);
+                            // **PART OF IF/ELSE BLOCK**
                             // For each date that we're checking, it's possible that there is a recurrence override for that one day.
                             if ((curEvent.recurrences != undefined) && (curEvent.recurrences[dateLookupKey] != undefined)) {
                                 // We found an override, so for this recurrence, use a potentially different title, start date, and duration.
@@ -231,6 +234,7 @@ class IsItWeekA {
                                     // curDuration = parseInt(moment(curEvent.end).format("x")) - parseInt(startDate.format("x"));
                                     curDuration = (((_a = curEvent.end) === null || _a === void 0 ? void 0 : _a.getTime()) || startDate.getTime()) - startDate.getTime();
                                 }
+                                // **ELSE BLOCK BELOW**
                             }
                             // If there's no recurrence override, check for an exception date.  Exception dates represent exceptions to the rule.
                             else if ((curEvent.exdate != undefined) && (curEvent.exdate[dateLookupKey] != undefined)) {
