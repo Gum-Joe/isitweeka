@@ -147,11 +147,11 @@ export default class IsItWeekA {
 
 		// New Version!
 
-		console.log(ics);
+		// console.log(ics);
 
 		const data = ical.parseICS(ics);
 
-		console.log(data);
+		// console.log(data);
 
 		const mapWithoutRecurrences = new Map(Object.entries(data));
 
@@ -169,11 +169,11 @@ export default class IsItWeekA {
 			if (event.type === "VEVENT") {
 				let title = event.summary;
 				if (typeof event.start === "undefined") {
-					console.error("event.start undefined:", title);
+					// console.error("event.start undefined:", title);
 				}
 				let startDate = event.start || new Date();
 				if (typeof event.end === "undefined") {
-					console.error("event.end undefined:", title, event.start?.toISOString());
+					// console.error("event.end undefined:", title, event.start?.toISOString());
 				}
 				let endDate = event.end || new Date();
 
@@ -183,12 +183,12 @@ export default class IsItWeekA {
 				// Simple case - no recurrences, just print out the calendar event.
 				if (typeof event.rrule === 'undefined') {
 					if (title?.toLowerCase().startsWith("week") && startDate.getFullYear() === 2022 && startDate.getMonth() > 6) {
-						console.log("title:", title);
-						console.log("startDate:", startDate);
-						console.log("endDate:", endDate);
-						console.log("duration:", duration);
-						console.log("event type:", "non-recurrence");
-						console.log();
+						// console.log("title:", title);
+						// console.log("startDate:", startDate);
+						// console.log("endDate:", endDate);
+						// console.log("duration:", duration);
+						// console.log("event type:", "non-recurrence");
+						// console.log();
 					}
 				}
 
@@ -196,19 +196,19 @@ export default class IsItWeekA {
 				else if (typeof event.rrule !== 'undefined') {
 					// For recurring events, get the set of event start dates that fall within the range
 					// of dates we're looking for.
-					console.warn(event);
-					console.warn(event.summary);
-					console.warn(event.rrule);
-					console.warn(typeof event.rrule);
-					console.warn(event.rrule.between);
+					// console.warn(event);
+					// console.warn(event.summary);
+					// console.warn(event.rrule);
+					// console.warn(typeof event.rrule);
+					// console.warn(event.rrule.between);
 					const partialFixedRRule = rrule.fromString(event.rrule as unknown as string);
 					const fixedRRule = new rrule({
 						...partialFixedRRule.options,
 						dtstart: event.start,
 					});
-					console.warn(fixedRRule);
-					console.warn(fixedRRule.between);
-					console.warn(fixedRRule.options.dtstart);
+					// console.warn(fixedRRule);
+					// console.warn(fixedRRule.between);
+					// console.warn(fixedRRule.options.dtstart);
 					// event.rrule = fixedRRule;
 					var dates = fixedRRule.between(
 						rangeStart,
@@ -236,7 +236,7 @@ export default class IsItWeekA {
 						}
 					}
 
-					console.debug(dates);
+					// console.debug(dates);
 
 					// Loop through the set of date entries to see which recurrences should be printed.
 					for (const date of dates) {
@@ -284,12 +284,12 @@ export default class IsItWeekA {
 						if (showRecurrence === true) {
 							map.set(startDate.toISOString(), { ...curEvent });
 							if (recurrenceTitle.toLowerCase()?.startsWith("week") && startDate.getFullYear() === 2022 && startDate.getMonth() > 6) {
-								console.log("title:", recurrenceTitle);
-								console.log("startDate:", startDate);
-								console.log("endDate:", endDate);
-								console.log("duration:", duration);
-								console.log("event type:", "recurrence");
-								console.log();
+								// console.log("title:", recurrenceTitle);
+								// console.log("startDate:", startDate);
+								// console.log("endDate:", endDate);
+								// console.log("duration:", duration);
+								// console.log("event type:", "recurrence");
+								// console.log();
 							}
 						}
 
@@ -324,8 +324,8 @@ export default class IsItWeekA {
 
 		// console.log(testMap2);
 
-		console.log("map without recurrences size", mapWithoutRecurrences.size);
-		console.log("map with recurrences size", map.size);
+		// console.log("map without recurrences size", mapWithoutRecurrences.size);
+		// console.log("map with recurrences size", map.size);
 
 		map.forEach((event, key, map) => {
 			// Flag that is set to false if the event matches our conditions to then be checked if "Week A" or "Week B" marker event
@@ -354,13 +354,13 @@ export default class IsItWeekA {
 			// 		shouldDelete = false;
 			// 	}
 			// In the event of issues, uncomment this if-block to spit out all week events for the current year to the console
-			if (event.start?.getFullYear() === new Date().getFullYear() && event.start?.getMonth() >= new Date().getMonth()) {
-				// console.log(event.start);
-				console.log(event.summary + ":", event.start);
-				// console.log(event.rrule);
-				// console.log(event.recurrences);
-				// console.log(event.recurrenceid);
-			}
+			// if (event.start?.getFullYear() === new Date().getFullYear() && event.start?.getMonth() >= new Date().getMonth()) {
+			// 	// console.log(event.start);
+			// 	console.log(event.summary + ":", event.start);
+			// 	// console.log(event.rrule);
+			// 	// console.log(event.recurrences);
+			// 	// console.log(event.recurrenceid);
+			// }
 			// 	// return;
 			// }
 
@@ -373,7 +373,6 @@ export default class IsItWeekA {
 		// Filter events to those that are "Week A" or "Week B"
 		let theEvent: ical.CalendarComponent | undefined;
 		map.forEach((entry, key) => {
-			console.debug(entry);
 			const summary = entry.summary?.toLowerCase();
 			// This was originally just (summary === "week a" || summary === "week b") but someone put two spaces in one week so now it's this.
 			if (summary?.startsWith("week") && summary.endsWith("a")) {
@@ -391,7 +390,7 @@ export default class IsItWeekA {
 		}
 
 		if (map.size === 0 || !theEvent) {
-			console.warn("No events in Map. Assuming holiday.");
+			console.info("No events in Map. Assuming holiday.");
 			// Neither detected.  Probably Hols.
 			return {
 				week: "unknown",
@@ -399,7 +398,7 @@ export default class IsItWeekA {
 			};
 		} else {
 			// const theEvent = eventsToday[0];
-			console.debug("One event found:", theEvent);
+			// console.debug("One event found:", theEvent);
 
 			switch (theEvent.summary?.toLowerCase().trim().slice(-1)) { // NORMALISE!
 				case "a":
@@ -417,6 +416,7 @@ export default class IsItWeekA {
 				default:
 					// NEITHER!
 					// Something went wrong
+					console.warn("Somehow the **1** event found was not a week event");
 					return {
 						week: "unknown",
 						isWeekend: this.isWeekend,

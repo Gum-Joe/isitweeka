@@ -132,14 +132,14 @@ class IsItWeekA {
             });
             const ics = yield baseResponse.text();
             // New Version!
-            console.log(ics);
+            // console.log(ics);
             const data = ical.parseICS(ics);
-            console.log(data);
+            // console.log(data);
             const mapWithoutRecurrences = new Map(Object.entries(data));
             const map = new Map();
             // Process recurrences and add to the Map.
             mapWithoutRecurrences.forEach((event, key) => {
-                var _a, _b, _c;
+                var _a, _b;
                 // Add every event in the Map into the one with recurrences.
                 map.set(key, event);
                 // because otherwise you can get an infinite number of calendar events.
@@ -148,11 +148,11 @@ class IsItWeekA {
                 if (event.type === "VEVENT") {
                     let title = event.summary;
                     if (typeof event.start === "undefined") {
-                        console.error("event.start undefined:", title);
+                        // console.error("event.start undefined:", title);
                     }
                     let startDate = event.start || new Date();
                     if (typeof event.end === "undefined") {
-                        console.error("event.end undefined:", title, (_a = event.start) === null || _a === void 0 ? void 0 : _a.toISOString());
+                        // console.error("event.end undefined:", title, event.start?.toISOString());
                     }
                     let endDate = event.end || new Date();
                     // Calculate the duration of the event for use with recurring events.
@@ -160,28 +160,28 @@ class IsItWeekA {
                     // Simple case - no recurrences, just print out the calendar event.
                     if (typeof event.rrule === 'undefined') {
                         if ((title === null || title === void 0 ? void 0 : title.toLowerCase().startsWith("week")) && startDate.getFullYear() === 2022 && startDate.getMonth() > 6) {
-                            console.log("title:", title);
-                            console.log("startDate:", startDate);
-                            console.log("endDate:", endDate);
-                            console.log("duration:", duration);
-                            console.log("event type:", "non-recurrence");
-                            console.log();
+                            // console.log("title:", title);
+                            // console.log("startDate:", startDate);
+                            // console.log("endDate:", endDate);
+                            // console.log("duration:", duration);
+                            // console.log("event type:", "non-recurrence");
+                            // console.log();
                         }
                     }
                     // Complicated case - if an RRULE exists, handle multiple recurrences of the event.
                     else if (typeof event.rrule !== 'undefined') {
                         // For recurring events, get the set of event start dates that fall within the range
                         // of dates we're looking for.
-                        console.warn(event);
-                        console.warn(event.summary);
-                        console.warn(event.rrule);
-                        console.warn(typeof event.rrule);
-                        console.warn(event.rrule.between);
+                        // console.warn(event);
+                        // console.warn(event.summary);
+                        // console.warn(event.rrule);
+                        // console.warn(typeof event.rrule);
+                        // console.warn(event.rrule.between);
                         const partialFixedRRule = rrule_1.default.fromString(event.rrule);
                         const fixedRRule = new rrule_1.default(Object.assign(Object.assign({}, partialFixedRRule.options), { dtstart: event.start }));
-                        console.warn(fixedRRule);
-                        console.warn(fixedRRule.between);
-                        console.warn(fixedRRule.options.dtstart);
+                        // console.warn(fixedRRule);
+                        // console.warn(fixedRRule.between);
+                        // console.warn(fixedRRule.options.dtstart);
                         // event.rrule = fixedRRule;
                         var dates = fixedRRule.between(rangeStart, rangeEnd, true, function (date, i) { return true; });
                         // The "dates" array contains the set of dates within our desired date range range that are valid
@@ -202,7 +202,7 @@ class IsItWeekA {
                                 // }
                             }
                         }
-                        console.debug(dates);
+                        // console.debug(dates);
                         // Loop through the set of date entries to see which recurrences should be printed.
                         for (const date of dates) {
                             /// @ts-expect-error TypeScript is really dumb with this... try and force "start" to be a compatible type, it complains it's incompatible, set "start" to a `Date`, it complains. can't do right for wrong
@@ -219,7 +219,7 @@ class IsItWeekA {
                                 const startDate = curEvent.start;
                                 if (startDate) {
                                     // curDuration = parseInt(moment(curEvent.end).format("x")) - parseInt(startDate.format("x"));
-                                    curDuration = (((_b = curEvent.end) === null || _b === void 0 ? void 0 : _b.getTime()) || startDate.getTime()) - startDate.getTime();
+                                    curDuration = (((_a = curEvent.end) === null || _a === void 0 ? void 0 : _a.getTime()) || startDate.getTime()) - startDate.getTime();
                                 }
                             }
                             // If there's no recurrence override, check for an exception date.  Exception dates represent exceptions to the rule.
@@ -241,13 +241,13 @@ class IsItWeekA {
                             }
                             if (showRecurrence === true) {
                                 map.set(startDate.toISOString(), Object.assign({}, curEvent));
-                                if (((_c = recurrenceTitle.toLowerCase()) === null || _c === void 0 ? void 0 : _c.startsWith("week")) && startDate.getFullYear() === 2022 && startDate.getMonth() > 6) {
-                                    console.log("title:", recurrenceTitle);
-                                    console.log("startDate:", startDate);
-                                    console.log("endDate:", endDate);
-                                    console.log("duration:", duration);
-                                    console.log("event type:", "recurrence");
-                                    console.log();
+                                if (((_b = recurrenceTitle.toLowerCase()) === null || _b === void 0 ? void 0 : _b.startsWith("week")) && startDate.getFullYear() === 2022 && startDate.getMonth() > 6) {
+                                    // console.log("title:", recurrenceTitle);
+                                    // console.log("startDate:", startDate);
+                                    // console.log("endDate:", endDate);
+                                    // console.log("duration:", duration);
+                                    // console.log("event type:", "recurrence");
+                                    // console.log();
                                 }
                             }
                         }
@@ -275,10 +275,10 @@ class IsItWeekA {
             // 	if (recurrencesFound) map.forEach(filterEvents);
             // const testMap2 = new Map(map.entries());
             // console.log(testMap2);
-            console.log("map without recurrences size", mapWithoutRecurrences.size);
-            console.log("map with recurrences size", map.size);
+            // console.log("map without recurrences size", mapWithoutRecurrences.size);
+            // console.log("map with recurrences size", map.size);
             map.forEach((event, key, map) => {
-                var _a, _b, _c, _d;
+                var _a, _b;
                 // Flag that is set to false if the event matches our conditions to then be checked if "Week A" or "Week B" marker event
                 let shouldDelete = true;
                 /** Intial check: do the ISO strings match? */
@@ -303,13 +303,13 @@ class IsItWeekA {
                 // 		shouldDelete = false;
                 // 	}
                 // In the event of issues, uncomment this if-block to spit out all week events for the current year to the console
-                if (((_c = event.start) === null || _c === void 0 ? void 0 : _c.getFullYear()) === new Date().getFullYear() && ((_d = event.start) === null || _d === void 0 ? void 0 : _d.getMonth()) >= new Date().getMonth()) {
-                    // console.log(event.start);
-                    console.log(event.summary + ":", event.start);
-                    // console.log(event.rrule);
-                    // console.log(event.recurrences);
-                    // console.log(event.recurrenceid);
-                }
+                // if (event.start?.getFullYear() === new Date().getFullYear() && event.start?.getMonth() >= new Date().getMonth()) {
+                // 	// console.log(event.start);
+                // 	console.log(event.summary + ":", event.start);
+                // 	// console.log(event.rrule);
+                // 	// console.log(event.recurrences);
+                // 	// console.log(event.recurrenceid);
+                // }
                 // 	// return;
                 // }
                 // Delete this key if none of our conditions met
@@ -321,7 +321,6 @@ class IsItWeekA {
             let theEvent;
             map.forEach((entry, key) => {
                 var _a;
-                console.debug(entry);
                 const summary = (_a = entry.summary) === null || _a === void 0 ? void 0 : _a.toLowerCase();
                 // This was originally just (summary === "week a" || summary === "week b") but someone put two spaces in one week so now it's this.
                 if ((summary === null || summary === void 0 ? void 0 : summary.startsWith("week")) && summary.endsWith("a")) {
@@ -339,7 +338,7 @@ class IsItWeekA {
                 console.warn(`More than one Week A/B marker event found! Got ${map.size} events`);
             }
             if (map.size === 0 || !theEvent) {
-                console.warn("No events in Map. Assuming holiday.");
+                console.info("No events in Map. Assuming holiday.");
                 // Neither detected.  Probably Hols.
                 return {
                     week: "unknown",
@@ -348,7 +347,7 @@ class IsItWeekA {
             }
             else {
                 // const theEvent = eventsToday[0];
-                console.debug("One event found:", theEvent);
+                // console.debug("One event found:", theEvent);
                 switch ((_a = theEvent.summary) === null || _a === void 0 ? void 0 : _a.toLowerCase().trim().slice(-1)) { // NORMALISE!
                     case "a":
                         return {
@@ -365,6 +364,7 @@ class IsItWeekA {
                     default:
                         // NEITHER!
                         // Something went wrong
+                        console.warn("Somehow the **1** event found was not a week event");
                         return {
                             week: "unknown",
                             isWeekend: this.isWeekend,
