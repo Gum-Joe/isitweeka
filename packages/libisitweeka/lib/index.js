@@ -131,26 +131,33 @@ class IsItWeekA {
                 credentials: "same-origin",
             });
             const ics = yield baseResponse.text();
-            // New Version!
+            // New Version! - Now it handles recurrences.
+            // DEBUG
             // console.log(ics);
             const data = ical.parseICS(ics);
+            // DEBUG
             // console.log(data);
+            // Initial map of events
             const mapWithoutRecurrences = new Map(Object.entries(data));
+            // Blank map populated with recurred events for processing further down.
             const map = new Map();
-            // Process recurrences and add to the Map.
+            // Process recurrences and build new Map of cal events that *includes* recurrences.
             mapWithoutRecurrences.forEach((event, key) => {
+                // When dealing with calendar recurrences, you need a range of dates to query against,
                 var _a, _b;
-                // Add every event in the Map into the one with recurrences.
-                map.set(key, event);
                 // because otherwise you can get an infinite number of calendar events.
                 var rangeStart = new Date("2020-01-01");
                 var rangeEnd = new Date("2030-12-31");
                 if (event.type === "VEVENT") {
+                    // Add every event in the Map into the one with recurrences.
+                    map.set(key, event);
                     let title = event.summary;
+                    // Here for debug purposes. Code works fine if event.start is undefined
                     if (typeof event.start === "undefined") {
                         // console.error("event.start undefined:", title);
                     }
                     let startDate = event.start || new Date();
+                    // Here for debug purposes. Code works fine if event.end is undefined
                     if (typeof event.end === "undefined") {
                         // console.error("event.end undefined:", title, event.start?.toISOString());
                     }
@@ -205,7 +212,10 @@ class IsItWeekA {
                         // console.debug(dates);
                         // Loop through the set of date entries to see which recurrences should be printed.
                         for (const date of dates) {
-                            /// @ts-expect-error TypeScript is really dumb with this... try and force "start" to be a compatible type, it complains it's incompatible, set "start" to a `Date`, it complains. can't do right for wrong
+                            /// TypeScript is really dumb with this... try and force "start" to be a compatible type,
+                            /// it complains it's incompatible, set "start" to a `Date`, it complains.
+                            /// *sigh* Can't do right for doing wrong, as they say in Dudley.
+                            /// @ts-ignore See above ^^^
                             let curEvent = Object.assign(Object.assign({}, event), { start: date });
                             let showRecurrence = true;
                             let curDuration = duration;
@@ -269,14 +279,10 @@ class IsItWeekA {
                 // 	}
                 // }
             });
-            // 	// Narrow down to only events that are around the date we are looking for
-            // 	map.forEach(filterEvents);
-            // 	// If recurrences are found, they're added to the map and we re-run the filter function to include the new events
-            // 	if (recurrencesFound) map.forEach(filterEvents);
-            // const testMap2 = new Map(map.entries());
-            // console.log(testMap2);
+            // DEBUG
             // console.log("map without recurrences size", mapWithoutRecurrences.size);
             // console.log("map with recurrences size", map.size);
+            // Narrow down to only events that are around the date we are looking for
             map.forEach((event, key, map) => {
                 var _a, _b;
                 // Flag that is set to false if the event matches our conditions to then be checked if "Week A" or "Week B" marker event
@@ -321,13 +327,16 @@ class IsItWeekA {
             let theEvent;
             map.forEach((entry, key) => {
                 var _a;
-                const summary = (_a = entry.summary) === null || _a === void 0 ? void 0 : _a.toLowerCase();
-                // This was originally just (summary === "week a" || summary === "week b") but someone put two spaces in one week so now it's this.
-                if ((summary === null || summary === void 0 ? void 0 : summary.startsWith("week")) && summary.endsWith("a")) {
-                    theEvent = entry;
-                }
-                else if ((summary === null || summary === void 0 ? void 0 : summary.startsWith("week")) && summary.endsWith("b")) {
-                    theEvent = entry;
+                const summary = (_a = entry.summary) === null || _a === void 0 ? void 0 : _a.toLowerCase().trim();
+                // If summary is undefined or an empty string, we know it's not a week marker.
+                if (summary) {
+                    // This was originally just (summary === "week a" || summary === "week b") but someone put two spaces in one week so now it's this.
+                    if (summary.startsWith("week") && summary.endsWith("a")) {
+                        theEvent = entry;
+                    }
+                    else if ((summary === null || summary === void 0 ? void 0 : summary.startsWith("week")) && summary.endsWith("b")) {
+                        theEvent = entry;
+                    }
                 }
                 else {
                     map.delete(key);
