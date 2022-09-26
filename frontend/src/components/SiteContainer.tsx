@@ -279,9 +279,9 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		const inputDate = new Date();
 		// Used for fiddling:
 		// NOTE: Do NOT allow code into production where these value are uncommented
-		//inputDate.setDate(26);
-		//inputDate.setMonth(7);
-		//inputDate.setFullYear(2021);
+		// inputDate.setDate(7);
+		// inputDate.setMonth(10);
+		// inputDate.setFullYear(2022);
 		// Get which week it is 
 		// Use the new API
 		

@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "cross-fetch": "^3.1.5",
-    "ical": "^0.8.0"
+    "ical": "^0.8.0",
+    "rrule": "2.6.4"
   }
 }
