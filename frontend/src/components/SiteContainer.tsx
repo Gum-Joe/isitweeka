@@ -330,7 +330,10 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h2 className="text title">It is neither Week A nor B.</h2>
 					<h3 className="text body">This means it&#39;s probably a holiday.</h3> 
 					<h5 id="neitherAB-contact" className="text">If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
-					<Button style={{ marginRight: "auto" }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>Events & News  →</div></Button>
+					<div style={{ display: "flex", flexWrap: "wrap", gap: 40, marginRight: "auto" }}>
+						<Button style={{ marginTop: 0 }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>Events & News  →</div></Button>
+						{/* <Button style={{ marginTop: 0 }} onClick={() => document.getElementById("feedback-buttom")?.scrollIntoView({ behavior: "smooth" })}>NOT NEW! Send Feedback  →</Button> */}
+					</div>
 					{this.state.showCharityCard ? <div className="mobile">
 						<CharityWidget {...this.state.charityData} />
 					</div> : null}
@@ -347,7 +350,10 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					<h1 className="desktop">Week {this.state.week}</h1>
 					<h2 className="mobile">{this.state.isWeekend ? "Next week will be week" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="mobile">{this.state.week}</h1>
-					<Button style={{ marginRight: "auto", marginTop: 0 }} className="forward" id="event-scroll-button" onClick={getScrollDownWithAdditional(0)}>Events & News  →</Button>
+					<div style={{ display: "flex", flexWrap: "wrap", gap: 40, marginRight: "auto" }}>
+						<Button style={{ marginTop: 0 }} className="forward" id="event-scroll-button" onClick={getScrollDownWithAdditional(0)}>Events & News  →</Button>
+						{/* <Button style={{ marginTop: 0 }} onClick={() => document.getElementById("feedback-buttom")?.scrollIntoView({ behavior: "smooth" })}>NOT NEW! Send Feedback  →</Button> */}
+					</div>
 					{this.state.showCharityCard ? <div className="mobile">
 						<CharityWidget {...this.state.charityData} />
 					</div> : null}
@@ -361,6 +367,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 		return (
 			<>
 				<div className="isitweeka-jumbotron">
+					{/* <a id="feedback-buttom-top" target="__blank" href="https://forms.gle/KaS2VUAmZqfS1Nf26" style={{ visibility: "hidden", width: 0, height: 0 }} aria-hidden /> */}
 					{this.state.alert.showAlert ? <AlertBanner alert={this.state.alert} /> : null}
 					<div className="isitweeka">
 						{
