@@ -69,8 +69,35 @@ Below, find how things are structured in this repo:
 - `scripts/` - misc. scripts 
 
 ## The API
+Whilst this is currently not deployed, sometimes a server-side API is required. This is normally for when the site needs to fetch data from external APIs such as Eventbrite - this requires an API key, which we can't put in public client-side code.
 
-## Building
+Therefore, an API was created. I wanted something modular, so this is what we did:
+1. There are a series of services that run as their __own programs__P:
+	1. `packages/@isitweeka/service-kech/` - using `libisitweeka` figure out the current week for KECHB and KECHG once every 30 seconds
+	2. `packages/@isitweeka/service-eventbrite`
+		1. This is used to fetched donation data from Eventbrite
+		2. It is configurable by environment variables for the API Key, Organisation ID and Event ID
+		3. Runs every 30 seconds
+2. These services fetch data and place it into a Redis database
+	1. This means services can be written in any platform we want so long as it can reach the Redis DB
+	2. For simplicity, TypeScript (node.js) was used, but Python, Rust, Java, anything could be used
+	3. Redis keys to use for each service are stored in `packages/@isitweea/core/src/constants.ts`
+3. The server `server/` receives requests from clients at specific routes, fetches the appropriate key from redis and sends it back to the client
+
+The API runs using docker containers:
+1. Each service has a docker file
+2. These docker files are build (manually!) and uploaded to a GitHub container registry for my username Gum-Joe
+3. A server then uses docker compose to pull and run these containers
+
+Since the API is setup lik this, to add a new sevice:
+1. Write the service, set up to store the result of each fetch in a specfic redis key
+2. Build it as a docker image and add it to the `docker-compose.yml` files
+3. Add a route in `server/` that returns the data from Redis
+4. Rebuild server image
+5. Push newly built images to a container registry
+6. Use the docker compose config files (the `.prod.yml` one) to deploy the updated images to production so they can be used as the API
+
+## Building everything (frontend, API, etc.)
 ### Requirements
 - Node.js LTS
 - The `yarn` package manager
@@ -83,7 +110,25 @@ yarn run build
 #### Frontend only
 ```bash
 yarn
+yarn run build
 cd frontend
 yarn start
 ```
-Use `yarn build` instead of `yarn start` to build the CRA project to build a production bundle
+### Production
+#### Frontend only
+```bash
+yarn
+yarn run build
+cd frontend
+yarn build
+```
+The contents of `frontend/build` may then be served as a static site. 
+### The API (for production)
+1. Make a copy of `.env.template` as `.env`. Here, fill in the environment variables as apprioraite:
+	1. For Eventbrite service (`@isitweeka/service-eventbrite`):
+		1. `IIWA_EVENTBRITE_ORG_ID`: the ID of the organisation holding the event you want to track total net revenue (i.e. amount raised) of
+		2. `IIWA_EVENTBRITE_EVENT_ID`: the ID of the event you want to track total net revenue (i.e. amount raised) of
+		3. `IIWA_EVENTBRITE_ACCESS_TOKEN`: Access Token of an account with appropriate permissions to access said event in the Eventbrite Organiser (get one at https://www.eventbrite.com/platform/)
+2. Build docker containers with `docker compose build`
+3. Push built images to GH container registry
+4. Deploy in production with `docker compose -f docker-compose.prod.yml up` (make sure secrets file (`.env`) has been copied to prod)
