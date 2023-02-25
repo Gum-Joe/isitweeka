@@ -1,0 +1,60 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+# Fetches iCal 
+name: Weekly iCal Fetch Script
+
+on: workflow_dispatch
+
+jobs:
+  uploadIcal: # Upload
+    runs-on: ubuntu-latest
+    name: Upload iCal
+
+    strategy:
+      matrix:
+        school: [KECHB, KECHG]
+        include:
+          - school: KECHB
+            calendarURL: https://calendar.google.com/calendar/ical/calendar%40camphillboys.bham.sch.uk/public/basic.ics
+            waitTime: 0s
+          - school: KECHG
+            calendarURL: https://calendar.google.com/calendar/ical/calendar%40kechg.org.uk/public/basic.ics
+            waitTime: 30s
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: "main"
+    - name: Run download script
+      env:
+        SCHOOL: ${{matrix.school}}
+        CALENDAR_URL: ${{matrix.calendarURL}}
+      run: |
+        echo $SCHOOL
+        echo $CALENDAR_URL
+        chmod +x ./scripts/fetch-ical.sh
+        ./scripts/fetch-ical.sh
+    - name: Wait if needed
+      run: sleep ${{matrix.waitTime}}
+    - name: Stage and commit changes
+      # "git config --global --add safe.directory /github/workspace" is required due to https://github.com/ad-m/github-push-action
+      run: |
+        git config user.email "kishansambhi@hotmail.co.uk"
+        git config user.name "Kishan Build Agent"
+        git config pull.rebase true
+        git config --system --add safe.directory /github/workspace
+        git add .
+        git commit -m "iCal CI Fetch push for ${{matrix.school}}, commit $GITHUB_SHA run ID $GITHUB_RUN_ID"
+        git pull
+    - name: GitHub Push
+      uses: ad-m/github-push-action@v0.5.0
+      with:
+        # Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        # Repository name to push. Default or empty value represents current github repository (${GITHUB_REPOSITORY})
+        # repository: # optional, default is 
+        # Destination branch to push changes
+        branch: main
+        # Determines if force push is used
+        force: false
