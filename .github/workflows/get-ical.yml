@@ -45,7 +45,7 @@ jobs:
         git config user.email "kishansambhi@hotmail.co.uk"
         git config user.name "Kishan Build Agent"
         git config pull.rebase true
-        git config --global --add safe.directory /github/workspace
+        git config --system --add safe.directory /github/workspace
         git add .
         git commit -m "iCal CI Fetch push for ${{matrix.school}}, commit $GITHUB_SHA run ID $GITHUB_RUN_ID"
         git pull
