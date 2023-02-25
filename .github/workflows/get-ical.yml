@@ -4,9 +4,7 @@
 # Fetches iCal 
 name: Weekly iCal Fetch Script
 
-on:
-  schedule:
-    - cron: '0 0 * * 5'
+on: workflow_dispatch
 
 jobs:
   uploadIcal: # Upload
