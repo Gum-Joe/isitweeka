@@ -1,10 +1,10 @@
 
 
 # Relative to ../
-SAVE_LOCATION=./frontend/public/cal/$SCHOOL/basic.ics
+SAVE_LOCATION=./frontend/public/cal/$2/basic.ics
 
 echo Fetching latest iCal...
-echo From $CALENDAR_URL
+echo From $1
 echo To $SAVE_LOCATION
 
-curl -o $SAVE_LOCATION $CALENDAR_URL
+curl -o $SAVE_LOCATION $1
