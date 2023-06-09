@@ -20,11 +20,11 @@ import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 // };
 
 export const KECHBAlerts: AlertResponce = {
-	showAlert: false,
-	alertLevel: ThreatLevels.DEATH,
-	message: "HM Queen Elizabeth II, 1926-2022",
+	showAlert: true,
+	alertLevel: ThreatLevels.CRITICAL,
+	message: "W/C 12.06.23 is WEEK B - not Week A as the site will say below. We are investigating the issue.",
 	//linkText: "Donate Now  →",
-	linkTo: "https://www.bbc.co.uk/news/uk-61585886"
+	//linkTo: "https://www.bbc.co.uk/news/uk-61585886"
 };
 
 export const KECHGAlerts: AlertResponce = {
