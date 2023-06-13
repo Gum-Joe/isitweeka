@@ -103,3 +103,5 @@ dist
 # TernJS port file
 .tern-port
 frontend/public/events/Macmillan_Cancer_Support.eps
+
+indexer/target/
