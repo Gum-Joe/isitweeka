@@ -13,24 +13,24 @@ import Footer from "./components/Footer";
 import { KECHBAlerts, KECHGAlerts } from "./data/alerts";
 
 /*function App() {
-  return (
+	return (
 	<div className="App">
-	  <header className="App-header">
+		<header className="App-header">
 		<img src={logo} className="App-logo" alt="logo" />
 		<p>
-		  Edit <code>src/App.tsx</code> and save to reload.
+			Edit <code>src/App.tsx</code> and save to reload.
 		</p>
 		<a
-		  className="App-link"
-		  href="https://reactjs.org"
-		  target="_blank"
-		  rel="noopener noreferrer"
+			className="App-link"
+			href="https://reactjs.org"
+			target="_blank"
+			rel="noopener noreferrer"
 		>
-		  Learn React
+			Learn React
 		</a>
-	  </header>
+		</header>
 	</div>
-  );
+	);
 }*/
 
 class App extends Component<Record<string, never>> {
@@ -79,7 +79,7 @@ class App extends Component<Record<string, never>> {
 						tab: "KECHB",
 						component: (
 							<SiteContainer
-								calendarURL="/cal/KECHB/basic.ics"
+								calendarURL="/cal/KECHB/calendar.json"
 								iiwaURL={IIWA_KECHB_URL}
 								weekMarkerDate={1}
 								showCard
@@ -96,7 +96,7 @@ class App extends Component<Record<string, never>> {
 						tab: "KECHG",
 						component: (
 							<SiteContainer
-								calendarURL="/cal/KECHG/basic.ics"
+								calendarURL="/cal/KECHG/calendar.json"
 								iiwaURL={IIWA_KECHG_URL}
 								weekMarkerDate={0}
 								eventsFetcher={
@@ -109,7 +109,7 @@ class App extends Component<Record<string, never>> {
 							/>
 						),
 					},
-				]} onTabChange={this.updateCookie} initialTab={(() => JSON.parse(Cookies.get(COOKIE_SCHOOL_PREFERENCE) || "{}")?.tabIndex || 0)()}/>
+				]} onTabChange={this.updateCookie} initialTab={(() => JSON.parse(Cookies.get(COOKIE_SCHOOL_PREFERENCE) || "{}")?.tabIndex || 0)()} />
 
 				<Footer />
 

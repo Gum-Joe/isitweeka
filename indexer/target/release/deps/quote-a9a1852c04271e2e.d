@@ -1,0 +1,13 @@
+/home/may/programming/javascript/isitweeka/indexer/target/release/deps/quote-a9a1852c04271e2e.rmeta: /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/lib.rs /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/ext.rs /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/format.rs /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/ident_fragment.rs /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/to_tokens.rs /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/runtime.rs /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/spanned.rs
+
+/home/may/programming/javascript/isitweeka/indexer/target/release/deps/libquote-a9a1852c04271e2e.rlib: /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/lib.rs /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/ext.rs /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/format.rs /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/ident_fragment.rs /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/to_tokens.rs /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/runtime.rs /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/spanned.rs
+
+/home/may/programming/javascript/isitweeka/indexer/target/release/deps/quote-a9a1852c04271e2e.d: /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/lib.rs /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/ext.rs /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/format.rs /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/ident_fragment.rs /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/to_tokens.rs /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/runtime.rs /home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/spanned.rs
+
+/home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/lib.rs:
+/home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/ext.rs:
+/home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/format.rs:
+/home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/ident_fragment.rs:
+/home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/to_tokens.rs:
+/home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/runtime.rs:
+/home/may/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.28/src/spanned.rs:

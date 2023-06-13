@@ -8440,7 +8440,6 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.9.1
     "@typescript-eslint/parser": ^5.9.1
     eslint: ^7.11.0
-    eslint-plugin-react: ^7.27.1
     focus-trap-react: ^8.9.0
     ical: ^0.8.0
     js-cookie: ^3.0.1
