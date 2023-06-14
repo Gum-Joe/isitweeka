@@ -20,7 +20,7 @@ import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 // };
 
 export const KECHBAlerts: AlertResponce = {
-	showAlert: true,
+	showAlert: false,
 	alertLevel: ThreatLevels.CRITICAL,
 	message: "W/C 12.06.23 is WEEK B - not Week A as the site will say below. We are investigating the issue.",
 	//linkText: "Donate Now  →",
