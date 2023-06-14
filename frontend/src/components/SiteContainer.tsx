@@ -147,7 +147,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			if (raised.net.split(".")[1].length === 1) {
 				raised.net = raised.net + "0";
 			}
-	
+
 			if (raised.net.split(".")[0].length > 3) {
 				raised.net = raised.net.split(".")[0];
 			}
@@ -266,7 +266,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 	 * @see SiteContainer documentation for more information on the algoirthm
 	 */
 	async getCalendar() {
-		
+
 		// APRIL FOOLS OVERRIDE
 		// At the top to prevent unnecessary API requests
 		/* this.setState({
@@ -275,23 +275,23 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			week: "C",
 			isWeekend: true,
 		}); return; */
-		
+
 		const inputDate = new Date();
 		// Used for fiddling:
 		// NOTE: Do NOT allow code into production where these value are uncommented
-		// inputDate.setDate(7);
-		// inputDate.setMonth(10);
-		// inputDate.setFullYear(2022);
+		// inputDate.setDate(8);
+		// inputDate.setMonth(6);
+		// inputDate.setFullYear(2023);
 		// Get which week it is 
 		// Use the new API
-		
+
 		try {
 			// Controller timeout from https://thewebdev.info/2022/04/21/how-to-set-request-timeout-with-fetch-api/
 			// TODO: REMOVE WHEN API FUNCTIONAL!
 			throw new Error("API non-functional!");
 			const controller = new AbortController();
 			const timeoutId = setTimeout(() => controller.abort(), 500);
-			const apiRes = await fetch(this.props.iiwaURL,  { signal: controller.signal });
+			const apiRes = await fetch(this.props.iiwaURL, { signal: controller.signal });
 			clearTimeout(timeoutId);
 			const apiResJSON: IsItWeekAReturn = await apiRes.json();
 			if (!apiResJSON.week || !("isWeekend" in apiResJSON)) {
@@ -314,9 +314,9 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				isWeekend: theWeek.isWeekend,
 			});
 		}
-		
 
-		
+
+
 	}
 
 	/**
@@ -328,7 +328,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			return (
 				<>
 					<h2 className="text title">It is neither Week A nor B.</h2>
-					<h3 className="text body">This means it&#39;s probably a holiday.</h3> 
+					<h3 className="text body">This means it&#39;s probably a holiday.</h3>
 					<h5 id="neitherAB-contact" className="text">If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
 					<div style={{ display: "flex", flexWrap: "wrap", gap: 40, marginRight: "auto" }}>
 						<Button style={{ marginTop: 0 }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>Events & News  →</div></Button>
@@ -344,7 +344,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 			// NOTE: getScrollDownWithAdditional was originally fed 150 instead of 0
 			return (
 				<>
-					
+
 					{/*{this.state.alert.showAlert ? <div className="mobile" style={{ height: 144 }} /> : null}*/}
 					<h2 className="desktop">{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
 					<h1 className="desktop">Week {this.state.week}</h1>
@@ -384,7 +384,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						<CharityWidget {...this.state.charityData} />
 					</div> : null}
 				</div>
-				{ /* <Banner /> */ }
+				{ /* <Banner /> */}
 				{ /* Pulled offline due to jankiness. Readd once a better solution with proper mobile styles and dedicated place is found:
 					<YearGroupCalendar /> */ }
 				<EventsGrid eventData={this.state.eventData} />

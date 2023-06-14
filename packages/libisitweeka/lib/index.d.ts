@@ -1,5 +1,5 @@
 /** Return values from IsItWeekA . First type is a return where the week is know, with a specifier if it is a weekend, second is if the week could not be detected (e.g. is holiday) */
-export declare type IsItWeekAReturn = {
+export type IsItWeekAReturn = {
     isWeekend: boolean;
     week: "A" | "B";
 } | {
@@ -7,7 +7,7 @@ export declare type IsItWeekAReturn = {
     week: "unknown";
 };
 /** Type to represent a (Gregorian calendar!) day */
-export declare type GregorianDay = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+export type GregorianDay = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 /**
  * Base class used to determine if it is Week A or B
  *
