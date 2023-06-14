@@ -15,33 +15,11 @@ object-assign
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
-/*!
- * rrule.js - Library for working with recurrence rules for calendar dates.
- * https://github.com/jakubroztocil/rrule
- *
- * Copyright 2010, Jakub Roztocil and Lars Schoning
- * Licenced under the BSD licence.
- * https://github.com/jakubroztocil/rrule/blob/master/LICENCE
- *
- * Based on:
- * python-dateutil - Extensions to the standard Python datetime module.
- * Copyright (c) 2003-2011 - Gustavo Niemeyer <gustavo@niemeyer.net>
- * Copyright (c) 2012 - Tomi Pieviläinen <tomi.pievilainen@iki.fi>
- * https://github.com/jakubroztocil/rrule/blob/master/LICENCE
- *
- */
-
-/*!
-* rrule.js - Library for working with recurrence rules for calendar dates.
-* https://github.com/jakubroztocil/rrule
-*
-* Copyright 2010, Jakub Roztocil and Lars Schoning
-* Licenced under the BSD licence.
-* https://github.com/jakubroztocil/rrule/blob/master/LICENCE
-*
-*/
-
 /*! For license information please see index.js.LICENSE.txt */
+
+/*! js-cookie v3.0.1 | MIT */
+
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
 
 /** @license React v0.20.2
  * scheduler.production.min.js
