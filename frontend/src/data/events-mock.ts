@@ -40,7 +40,7 @@ More info coming soon!
 
 (Hint: Cultural Dress Day?)`,
 			url: CULTURE_WEEK_2024_EVENT_BRITE,
-			when: "24th - 27?th June 2024",
+			when: "Week of 24th June 2024",
 			cta: {
 				// color: "string",
 				backgroundColor: "#E82328",
