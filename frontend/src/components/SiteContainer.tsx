@@ -334,7 +334,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						<Button style={{ marginTop: 0 }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>Events & News  →</div></Button>
 						{/* <Button style={{ marginTop: 0 }} onClick={() => document.getElementById("feedback-buttom")?.scrollIntoView({ behavior: "smooth" })}>NOT NEW! Send Feedback  →</Button> */}
 					</div>
-					{this.state.showCharityCard ? <div className="mobile">
+					{this.state.showCharityCard && this.props.showCard ? <div className="mobile">
 						<CharityWidget {...this.state.charityData} />
 					</div> : null}
 					<Socials />
@@ -354,7 +354,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						<Button style={{ marginTop: 0 }} className="forward" id="event-scroll-button" onClick={getScrollDownWithAdditional(0)}>Events & News  →</Button>
 						{/* <Button style={{ marginTop: 0 }} onClick={() => document.getElementById("feedback-buttom")?.scrollIntoView({ behavior: "smooth" })}>NOT NEW! Send Feedback  →</Button> */}
 					</div>
-					{this.state.showCharityCard ? <div className="mobile">
+					{this.state.showCharityCard && this.props.showCard ? <div className="mobile">
 						<CharityWidget {...this.state.charityData} />
 					</div> : null}
 					<Socials />
@@ -380,7 +380,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						candidateTwo={{ colour: "#1D77BC", name: "Ayan Butt", photoUrl: "/sc/Ayan.png", votes: 13 }}
 						summary="Ayan Wins" />
 					} */}
-					{this.state.showCharityCard ? <div className="desktop">
+					{this.state.showCharityCard && this.props.showCard ? <div className="desktop">
 						<CharityWidget {...this.state.charityData} />
 					</div> : null}
 				</div>
