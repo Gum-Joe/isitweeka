@@ -65,7 +65,7 @@ export const Card: React.FunctionComponent<EventItem & NewCardExt> = (props) => 
 					scale: "1.04", // HACK :: SVGs that don't fit nicely don't work properly.
 					objectFit: "cover",
 				}} />
-				<span style={{
+				{props.displayTitle || !props.headerURL ? <span style={{
 					position: "absolute",
 					margin: "auto",
 					left: 0,
@@ -80,7 +80,7 @@ export const Card: React.FunctionComponent<EventItem & NewCardExt> = (props) => 
 					textShadow: props.title && props.headerURL ? "0px 0px 3px var(--panel-bg), 0px 0px 1px var(--panel-bg)" : undefined
 				}}>
 					{props.title}
-				</span>
+				</span> : null}
 			</div>
 			<div className="panel description text body">{props.description}</div>
 			{props.stats ? <div className="panel stats">{props.stats.map((stat, index) => {

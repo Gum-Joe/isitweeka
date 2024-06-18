@@ -37,7 +37,9 @@ export enum KECHBHouses {
 export interface BaseEventItem {
 	title: string;
 	description?: string;
-	headerURL: string;
+	headerURL?: string;
+	/** Display title as text? Automatically enabled if no header image URL is set. */
+	displayTitle?: boolean;
 	backgroundColor: string;
 	// HACK: So that it won't complain about the JSON. Please remove eventually
 	eventType: EventTypes | string;
