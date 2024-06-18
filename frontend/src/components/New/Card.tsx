@@ -61,11 +61,11 @@ export const Card: React.FunctionComponent<EventItem & NewCardExt> = (props) => 
 			"--panel-bg": props.backgroundColor,
 		}}>
 			<div className="panel title text big" style={{ position: "relative", padding: props.headerURL ? 0 : undefined }}>
-				<img alt={props.title} src={props.headerURL} style={{
+				{props.headerURL ? <img alt={props.title} src={props.headerURL} style={{
 					scale: "1.04", // HACK :: SVGs that don't fit nicely don't work properly.
 					objectFit: "cover",
-				}} />
-				{props.displayTitle || !props.headerURL ? <span style={{
+				}} /> : null}
+				{props.displayTitle || !props.headerURL ? <span style={props.headerURL ? {
 					position: "absolute",
 					margin: "auto",
 					left: 0,
@@ -78,7 +78,7 @@ export const Card: React.FunctionComponent<EventItem & NewCardExt> = (props) => 
 					alignContent: "center",
 					alignItems: "center",
 					textShadow: props.title && props.headerURL ? "0px 0px 3px var(--panel-bg), 0px 0px 1px var(--panel-bg)" : undefined
-				}}>
+				} : undefined}>
 					{props.title}
 				</span> : null}
 			</div>

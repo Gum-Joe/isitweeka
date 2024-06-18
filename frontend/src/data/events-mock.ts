@@ -23,7 +23,6 @@ export const KECHBEvents: EventData = {
 			eventType: "news",
 			title: "IsItWeekA.com; Still Alive and Kicking!",
 			description: "It might be lacking some content, it might seem a little empty, but the jumbotron, events list, and donation tracker all still work!",
-			headerURL: "",
 			backgroundColor: "#000",
 			stats: [{ title: "Posted", value: "17 June 2024" }, { title: "By", value: "Madeline Hart" }]
 		},
@@ -40,7 +39,6 @@ All in all, it will be a fantastic week to raise money for charity!
 More info coming soon!
 
 (Hint: Cultural Dress Day?)`,
-			headerURL: "",
 			url: CULTURE_WEEK_2024_EVENT_BRITE,
 			when: "24th - 27?th June 2024",
 			cta: {
@@ -54,7 +52,7 @@ More info coming soon!
 			eventType: EventTypes.CHARITY,
 			backgroundColor: "#161C29",
 			title: "X Factor",
-			headerURL: "",
+			description: "",
 			url: CULTURE_WEEK_2024_EVENT_BRITE,
 			when: "24th June 2024",
 			cta: {
@@ -68,7 +66,7 @@ More info coming soon!
 			eventType: EventTypes.CHARITY,
 			backgroundColor: "#161C29",
 			title: "The Chase",
-			headerURL: "",
+			description: "",
 			url: CULTURE_WEEK_2024_EVENT_BRITE,
 			when: "25th June 2024",
 			cta: {
@@ -82,7 +80,7 @@ More info coming soon!
 			eventType: EventTypes.CHARITY,
 			backgroundColor: "#161C29",
 			title: "EA Sports FC 2024",
-			headerURL: "",
+			description: "",
 			url: CULTURE_WEEK_2024_EVENT_BRITE,
 			when: "27th June 2024",
 			cta: {
