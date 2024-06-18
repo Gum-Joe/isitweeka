@@ -14,16 +14,16 @@ services:
     links:
       - redis
     
-  service-kech:
-    image: ghcr.io/gum-joe/isitweeka-service-kech
-    build:
-      context: .
-      dockerfile: ./packages/@isitweeka/service-kech/Dockerfile
-    environment:
-      NODE_ENV: production
-      IIWA_REDIS_URL: redis://redis_comms:6379
-    links:
-      - redis
+  # service-kech:
+  #   image: ghcr.io/gum-joe/isitweeka-service-kech
+  #   build:
+  #     context: .
+  #     dockerfile: ./packages/@isitweeka/service-kech/Dockerfile
+  #   environment:
+  #     NODE_ENV: production
+  #     IIWA_REDIS_URL: redis://redis_comms:6379
+  #   links:
+  #     - redis
   
   service-eventbrite:
     image: ghcr.io/gum-joe/isitweeka-service-eventbrite
