@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import EventsList, { EventData } from "./EventsList";
 import Button from "./New/Button";
-import { CW_TARGET, FAKE_TICKET_TOTAL, GregorianDay, IIWA_CW_URL, SHOW_CHARITY_CARD } from "../utils/constants";
+import { CW_TARGET, FAKE_TICKET_TOTAL, GregorianDay, SHOW_CHARITY_CARD_WHEN_ERROR, IIWA_CW_URL, SHOW_CHARITY_CARD } from "../utils/constants";
 import { getScrollDownWithAdditional } from "../utils/scroll";
 import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 import AlertBanner from "./AlterBanner";
@@ -179,7 +179,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					},
 				},
 				raised: raised,
-				showCharityCard: false,
+				showCharityCard: SHOW_CHARITY_CARD_WHEN_ERROR,
 			}));
 		}
 	}
