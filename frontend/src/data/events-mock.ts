@@ -100,7 +100,7 @@ export const KECHGEvents: EventData = {
 			eventType: "news",
 			title: "2024 Mock General Election",
 			displayTitle: true,
-			description: `It's that time again! Get your photo ID ready and get ready to vote for the first time in nearly 5 years!
+			description: `It's that time again! Get your photo ID ready and prepare yourself to vote for the first time in nearly 5 years!
 			
 			As a public information service, IsItWeekA.com is obligated to state the following:
 			
