@@ -4,4 +4,4 @@ build:
     worker-eventbrite: ./Dockerfile.eventbrite
 run:
   web: yarn workspace isitweeka-server start
-  worker-eventbrite: yark workspace @isitweeka/service-eventbrite start
+  worker-eventbrite: yarn workspace @isitweeka/service-eventbrite start
