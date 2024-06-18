@@ -96,6 +96,23 @@ More info coming soon!
 };
 
 export const KECHGEvents: EventData = {
-	generatedAt: "0",
-	events: [],
+	generatedAt: Date.now().toString(),
+	events: [
+		{
+			eventType: "news",
+			title: "2024 Mock General Election",
+			description: `It's that time again! Get your photo ID ready and get ready to vote for the first time in nearly 5 years!
+			
+			As a public information service, IsItWeekA.com is obligated to state the following:
+			
+			OFFICIAL NOTICE FOR POLITICAL ORGANISATIONS.
+			
+			IsItWeekA.com is available for each party to post a “Propaganda Card™”. Please get in touch via @isitweeka on Instagram or by opening an issue on our GitHub.`,
+			headerURL: "/events/ElectionsBackdropFinalV4Real.svg",
+			// backgroundColor: "#52BDFF",
+			backgroundColor: "#25004C",
+			stats: [{ title: "Posted", value: "18 June 2024" }, { title: "By", value: "IsItWeekA.com Political Correspondent" }],
+			when: "4th July",
+		},
+	],
 };
