@@ -103,12 +103,12 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				target: 200,
 			},
 			charityData: {
-				title: "Beat the Beats",
-				description: "KECH Charity Committee presents the very first Camp Hill Boys Beat the Beats.\n\nOn this momentous day, take to the hall and experience the brain defying beat drops, the enticing tempo and the crowd going crazy at each note.\n\nIt's the first ever event like it and you especially won't want to miss as we crown someone Camp Hill's Official Best Producer.",
-				donateURL: "https://www.eventbrite.co.uk/e/charity-committees-beat-the-beats-tickets-328230465157?aff=isitweekasite",
+				title: "Culture Week 2024",
+				description: "",
+				donateURL: "https://www.eventbrite.co.uk/e/kechb-culture-week-2024-tickets-918570989557?aff=isitweekasite",
 				charity: {
-					name: "Macmillan",
-					url: "https://www.macmillan.org.uk/about-us/"
+					name: "Save the Children",
+					url: "https://www.savethechildren.org.uk/"
 				},
 				raised: {
 					net: "0",
@@ -118,7 +118,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				style: {
 					background: "#000",
 					text: "var(--text-default)",
-					accent: "#D00",
+					accent: "#E82328",
 				},
 			},
 			showCharityCard: SHOW_CHARITY_CARD,
