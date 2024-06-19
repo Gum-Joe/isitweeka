@@ -107,7 +107,7 @@ export const KECHGEvents: EventData = {
 			OFFICIAL NOTICE FOR POLITICAL ORGANISATIONS.
 			
 			IsItWeekA.com is available for each party to post a “Propaganda Card™”. Please get in touch via @isitweeka on Instagram or by opening an issue on our GitHub.`,
-			headerURL: "/events/ElectionsBackdropFinalV4Real.svg",
+			headerURL: "/events/ElectionsBackdropFinalFinalV5.svg",
 			// backgroundColor: "#52BDFF",
 			backgroundColor: "#25004C",
 			stats: [{ title: "Posted", value: "18 June 2024" }, { title: "By", value: "IsItWeekA.com Political Correspondent" }],
