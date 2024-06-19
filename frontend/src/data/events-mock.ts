@@ -22,7 +22,7 @@ export const KECHBEvents: EventData = {
 		{
 			eventType: "news",
 			title: "IsItWeekA.com; Still Alive and Kicking!",
-			description: "It might be lacking some content, it might seem a little empty, but the jumbotron, events list, and donation tracker all still work!",
+			description: "Incredibly, the jumbotron, events list, and donation tracker all still work!",
 			backgroundColor: "#000",
 			stats: [{ title: "Posted", value: "17 June 2024" }, { title: "By", value: "Madeline Hart" }]
 		},
