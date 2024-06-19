@@ -14,7 +14,7 @@ function reportOutboundButtonClick() {
 	});
 }
 
-type CardTypes = "legacy" | "new";
+type CardTypes = "new";
 
 export type NewCardExt = { cardType: CardTypes; stats?: Array<{ title: string; value: string; }>; };
 
@@ -27,34 +27,34 @@ export const Card: React.FunctionComponent<EventItem & NewCardExt> = (props) => 
 		color: props.textColour,
 	} : undefined;
 
-	switch (props.cardType) {
-		case "legacy":
-			return (
-				<div className="card" style={{ backgroundColor: props.textColour }}>
-					<div className="panel title text big" style={panelStyle}>{props.title}</div>
-					{props.description ? <div className="panel description text body" style={panelStyle}>{props.description}</div> : null}
-					<div className="panel stats" style={panelStyle}>
-						{///@ts-expect-error JS object checking existence TS doesn't like...
-							props.when || props.dateTime ? <div className="stat">
-								<div className="stat-label text big">When</div>
-								<div className="stat-value text big">{props.when ||
-									/// @ts-expect-error TS Doesn't understand that I know better than it when certain data exists
-									props.dateTime}</div>
-							</div> : null}
-					</div>
-					{props.eventType === EventTypes.HOUSE && props.currentVictor ? <div className="panel stats" style={{ backgroundColor: props.backgroundColor }}>
-						<div className="stat">
-							<div className="stat-label text big">Victor</div>
-							<div className="stat-value text big">{props.currentVictor}</div>
-						</div>
-					</div> : null}
-					{/* Allow House Events to have links */}
-					{props.url ? <a className="panel cta" onClick={reportOutboundButtonClick} href={props.url} style={{ ...props.cta }}>
-						<div className="text big">{props.cta?.text || "Buy Tickets"}  →</div>
-					</a> : null}
-				</div>
-			);
-	}
+	// switch (props.cardType) {
+	// 	case "legacy":
+	// 		return (
+	// 			<div className="card" style={{ backgroundColor: props.textColour }}>
+	// 				<div className="panel title text big" style={panelStyle}>{props.title}</div>
+	// 				{props.description ? <div className="panel description text body" style={panelStyle}>{props.description}</div> : null}
+	// 				<div className="panel stats" style={panelStyle}>
+	// 					{///@ts-expect-error JS object checking existence TS doesn't like...
+	// 						props.when || props.dateTime ? <div className="stat">
+	// 							<div className="stat-label text big">When</div>
+	// 							<div className="stat-value text big">{props.when ||
+	// 								/// @ts-expect-error TS Doesn't understand that I know better than it when certain data exists
+	// 								props.dateTime}</div>
+	// 						</div> : null}
+	// 				</div>
+	// 				{props.eventType === EventTypes.HOUSE && props.currentVictor ? <div className="panel stats" style={{ backgroundColor: props.backgroundColor }}>
+	// 					<div className="stat">
+	// 						<div className="stat-label text big">Victor</div>
+	// 						<div className="stat-value text big">{props.currentVictor}</div>
+	// 					</div>
+	// 				</div> : null}
+	// 				{/* Allow House Events to have links */}
+	// 				{props.url ? <a className="panel cta" onClick={reportOutboundButtonClick} href={props.url} style={{ ...props.cta }}>
+	// 					<div className="text big">{props.cta?.text || "Buy Tickets"}  →</div>
+	// 				</a> : null}
+	// 			</div>
+	// 		);
+	// }
 	return (
 		<div className="card" style={{
 			/// @ts-expect-error TS doesn't understand CSS vars
@@ -82,7 +82,7 @@ export const Card: React.FunctionComponent<EventItem & NewCardExt> = (props) => 
 					{props.title}
 				</span> : null}
 			</div>
-			<div className="panel description text body">{props.description}</div>
+			{props.description ? <div className="panel description text body">{props.description}</div> : null}
 			{props.stats ? <div className="panel stats">{props.stats.map((stat, index) => {
 				return (
 					<div className="stat text big" key={stat.title}>
@@ -91,13 +91,23 @@ export const Card: React.FunctionComponent<EventItem & NewCardExt> = (props) => 
 					</div>
 				);
 			})}</div> : null}
+			{///@ts-expect-error JS object checking existence TS doesn't like...
+				props.when || props.dateTime ?
+					<div className="panel stats" style={panelStyle}>
+						<div className="stat">
+							<div className="stat-label text big">When</div>
+							<div className="stat-value text big">{props.when ||
+								/// @ts-expect-error TS Doesn't understand that I know better than it when certain data exists
+								props.dateTime}</div>
+						</div>
+					</div> : null}
 			{props.eventType === EventTypes.HOUSE ? <div className="panel stats">
 				<div className="stat">
 					<div className="stat-label">Victor</div>
 					<div className="stat-value">{props.currentVictor}</div>
 				</div>
 			</div> : null}
-			{props.eventType === EventTypes.CHARITY || props.eventType === EventTypes.FUNDRIASER && props.url ? <a className="panel cta" onClick={reportOutboundButtonClick} href={props.url} style={{ ...props.cta }}>
+			{(props.eventType === EventTypes.CHARITY || props.eventType === EventTypes.FUNDRIASER) && props.url ? <a className="panel cta" onClick={reportOutboundButtonClick} href={props.url} style={{ ...props.cta }}>
 				<div className="text big">{props.cta?.text || "Buy Tickets"}  →</div>
 			</a> : null}
 		</div>
