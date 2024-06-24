@@ -127,7 +127,7 @@ app.use(express.urlencoded());
 // Setup logging here
 app.use(morgan(process.env.NODE_ENV === "development" ? "dev" : "combined"));
 
-app.listen(4000, () => {
+app.listen(process.env.PORT ?? 4000, () => {
 	logger.info("Server started.");
 });
 

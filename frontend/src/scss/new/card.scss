@@ -17,18 +17,19 @@
 	gap: 4px;
 	display: flex;
 	flex-direction: column;
-	background: white;
+	background: var(--panel-text, white);
 	max-width: 480px;
 	flex-grow: 1;
 	margin-bottom: auto;
 
 	.panel {
 		border-radius: 8px;
-		background: black;
+		background: var(--panel-bg, black);
 		padding: 16px;
 		gap: 20px;
 		display: flex;
 		flex-direction: column;
+		overflow: hidden;
 
 		&.light {
 			@include light-panel-styles();
@@ -55,6 +56,7 @@
 
 	.description {
 		text-align: left;
+		white-space: pre-line;
 	}
 
 	.stats {

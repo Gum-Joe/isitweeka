@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
 					<ul>
 						<a target="__blank" href="https://github.com/ILikeTeaALot"><li><FontAwesomeIcon icon={faGithub} /> GitHub</li></a>
 						<a target="__blank" href="https://www.rykan.net"><li><FontAwesomeIcon icon={faLink} /> rykan.net</li></a>
-						<a target="__blank" href="https://www.madelinehart.co.uk"><li><FontAwesomeIcon icon={faLink} /> madelinehart.co.uk</li></a>
+						<a target="__blank" href="https://iliketeaalot.github.io"><li><FontAwesomeIcon icon={faLink} /> Website</li></a>
 						<a target="__blank" href="mailto:madeline@rykan.net"><li><FontAwesomeIcon icon={faAt} /> Email</li></a>
 					</ul>
 				</div>

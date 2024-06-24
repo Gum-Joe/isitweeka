@@ -10,7 +10,7 @@ COPY "./packages" "./packages"
 COPY "./server" "./server"
 RUN chown -R node /usr/src/app
 USER node
-RUN yarn set version ./.yarn/releases/yarn-3.1.1.cjs
+RUN yarn set version ./.yarn/releases/yarn-3.2.0.cjs
 RUN yarn
 RUN yarn run build
 EXPOSE 4000

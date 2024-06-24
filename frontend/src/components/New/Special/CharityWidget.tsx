@@ -26,7 +26,7 @@ export interface CharityProps {
 	};
 }
 
-export const CharityWidget: React.FunctionComponent<CharityProps> = (props) => {
+export const CharityWidget = (props: CharityProps) => {
 	return (
 		<div className="cw-cards">
 			<div className="cw-header desktop">

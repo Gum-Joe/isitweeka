@@ -1,0 +1,7 @@
+build:
+  docker:
+    web: ./Dockerfile.server
+    worker-eventbrite: ./Dockerfile.eventbrite
+run:
+  web: yarn workspace isitweeka-server start
+  worker-eventbrite: yarn workspace @isitweeka/service-eventbrite start

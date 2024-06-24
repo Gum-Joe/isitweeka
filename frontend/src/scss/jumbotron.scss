@@ -170,7 +170,7 @@ $grid-gap: 20px;
 			justify-content: center;
 			//margin-left: -1px;
 			> div {
-				width: min-content;
+				// width: min-content; // Design tweak: Allow it to be wider
 				// border: solid 4px;
 				@include phablet {
 					width: 100%;

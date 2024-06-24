@@ -48,7 +48,7 @@ export const EventsGrid: React.FunctionComponent<EventsListProps> = (props) => {
 				{filteredEvents.length > 0 ? masonryColumns.map((content, index) => (
 					<div className="column" key={index}>
 						{content.map((theEvent, index) => (
-							<Card key={index} cardType={theEvent.eventType === "news" ? "new" : "legacy"} {...theEvent} />
+							<Card key={index} cardType={theEvent.eventType === "news" ? "new" : "new"} {...theEvent} />
 						))}
 					</div>
 				)) :

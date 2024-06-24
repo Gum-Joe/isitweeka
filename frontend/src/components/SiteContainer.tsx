@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import EventsList, { EventData } from "./EventsList";
 import Button from "./New/Button";
-import { CW_TARGET, FAKE_TICKET_TOTAL, GregorianDay, IIWA_CW_URL, SHOW_CHARITY_CARD } from "../utils/constants";
+import { CW_TARGET, FAKE_TICKET_TOTAL, GregorianDay, SHOW_CHARITY_CARD_WHEN_ERROR, IIWA_CW_URL, SHOW_CHARITY_CARD } from "../utils/constants";
 import { getScrollDownWithAdditional } from "../utils/scroll";
 import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 import AlertBanner from "./AlterBanner";
@@ -103,12 +103,20 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				target: 200,
 			},
 			charityData: {
-				title: "Beat the Beats",
-				description: "KECH Charity Committee presents the very first Camp Hill Boys Beat the Beats.\n\nOn this momentous day, take to the hall and experience the brain defying beat drops, the enticing tempo and the crowd going crazy at each note.\n\nIt's the first ever event like it and you especially won't want to miss as we crown someone Camp Hill's Official Best Producer.",
-				donateURL: "https://www.eventbrite.co.uk/e/charity-committees-beat-the-beats-tickets-328230465157?aff=isitweekasite",
+				title: "Culture Week 2024",
+				description: `Charity Week is back for 2024!
+
+In w/c 24th June, Charity week will be returning, with fan favourite events making a comeback. Will you be in the hot seat for the Chase, or might you stun the judges with your skills in the X-Factor.
+
+All in all, it will be a fantastic week to raise money for charity!
+
+More info coming soon!
+
+(Hint: Cultural Dress Day?)`,
+				donateURL: "https://www.eventbrite.co.uk/e/kechb-culture-week-2024-tickets-918570989557?aff=isitweekasite",
 				charity: {
-					name: "Macmillan",
-					url: "https://www.macmillan.org.uk/about-us/"
+					name: "Save the Children",
+					url: "https://www.savethechildren.org.uk/"
 				},
 				raised: {
 					net: "0",
@@ -118,7 +126,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				style: {
 					background: "#000",
 					text: "var(--text-default)",
-					accent: "#D00",
+					accent: "#E82328",
 				},
 			},
 			showCharityCard: SHOW_CHARITY_CARD,
@@ -179,7 +187,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					},
 				},
 				raised: raised,
-				showCharityCard: false,
+				showCharityCard: SHOW_CHARITY_CARD_WHEN_ERROR,
 			}));
 		}
 	}
@@ -334,7 +342,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						<Button style={{ marginTop: 0 }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>Events & News  →</div></Button>
 						{/* <Button style={{ marginTop: 0 }} onClick={() => document.getElementById("feedback-buttom")?.scrollIntoView({ behavior: "smooth" })}>NOT NEW! Send Feedback  →</Button> */}
 					</div>
-					{this.state.showCharityCard ? <div className="mobile">
+					{this.state.showCharityCard && this.props.showCard ? <div className="mobile">
 						<CharityWidget {...this.state.charityData} />
 					</div> : null}
 					<Socials />
@@ -354,7 +362,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						<Button style={{ marginTop: 0 }} className="forward" id="event-scroll-button" onClick={getScrollDownWithAdditional(0)}>Events & News  →</Button>
 						{/* <Button style={{ marginTop: 0 }} onClick={() => document.getElementById("feedback-buttom")?.scrollIntoView({ behavior: "smooth" })}>NOT NEW! Send Feedback  →</Button> */}
 					</div>
-					{this.state.showCharityCard ? <div className="mobile">
+					{this.state.showCharityCard && this.props.showCard ? <div className="mobile">
 						<CharityWidget {...this.state.charityData} />
 					</div> : null}
 					<Socials />
@@ -380,7 +388,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						candidateTwo={{ colour: "#1D77BC", name: "Ayan Butt", photoUrl: "/sc/Ayan.png", votes: 13 }}
 						summary="Ayan Wins" />
 					} */}
-					{this.state.showCharityCard ? <div className="desktop">
+					{this.state.showCharityCard && this.props.showCard ? <div className="desktop">
 						<CharityWidget {...this.state.charityData} />
 					</div> : null}
 				</div>
