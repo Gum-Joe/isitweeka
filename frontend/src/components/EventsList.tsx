@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { scrollUp, scrollDown } from "../utils/scroll";
+import { scrollUp, /* scrollDown */ } from "../utils/scroll";
 import EventRow from "./EventRow";
 
 /**

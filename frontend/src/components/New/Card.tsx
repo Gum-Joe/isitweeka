@@ -83,7 +83,7 @@ export const Card: React.FunctionComponent<EventItem & NewCardExt> = (props) => 
 				</span> : null}
 			</div>
 			{props.description ? <div className="panel description text body">{props.description}</div> : null}
-			{props.stats ? <div className="panel stats">{props.stats.map((stat, index) => {
+			{props.stats ? <div className="panel stats">{props.stats.map((stat) => {
 				return (
 					<div className="stat text big" key={stat.title}>
 						<div className="stat-label">{stat.title}</div>

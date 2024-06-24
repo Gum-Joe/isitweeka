@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import EventsList, { EventData } from "./EventsList";
+import { EventData } from "./EventsList";
 import Button from "./New/Button";
-import { CW_TARGET, FAKE_TICKET_TOTAL, GregorianDay, SHOW_CHARITY_CARD_WHEN_ERROR, IIWA_CW_URL, SHOW_CHARITY_CARD } from "../utils/constants";
+import { GregorianDay, SHOW_CHARITY_CARD_WHEN_ERROR, IIWA_CW_URL, SHOW_CHARITY_CARD } from "../utils/constants";
 import { getScrollDownWithAdditional } from "../utils/scroll";
 import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 import AlertBanner from "./AlterBanner";
@@ -13,7 +13,7 @@ import IsItWeekA from "../utils/IsItWeekA";
 import { IsItWeekAReturn } from "libisitweeka";
 import "react-circular-progressbar/dist/styles.css";
 import EventsGrid from "./New/EventsGrid";
-import { StudentCouncilElectionTracker } from "./New/Special/StudentCouncilElectionTracker";
+// import { StudentCouncilElectionTracker } from "./New/Special/StudentCouncilElectionTracker"; // Re-enable next election (with tweaks!)
 import { CharityProps, CharityWidget } from "./New/Special/CharityWidget";
 
 /**
@@ -39,16 +39,16 @@ export interface SiteProps {
 	showCard?: boolean;
 }
 
-const baseEventImageStyle = {
-	backgroundSize: "contain",
-	backgroundRepeat: "no-repeat",
-	backgroundPosition: "center",
-	display: "flex",
-	flex: 1,
-	margin: "auto",
-	width: "90%",
-	maxHeight: "80%",
-};
+// const baseEventImageStyle = {
+// 	backgroundSize: "contain",
+// 	backgroundRepeat: "no-repeat",
+// 	backgroundPosition: "center",
+// 	display: "flex",
+// 	flex: 1,
+// 	margin: "auto",
+// 	width: "90%",
+// 	maxHeight: "80%",
+// };
 
 interface TheState {
 	/** Set to unknown if neither Week A or B is detected */
@@ -140,8 +140,8 @@ More info coming soon!
 			this.fetchNotifications();
 			// NOTE: REENABLE!
 			this.getAmountRaised();
-		} catch (err: any) {
-			console.error("Error: " + err?.message);
+		} catch (err) {
+			console.error("Error: " + err);
 		}
 	}
 
@@ -176,7 +176,7 @@ More info coming soon!
 				net: "0.00",
 				ticketQuantity: 0,
 				target: 1,
-			}
+			};
 			this.setState((prevState) => ({
 				...prevState,
 				charityData: {
@@ -209,7 +209,7 @@ More info coming soon!
 		this.setState({
 			alert: response,
 		});
-	}
+	};
 
 	async fetchEvents() {
 		// TODO: Add real fetch logic, likely based on an inputted URL

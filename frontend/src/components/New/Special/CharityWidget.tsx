@@ -1,10 +1,5 @@
-import React from "react";
-
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { CW_TARGET } from "../../../utils/constants";
-import Button from "../Button";
 
 export interface CharityProps {
 	title: string;
