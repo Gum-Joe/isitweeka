@@ -52,7 +52,7 @@ More info coming soon!
 			eventType: EventTypes.CHARITY,
 			backgroundColor: "#161C29",
 			title: "X Factor",
-			description: "",
+			description: "Contact @isitweeka or @kech.charitycommittee for details",
 			url: CULTURE_WEEK_2024_EVENT_BRITE,
 			when: "24th June 2024",
 			cta: {
@@ -66,7 +66,7 @@ More info coming soon!
 			eventType: EventTypes.CHARITY,
 			backgroundColor: "#161C29",
 			title: "The Chase",
-			description: "",
+			description: "Contact @isitweeka or @kech.charitycommittee for details",
 			url: CULTURE_WEEK_2024_EVENT_BRITE,
 			when: "25th June 2024",
 			cta: {
@@ -80,7 +80,7 @@ More info coming soon!
 			eventType: EventTypes.CHARITY,
 			backgroundColor: "#161C29",
 			title: "EA Sports FC 2024",
-			description: "",
+			description: "Contact @isitweeka or @kech.charitycommittee for details",
 			url: CULTURE_WEEK_2024_EVENT_BRITE,
 			when: "27th June 2024",
 			cta: {
