@@ -103,20 +103,12 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				target: 200,
 			},
 			charityData: {
-				title: "Culture Week 2024",
-				description: `Charity Week is back for 2024!
-
-In w/c 24th June, Charity week will be returning, with fan favourite events making a comeback. Will you be in the hot seat for the Chase, or might you stun the judges with your skills in the X-Factor.
-
-All in all, it will be a fantastic week to raise money for charity!
-
-More info coming soon!
-
-(Hint: Cultural Dress Day?)`,
+				title: "Charity Week 2024",
+				description: "Details coming soon!",
 				donateURL: "https://www.eventbrite.co.uk/e/kechb-culture-week-2024-tickets-918570989557?aff=isitweekasite",
 				charity: {
-					name: "Save the Children",
-					url: "https://www.savethechildren.org.uk/"
+					name: "N/A",
+					url: "https://isitweeka.com"
 				},
 				raised: {
 					net: "0",
