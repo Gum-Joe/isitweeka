@@ -29,8 +29,17 @@ export default function connectToRedis(): RedisClientType<any, any> {
 		logger.info("Reusing already created Redis Client...");
 		return theClient;
 	}
+	const socketData: {
+		tls: true,
+		rejectUnauthorized: boolean,
+	} | undefined = process.env?.IIWA_REDIS_URL?.match(/rediss:/) != null ? {
+		tls: true,
+		rejectUnauthorized: false,
+	} : undefined
+
 	theClient = createClient({
 		url: process.env.IIWA_REDIS_URL,
+		socket: socketData,
 	});
 
 	theClient.on("error", (err) => {

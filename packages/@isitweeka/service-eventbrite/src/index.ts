@@ -84,8 +84,16 @@ function checkEnvVars() {
     checkEnvVars();
 
     logger.info("Connecting to redis...");
+    const socketData: {
+      tls: true,
+      rejectUnauthorized: boolean,
+    } | undefined = process.env?.IIWA_REDIS_URL?.match(/rediss:/) != null ? {
+      tls: true,
+      rejectUnauthorized: false,
+    } : undefined
     const client = createClient({
       url: process.env.IIWA_REDIS_URL  || "redis://localhost:6379",
+      socket: socketData,
     });
   
     client.on('error', (err) => logger.error('Redis Client Error', err));
