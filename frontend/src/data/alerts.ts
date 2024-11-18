@@ -20,11 +20,11 @@ import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 // };
 
 export const KECHBAlerts: AlertResponce = {
-	showAlert: false,
-	alertLevel: ThreatLevels.CRITICAL,
-	message: "W/C 12.06.23 is WEEK B - not Week A as the site will say below. We are investigating the issue.",
-	//linkText: "Donate Now  →",
-	//linkTo: "https://www.bbc.co.uk/news/uk-61585886"
+	showAlert: true,
+	alertLevel: ThreatLevels.INFO,
+	message: "Charity Week is back!",
+	linkText: "Buy Tickets  →",
+	linkTo: "https://chbcharityweek2024.eventbrite.co.uk/"
 };
 
 export const KECHGAlerts: AlertResponce = {
