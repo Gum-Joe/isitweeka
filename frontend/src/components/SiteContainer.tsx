@@ -115,7 +115,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				raised: {
 					net: "0",
 					ticketQuantity: 0,
-					target: 1000,
+					target: 2000,
 				},
 				style: {
 					background: "#1f2335",
