@@ -26,73 +26,73 @@ export const KECHBEvents: EventData = {
 			backgroundColor: "#000",
 			stats: [{ title: "Posted", value: "17 June 2024" }, { title: "By", value: "Madeline Hart" }]
 		},
-		// {
-		// 	eventType: EventTypes.CHARITY,
-		// 	title: "CHB Charity Week 2024",
-		// 	description: "CHB will see the return of Charity Week on the 2nd of December! Get ready for a thrilling showcase of events! We've got all your favourites, from Mario Kart to Who Wants to Be a Millionaire! Click the button below to donate and buy tickets, which start from £2.",
-		// 	when: "w/c 2nd December",
-		// 	url: "https://chbcharityweek2024.eventbrite.com/",
-		// 	backgroundColor: "#1f2335",
-		// 	ticketsSale: {
-		// 		start: "18/11/24"
-		// 	}
-		// },
-		// {
-		// 	eventType: EventTypes.CHARITY,
-		// 	title: "Who Wants To Be A Millionaire?",
-		// 	description: "We start things off with a Kahoot, to determine the 5 lucky students who'll have to face Amaan Ahmed, the Quizmaster. Get all the questions correct, and you'll become a Camp Hillionaire!",
-		// 	when: "Monday 2nd December",
-		// 	url: "https://chbcharityweek2024.eventbrite.com/",
-		// 	backgroundColor: "#1e012d",
-		// 	ticketsSale: {
-		// 		start: "18/11/24"
-		// 	},
-		// },
-		// {
-		// 	eventType: EventTypes.CHARITY,
-		// 	title: "Mario Kart Tournament",
-		// 	description: "Race your way to victory as CHB sees its 2nd Mario Kart tournament. Competing in your year groups, you'll be in for the chance of a sweet reward and bragging rights. Come on, how often do you get to play video games in school?",
-		// 	when: "Tuesday 3rd December",
-		// 	url: "https://chbcharityweek2024.eventbrite.com/",
-		// 	backgroundColor: "#000000",
-		// 	ticketsSale: {
-		// 		start: "18/11/24"
-		// 	},
-		// },
-		// {
-		// 	hidden: false,
-		// 	eventType: EventTypes.CHARITY,
-		// 	title: "Camp Hill's Got Talent!",
-		// 	description: "Hosted by our very own Head Boy Ayan Butt and Mohammed Maahir, get ready for a show of talent and skills, all for the chance of winning an Amazon Giftcard worth up to £15!",
-		// 	when: "Wednesday 4th December",
-		// 	url: "https://chbcharityweek2024.eventbrite.com/",
-		// 	backgroundColor: "#742a26",
-		// 	ticketsSale: {
-		// 		start: "18/11/24"
-		// 	},
-		// },
-		// {
-		// 	eventType: EventTypes.CHARITY,
-		// 	title: "The Grand Debate",
-		// 	description: "Get ready for this battle of wits and words as we see students and teachers battle it out in the art of rhetoric. YOU, as the audience will get to decide the winner, and determine who'll be walking off as the Debating Kings of Camp Hill! Hosted by Dr Donnelly.",
-		// 	when: "Thursday 5th December",
-		// 	url: "https://chbcharityweek2024.eventbrite.com/",
-		// 	backgroundColor: "#908579",
-		// 	ticketsSale: {
-		// 		start: "18/11/24"
-		// 	},
-		// },
-		// {
-		// 	eventType: EventTypes.CHARITY,
-		// 	title: "CHB Charity Week Raffle",
-		// 	description: "Buyers of either a standard or VIP 'Hall' Events Pass' will be given entry. You'll be in for the chance to win a prize of up to £50 or more! Note: VIP Tickets will be counted as an x2 entry, and the event takes place at break.",
-		// 	when: "Friday 6th December",
-		// 	url: "https://chbcharityweek2024.eventbrite.com/",
-		// 	backgroundColor: "#1f2335",
-		// 	ticketsSale: {
-		// 		start: "18/11/24"
-		// 	}
-		// },
+		{
+			eventType: EventTypes.CHARITY,
+			title: "CHB Charity Week 2024",
+			description: "CHB will see the return of Charity Week on the 2nd of December! Get ready for a thrilling showcase of events! We've got all your favourites, from Mario Kart to Who Wants to Be a Millionaire! Click the button below to donate and buy tickets, which start from £2.",
+			when: "w/c 2nd December",
+			url: "https://chbcharityweek2024.eventbrite.com/",
+			backgroundColor: "#1f2335",
+			ticketsSale: {
+				start: "18/11/24"
+			}
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "Who Wants To Be A Millionaire?",
+			description: "We start things off with a Kahoot, to determine the 5 lucky students who'll have to face Amaan Ahmed, the Quizmaster. Get all the questions correct, and you'll become a Camp Hillionaire!",
+			when: "Monday 2nd December",
+			url: "https://chbcharityweek2024.eventbrite.com/",
+			backgroundColor: "#1e012d",
+			ticketsSale: {
+				start: "18/11/24"
+			},
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "Mario Kart Tournament",
+			description: "Race your way to victory as CHB sees its 2nd Mario Kart tournament. Competing in your year groups, you'll be in for the chance of a sweet reward and bragging rights. Come on, how often do you get to play video games in school?",
+			when: "Tuesday 3rd December",
+			url: "https://chbcharityweek2024.eventbrite.com/",
+			backgroundColor: "#000000",
+			ticketsSale: {
+				start: "18/11/24"
+			},
+		},
+		{
+			hidden: false,
+			eventType: EventTypes.CHARITY,
+			title: "Camp Hill's Got Talent!",
+			description: "Hosted by our very own Head Boy Ayan Butt and Mohammed Maahir, get ready for a show of talent and skills, all for the chance of winning an Amazon Giftcard worth up to £15!",
+			when: "Wednesday 4th December",
+			url: "https://chbcharityweek2024.eventbrite.com/",
+			backgroundColor: "#742a26",
+			ticketsSale: {
+				start: "18/11/24"
+			},
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "The Grand Debate",
+			description: "Get ready for this battle of wits and words as we see students and teachers battle it out in the art of rhetoric. YOU, as the audience will get to decide the winner, and determine who'll be walking off as the Debating Kings of Camp Hill! Hosted by Dr Donnelly.",
+			when: "Thursday 5th December",
+			url: "https://chbcharityweek2024.eventbrite.com/",
+			backgroundColor: "#908579",
+			ticketsSale: {
+				start: "18/11/24"
+			},
+		},
+		{
+			eventType: EventTypes.CHARITY,
+			title: "CHB Charity Week Raffle",
+			description: "Buyers of either a standard or VIP 'Hall' Events Pass' will be given entry. You'll be in for the chance to win a prize of up to £50 or more! Note: VIP Tickets will be counted as an x2 entry, and the event takes place at break.",
+			when: "Friday 6th December",
+			url: "https://chbcharityweek2024.eventbrite.com/",
+			backgroundColor: "#1f2335",
+			ticketsSale: {
+				start: "18/11/24"
+			}
+		},
 		
 // 		{
 // 			eventType: EventTypes.CHARITY,

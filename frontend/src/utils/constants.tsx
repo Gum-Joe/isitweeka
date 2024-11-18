@@ -15,5 +15,5 @@ export const IIWA_KECHB_URL = `${IIWA_BASE_URL}/isitweeka/kechb`;
 export const IIWA_KECHG_URL = `${IIWA_BASE_URL}/isitweeka/kechg`;
 export const IIWA_CW_URL = `${IIWA_BASE_URL}/eventbrite/cw`;
 
-export const SHOW_CHARITY_CARD = false;
+export const SHOW_CHARITY_CARD = true;
 export const SHOW_CHARITY_CARD_WHEN_ERROR = process.env.NODE_ENV != "production";
