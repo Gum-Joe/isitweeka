@@ -22,7 +22,6 @@ export interface CharityProps {
 }
 
 export const CharityWidget = (props: CharityProps) => {
-	console.log(props);
 	return (
 		<div className="cw-cards">
 			<div className="cw-header desktop">
@@ -30,10 +29,10 @@ export const CharityWidget = (props: CharityProps) => {
 			</div>
 			<div className="cw-content">
 				<div className="card cw-card" style={{ background: props.style?.text, color: props.style?.text, maxWidth: "min(600px, 50vw)" }}>
-					<div className="panel hide-tablet" style={{ borderColor: props.style?.text, background: props.style?.background }}>
-						<div className="panel title text big mobile">{props.title}</div>
-						<h2 className="text big">About</h2>
-						<span className="text body" style={{ whiteSpace: "pre-wrap" }}>{props.description}</span>
+					<div className="panel" style={{ borderColor: props.style?.text, background: props.style?.background }}>
+						<div className="panel title text big mobile" style={{background: props.style?.background}}>{props.title}</div>
+						<h2 className="text big hide-tablet">About</h2>
+						<span className="text body hide-tablet" style={{ whiteSpace: "pre-wrap" }}>{props.description}</span>
 						{/* <a href={props.donateURL}><button style={{ whiteSpace: "pre" }}><p>Donate Now  →</p><FontAwesomeIcon icon={faArrowRight} /></button></a> */}
 						{/* <a style={{ color: "inherit" }} href={props.donateURL}><Button>Donate Now  →</Button></a> */}
 						{/*<a className="cw-delayed" href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite" aria-disabled><button aria-disabled disabled><p>ticket sales delayed</p></button></a>*/}
