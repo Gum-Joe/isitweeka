@@ -200,7 +200,7 @@ jobs:
           CI: false # Otherwise warnings fail the build
 
       - name: Upload a compiled website
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Compiled website
           path: frontend/build/
