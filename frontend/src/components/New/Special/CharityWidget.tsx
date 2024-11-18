@@ -22,6 +22,7 @@ export interface CharityProps {
 }
 
 export const CharityWidget = (props: CharityProps) => {
+	console.log(props);
 	return (
 		<div className="cw-cards">
 			<div className="cw-header desktop">
@@ -29,15 +30,15 @@ export const CharityWidget = (props: CharityProps) => {
 			</div>
 			<div className="cw-content">
 				<div className="card cw-card" style={{ background: props.style?.text, color: props.style?.text, maxWidth: "min(600px, 50vw)" }}>
-					<div className="panel title text big mobile">{props.title}</div>
-					<div className="panel hide-tablet" style={{ borderColor: props.style?.text }}>
+					<div className="panel hide-tablet" style={{ borderColor: props.style?.text, background: props.style?.background }}>
+						<div className="panel title text big mobile">{props.title}</div>
 						<h2 className="text big">About</h2>
 						<span className="text body" style={{ whiteSpace: "pre-wrap" }}>{props.description}</span>
 						{/* <a href={props.donateURL}><button style={{ whiteSpace: "pre" }}><p>Donate Now  →</p><FontAwesomeIcon icon={faArrowRight} /></button></a> */}
 						{/* <a style={{ color: "inherit" }} href={props.donateURL}><Button>Donate Now  →</Button></a> */}
 						{/*<a className="cw-delayed" href="https://www.eventbrite.co.uk/e/camp-hill-charity-week-2022-tickets-234329203957?aff=isitweekasite" aria-disabled><button aria-disabled disabled><p>ticket sales delayed</p></button></a>*/}
 					</div>
-					<div className="cw-raised panel">
+					<div className="cw-raised panel" style={{ background: props.style?.background }}>
 						<h2 className="text big desktop">Ticket Stats</h2>
 						<div className="raised-content">
 							<div className="ring-cont"><CircularProgressbar styles={{ path: { stroke: props.style?.accent } }} strokeWidth={10} value={parseFloat(props.raised.net) / props.raised.target * 100} text={(parseFloat(props.raised.net) / props.raised.target * 100).toFixed(0) + "%"} /></div>
@@ -54,7 +55,7 @@ export const CharityWidget = (props: CharityProps) => {
 					<a className="panel cta" style={{ background: props.style?.accent }} href={props.donateURL}>
 						<span className="text big">Donate Now  →</span>
 					</a>
-					<div className="panel hide-tablet cw-charity-link" style={{ display: "block" }}>
+					<div className="panel hide-tablet cw-charity-link" style={{ display: "block", background: props.style?.background }}>
 						<p className="text body centred">Supporting {props.charity.name} - <a target="__blank" href={props.charity.url}>more info »</a></p>
 					</div>
 				</div>

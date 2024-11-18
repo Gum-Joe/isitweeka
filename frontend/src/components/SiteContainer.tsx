@@ -103,22 +103,24 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 				target: 200,
 			},
 			charityData: {
-				title: "Charity Week 2024",
-				description: "Details coming soon!",
-				donateURL: "https://www.eventbrite.co.uk/e/kechb-culture-week-2024-tickets-918570989557?aff=isitweekasite",
+				title: "CHB Charity Week 2024",
+				description: `CHB will see the return of Charity Week on the 2nd of December! Get ready for a thrilling showcase of events! We've got all your favourites, from Mario Kart to Who Wants to Be a Millionaire! Click the button below to donate and buy tickets, which start from £2.
+
+- The Charity Committee`,
+				donateURL: "https://chbcharityweek2024.eventbrite.com",
 				charity: {
-					name: "N/A",
-					url: "https://isitweeka.com"
+					name: "Cancer Research UK",
+					url: "https://www.cancerresearchuk.org/"
 				},
 				raised: {
 					net: "0",
 					ticketQuantity: 0,
-					target: 200,
+					target: 1000,
 				},
 				style: {
-					background: "#000",
+					background: "#1f2335",
 					text: "var(--text-default)",
-					accent: "#E82328",
+					accent: "#01b960",
 				},
 			},
 			showCharityCard: SHOW_CHARITY_CARD,
