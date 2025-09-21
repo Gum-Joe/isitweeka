@@ -19,20 +19,32 @@ import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 // 	//linkTo: "https://www.instagram.com/p/CZSJNPMLH8C"
 // };
 
+// export const KECHBAlerts: AlertResponce = {
+// 	showAlert: true,
+// 	alertLevel: ThreatLevels.INFO,
+// 	message: "Charity Week is back!",
+// 	linkText: "Buy Tickets  →",
+// 	linkTo: "https://chbcharityweek2024.eventbrite.co.uk/"
+// };
+
 export const KECHBAlerts: AlertResponce = {
 	showAlert: true,
-	alertLevel: ThreatLevels.INFO,
-	message: "Charity Week is back!",
-	linkText: "Buy Tickets  →",
-	linkTo: "https://chbcharityweek2024.eventbrite.co.uk/"
+	alertLevel: ThreatLevels.CRITICAL,
+	message: "TEMPORARY OUTAGE. SEE EVENTS & NEWS FOR DETAILS.",
 };
 
+// export const KECHGAlerts: AlertResponce = {
+// 	showAlert: false,
+// 	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
+// 	// alertLevel: ThreatLevels.CRITICAL,
+// 	message: "HM Queen Elizabeth II, 1926-2022",
+// 	alertLevel: ThreatLevels.DEATH,
+// 	//linkText: "more info",
+// 	linkTo: "https://www.bbc.co.uk/news/uk-61585886"
+// };
+
 export const KECHGAlerts: AlertResponce = {
-	showAlert: false,
-	//message: "BREAKING: Student Council Chair Adeen Irfan has resigned, triggering an election.",
-	// alertLevel: ThreatLevels.CRITICAL,
-	message: "HM Queen Elizabeth II, 1926-2022",
-	alertLevel: ThreatLevels.DEATH,
-	//linkText: "more info",
-	linkTo: "https://www.bbc.co.uk/news/uk-61585886"
+	showAlert: true,
+	message: "TEMPORARY OUTAGE. SEE EVENTS & NEWS FOR DETAILS.",
+	alertLevel: ThreatLevels.CRITICAL,
 };
