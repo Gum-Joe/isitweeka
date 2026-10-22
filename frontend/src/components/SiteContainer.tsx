@@ -13,7 +13,7 @@ import { IsItWeekAReturn } from "libisitweeka";
 import "react-circular-progressbar/dist/styles.css";
 import EventsGrid from "./New/EventsGrid";
 // import { StudentCouncilElectionTracker } from "./New/Special/StudentCouncilElectionTracker"; // Re-enable next election (with tweaks!)
-import { CharityProps, CharityWidget } from "./New/Special/CharityWidget";
+import { CharityProps /*, CharityWidget */ } from "./New/Special/CharityWidget";
 
 /**
  * Props to provide to the site
@@ -356,9 +356,10 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						candidateTwo={{ colour: "#1D77BC", name: "Ayan Butt", photoUrl: "/sc/Ayan.png", votes: 13 }}
 						summary="Ayan Wins" />
 					} */}
+					{/* Charity Week card disabled while the site is closing
 					{this.state.showCharityCard && this.props.showCard ? <div className="desktop">
 						<CharityWidget {...this.state.charityData} />
-					</div> : null}
+					</div> : null} */}
 				</div>
 				{ /* <Banner /> */}
 				{ /* Pulled offline due to jankiness. Readd once a better solution with proper mobile styles and dedicated place is found:
