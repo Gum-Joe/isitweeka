@@ -16,18 +16,9 @@ const randomNumber = Math.random();
 
 const CULTURE_WEEK_2024_EVENT_BRITE = "https://www.eventbrite.co.uk/e/kechb-culture-week-2024-tickets-918570989557?utm-campaign=social&utm-content=attendeeshare&utm-medium=discovery&utm-term=listing&utm-source=cp&aff=isitweekasite";
 
-const problems: EventItem = {
-	eventType: "news",
-	title: "IsItWeekA.com undergoing “maintenance”",
-	description: "In what is becoming an annual tradition, changes have been made in how week A and B are stored in the school's public calendar, IsItWeekA.com's patent-pending Week-inator system requires a rewrite.",
-	backgroundColor: "#000",
-	stats: [{ title: "Posted", value: "21 September 2025" }, { title: "By", value: "Madeline Hart" }]
-};
-
 export const KECHBEvents: EventData = {
 	generatedAt: Date.now().toString(),
 	events: [
-		problems,
 		{
 			eventType: "news",
 			title: "IsItWeekA.com; Still Alive and Kicking!",
@@ -173,7 +164,6 @@ export const KECHBEvents: EventData = {
 export const KECHGEvents: EventData = {
 	generatedAt: Date.now().toString(),
 	events: [
-		problems,
 		// {
 		// 	eventType: "news",
 		// 	title: "2024 Mock General Election",
