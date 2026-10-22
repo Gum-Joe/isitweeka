@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { EventData } from "./EventsList";
 import Button from "./New/Button";
 import { GregorianDay, SHOW_CHARITY_CARD_WHEN_ERROR, IIWA_CW_URL, SHOW_CHARITY_CARD } from "../utils/constants";
-import { getScrollDownWithAdditional } from "../utils/scroll";
 import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 import AlertBanner from "./AlterBanner";
 // import Banner from "./MailingListBanner";
@@ -14,7 +13,7 @@ import { IsItWeekAReturn } from "libisitweeka";
 import "react-circular-progressbar/dist/styles.css";
 import EventsGrid from "./New/EventsGrid";
 // import { StudentCouncilElectionTracker } from "./New/Special/StudentCouncilElectionTracker"; // Re-enable next election (with tweaks!)
-import { CharityProps, CharityWidget } from "./New/Special/CharityWidget";
+import { CharityProps /*, CharityWidget */ } from "./New/Special/CharityWidget";
 
 /**
  * Props to provide to the site
@@ -129,7 +128,6 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 
 	componentDidMount() {
 		try {
-			this.getCalendar();
 			this.fetchEvents();
 			this.fetchNotifications();
 			// NOTE: REENABLE!
@@ -321,48 +319,24 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 
 	}
 
+	/** Section explaining the closure, scrolled to by the jumbotron's "Read more" button */
+	closingRef = React.createRef<HTMLDivElement>();
+
 	/**
-	 * Used to get what to display as the jumbotron, i.e. is it Week A, B or neither?
+	 * Used to get what to display as the jumbotron (currently the closure notice)
 	 */
 	getStatus() {
-		if (this.state.week === "unknown") {
-			// NOTE: getScrollDownWithAdditional was originally fed 150 instead of 0
-			return (
-				<>
-					<h2 className="text title">It is neither Week A nor B.</h2>
-					<h3 className="text body">This means it&#39;s probably a holiday.</h3>
-					<h5 id="neitherAB-contact" className="text">If you believe this is in error, please email&nbsp;<a href="mailto:info@isitweeka.com">info@isitweeka.com</a></h5>
-					<div style={{ display: "flex", flexWrap: "wrap", gap: 40, marginRight: "auto" }}>
-						<Button style={{ marginTop: 0 }} className="forward" onClick={getScrollDownWithAdditional(0)}><div>Events & News  →</div></Button>
-						{/* <Button style={{ marginTop: 0 }} onClick={() => document.getElementById("feedback-buttom")?.scrollIntoView({ behavior: "smooth" })}>NOT NEW! Send Feedback  →</Button> */}
-					</div>
-					{this.state.showCharityCard && this.props.showCard ? <div className="mobile">
-						<CharityWidget {...this.state.charityData} />
-					</div> : null}
-					<Socials />
-				</>
-			);
-		} else {
-			// NOTE: getScrollDownWithAdditional was originally fed 150 instead of 0
-			return (
-				<>
-
-					{/*{this.state.alert.showAlert ? <div className="mobile" style={{ height: 144 }} /> : null}*/}
-					<h2 className="desktop">{this.state.isWeekend ? "Next week will be" : "It is"}</h2> {/* Special case for weekend, where we show next week*/}
-					<h1 className="desktop">Week {this.state.week}</h1>
-					<h2 className="mobile">{this.state.isWeekend ? "Next week will be week" : "It is week"}</h2> {/* Special case for weekend, where we show next week*/}
-					<h1 className="mobile">{this.state.week}</h1>
-					<div style={{ display: "flex", flexWrap: "wrap", gap: 40, marginRight: "auto" }}>
-						<Button style={{ marginTop: 0 }} className="forward" id="event-scroll-button" onClick={getScrollDownWithAdditional(0)}>Events & News  →</Button>
-						{/* <Button style={{ marginTop: 0 }} onClick={() => document.getElementById("feedback-buttom")?.scrollIntoView({ behavior: "smooth" })}>NOT NEW! Send Feedback  →</Button> */}
-					</div>
-					{this.state.showCharityCard && this.props.showCard ? <div className="mobile">
-						<CharityWidget {...this.state.charityData} />
-					</div> : null}
-					<Socials />
-				</>
-			);
-		}
+		return (
+			<>
+				<h2 className="text title">IsItWeekA is closed</h2>
+				<h3 className="text body">After many years of service, the makers have made the decision to close IsItWeekA.</h3>
+				<h5 id="neitherAB-contact" className="text">Contact <a href="mailto:info@isitweeka.com">info@isitweeka.com</a> if you wish to take over the website.</h5>
+				<div style={{ display: "flex", flexWrap: "wrap", gap: 40, marginRight: "auto" }}>
+					<Button style={{ marginTop: 0 }} className="forward" onClick={() => this.closingRef.current?.scrollIntoView({ behavior: "smooth" })}><div>Read more  →</div></Button>
+				</div>
+				<Socials />
+			</>
+		);
 	}
 
 	render() {
@@ -373,7 +347,7 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 					{this.state.alert.showAlert ? <AlertBanner alert={this.state.alert} /> : null}
 					<div className="isitweeka">
 						{
-							this.state.apiHasRan ? this.getStatus() : (<h2>Loading...</h2>)
+							this.getStatus()
 						}
 					</div>
 					{/* { this.props.showCard && <StudentCouncilElectionTracker
@@ -382,13 +356,18 @@ export default class SiteContainer extends Component<SiteProps, TheState> {
 						candidateTwo={{ colour: "#1D77BC", name: "Ayan Butt", photoUrl: "/sc/Ayan.png", votes: 13 }}
 						summary="Ayan Wins" />
 					} */}
+					{/* Charity Week card disabled while the site is closing
 					{this.state.showCharityCard && this.props.showCard ? <div className="desktop">
 						<CharityWidget {...this.state.charityData} />
-					</div> : null}
+					</div> : null} */}
 				</div>
 				{ /* <Banner /> */}
 				{ /* Pulled offline due to jankiness. Readd once a better solution with proper mobile styles and dedicated place is found:
 					<YearGroupCalendar /> */ }
+				<div className="isitweeka closing" ref={this.closingRef}>
+					<h2>IsItWeekA is closing</h2>
+					<p className="text body">Placeholder copy: a full write-up of why IsItWeekA is closing, and what happens next, will go here.</p>
+				</div>
 				<EventsGrid eventData={this.state.eventData} />
 				{/* All features are re-implemented in cards, so now commented out! */}
 				{/* <EventsList eventData={this.state.eventData} /> */}

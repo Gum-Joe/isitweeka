@@ -30,7 +30,7 @@ import { AlertResponce, ThreatLevels } from "../utils/AlertInterfaces";
 export const KECHBAlerts: AlertResponce = {
 	showAlert: true,
 	alertLevel: ThreatLevels.CRITICAL,
-	message: "TEMPORARY OUTAGE. SEE EVENTS & NEWS FOR DETAILS.",
+	message: "IsItWeekA is for sale: email info@isitweeka.com if you are interested in taking over the website",
 };
 
 // export const KECHGAlerts: AlertResponce = {
@@ -45,6 +45,6 @@ export const KECHBAlerts: AlertResponce = {
 
 export const KECHGAlerts: AlertResponce = {
 	showAlert: true,
-	message: "TEMPORARY OUTAGE. SEE EVENTS & NEWS FOR DETAILS.",
+	message: "IsItWeekA is for sale: email info@isitweeka.com if you are interested in taking over the website",
 	alertLevel: ThreatLevels.CRITICAL,
 };
